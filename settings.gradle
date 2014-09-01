@@ -1,0 +1,8 @@
+rootProject.name = 'PracaInzynierska'
+
+include 'FrontEnd'
+
+include 'BackEnd'
+
+include 'Transport'
+
