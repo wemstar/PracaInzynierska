@@ -9,4 +9,5 @@
 
     <entry-point class='client.MainModule'/>
 
+
 </module>
