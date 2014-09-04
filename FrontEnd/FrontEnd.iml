@@ -3,22 +3,24 @@
   <component name="FacetManager">
     <facet type="web" name="Web Gradle : FrontEnd-1.0.war">
       <configuration>
-        <webroots />
+        <descriptors>
+          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/web/WEB-INF/web.xml" />
+        </descriptors>
+        <webroots>
+          <root url="file://$MODULE_DIR$/web" relative="/" />
+        </webroots>
         <sourceRoots>
-          <root url="file://$MODULE_DIR$/src/main/resources" />
           <root url="file://$MODULE_DIR$/src/main/java" />
+          <root url="file://$MODULE_DIR$/src/main/resources" />
         </sourceRoots>
       </configuration>
     </facet>
     <facet type="gwt" name="GWT">
       <configuration>
-        <setting name="gwtSdkUrl" value="file://$USER_HOME$/gwt-2.5.1" />
+        <setting name="compilerMaxHeapSize" value="1024" />
+        <setting name="gwtScriptOutputStyle" value="DETAILED" />
+        <setting name="gwtSdkUrl" value="file://$USER_HOME$/gwt-2.6.0" />
         <setting name="webFacet" value="Web Gradle : FrontEnd-1.0.war" />
-      </configuration>
-    </facet>
-    <facet type="Spring" name="Spring">
-      <configuration>
-        <fileset id="fileset" name="Spring Application Context" removed="false" />
       </configuration>
     </facet>
     <facet type="google-app-engine" name="Google App Engine">
@@ -63,12 +65,11 @@
     <orderEntry type="library" exported="" name="Gradle: json-20090211" level="project" />
     <orderEntry type="library" exported="" name="Gradle: mockito-all-1.9.0" level="project" />
     <orderEntry type="library" exported="" name="Gradle: requestfactory-apt-2.6.0" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: gwt-user-2.6.0" level="project" />
     <orderEntry type="library" exported="" name="Gradle: gwt-dev-2.6.0" level="project" />
-    <orderEntry type="library" name="gwt-user" level="project" />
     <orderEntry type="library" name="Gradle: spring-core-4.0.6.RELEASE" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="AppEngine Dev 1.9.9" level="application_server_libraries" />
     <orderEntry type="library" name="AppEngine API" level="project" />
+    <orderEntry type="library" name="gwt-user" level="project" />
   </component>
 </module>
 

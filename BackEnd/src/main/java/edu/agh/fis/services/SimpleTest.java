@@ -1,5 +1,6 @@
-package edu.agh.fis;
+package edu.agh.fis.services;
 
+import edu.agh.fis.transport.TestClass;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 

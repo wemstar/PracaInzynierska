@@ -1,4 +1,4 @@
-package edu.agh.fis;
+package edu.agh.fis.transport;
 
 /**
  * Created by wemstar on 04.09.14.
