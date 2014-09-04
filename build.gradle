@@ -1,15 +1,36 @@
 apply plugin: 'java'
 
-sourceCompatibility = 1.5
-version = '1.0'
+allprojects{
+    apply plugin: 'java'
+    apply plugin: 'war'
+    sourceCompatibility = 1.7
+    version = '1.0'
+    repositories {
+        mavenCentral()
+    }
+    ext {
+        springVersion = '4.0.6.RELEASE'
+    }
 
-repositories {
-    mavenCentral()
+    dependencies {
+
+
+        testCompile group: 'org.testng', name: 'testng', version: '6.8.8'
+        testCompile group: 'org.springframework', name:'spring-test', version: springVersion
+        compile group: 'org.springframework', name: 'spring-aop',     version: springVersion
+        compile group: 'org.springframework', name: 'spring-beans',   version: springVersion
+        compile group: 'org.springframework', name: 'spring-context', version: springVersion
+        compile group: 'org.springframework', name: 'spring-core',    version: springVersion
+        compile group: 'org.springframework', name: 'spring-expression', version: springVersion
+
+        compile group: 'commons-logging',     name: 'commons-logging',version:'1.1.1'
+        compile group: 'log4j',               name: 'log4j', version:'1.2.17'
+        compile 'org.slf4j:slf4j-api:1.7.7'
+        compile 'org.codehaus.jackson:jackson-mapper-asl:1.9.13'
+    }
 }
 
-dependencies {
 
-    testCompile group: 'junit', name: 'junit', version: '4.11'
-}
+
 
 

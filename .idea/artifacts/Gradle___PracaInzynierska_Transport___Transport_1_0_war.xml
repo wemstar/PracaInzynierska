@@ -1,0 +1,29 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="Gradle : PracaInzynierska:Transport : Transport-1.0.war">
+    <output-path>$PROJECT_DIR$/out/artifacts/Transport</output-path>
+    <root id="archive" name="Transport-1.0.war">
+      <element id="javaee-facet-resources" facet="Transport/web/Web Gradle : Transport-1.0.war" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="Transport" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Gradle: spring-aop-4.0.6.RELEASE" />
+          <element id="library" level="project" name="Gradle: spring-beans-4.0.6.RELEASE" />
+          <element id="library" level="project" name="Gradle: spring-context-4.0.6.RELEASE" />
+          <element id="library" level="project" name="Gradle: spring-core-4.0.6.RELEASE" />
+          <element id="library" level="project" name="Gradle: spring-expression-4.0.6.RELEASE" />
+          <element id="library" level="project" name="Gradle: log4j-1.2.17" />
+          <element id="library" level="project" name="Gradle: slf4j-api-1.7.7" />
+          <element id="library" level="project" name="Gradle: jackson-mapper-asl-1.9.13" />
+          <element id="library" level="project" name="Gradle: aopalliance-1.0" />
+          <element id="library" level="project" name="Gradle: jackson-core-asl-1.9.13" />
+          <element id="library" level="project" name="Gradle: commons-logging-1.1.3" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/out/artifacts/Transport/exploded/Transport-1.0.war/META-INF/MANIFEST.MF" />
+      </element>
+    </root>
+  </artifact>
+</component>
