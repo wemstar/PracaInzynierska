@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: requestfactory-apt-2.6.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.web.bindery/requestfactory-apt/2.6.0/de04bdd6d5787387151e70ae9014e57e0f942188/requestfactory-apt-2.6.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.web.bindery/requestfactory-apt/2.6.0/4c251003db94d94d4e99d6fa04b3a92603b3e4bf/requestfactory-apt-2.6.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
