@@ -7,6 +7,7 @@ dependencies {
     compile group: 'org.springframework', name: 'spring-tx', version: springVersion
     compile group: 'org.springframework', name: 'spring-orm',version: springVersion
 
+    compile 'mysql:mysql-connector-java:5.1.32'
     compile group: 'org.hibernate',       name: 'hibernate-core',version:'4.3.5.Final'
     compile 'org.hsqldb:hsqldb:2.3.2'
 

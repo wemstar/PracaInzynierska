@@ -4,13 +4,10 @@ import edu.agh.fis.entity.SimpleEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
-import org.springframework.stereotype.Component;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
+import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import javax.transaction.Transactional;
 
 /**
  * Created by wemstar on 06.09.14.
@@ -26,7 +23,10 @@ public class DatabaseTest  extends AbstractTestNGSpringContextTests {
     public void testDatabaseConnection()
     {
         Session session=sessionFactory.openSession();
-        session.save(new SimpleEntity());
+        SimpleEntity entiry=new SimpleEntity();
+        session.save(entiry);
+        SimpleEntity entity2= (SimpleEntity) session.get(SimpleEntity.class,entiry.id);
+        Assert.assertEquals(entiry.id,entity2.id);
 
 
 

@@ -42,6 +42,7 @@
             <element id="module-output" name="Entity" />
           </element>
           <element id="library" level="project" name="Gradle: hsqldb-2.3.2" />
+          <element id="library" level="project" name="Gradle: mysql-connector-java-5.1.32" />
           <element id="library" level="project" name="AppEngine API" />
         </element>
       </element>
