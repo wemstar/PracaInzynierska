@@ -28,5 +28,8 @@ public class DatabaseTest  extends AbstractTestNGSpringContextTests {
         Session session=sessionFactory.openSession();
         session.save(new SimpleEntity());
 
+
+
+
     }
 }
