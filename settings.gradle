@@ -6,3 +6,5 @@ include 'BackEnd'
 
 include 'Transport'
 
+include 'Entity'
+
