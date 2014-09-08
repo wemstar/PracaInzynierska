@@ -16,4 +16,5 @@
         <property name="packagesToScan" value="edu.agh.fis" />
 
     </bean>
+
 </beans>
