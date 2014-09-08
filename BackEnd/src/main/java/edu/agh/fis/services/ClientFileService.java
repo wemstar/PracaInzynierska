@@ -19,10 +19,14 @@ public class ClientFileService {
 
     public ClientFile getByClientNo(long clientNo) {
 
-        List<ClientFile> clientFileList = clientFileDao.getByNo(clientNo);
-        if (clientFileList.size() != 0)
-            return clientFileList.get(0);
-        else
-            return null;
+//        List<ClientFile> clientFileList = clientFileDao.getByNo(clientNo);
+//        if (clientFileList.size() != 0)
+//            return clientFileList.get(0);
+//        else
+//            return null;
+        ClientFile clientFile=new ClientFile();
+        clientFile.clientNo=1;
+        clientFile.name="Sylwek";
+        return clientFile;
     }
 }

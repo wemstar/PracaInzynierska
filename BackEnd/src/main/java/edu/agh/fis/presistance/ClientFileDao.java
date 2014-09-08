@@ -16,15 +16,15 @@ import java.util.List;
 @Repository
 public class ClientFileDao {
 
-    @Autowired
-    private SessionFactory sessionFactory;
+//    @Autowired
+//    private SessionFactory sessionFactory;
 
-    public List<ClientFile> getByNo(long clientNo) {
-
-        Criteria criteria=sessionFactory.getCurrentSession().createCriteria(ClientFile.class);
-        return criteria.add(Restrictions.eq("clientNo",clientNo))
-                .setResultTransformer(Transformers.aliasToBean(ClientFile.class))
-                .list();
-
-    }
+//    public List<ClientFile> getByNo(long clientNo) {
+//
+//        Criteria criteria=sessionFactory.getCurrentSession().createCriteria(ClientFile.class);
+//        return criteria.add(Restrictions.eq("clientNo",clientNo))
+//                .setResultTransformer(Transformers.aliasToBean(ClientFile.class))
+//                .list();
+//
+//    }
 }

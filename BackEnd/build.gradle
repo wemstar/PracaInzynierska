@@ -1,14 +1,20 @@
 
+appengine {
+    httpPort = 8889
+    app { id = 'fixapplication' }
+}
+
 dependencies {
     compile project(':Transport')
     compile project(':Entity')
-    compile group: 'org.springframework', name: 'spring-web',     version: springVersion
+    compile group: 'org.springframework', name: 'spring-web', version: springVersion
     compile group: 'org.springframework', name: 'spring-webmvc', version: springVersion
     compile group: 'org.springframework', name: 'spring-tx', version: springVersion
-    compile group: 'org.springframework', name: 'spring-orm',version: springVersion
+    compile group: 'org.springframework', name: 'spring-orm', version: springVersion
+    compile 'org.apache.servicemix.bundles:org.apache.servicemix.bundles.quickfix:1.5.3_1'
 
     compile 'mysql:mysql-connector-java:5.1.32'
-    compile group: 'org.hibernate',       name: 'hibernate-core',version:'4.3.5.Final'
+    compile group: 'org.hibernate', name: 'hibernate-core', version: '4.3.5.Final'
     compile 'org.hsqldb:hsqldb:2.3.2'
 
 

@@ -1,44 +1,89 @@
-apply plugin: 'java'
-
-allprojects{
+allprojects {
     apply plugin: 'java'
-    apply plugin: 'war'
+
+    apply plugin: 'idea'
+
+
     sourceCompatibility = 1.7
     version = '1.0'
     repositories {
         mavenCentral()
     }
+
     ext {
         springVersion = '4.0.6.RELEASE'
     }
 
     dependencies {
-
-
         testCompile group: 'org.testng', name: 'testng', version: '6.8.8'
-        testCompile group: 'org.springframework', name:'spring-test', version: springVersion
-        compile group: 'org.springframework', name: 'spring-aop',     version: springVersion
-        compile group: 'org.springframework', name: 'spring-beans',   version: springVersion
+        testCompile group: 'org.springframework', name: 'spring-test', version: springVersion
+        compile group: 'org.springframework', name: 'spring-aop', version: springVersion
+        compile group: 'org.springframework', name: 'spring-beans', version: springVersion
         compile group: 'org.springframework', name: 'spring-context', version: springVersion
-        compile group: 'org.springframework', name: 'spring-core',    version: springVersion
+        compile group: 'org.springframework', name: 'spring-core', version: springVersion
         compile group: 'org.springframework', name: 'spring-expression', version: springVersion
 
-        compile group: 'commons-logging',     name: 'commons-logging',version:'1.1.1'
-        compile group: 'log4j',               name: 'log4j', version:'1.2.17'
+        compile group: 'commons-logging', name: 'commons-logging', version: '1.1.1'
+        compile group: 'log4j', name: 'log4j', version: '1.2.17'
         compile 'org.slf4j:slf4j-api:1.7.7'
         compile 'org.codehaus.jackson:jackson-mapper-asl:1.9.13'
+        compile 'org.mockito:mockito-all:1.9.0'
     }
-    test{
+    test {
         useTestNG()
-
         // listen to events in the test execution lifecycle
-        beforeTest { descriptor ->
-            logger.lifecycle("Running test: " + descriptor)
-        }
+        beforeTest { descriptor -> logger.lifecycle("Running test: " + descriptor) }
 
         // listen to standard out and standard error of the test JVM(s)
-        onOutput { descriptor, event ->
-            logger.lifecycle("Test: " + descriptor + " produced standard out/err: " + event.message )
+        onOutput { descriptor, event -> logger.lifecycle("Test: " + descriptor + " produced standard out/err: " + event.message) }
+    }
+}
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url 'http://dl.bintray.com/steffenschaefer/maven' }
+    }
+
+    dependencies {
+        classpath 'com.google.appengine:gradle-appengine-plugin:1.9.9'
+        classpath 'de.richsource.gradle.plugins:gwt-gradle-plugin:0.5'
+    }
+
+
+}
+
+["BackEnd","FrontEnd"].each { name ->
+    project(":$name") {
+
+        apply plugin: 'appengine'
+        apply plugin: 'war'
+        webAppDirName = 'web'
+
+        appengine {
+            downloadSdk = true
+
+            appcfg {
+                email = "sylwestermacura@gmail.com"
+                oauth2 = true
+            }
+
+            logs {
+                severity = 1
+                outputFile = file('mylogs.txt')
+            }
+        }
+        dependencies { appengineSdk 'com.google.appengine:appengine-java-sdk:1.9.9' }
+    }
+}
+
+gradle.buildFinished {
+    File explodedDist = mkdir("$buildDir/explodedDist")
+    subprojects.each {project ->
+        project.tasks.withType(Jar).each {archiveTask ->
+            copy {
+                from archiveTask.archivePath
+                into explodedDist
+            }
         }
     }
 }

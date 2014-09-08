@@ -22,6 +22,7 @@
           <element id="library" level="project" name="Gradle: aopalliance-1.0" />
           <element id="library" level="project" name="Gradle: jackson-core-asl-1.9.13" />
           <element id="library" level="project" name="Gradle: commons-logging-1.1.3" />
+          <element id="library" level="project" name="Gradle: mockito-all-1.9.0" />
           <element id="library" level="project" name="Gradle: spring-web-4.0.6.RELEASE" />
           <element id="library" level="project" name="Gradle: spring-webmvc-4.0.6.RELEASE" />
           <element id="library" level="project" name="Gradle: spring-tx-4.0.6.RELEASE" />
@@ -43,7 +44,7 @@
           </element>
           <element id="library" level="project" name="Gradle: hsqldb-2.3.2" />
           <element id="library" level="project" name="Gradle: mysql-connector-java-5.1.32" />
-          <element id="library" level="project" name="AppEngine API" />
+          <element id="library" level="project" name="Gradle: org.apache.servicemix.bundles.quickfix-1.5.3_1" />
         </element>
       </element>
       <element id="directory" name="META-INF">
