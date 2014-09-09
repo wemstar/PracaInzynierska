@@ -3,7 +3,7 @@ language: java
 deploy:
   provider: releases
   api-key: "f84ecccfb69d9ee2680283922b1ada409d604924"
-  file: build/explodedDist/*.war
+  file: "build/explodedDist/BackEnd-1.0.war"
   skip_cleanup: true
   on:
     tags: true
