@@ -1,10 +1,10 @@
-package edu.agh.fis.client.file.application;
+package edu.agh.fis.rest.client.file.application;
 
+import edu.agh.fis.client.file.ClientFileTransport;
 import edu.agh.fis.entity.client.file.ClientFile;
 import edu.agh.fis.client.file.services.ClientFileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -12,25 +12,27 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping("/client/file")
-public class ClientFileREST {
+public class ClientFileRESTImpl implements ClientFileREST {
 
 
     @Autowired
     private ClientFileService clientFileService;
 
+    @Override
     @RequestMapping(value = "/{clientNo}",method = RequestMethod.GET)
-    @Transactional
-    public ClientFile getClientFile(@PathVariable long clientNo)
+    public ClientFileTransport getClientFile(@PathVariable long clientNo)
     {
-        return clientFileService.getByClientNo(clientNo);
+        return new ClientFileTransport(clientFileService.getByClientNo(clientNo));
     }
 
+    @Override
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public @ResponseBody ClientFile createClientFile(ClientFile clientFile )
+    public @ResponseBody ClientFile createClientFile(ClientFile clientFile)
     {
 
         clientFileService.createClient(clientFile);
+
         return clientFile;
     }
 

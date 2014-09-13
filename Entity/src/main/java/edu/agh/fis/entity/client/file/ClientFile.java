@@ -2,6 +2,8 @@ package edu.agh.fis.entity.client.file;
 
 import edu.agh.fis.entity.client.account.BraAccount;
 
+
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;
@@ -37,6 +39,9 @@ public class ClientFile {
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "clientFile")
     public Set<BraAccount> account;
 
-
+    public String toString()
+    {
+        return " "+id +" "+ clientNo +" "+ name;
+    }
 
 }

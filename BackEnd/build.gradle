@@ -15,6 +15,9 @@ dependencies {
 
     compile 'mysql:mysql-connector-java:5.1.32'
     compile group: 'org.hibernate', name: 'hibernate-core', version: '4.3.5.Final'
+    compile 'org.hibernate:hibernate-c3p0:4.3.5.Final'
+    compile 'org.hibernate:hibernate-ehcache:4.3.5.Final'
+    compile 'org.hibernate:hibernate-entitymanager:4.3.5.Final'
     compile 'org.hsqldb:hsqldb:2.3.2'
 
 
