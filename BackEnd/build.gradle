@@ -1,8 +1,9 @@
-
 appengine {
     httpPort = 8889
     app { id = 'fixapplication' }
 }
+apply plugin: 'war'
+webAppDirName = 'web'
 
 dependencies {
     compile project(':Transport')

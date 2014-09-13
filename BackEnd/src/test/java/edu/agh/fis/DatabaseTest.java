@@ -13,22 +13,19 @@ import org.testng.annotations.Test;
  * Created by wemstar on 06.09.14.
  */
 @Test
-@ContextConfiguration(locations = { "classpath:spring-test-config.xml" })
-public class DatabaseTest  extends AbstractTestNGSpringContextTests {
+@ContextConfiguration(locations = {"classpath:spring-test-config.xml"})
+public class DatabaseTest extends AbstractTestNGSpringContextTests {
 
     @Autowired
     public SessionFactory sessionFactory;
 
     @Test
-    public void testDatabaseConnection()
-    {
-        Session session=sessionFactory.openSession();
-        SimpleEntity entiry=new SimpleEntity();
+    public void testDatabaseConnection() {
+        Session session = sessionFactory.openSession();
+        SimpleEntity entiry = new SimpleEntity();
         session.save(entiry);
-        SimpleEntity entity2= (SimpleEntity) session.get(SimpleEntity.class,entiry.id);
-        Assert.assertEquals(entiry.id,entity2.id);
-
-
+        SimpleEntity entity2 = (SimpleEntity) session.get(SimpleEntity.class, entiry.id);
+        Assert.assertEquals(entiry.id, entity2.id);
 
 
     }
