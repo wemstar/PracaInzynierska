@@ -24,8 +24,8 @@
         </webroots>
         <sourceRoots>
           <root url="file://$MODULE_DIR$/build/generated-source/endpoints/java" />
-          <root url="file://$MODULE_DIR$/src/main/java" />
           <root url="file://$MODULE_DIR$/src/main/resources" />
+          <root url="file://$MODULE_DIR$/src/main/java" />
           <root url="file://$MODULE_DIR$/src/endpointsSrc/resources" />
         </sourceRoots>
       </configuration>
@@ -40,8 +40,8 @@
         </webroots>
         <sourceRoots>
           <root url="file://$MODULE_DIR$/build/generated-source/endpoints/java" />
-          <root url="file://$MODULE_DIR$/src/main/java" />
           <root url="file://$MODULE_DIR$/src/main/resources" />
+          <root url="file://$MODULE_DIR$/src/main/java" />
           <root url="file://$MODULE_DIR$/src/endpointsSrc/resources" />
         </sourceRoots>
       </configuration>
