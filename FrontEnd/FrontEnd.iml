@@ -36,7 +36,6 @@
           <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/web/WEB-INF/web.xml" />
         </descriptors>
         <webroots>
-          <root url="file://$MODULE_DIR$/home/wemstar/Dokumenty/PracaInzynierska/FrontEnd/build" relative="/WEB-INF" />
           <root url="file://$MODULE_DIR$/web" relative="" />
           <root url="file://$MODULE_DIR$/build/gwt/out/WEB-INF" relative="/WEB-INF" />
           <root url="file://$MODULE_DIR$/build/gwt/out/WEB-INF/deploy" relative="/WEB-INF/deploy" />
@@ -44,14 +43,14 @@
           <root url="file://$MODULE_DIR$/build/gwt/out/WEB-INF/deploy/MainModule/symbolMaps" relative="/WEB-INF/deploy/MainModule/symbolMaps" />
           <root url="file://$MODULE_DIR$/build/gwt/out/WEB-INF/deploy/MainModule/rpcPolicyManifest" relative="/WEB-INF/deploy/MainModule/rpcPolicyManifest" />
           <root url="file://$MODULE_DIR$/build/gwt/out/MainModule" relative="/MainModule" />
-          <root url="file://$MODULE_DIR$/build/gwt/out/MainModule/base" relative="/MainModule/base" />
-          <root url="file://$MODULE_DIR$/build/gwt/out/MainModule/base/images" relative="/MainModule/base/images" />
-          <root url="file://$MODULE_DIR$/build/gwt/out/MainModule/base/images/grid" relative="/MainModule/base/images/grid" />
-          <root url="file://$MODULE_DIR$/build/gwt/out/MainModule/base/images/button" relative="/MainModule/base/images/button" />
           <root url="file://$MODULE_DIR$/build/gwt/out/MainModule/blue" relative="/MainModule/blue" />
           <root url="file://$MODULE_DIR$/build/gwt/out/MainModule/blue/images" relative="/MainModule/blue/images" />
-          <root url="file://$MODULE_DIR$/build/gwt/out/MainModule/blue/images/slider" relative="/MainModule/blue/images/slider" />
           <root url="file://$MODULE_DIR$/build/gwt/out/MainModule/blue/images/menu" relative="/MainModule/blue/images/menu" />
+          <root url="file://$MODULE_DIR$/build/gwt/out/MainModule/blue/images/slider" relative="/MainModule/blue/images/slider" />
+          <root url="file://$MODULE_DIR$/build/gwt/out/MainModule/base" relative="/MainModule/base" />
+          <root url="file://$MODULE_DIR$/build/gwt/out/MainModule/base/images" relative="/MainModule/base/images" />
+          <root url="file://$MODULE_DIR$/build/gwt/out/MainModule/base/images/button" relative="/MainModule/base/images/button" />
+          <root url="file://$MODULE_DIR$/build/gwt/out/MainModule/base/images/grid" relative="/MainModule/base/images/grid" />
         </webroots>
         <sourceRoots>
           <root url="file://$MODULE_DIR$/build/generated-source/endpoints/java" />

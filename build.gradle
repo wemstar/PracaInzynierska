@@ -56,10 +56,10 @@ buildscript {
 ["BackEnd","FrontEnd"].each { name ->
     project(":$name") {
 
-        apply plugin: 'appengine'
+
         apply plugin: 'war'
         webAppDirName = 'web'
-
+        apply plugin: 'appengine'
         appengine {
             downloadSdk = true
 
@@ -73,7 +73,7 @@ buildscript {
                 outputFile = file('mylogs.txt')
             }
         }
-        dependencies { appengineSdk 'com.google.appengine:appengine-java-sdk:1.9.9' }
+        dependencies { appengineSdk 'com.google.appengine:appengine-java-sdk:1.9.10' }
     }
 }
 

@@ -37,9 +37,7 @@
         <descriptors>
           <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/web/WEB-INF/web.xml" />
         </descriptors>
-        <webroots>
-          <root url="file://$MODULE_DIR$/home/wemstar/Dokumenty/PracaInzynierska/BackEnd/build" relative="/WEB-INF" />
-        </webroots>
+        <webroots />
         <sourceRoots>
           <root url="file://$MODULE_DIR$/src/endpointsSrc/resources" />
           <root url="file://$MODULE_DIR$/src/main/java" />

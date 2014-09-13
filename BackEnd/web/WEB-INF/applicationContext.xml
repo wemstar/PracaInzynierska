@@ -16,5 +16,5 @@
         <property name="packagesToScan" value="edu.agh.fis" />
 
     </bean>
-
+    <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
 </beans>

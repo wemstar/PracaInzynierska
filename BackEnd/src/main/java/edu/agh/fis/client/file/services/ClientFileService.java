@@ -1,0 +1,34 @@
+package edu.agh.fis.client.file.services;
+
+import edu.agh.fis.entity.client.file.ClientFile;
+import edu.agh.fis.client.file.presistance.ClientFileDao;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import java.util.List;
+
+/**
+ * Created by wemstar on 06.09.14.
+ */
+@Component
+public class ClientFileService {
+
+
+    @Autowired
+    private ClientFileDao clientFileDao;
+
+    public ClientFile getByClientNo(long clientNo) {
+
+        List<ClientFile> clientFileList = clientFileDao.getByNo(clientNo);
+        if (clientFileList.size() != 0)
+            return clientFileList.get(0);
+        else
+            return null;
+
+    }
+
+    public void createClient(ClientFile clientFile) {
+
+        clientFileDao.save(clientFile);
+    }
+}
