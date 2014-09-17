@@ -55,10 +55,9 @@ buildscript {
 ["BackEnd","FrontEnd"].each { name ->
     project(":$name") {
 
-        apply plugin: 'appengine'
         apply plugin: 'war'
         webAppDirName = 'web'
-
+        apply plugin: 'appengine'
         appengine {
             downloadSdk = true
 

@@ -6,5 +6,12 @@
            version="3.0">
 
 
-
+    <servlet>
+        <servlet-name>MainModule MainServerSide</servlet-name>
+        <servlet-class>server.MainServerSideImpl</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MainModule MainServerSide</servlet-name>
+        <url-pattern>/MainModule/MainServerSide</url-pattern>
+    </servlet-mapping>
 </web-app>

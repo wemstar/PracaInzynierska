@@ -8,6 +8,7 @@
     <inherits name='com.sencha.gxt.ui.GXT'/>
 
     <entry-point class='client.MainModule'/>
+    <servlet path="/MainServerSide" class="server.MainServerSideImpl"/>
 
 
 </module>
