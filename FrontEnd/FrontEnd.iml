@@ -24,8 +24,8 @@
         </webroots>
         <sourceRoots>
           <root url="file://$MODULE_DIR$/build/generated-source/endpoints/java" />
-          <root url="file://$MODULE_DIR$/src/main/resources" />
           <root url="file://$MODULE_DIR$/src/main/java" />
+          <root url="file://$MODULE_DIR$/src/main/resources" />
           <root url="file://$MODULE_DIR$/src/endpointsSrc/resources" />
         </sourceRoots>
       </configuration>
@@ -37,11 +37,25 @@
         </descriptors>
         <webroots>
           <root url="file://$MODULE_DIR$/web" relative="" />
+          <root url="file://$MODULE_DIR$/build/gwt/out/WEB-INF" relative="/WEB-INF" />
+          <root url="file://$MODULE_DIR$/build/gwt/out/WEB-INF/deploy" relative="/WEB-INF/deploy" />
+          <root url="file://$MODULE_DIR$/build/gwt/out/WEB-INF/deploy/MainModule" relative="/WEB-INF/deploy/MainModule" />
+          <root url="file://$MODULE_DIR$/build/gwt/out/WEB-INF/deploy/MainModule/symbolMaps" relative="/WEB-INF/deploy/MainModule/symbolMaps" />
+          <root url="file://$MODULE_DIR$/build/gwt/out/WEB-INF/deploy/MainModule/rpcPolicyManifest" relative="/WEB-INF/deploy/MainModule/rpcPolicyManifest" />
+          <root url="file://$MODULE_DIR$/build/gwt/out/MainModule" relative="/MainModule" />
+          <root url="file://$MODULE_DIR$/build/gwt/out/MainModule/blue" relative="/MainModule/blue" />
+          <root url="file://$MODULE_DIR$/build/gwt/out/MainModule/blue/images" relative="/MainModule/blue/images" />
+          <root url="file://$MODULE_DIR$/build/gwt/out/MainModule/blue/images/menu" relative="/MainModule/blue/images/menu" />
+          <root url="file://$MODULE_DIR$/build/gwt/out/MainModule/blue/images/slider" relative="/MainModule/blue/images/slider" />
+          <root url="file://$MODULE_DIR$/build/gwt/out/MainModule/base" relative="/MainModule/base" />
+          <root url="file://$MODULE_DIR$/build/gwt/out/MainModule/base/images" relative="/MainModule/base/images" />
+          <root url="file://$MODULE_DIR$/build/gwt/out/MainModule/base/images/button" relative="/MainModule/base/images/button" />
+          <root url="file://$MODULE_DIR$/build/gwt/out/MainModule/base/images/grid" relative="/MainModule/base/images/grid" />
         </webroots>
         <sourceRoots>
           <root url="file://$MODULE_DIR$/build/generated-source/endpoints/java" />
-          <root url="file://$MODULE_DIR$/src/main/resources" />
           <root url="file://$MODULE_DIR$/src/main/java" />
+          <root url="file://$MODULE_DIR$/src/main/resources" />
           <root url="file://$MODULE_DIR$/src/endpointsSrc/resources" />
         </sourceRoots>
       </configuration>
@@ -90,6 +104,7 @@
     <orderEntry type="library" exported="" name="Gradle: gwt-dev-2.6.0" level="project" />
     <orderEntry type="library" exported="" name="Gradle: gwt-user-2.6.0" level="project" />
     <orderEntry type="library" exported="" scope="RUNTIME" name="Gradle: gwt-servlet-2.6.0" level="project" />
+    <orderEntry type="library" name="gwt-user" level="project" />
   </component>
 </module>
 

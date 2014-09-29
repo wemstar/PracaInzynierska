@@ -1,6 +1,6 @@
 allprojects {
     apply plugin: 'java'
-
+    apply plugin: 'appengine'
 
 
     sourceCompatibility = 1.7
@@ -57,7 +57,7 @@ buildscript {
 
         apply plugin: 'war'
         webAppDirName = 'web'
-        apply plugin: 'appengine'
+
         appengine {
             downloadSdk = true
 

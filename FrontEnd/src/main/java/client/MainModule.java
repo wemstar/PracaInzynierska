@@ -1,123 +1,77 @@
 package client;
 
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.user.client.ui.FlexTable;
-import com.google.gwt.user.client.ui.IsWidget;
-import com.google.gwt.user.client.ui.RootPanel;
-import com.google.gwt.user.client.ui.Widget;
-import com.sencha.gxt.core.client.Style.LayoutRegion;
-import com.sencha.gxt.core.client.util.Margins;
-import com.sencha.gxt.widget.core.client.ContentPanel;
-import com.sencha.gxt.widget.core.client.button.TextButton;
-import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer;
-import com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderLayoutData;
-import com.sencha.gxt.widget.core.client.container.MarginData;
-import com.sencha.gxt.widget.core.client.container.SimpleContainer;
-import com.sencha.gxt.widget.core.client.container.Viewport;
-import com.sencha.gxt.widget.core.client.event.SelectEvent;
-import com.sencha.gxt.widget.core.client.event.SelectEvent.SelectHandler;
+import com.google.gwt.event.logical.shared.SelectionEvent;
+import com.google.gwt.event.logical.shared.SelectionHandler;
+import com.google.gwt.user.client.ui.*;
+import com.sencha.gxt.widget.core.client.PlainTabPanel;
+import com.sencha.gxt.widget.core.client.TabItemConfig;
+import com.sencha.gxt.widget.core.client.TabPanel;
+import com.sencha.gxt.widget.core.client.info.Info;
 /**
  * Created by wemstar on 04.09.14.
  */
 public class MainModule implements IsWidget, EntryPoint {
 
-    private SimpleContainer simpleContainer;
+    private VerticalPanel vp;
 
     public Widget asWidget() {
-        if (simpleContainer == null) {
-            simpleContainer = new SimpleContainer();
+        if (vp == null) {
+            vp = new VerticalPanel();
+            vp.setSpacing(10);
 
-            final BorderLayoutContainer con = new BorderLayoutContainer();
-            simpleContainer.add(con, new MarginData(10));
-            con.setBorders(true);
-
-            ContentPanel north = new ContentPanel();
-            ContentPanel west = new ContentPanel();
-            ContentPanel center = new ContentPanel();
-            center.setHeadingText("BorderLayout Example");
-
-            FlexTable table = new FlexTable();
-            table.getElement().getStyle().setProperty("margin", "10px");
-            table.setCellSpacing(8);
-            table.setCellPadding(4);
-
-            for (int i = 0; i < LayoutRegion.values().length; i++) {
-                final LayoutRegion r = LayoutRegion.values()[i];
-                if (r == LayoutRegion.CENTER) {
-                    continue;
+            String txt = "";
+            SelectionHandler<Widget> handler = new SelectionHandler<Widget>() {
+                @Override
+                public void onSelection(SelectionEvent<Widget> event) {
+                    TabPanel panel = (TabPanel) event.getSource();
+                    Widget w = event.getSelectedItem();
+                    TabItemConfig config = panel.getConfig(w);
+                    Info.display("Message", "'" + config.getText() + "' Selected");
                 }
+            };
 
-                SelectHandler handler = new SelectHandler() {
+            TabPanel folder = new TabPanel();
+            folder.addSelectionHandler(handler);
+            folder.setWidth(450);
 
-                    @Override
-                    public void onSelect(SelectEvent event) {
-                        TextButton btn = (TextButton) event.getSource();
-                        String txt = btn.getText();
-                        if (txt.equals("Expand")) {
-                            con.expand(r);
-                        } else if (txt.equals("Collapse")) {
-                            con.collapse(r);
-                        } else if (txt.equals("Show")) {
-                            con.show(r);
-                        } else {
-                            con.hide(r);
-                        }
-                    }
-                };
+            HTML shortText = new HTML(txt);
 
-                table.setHTML(i, 0, "<div style='font-size: 12px; width: 100px'>" + r.name() + ":</span>");
-                table.setWidget(i, 1, new TextButton("Expand", handler));
-                table.setWidget(i, 2, new TextButton("Collapse", handler));
-                table.setWidget(i, 3, new TextButton("Show", handler));
-                table.setWidget(i, 4, new TextButton("Hide", handler));
-            }
+            folder.add(shortText, "Short Text");
 
-            center.setResize(false);
-            center.add(table);
+            HTML longText = new HTML(txt + "<br><br>" + txt);
 
-            ContentPanel east = new ContentPanel();
-            ContentPanel south = new ContentPanel();
+            folder.add(longText, "Long Text");
 
-            BorderLayoutData northData = new BorderLayoutData(100);
-            northData.setMargins(new Margins(8));
-            northData.setCollapsible(true);
-            northData.setSplit(true);
+            final PlainTabPanel panel = new PlainTabPanel();
+            panel.setPixelSize(450, 250);
+            panel.addSelectionHandler(handler);
 
-            BorderLayoutData westData = new BorderLayoutData(150);
-            westData.setCollapsible(true);
-            westData.setSplit(true);
-            westData.setCollapseMini(true);
-            westData.setMargins(new Margins(0, 8, 0, 5));
+            Label normal = new Label("Just a plain old tab");
 
-            MarginData centerData = new MarginData();
+            panel.add(normal, "Normal");
 
-            BorderLayoutData eastData = new BorderLayoutData(150);
-            eastData.setMargins(new Margins(0, 5, 0, 8));
-            eastData.setCollapsible(true);
-            eastData.setSplit(true);
-
-            BorderLayoutData southData = new BorderLayoutData(100);
-            southData.setMargins(new Margins(8));
-            southData.setCollapsible(true);
-            southData.setCollapseMini(true);
-
-            con.setNorthWidget(north, northData);
-            con.setWestWidget(west, westData);
-            con.setCenterWidget(center, centerData);
-            con.setEastWidget(east, eastData);
-            con.setSouthWidget(south, southData);
+            Label iconTab = new Label("Just a plain old tab with an icon");
 
 
+            TabItemConfig config = new TabItemConfig("Icon Tab");
+            panel.add(iconTab, config);
+
+            Label disabled = new Label("This tab should be disabled");
+
+            config = new TabItemConfig("Disabled");
+            config.setEnabled(false);
+            panel.add(disabled, config);
+
+            vp.add(folder);
+            vp.add(panel);
         }
 
-        return simpleContainer;
+        return vp;
     }
 
     public void onModuleLoad() {
-        Viewport viewport = new Viewport();
-        viewport.add(asWidget());
-
-        RootPanel.get().add(viewport);
+        RootPanel.get().add(asWidget());
     }
 
 }

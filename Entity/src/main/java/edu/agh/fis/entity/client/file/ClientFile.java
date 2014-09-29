@@ -1,8 +1,10 @@
 package edu.agh.fis.entity.client.file;
 
-import edu.agh.fis.entity.client.account.BraAccount;
 
 
+
+
+import edu.agh.fis.entity.bra.acc.BraAccount;
 
 import javax.persistence.*;
 import java.util.Date;

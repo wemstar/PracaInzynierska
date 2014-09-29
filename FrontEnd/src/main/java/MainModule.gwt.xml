@@ -9,6 +9,10 @@
 
     <entry-point class='client.MainModule'/>
     <servlet path="/MainServerSide" class="server.MainServerSideImpl"/>
+    <add-linker name="xsiframe" />
+    <set-configuration-property name="devModeRedirectEnabled" value="true" />
+    <set-configuration-property name="gwt.superdevmode" value="on" />
+    <set-property name="compiler.useSourceMaps" value="true"/>
 
 
 </module>

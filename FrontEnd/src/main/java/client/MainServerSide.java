@@ -20,4 +20,6 @@ public interface MainServerSide extends RemoteService {
             return ourInstance;
         }
     }
+
+    public String hello();
 }
