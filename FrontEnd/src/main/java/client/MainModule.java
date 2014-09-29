@@ -8,6 +8,7 @@ import com.sencha.gxt.widget.core.client.PlainTabPanel;
 import com.sencha.gxt.widget.core.client.TabItemConfig;
 import com.sencha.gxt.widget.core.client.TabPanel;
 import com.sencha.gxt.widget.core.client.info.Info;
+
 /**
  * Created by wemstar on 04.09.14.
  */

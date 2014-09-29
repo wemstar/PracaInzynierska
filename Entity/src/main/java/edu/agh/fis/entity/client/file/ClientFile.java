@@ -1,9 +1,6 @@
 package edu.agh.fis.entity.client.file;
 
 
-
-
-
 import edu.agh.fis.entity.bra.acc.BraAccount;
 
 import javax.persistence.*;
@@ -22,28 +19,27 @@ public class ClientFile {
     @Column(name = "CLIENT_FILE_ID", unique = true, nullable = false)
     public long id;
 
-    @Column(unique = true,name = "CLIENT_NUMBER")
+    @Column(unique = true, name = "CLIENT_NUMBER")
     public long clientNo;
 
     @Column(name = "CLIENT_NAME")
     public String name;
 
-    @Column(name="CLIENT_SURNAME")
+    @Column(name = "CLIENT_SURNAME")
     public String surname;
 
-    @Column(name="CLIENT_DATE_OF_BIRTH")
+    @Column(name = "CLIENT_DATE_OF_BIRTH")
     public Date dateOfBirth;
 
-    @Column(name="CLIENT_PESEL")
+    @Column(name = "CLIENT_PESEL")
     public String pesel;
 
 
-    @OneToMany(fetch = FetchType.LAZY,mappedBy = "clientFile")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "clientFile")
     public Set<BraAccount> account;
 
-    public String toString()
-    {
-        return " "+id +" "+ clientNo +" "+ name;
+    public String toString() {
+        return " " + id + " " + clientNo + " " + name;
     }
 
 }

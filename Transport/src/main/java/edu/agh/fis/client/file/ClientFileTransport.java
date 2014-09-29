@@ -10,11 +10,10 @@ public class ClientFileTransport {
     public ClientFileTransport(edu.agh.fis.entity.client.file.ClientFile clientFile) {
 
 
-        this.clientNo=clientFile.clientNo;
-        this.name=clientFile.name;
+        this.clientNo = clientFile.clientNo;
+        this.name = clientFile.name;
 
     }
-
 
 
 }

@@ -1,7 +1,7 @@
 package server;
 
-import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import client.MainServerSide;
+import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 /**
  * Created by wemstar on 17.09.14.

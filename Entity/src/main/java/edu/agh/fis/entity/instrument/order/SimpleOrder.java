@@ -15,7 +15,7 @@ public class SimpleOrder {
     @Column(name = "OR_ID")
     private Integer id;
 
-    @Column(name="ORD_SIDE")
+    @Column(name = "ORD_SIDE")
     private Side side;
 
 

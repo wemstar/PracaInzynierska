@@ -3,7 +3,7 @@ appengine {
     app { id = 'fixapplication' }
 }
 apply plugin: 'war'
-webAppDirName = 'web'
+
 
 dependencies {
     compile project(':Transport')

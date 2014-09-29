@@ -35,7 +35,6 @@ public class ClientFileDaoImpl implements ClientFileDao {
 
 
         Session session = sessionFactory.getCurrentSession();
-        ;
         Criteria criteria = session.createCriteria(ClientFile.class);
 
         List list = criteria.list();

@@ -1,6 +1,6 @@
 allprojects {
     apply plugin: 'java'
-    apply plugin: 'appengine'
+
 
 
     sourceCompatibility = 1.7
@@ -52,12 +52,12 @@ buildscript {
 
 }
 
-["BackEnd","FrontEnd"].each { name ->
+["BackEnd", "FrontEnd"].each { name ->
     project(":$name") {
 
         apply plugin: 'war'
         webAppDirName = 'web'
-
+        apply plugin: 'appengine'
         appengine {
             downloadSdk = true
 
@@ -77,8 +77,8 @@ buildscript {
 
 gradle.buildFinished {
     File explodedDist = mkdir("$buildDir/explodedDist")
-    subprojects.each {project ->
-        project.tasks.withType(Jar).each {archiveTask ->
+    subprojects.each { project ->
+        project.tasks.withType(Jar).each { archiveTask ->
             copy {
                 from archiveTask.archivePath
                 into explodedDist
