@@ -20,24 +20,23 @@ public class ClientFileServiceImpl implements ClientFileService {
     private ClientFileDao clientFileDao;
 
 
-    private static final Logger logger = Logger.getLogger(ClientFileServiceImpl.class.getName());
-
     @Override
     public ClientFile getByClientNo(long clientNo) {
-
-        List<ClientFile> clientFileList = clientFileDao.getByNo(clientNo);
-        if (clientFileList.size() != 0) {
-            logger.info(clientFileList.get(0).toString());
-            return new ClientFile();
-        } else
-            return null;
-
-
+        return clientFileDao.find(clientNo);
     }
 
     @Override
-    public void createClient(ClientFile clientFile) {
+    public ClientFile createClientFile(ClientFile clientFile) {
+        return clientFileDao.create(clientFile);
+    }
 
-        clientFileDao.save(clientFile);
+    @Override
+    public void updateClientFile(ClientFile clientFile) {
+                clientFileDao.update(clientFile);
+    }
+
+    @Override
+    public void deleteClientFile(long clientNo) {
+        clientFileDao.delete(clientNo);
     }
 }

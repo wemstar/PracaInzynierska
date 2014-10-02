@@ -1,14 +1,13 @@
 package edu.agh.fis.core.client.file.presistance;
 
 import edu.agh.fis.entity.client.file.ClientFile;
+import edu.agh.fis.utils.presistance.AbstractDAO;
 
 import java.util.List;
 
 /**
  * Created by wemstar on 13.09.14.
  */
-public interface ClientFileDao {
-    List<ClientFile> getByNo(long clientNo);
+public interface ClientFileDao extends AbstractDAO<ClientFile>{
 
-    void save(ClientFile clientFile);
 }

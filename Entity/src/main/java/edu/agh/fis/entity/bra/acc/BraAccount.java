@@ -5,7 +5,7 @@ import edu.agh.fis.entity.client.file.ClientFile;
 import javax.persistence.*;
 
 /**
- * Created by wemstar on 06.09.14.
+ * Klasa przechowująca stan rachunku
  */
 @Entity
 @Table(name = "BRA_ACCOUNT")

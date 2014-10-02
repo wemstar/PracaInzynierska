@@ -12,7 +12,7 @@ public interface ClientFileREST {
 
     ClientFileTransport createClientFile(ClientFileTransport clientFile);
 
-    ClientFileTransport updateClientFile(ClientFileTransport clientFile);
+    void updateClientFile(ClientFileTransport transport);
 
-    int deleteClientFile(long clientNo);
+    void deleteClientFile(long clientNo) ;
 }

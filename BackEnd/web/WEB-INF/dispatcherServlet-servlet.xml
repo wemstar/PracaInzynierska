@@ -6,5 +6,6 @@
 
     <mvc:annotation-driven/>
     <context:component-scan base-package="edu.agh.fis.interfaces.rest"/>
+    <bean class="edu.agh.fis.utils.logger.LoggerPostProcessor"/>
 
 </beans>

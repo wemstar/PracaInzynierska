@@ -41,4 +41,6 @@
         </property>
     </bean>
 
+    <bean class="edu.agh.fis.utils.logger.LoggerPostProcessor"/>
+
 </beans>

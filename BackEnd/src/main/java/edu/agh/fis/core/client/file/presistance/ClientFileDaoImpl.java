@@ -1,6 +1,7 @@
 package edu.agh.fis.core.client.file.presistance;
 
 import edu.agh.fis.entity.client.file.ClientFile;
+import edu.agh.fis.utils.presistance.AbstractDAOImpl;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -17,36 +18,10 @@ import java.util.logging.Logger;
  */
 @Repository
 @Transactional(readOnly = true)
-public class ClientFileDaoImpl implements ClientFileDao {
-
-//    @PersistenceContext
-//    private EntityManager entityManager;
-
-    static Logger log = Logger.getLogger(ClientFileDaoImpl.class.getName());
+public class ClientFileDaoImpl extends AbstractDAOImpl<ClientFile> implements ClientFileDao {
 
 
-    @Autowired
-    private SessionFactory sessionFactory;
 
 
-    @Override
-    @Transactional(propagation = Propagation.REQUIRED)
-    public List<ClientFile> getByNo(long clientNo) {
 
-
-        Session session = sessionFactory.getCurrentSession();
-        Criteria criteria = session.createCriteria(ClientFile.class);
-
-        List list = criteria.list();
-
-        log.info("Hura " + list);
-        return list;
-
-
-    }
-
-    @Override
-    public void save(ClientFile clientFile) {
-        //sessionFactory.getCurrentSession().save(clientFile);
-    }
 }
