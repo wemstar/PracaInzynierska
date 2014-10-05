@@ -10,6 +10,8 @@ allprojects {
     }
 
 
+
+
     ext {
         springVersion = '4.0.6.RELEASE'
     }
@@ -28,6 +30,9 @@ allprojects {
         compile 'org.slf4j:slf4j-api:1.7.7'
         compile 'org.codehaus.jackson:jackson-mapper-asl:1.9.13'
         compile 'org.mockito:mockito-all:1.9.0'
+
+        compile 'org.aspectj:aspectjrt:1.8.2'
+        compile 'org.aspectj:aspectjweaver:1.8.2'
     }
     test {
         useTestNG()
@@ -42,11 +47,13 @@ buildscript {
     repositories {
         mavenCentral()
         maven { url 'http://dl.bintray.com/steffenschaefer/maven' }
+
     }
 
     dependencies {
         classpath 'com.google.appengine:gradle-appengine-plugin:1.9.9'
         classpath 'de.richsource.gradle.plugins:gwt-gradle-plugin:0.5'
+
     }
 
 
@@ -58,6 +65,7 @@ buildscript {
         apply plugin: 'war'
         webAppDirName = 'web'
         apply plugin: 'appengine'
+
         appengine {
             downloadSdk = true
 
