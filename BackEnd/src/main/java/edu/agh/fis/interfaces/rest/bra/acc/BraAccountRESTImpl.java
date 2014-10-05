@@ -2,6 +2,7 @@ package edu.agh.fis.interfaces.rest.bra.acc;
 
 import edu.agh.fis.bra.acc.BraAccountTransport;
 import edu.agh.fis.core.bra.acc.services.BraAccountServices;
+import edu.agh.fis.utils.logger.Logging;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +24,7 @@ public class BraAccountRESTImpl implements BraAccountREST {
     @RequestMapping(value = "/{braNo}",method = RequestMethod.GET)
     public BraAccountTransport getBraAccount(@PathVariable long braNo) {
         return braAccountTransformer.entityToTransport(braAccountServices.getBraAcc(braNo));
+
     }
 
     @Override

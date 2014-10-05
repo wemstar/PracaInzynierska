@@ -120,6 +120,8 @@
     <orderEntry type="library" exported="" name="Gradle: ehcache-core-2.4.3" level="project" />
     <orderEntry type="library" exported="" name="Gradle: mchange-commons-java-0.2.3.4" level="project" />
     <orderEntry type="library" exported="" name="Gradle: hibernate-entitymanager-4.3.5.Final" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: aspectjrt-1.8.2" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: aspectjweaver-1.8.2" level="project" />
   </component>
 </module>
 

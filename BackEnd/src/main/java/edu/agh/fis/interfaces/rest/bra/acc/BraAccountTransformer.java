@@ -2,19 +2,12 @@ package edu.agh.fis.interfaces.rest.bra.acc;
 
 import edu.agh.fis.bra.acc.BraAccountTransport;
 import edu.agh.fis.entity.bra.acc.BraAccount;
-import org.springframework.stereotype.Component;
 
 /**
- * Created by wemstar on 29.09.14.
+ * Created by wemstar on 05.10.14.
  */
-@Component
-public class BraAccountTransformer {
-    public BraAccountTransport entityToTransport(BraAccount braAcc) {
+public interface BraAccountTransformer {
+    BraAccountTransport entityToTransport(BraAccount braAcc);
 
-        return null;
-    }
-
-    public BraAccount transportToEntity(BraAccountTransport braAccountTransport) {
-        return null;
-    }
+    BraAccount transportToEntity(BraAccountTransport braAccountTransport);
 }

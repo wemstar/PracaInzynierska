@@ -90,6 +90,8 @@
     <orderEntry type="library" exported="" name="Gradle: gwt-dev-2.6.0" level="project" />
     <orderEntry type="library" exported="" name="Gradle: gwt-user-2.6.0" level="project" />
     <orderEntry type="library" exported="" scope="RUNTIME" name="Gradle: gwt-servlet-2.6.0" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: aspectjrt-1.8.2" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: aspectjweaver-1.8.2" level="project" />
   </component>
 </module>
 
