@@ -32,12 +32,12 @@ public abstract class AbstractDAOImpl<T> implements AbstractDAO<T> {
 
     @Override
     public void delete(final long id) {
-        sessionFactory.getCurrentSession().delete(sessionFactory.getCurrentSession().get(type,id));
+        sessionFactory.getCurrentSession().delete(sessionFactory.getCurrentSession().get(type, id));
     }
 
     @Override
     public T find(final long id) {
-        return (T) sessionFactory.getCurrentSession().get(type,id);
+        return (T) sessionFactory.getCurrentSession().get(type, id);
     }
 
     @Override

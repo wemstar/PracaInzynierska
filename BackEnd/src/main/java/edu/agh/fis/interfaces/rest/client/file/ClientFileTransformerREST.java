@@ -1,13 +1,13 @@
 package edu.agh.fis.interfaces.rest.client.file;
 
-import edu.agh.fis.client.file.ClientFileTransport;
+import edu.agh.fis.client.file.ClientFileDTO;
 import edu.agh.fis.entity.client.file.ClientFile;
 
 /**
  * Created by wemstar on 05.10.14.
  */
 public interface ClientFileTransformerREST {
-    ClientFile transportToEntity(ClientFileTransport clientFile);
+    ClientFile transportToEntity(ClientFileDTO clientFile);
 
-    ClientFileTransport entityToTransport(ClientFile clientFile);
+    ClientFileDTO entityToTransport(ClientFile clientFile);
 }

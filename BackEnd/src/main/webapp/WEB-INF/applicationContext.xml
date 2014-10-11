@@ -43,5 +43,5 @@
     </bean>
 
     <bean class="edu.agh.fis.utils.logger.LoggerPostProcessor"/>
-    <bean class="edu.agh.fis.utils.logger.AspectLoging" id="aspectLoging" />
+    <bean class="edu.agh.fis.utils.logger.AspectLoging" id="aspectLoging"/>
 </beans>

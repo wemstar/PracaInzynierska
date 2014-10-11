@@ -6,9 +6,6 @@ import edu.agh.fis.entity.client.file.ClientFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.logging.Logger;
-
 /**
  * Created by wemstar on 06.09.14.
  */
@@ -32,7 +29,7 @@ public class ClientFileServiceImpl implements ClientFileService {
 
     @Override
     public void updateClientFile(ClientFile clientFile) {
-                clientFileDao.update(clientFile);
+        clientFileDao.update(clientFile);
     }
 
     @Override

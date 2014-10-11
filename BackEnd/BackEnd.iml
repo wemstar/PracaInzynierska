@@ -19,7 +19,7 @@
     <facet type="hibernate" name="Hibernate">
       <configuration>
         <datasource-map>
-          <unit-entry name="hibernate.cfg.xml" />
+          <unit-entry name="hibernate.cfg.xml" value="e9aa2dfb-efe1-4265-94e1-1d3bafdb9a4f" />
           <unit-entry name="sessionFactory" value="e9aa2dfb-efe1-4265-94e1-1d3bafdb9a4f" />
         </datasource-map>
         <naming-strategy-map />
@@ -45,10 +45,10 @@
     <facet type="web" name="Web Gradle : BackEnd-1.0.war">
       <configuration>
         <descriptors>
-          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/web/WEB-INF/web.xml" />
+          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/src/main/webapp/WEB-INF/web.xml" />
         </descriptors>
         <webroots>
-          <root url="file://$MODULE_DIR$/web" relative="/" />
+          <root url="file://$MODULE_DIR$/src/main/webapp" relative="/" />
         </webroots>
         <sourceRoots>
           <root url="file://$MODULE_DIR$/src/endpointsSrc/resources" />
@@ -120,8 +120,14 @@
     <orderEntry type="library" exported="" name="Gradle: ehcache-core-2.4.3" level="project" />
     <orderEntry type="library" exported="" name="Gradle: mchange-commons-java-0.2.3.4" level="project" />
     <orderEntry type="library" exported="" name="Gradle: hibernate-entitymanager-4.3.5.Final" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: assertj-core-1.7.0" level="project" />
     <orderEntry type="library" exported="" name="Gradle: aspectjrt-1.8.2" level="project" />
     <orderEntry type="library" exported="" name="Gradle: aspectjweaver-1.8.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: javax.servlet-api-3.1.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: json-path-1.1.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: json-smart-2.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: asm-1.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: asm-3.3.1" level="project" />
   </component>
 </module>
 

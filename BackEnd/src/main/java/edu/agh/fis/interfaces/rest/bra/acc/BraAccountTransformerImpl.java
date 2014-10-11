@@ -1,6 +1,6 @@
 package edu.agh.fis.interfaces.rest.bra.acc;
 
-import edu.agh.fis.bra.acc.BraAccountTransport;
+import edu.agh.fis.bra.acc.BraAccountDTO;
 import edu.agh.fis.entity.bra.acc.BraAccount;
 import org.springframework.stereotype.Component;
 
@@ -10,19 +10,19 @@ import org.springframework.stereotype.Component;
 @Component
 public class BraAccountTransformerImpl implements BraAccountTransformer {
     @Override
-    public BraAccountTransport entityToTransport(BraAccount braAcc) {
+    public BraAccountDTO entityToTransport(BraAccount braAcc) {
 
-        BraAccountTransport transport=new BraAccountTransport();
-        if(braAcc !=null) {
+        BraAccountDTO transport = new BraAccountDTO();
+        if (braAcc != null) {
             transport.braAccNo = braAcc.id;
         }
         return transport;
     }
 
     @Override
-    public BraAccount transportToEntity(BraAccountTransport braAccountTransport) {
-        BraAccount entity=new BraAccount();
-        entity.id=braAccountTransport.braAccNo;
+    public BraAccount transportToEntity(BraAccountDTO braAccountDTO) {
+        BraAccount entity = new BraAccount();
+        entity.id = braAccountDTO.braAccNo;
         return entity;
     }
 }

@@ -1,7 +1,6 @@
 package edu.agh.fis.core.client.file.services;
 
 import edu.agh.fis.entity.client.file.ClientFile;
-import edu.agh.fis.utils.presistance.AbstractDAO;
 
 /**
  * Created by wemstar on 29.09.14.

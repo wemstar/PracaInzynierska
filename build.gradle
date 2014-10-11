@@ -33,6 +33,10 @@ allprojects {
 
         compile 'org.aspectj:aspectjrt:1.8.2'
         compile 'org.aspectj:aspectjweaver:1.8.2'
+        testCompile 'org.assertj:assertj-core:1.7.0'
+        testCompile 'javax.servlet:javax.servlet-api:3.1.0'
+        testCompile 'com.jayway.jsonpath:json-path:1.1.0'
+
     }
     test {
         useTestNG()
@@ -63,8 +67,8 @@ buildscript {
     project(":$name") {
 
         apply plugin: 'war'
-        webAppDirName = 'web'
         apply plugin: 'appengine'
+
 
         appengine {
             downloadSdk = true

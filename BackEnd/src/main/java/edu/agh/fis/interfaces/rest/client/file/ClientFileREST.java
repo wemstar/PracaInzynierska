@@ -1,18 +1,18 @@
 package edu.agh.fis.interfaces.rest.client.file;
 
-import edu.agh.fis.client.file.ClientFileTransport;
+import edu.agh.fis.client.file.ClientFileDTO;
 
 /**
  * Created by wemstar on 13.09.14.
  */
 public interface ClientFileREST {
 
-    ClientFileTransport getClientFile(long clientNo);
+    ClientFileDTO getClientFile(long clientNo);
 
 
-    ClientFileTransport createClientFile(ClientFileTransport clientFile);
+    ClientFileDTO createClientFile(ClientFileDTO clientFile);
 
-    void updateClientFile(ClientFileTransport transport);
+    void updateClientFile(ClientFileDTO transport);
 
-    void deleteClientFile(long clientNo) ;
+    void deleteClientFile(long clientNo);
 }

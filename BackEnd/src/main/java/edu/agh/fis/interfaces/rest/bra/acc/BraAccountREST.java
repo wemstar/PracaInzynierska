@@ -1,6 +1,6 @@
 package edu.agh.fis.interfaces.rest.bra.acc;
 
-import edu.agh.fis.bra.acc.BraAccountTransport;
+import edu.agh.fis.bra.acc.BraAccountDTO;
 
 /**
  * Created by wemstar on 25.09.14.
@@ -8,9 +8,11 @@ import edu.agh.fis.bra.acc.BraAccountTransport;
 public interface BraAccountREST {
 
 
+    public BraAccountDTO getBraAccount(long braNo);
 
-    public BraAccountTransport getBraAccount(long braNo);
-    public BraAccountTransport createBraAccount(BraAccountTransport braAccountTransport);
-    public void updateBraAccount(BraAccountTransport braAccountTransport);
+    public BraAccountDTO createBraAccount(BraAccountDTO braAccountDTO);
+
+    public void updateBraAccount(BraAccountDTO braAccountDTO);
+
     public void deleteBraAccount(long braNo);
 }

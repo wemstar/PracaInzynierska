@@ -56,8 +56,14 @@
     <orderEntry type="library" scope="TEST" name="Gradle: jcommander-1.27" level="project" />
     <orderEntry type="library" exported="" name="Gradle: mockito-all-1.9.0" level="project" />
     <orderEntry type="module" module-name="Entity" exported="" />
+    <orderEntry type="library" scope="TEST" name="Gradle: assertj-core-1.7.0" level="project" />
     <orderEntry type="library" exported="" name="Gradle: aspectjrt-1.8.2" level="project" />
     <orderEntry type="library" exported="" name="Gradle: aspectjweaver-1.8.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: javax.servlet-api-3.1.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: json-path-1.1.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: json-smart-2.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: asm-1.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: asm-3.3.1" level="project" />
   </component>
 </module>
 
