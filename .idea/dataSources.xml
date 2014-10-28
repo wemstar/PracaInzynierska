@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="873293368">
+  <component name="DataSourceManagerImpl" format="xml" hash="2301791966">
     <data-source source="LOCAL" name="hibernate.cfg.xml" uuid="2d8591f1-601e-4fcd-8d3f-329fbfdb34e0">
       <driver-ref>hsqldb.remote</driver-ref>
       <jdbc-driver>org.hsqldb.jdbcDriver</jdbc-driver>

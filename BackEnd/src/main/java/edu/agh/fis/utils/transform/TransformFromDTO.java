@@ -4,6 +4,7 @@ import edu.agh.fis.bra.acc.BraAccountDTO;
 import edu.agh.fis.bra.acc.InstrumentInfoDTO;
 import edu.agh.fis.entity.bra.acc.BraAccount;
 import edu.agh.fis.entity.bra.acc.InstrumentInfo;
+import edu.agh.fis.entity.client.file.ClientFile;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -15,25 +16,29 @@ import static edu.agh.fis.builder.entity.instrument.details.InstrumentDefinition
 /**
  * Created by wemstar on 11.10.14.
  */
-public class TranformFromDTO {
+public class TransformFromDTO {
 
 
-    public static Set<BraAccount> braAccounts(Set<BraAccountDTO> setDto)
+
+    public static Set<BraAccount> braAccounts(Set<BraAccountDTO> setDto,ClientFile clientFile)
     {
         Set<BraAccount> setEntity=new HashSet<BraAccount>();
         for(BraAccountDTO dto:setDto)
         {
-            setEntity.add(aBraAccount()
+            BraAccount braAccount=aBraAccount()
                     .id(dto.getBraAccNo())
                     .balance(dto.getBalance())
-                    .instruments(instrumentInfos(dto.getInstruments()))
-                    .build());
+                    .clientFile(clientFile)
+                    .build();
+            braAccount.setInstruments(instrumentInfos(dto.getInstruments(),braAccount));
+            setEntity.add(braAccount);
+
         }
         return setEntity;
 
     }
 
-    public static Set<InstrumentInfo> instrumentInfos(Set<InstrumentInfoDTO> setDto)
+    public static Set<InstrumentInfo> instrumentInfos(Set<InstrumentInfoDTO> setDto,BraAccount braAccount)
     {
         Set<InstrumentInfo> setEntity=new HashSet<InstrumentInfo>();
         for(InstrumentInfoDTO dto:setDto)
@@ -44,6 +49,7 @@ public class TranformFromDTO {
                                     .isin(dto.getDefinition().getIsin())
                                     .build())
                     .quantity(dto.getQuantity())
+                    .braAccount(braAccount)
                     .build());
         }
         return setEntity;

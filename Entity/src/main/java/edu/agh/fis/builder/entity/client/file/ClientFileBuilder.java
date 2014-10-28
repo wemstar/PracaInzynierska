@@ -10,7 +10,6 @@ import java.util.Set;
  * Created by wemstar on 11.10.14.
  */
 public class ClientFileBuilder {
-    public long id;
     public long clientNo;
     public String name;
     public String surname;
@@ -25,10 +24,6 @@ public class ClientFileBuilder {
         return new ClientFileBuilder();
     }
 
-    public ClientFileBuilder id(long id) {
-        this.id = id;
-        return this;
-    }
 
     public ClientFileBuilder clientNo(long clientNo) {
         this.clientNo = clientNo;
@@ -61,12 +56,11 @@ public class ClientFileBuilder {
     }
 
     public ClientFileBuilder but() {
-        return aClientFile().id(id).clientNo(clientNo).name(name).surname(surname).dateOfBirth(dateOfBirth).pesel(pesel).account(account);
+        return aClientFile().clientNo(clientNo).name(name).surname(surname).dateOfBirth(dateOfBirth).pesel(pesel).account(account);
     }
 
     public ClientFile build() {
         ClientFile clientFile = new ClientFile();
-        clientFile.setId(id);
         clientFile.setClientNo(clientNo);
         clientFile.setName(name);
         clientFile.setSurname(surname);

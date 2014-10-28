@@ -8,7 +8,7 @@ import javax.persistence.*;
  * Created by wemstar on 10.10.14.
  */
 @Entity
-@Table(name = "INSTRUMENT_INFO")
+@Table(name = "INSTRUMENT_INFO",uniqueConstraints = @UniqueConstraint(columnNames={"INSTR_INFO_BRA_ACCOUNT", "INSTR_INFO_DEFINITION"}))
 public class InstrumentInfo {
 
     @Id
@@ -16,14 +16,14 @@ public class InstrumentInfo {
     @Column(name = "INSTR_INFO_ID")
     public long id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "INSTR_INFO_DEFINITION")
     public InstrumentDefinition instrumentDefinition;
 
     @Column(name = "INSTR_INFO_QUANTITY")
     public long quantity;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "INSTR_INFO_BRA_ACCOUNT")
     public BraAccount braAccount;
 

@@ -13,19 +13,18 @@ import java.util.Set;
 public class BraAccount {
 
     @Id
-    @GeneratedValue
     @Column(name = "BRA_ACCOUNT_ID")
     public long id;
 
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "BRA_CLIENT_FILE_ID")
     public ClientFile clientFile;
 
     @Column(name = "BRA_BALANCE")
     public double balance;
 
-    @OneToMany(mappedBy = "braAccount")
+    @OneToMany(mappedBy = "braAccount",fetch = FetchType.EAGER,cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
     public Set<InstrumentInfo> instruments;
 
     public Set<InstrumentInfo> getInstruments() {

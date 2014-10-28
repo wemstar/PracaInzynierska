@@ -14,12 +14,9 @@ import java.util.Set;
 @Table(name = "CLIENT_FILE")
 public class ClientFile {
 
-    @Id
-    @GeneratedValue
-    @Column(name = "CLIENT_FILE_ID", unique = true, nullable = false)
-    public long id;
 
-    @Column(unique = true, name = "CLIENT_NUMBER")
+    @Column(unique = true, name = "CLIENT_NUMBER",nullable = false)
+    @Id
     public long clientNo;
 
     @Column(name = "CLIENT_NAME")
@@ -35,16 +32,10 @@ public class ClientFile {
     public String pesel;
 
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "clientFile")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "clientFile",cascade = CascadeType.ALL)
     public Set<BraAccount> account;
 
-    public long getId() {
-        return id;
-    }
 
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public long getClientNo() {
         return clientNo;
@@ -96,8 +87,6 @@ public class ClientFile {
 
 
 
-    public String toString() {
-        return " " + id + " " + clientNo + " " + name;
-    }
+
 
 }

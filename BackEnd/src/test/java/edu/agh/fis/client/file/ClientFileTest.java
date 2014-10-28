@@ -90,7 +90,25 @@ public class ClientFileTest extends AbstractTestNGSpringContextTests {
                 ;
 
         mockMvc.perform(get("/client/file/{id}", 1l))
-                .andExpect(status().isOk());
+                .andExpect(status().isOk())
+                .andExpect(content().string(convertObjectToJsonBytes(clientFileDTO1)));
+        clientFileDTO1.setName("sylwek");
+
+        mockMvc.perform(put("/client/file")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(convertObjectToJsonBytes(clientFileDTO1)))
+        .andExpect(status().isNoContent());
+
+        mockMvc.perform(get("/client/file/{id}", 1l))
+                .andExpect(status().isOk())
+                .andExpect(content().string(convertObjectToJsonBytes(clientFileDTO1)));
+
+        mockMvc.perform((delete("/client/file/{id}", 1l)))
+                .andExpect(status().isNoContent());
+
+        mockMvc.perform(get("/client/file/{id}", 1l))
+                .andExpect(status().isOk())
+                .andExpect(content().string(""));
 
 
 

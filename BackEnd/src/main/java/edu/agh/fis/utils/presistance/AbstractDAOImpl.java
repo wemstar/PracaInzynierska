@@ -14,7 +14,7 @@ import java.lang.reflect.Type;
 public abstract class AbstractDAOImpl<T> implements AbstractDAO<T> {
 
     @Autowired
-    private SessionFactory sessionFactory;
+    protected SessionFactory sessionFactory;
 
     private Class<T> type;
 
@@ -26,13 +26,13 @@ public abstract class AbstractDAOImpl<T> implements AbstractDAO<T> {
 
     @Override
     public T create(final T t) {
-        this.sessionFactory.getCurrentSession().save(t);
+        this.sessionFactory.getCurrentSession().persist(t);
         return t;
     }
 
     @Override
     public void delete(final long id) {
-        sessionFactory.getCurrentSession().delete(sessionFactory.getCurrentSession().get(type, id));
+        sessionFactory.getCurrentSession().delete(find(id));
     }
 
     @Override

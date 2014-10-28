@@ -12,13 +12,11 @@ import java.util.Set;
 @Table(name = "INSTRUMENT_DEFINITION")
 public class InstrumentDefinition {
 
-    @Id
-    private long id;
-
 
     @OneToMany(mappedBy = "instrumentDefinition")
     public Set<InstrumentInfo> instrumentInfos;
 
+    @Id
     @Column(name = "INSTRUMENT_ISIN")
     public String isin;
 
@@ -30,13 +28,7 @@ public class InstrumentDefinition {
         this.isin = isin;
     }
 
-    public long getId() {
-        return id;
-    }
 
-    public void setId(long id) {
-        this.id = id;
-    }
 
 
 
