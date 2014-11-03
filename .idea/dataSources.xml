@@ -5,7 +5,6 @@
       <driver-ref>hsqldb.remote</driver-ref>
       <jdbc-driver>org.hsqldb.jdbcDriver</jdbc-driver>
       <jdbc-url>jdbc:hsqldb:mem:testdb</jdbc-url>
-      <user-name>sa</user-name>
       <libraries>
         <library>
           <url>file://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.hsqldb/hsqldb/2.3.2/970fd7b8f635e2c19305160459649569655b843c/hsqldb-2.3.2.jar</url>
@@ -17,10 +16,6 @@
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306/PracaInzynierska</jdbc-url>
-      <user-name>root</user-name>
-      <user-password>dfdedfcfdfc5dfc1dfd8dfcbdfc9dfc0dfcb</user-password>
-      <schema-pattern>PracaInzynierska.*</schema-pattern>
-      <default-schemas>PracaInzynierska.*</default-schemas>
       <driver-properties>
         <property name="zeroDateTimeBehavior" value="convertToNull" />
         <property name="tinyInt1isBit" value="false" />
@@ -31,7 +26,6 @@
       <driver-ref>hsqldb.remote</driver-ref>
       <jdbc-driver>org.hsqldb.jdbcDriver</jdbc-driver>
       <jdbc-url>jdbc:hsqldb:mem:testdb</jdbc-url>
-      <user-name>sa</user-name>
       <libraries>
         <library>
           <url>file://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.hsqldb/hsqldb/2.3.2/970fd7b8f635e2c19305160459649569655b843c/hsqldb-2.3.2.jar</url>
@@ -40,4 +34,3 @@
     </data-source>
   </component>
 </project>
-

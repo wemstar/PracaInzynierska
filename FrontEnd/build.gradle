@@ -6,7 +6,7 @@ appengine {
 }
 
 gwt {
-    gwtVersion = '2.6.0'
+    gwtVersion = '2.6.1'
     modules 'MainModule'
     compiler {
         strict = true;
@@ -21,9 +21,9 @@ dependencies {
 
     compile 'org.json:json:20090211'
     compile 'javax.validation:validation-api:1.0.0.GA'
-    compile 'com.google.web.bindery:requestfactory-apt:2.6.0'
-    compile 'com.google.gwt:gwt-user:2.6.0'
-    compile 'com.google.gwt:gwt-dev:2.6.0'
+     compile 'com.google.web.bindery:requestfactory:2.6.1'
+    compile 'com.google.gwt:gwt-user:2.6.1'
+    compile 'com.google.gwt:gwt-dev:2.6.1'
 
 }
 
