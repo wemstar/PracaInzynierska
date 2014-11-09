@@ -72,7 +72,7 @@ public class SearchResult extends Composite {
         return new ListStore<SearchclientDto>(gridProperties.key());
     }
 
-    private interface MyUiBinder extends UiBinder<ContentPanel, SearchResult> {
+    public interface MyUiBinder extends UiBinder<ContentPanel, SearchResult> {
     }
 
 

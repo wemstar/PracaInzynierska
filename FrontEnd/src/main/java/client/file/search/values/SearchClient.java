@@ -49,11 +49,11 @@ public class SearchClient extends Composite implements Editor<SearchclientDto> {
     }
 
 
-    private interface PersonDriver extends SimpleBeanEditorDriver<SearchclientDto, SearchClient> {
+    public interface PersonDriver extends SimpleBeanEditorDriver<SearchclientDto, SearchClient> {
     }
 
 
-    private interface MyUiBinder extends UiBinder<VerticalPanel, SearchClient> {
+    public interface MyUiBinder extends UiBinder<VerticalPanel, SearchClient> {
     }
 
 
