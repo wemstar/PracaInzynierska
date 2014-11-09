@@ -7,8 +7,8 @@ import edu.agh.fis.instrument.details.InstrumentDefinitionDTO;
  * Created by wemstar on 11.10.14.
  */
 public class InstrumentInfoDTOBuilder {
-    public InstrumentDefinitionDTO definition;
-    public long quantity;
+    private InstrumentDefinitionDTO definition;
+    private long quantity;
 
     private InstrumentInfoDTOBuilder() {
     }

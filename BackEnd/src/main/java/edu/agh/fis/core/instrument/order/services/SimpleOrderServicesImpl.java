@@ -6,5 +6,5 @@ import org.springframework.stereotype.Service;
  * Created by wemstar on 29.09.14.
  */
 @Service
-public class SimpleOrderServicesImpl implements SimpleOrderServices {
+class SimpleOrderServicesImpl implements SimpleOrderServices {
 }

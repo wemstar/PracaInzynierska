@@ -7,9 +7,9 @@ import edu.agh.fis.instrument.details.InstrumentDefinitionDTO;
  */
 public class InstrumentInfoDTO {
 
-    public InstrumentDefinitionDTO definition;
+    private InstrumentDefinitionDTO definition;
 
-    public long quantity;
+    private long quantity;
 
     public InstrumentDefinitionDTO getDefinition() {
         return definition;

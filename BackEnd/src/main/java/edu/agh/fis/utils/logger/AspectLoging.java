@@ -10,9 +10,9 @@ import org.aspectj.lang.annotation.Aspect;
  * Created by wemstar on 05.10.14.
  */
 @Aspect
-public class AspectLoging {
+class AspectLoging {
 
-    Logger log = Logger.getLogger(AspectLoging.class);
+    private final Logger log = Logger.getLogger(AspectLoging.class);
 
     @Around("execution(public * edu.agh.fis..*(..))")
     public Object logingPublic(ProceedingJoinPoint point) throws Throwable {

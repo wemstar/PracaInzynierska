@@ -10,10 +10,10 @@ import java.util.Set;
  * Created by wemstar on 11.10.14.
  */
 public class BraAccountBuilder {
-    public long id;
-    public ClientFile clientFile;
-    public double balance;
-    public Set<InstrumentInfo> instruments;
+    private long id;
+    private ClientFile clientFile;
+    private double balance;
+    private Set<InstrumentInfo> instruments;
 
     private BraAccountBuilder() {
     }
@@ -37,7 +37,7 @@ public class BraAccountBuilder {
         return this;
     }
 
-    public BraAccountBuilder instruments(Set<InstrumentInfo> instruments) {
+    BraAccountBuilder instruments(Set<InstrumentInfo> instruments) {
         this.instruments = instruments;
         return this;
     }

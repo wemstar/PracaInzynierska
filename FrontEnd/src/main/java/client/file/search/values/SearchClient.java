@@ -22,7 +22,7 @@ import java.util.logging.Logger;
 public class SearchClient extends Composite implements Editor<SearchclientDto> {
 
     private static final PersonDriver driver = GWT.create(PersonDriver.class);
-    private static MyUiBinder uiBinder = GWT.create(MyUiBinder.class);
+    private static final MyUiBinder uiBinder = GWT.create(MyUiBinder.class);
     @UiField
     public TextField name;
     @UiField
@@ -33,7 +33,7 @@ public class SearchClient extends Composite implements Editor<SearchclientDto> {
     public TextField pesel;
     @UiField
     public TextField clientNo;
-    Logger logger = Logger.getLogger("NameOfYourLogger");
+    private final Logger logger = Logger.getLogger("NameOfYourLogger");
     public SearchClient() {
 
         initWidget(uiBinder.createAndBindUi(this));
@@ -49,11 +49,11 @@ public class SearchClient extends Composite implements Editor<SearchclientDto> {
     }
 
 
-    interface PersonDriver extends SimpleBeanEditorDriver<SearchclientDto, SearchClient> {
+    private interface PersonDriver extends SimpleBeanEditorDriver<SearchclientDto, SearchClient> {
     }
 
 
-    interface MyUiBinder extends UiBinder<VerticalPanel, SearchClient> {
+    private interface MyUiBinder extends UiBinder<VerticalPanel, SearchClient> {
     }
 
 

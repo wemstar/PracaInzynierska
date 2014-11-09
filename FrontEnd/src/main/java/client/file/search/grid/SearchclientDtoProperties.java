@@ -12,7 +12,7 @@ import java.util.Date;
 /**
  * Created by wemstar on 08.11.14.
  */
-public interface SearchclientDtoProperties extends PropertyAccess<SearchclientDto> {
+interface SearchclientDtoProperties extends PropertyAccess<SearchclientDto> {
 
     @Editor.Path("clientNo")
     ModelKeyProvider<SearchclientDto> key();

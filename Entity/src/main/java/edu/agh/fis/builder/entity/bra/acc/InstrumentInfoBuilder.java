@@ -8,10 +8,10 @@ import edu.agh.fis.entity.instrument.details.InstrumentDefinition;
  * Created by wemstar on 11.10.14.
  */
 public class InstrumentInfoBuilder {
-    public long id;
-    public InstrumentDefinition instrumentDefinition;
-    public long quantity;
-    public BraAccount braAccount;
+    private long id;
+    private InstrumentDefinition instrumentDefinition;
+    private long quantity;
+    private BraAccount braAccount;
 
     private InstrumentInfoBuilder() {
     }
@@ -20,7 +20,7 @@ public class InstrumentInfoBuilder {
         return new InstrumentInfoBuilder();
     }
 
-    public InstrumentInfoBuilder id(long id) {
+    InstrumentInfoBuilder id(long id) {
         this.id = id;
         return this;
     }

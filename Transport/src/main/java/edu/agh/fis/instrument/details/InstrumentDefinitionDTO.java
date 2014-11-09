@@ -5,7 +5,7 @@ package edu.agh.fis.instrument.details;
  */
 public class InstrumentDefinitionDTO {
 
-    public String isin;
+    private String isin;
 
     public String getIsin() {
         return isin;

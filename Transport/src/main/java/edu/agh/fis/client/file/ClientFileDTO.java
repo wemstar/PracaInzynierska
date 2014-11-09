@@ -10,12 +10,12 @@ import java.util.Set;
  * Created by wemstar on 13.09.14.
  */
 public class ClientFileDTO implements Serializable {
-    public String name;
-    public String surname;
-    public Date dateOfBirth;
-    public String pesel;
-    public Set<BraAccountDTO> accounts;
-    public long clientNo;
+    private String name;
+    private String surname;
+    private Date dateOfBirth;
+    private String pesel;
+    private Set<BraAccountDTO> accounts;
+    private long clientNo;
 
     public String getSurname() {
         return surname;

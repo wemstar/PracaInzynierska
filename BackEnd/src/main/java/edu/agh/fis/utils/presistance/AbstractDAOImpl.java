@@ -16,7 +16,7 @@ public abstract class AbstractDAOImpl<T> implements AbstractDAO<T> {
     @Autowired
     protected SessionFactory sessionFactory;
 
-    private Class<T> type;
+    private final Class<T> type;
 
     public AbstractDAOImpl() {
         Type t = getClass().getGenericSuperclass();

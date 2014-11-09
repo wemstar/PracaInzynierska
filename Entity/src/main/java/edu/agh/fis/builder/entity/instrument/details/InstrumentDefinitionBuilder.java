@@ -9,8 +9,8 @@ import java.util.Set;
  * Created by wemstar on 11.10.14.
  */
 public class InstrumentDefinitionBuilder {
-    public Set<InstrumentInfo> instrumentInfos;
-    public String isin;
+    private Set<InstrumentInfo> instrumentInfos;
+    private String isin;
 
     private InstrumentDefinitionBuilder() {
     }
@@ -23,7 +23,7 @@ public class InstrumentDefinitionBuilder {
         return this;
     }
 
-    public InstrumentDefinitionBuilder instrumentInfos(Set<InstrumentInfo> instrumentInfos) {
+    InstrumentDefinitionBuilder instrumentInfos(Set<InstrumentInfo> instrumentInfos) {
         this.instrumentInfos = instrumentInfos;
         return this;
     }

@@ -9,9 +9,9 @@ import java.util.Set;
  * Created by wemstar on 11.10.14.
  */
 public class BraAccountDTOBuilder {
-    public long braAccNo;
-    public double balance;
-    public Set<InstrumentInfoDTO> instruments;
+    private long braAccNo;
+    private double balance;
+    private Set<InstrumentInfoDTO> instruments;
 
     private BraAccountDTOBuilder() {
     }

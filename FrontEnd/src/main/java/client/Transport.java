@@ -5,7 +5,7 @@ import com.google.gwt.user.client.rpc.IsSerializable;
 /**
  * Created by wemstar on 17.09.14.
  */
-public class Transport implements IsSerializable {
+class Transport implements IsSerializable {
     public Transport() {
     }
 }

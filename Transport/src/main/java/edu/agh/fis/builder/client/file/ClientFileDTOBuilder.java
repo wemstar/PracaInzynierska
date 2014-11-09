@@ -10,12 +10,12 @@ import java.util.Set;
  * Created by wemstar on 11.10.14.
  */
 public class ClientFileDTOBuilder {
-    public String name;
-    public String surname;
-    public Date dateOfBirth;
-    public String pesel;
-    public Set<BraAccountDTO> accounts;
-    public long clientNo;
+    private String name;
+    private String surname;
+    private Date dateOfBirth;
+    private String pesel;
+    private Set<BraAccountDTO> accounts;
+    private long clientNo;
 
     private ClientFileDTOBuilder() {
     }

@@ -45,7 +45,7 @@ public class ClientFileTest extends AbstractTestNGSpringContextTests {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
     }
 
-    @Test(groups = "create")
+    
     public void schouldCRUDClients() throws Exception {
 
         //given

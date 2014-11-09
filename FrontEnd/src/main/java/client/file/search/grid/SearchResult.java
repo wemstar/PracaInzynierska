@@ -21,12 +21,15 @@ import java.util.List;
  */
 public class SearchResult extends Composite {
     private static final SearchclientDtoProperties gridProperties = GWT.create(SearchclientDtoProperties.class);
-    private static MyUiBinder uiBinder = GWT.create(MyUiBinder.class);
+    private static final MyUiBinder uiBinder = GWT.create(MyUiBinder.class);
     @UiField(provided = true)
+
     ColumnModel<SearchclientDto> columnModel;
     @UiField(provided = true)
+
     ListStore<SearchclientDto> listStore;
     @UiField
+
     GridView<SearchclientDto> gridView;
     @UiField
     Grid<SearchclientDto> grid;
@@ -61,18 +64,15 @@ public class SearchResult extends Composite {
         columns.add(noCol);
 
 
-        ColumnModel<SearchclientDto> columnModel = new ColumnModel<SearchclientDto>(columns);
-
-        return columnModel;
+        return new ColumnModel<SearchclientDto>(columns);
     }
 
     private ListStore<SearchclientDto> initListStore() {
-        ListStore<SearchclientDto> listStore = new ListStore<SearchclientDto>(gridProperties.key());
         //listStore.addAll(TestData.getStocks());
-        return listStore;
+        return new ListStore<SearchclientDto>(gridProperties.key());
     }
 
-    interface MyUiBinder extends UiBinder<ContentPanel, SearchResult> {
+    private interface MyUiBinder extends UiBinder<ContentPanel, SearchResult> {
     }
 
 

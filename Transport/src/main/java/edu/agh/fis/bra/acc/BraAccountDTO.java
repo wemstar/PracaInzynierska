@@ -7,9 +7,9 @@ import java.util.Set;
  */
 public class BraAccountDTO {
 
-    public long braAccNo;
-    public double balance;
-    public Set<InstrumentInfoDTO> instruments;
+    private long braAccNo;
+    private double balance;
+    private Set<InstrumentInfoDTO> instruments;
 
     public long getBraAccNo() {
         return braAccNo;

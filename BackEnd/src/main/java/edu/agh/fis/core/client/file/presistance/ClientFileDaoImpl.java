@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Repository
 @Transactional(readOnly = true)
-public class ClientFileDaoImpl extends AbstractDAOImpl<ClientFile> implements ClientFileDao {
+class ClientFileDaoImpl extends AbstractDAOImpl<ClientFile> implements ClientFileDao {
 
 
 }

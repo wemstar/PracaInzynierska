@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 public class ClientFileRESTImpl implements ClientFileREST {
 
     @InjectLogger
-    public Logger logger;
+    private Logger logger;
 
     @Autowired
     private ClientFileService clientFileService;

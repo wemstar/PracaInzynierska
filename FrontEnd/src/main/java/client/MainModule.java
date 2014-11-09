@@ -29,7 +29,7 @@ import com.sencha.gxt.widget.core.client.toolbar.ToolBar;
 /**
  * Created by wemstar on 04.09.14.
  */
-public class MainModule implements IsWidget, EntryPoint {
+class MainModule implements IsWidget, EntryPoint {
 
     private FlowLayoutContainer con;
     private SamplePanel panel;
@@ -63,7 +63,7 @@ public class MainModule implements IsWidget, EntryPoint {
     private ButtonGroup clientFileNav() {
         ButtonGroup group = new ButtonGroup();
         group.setHeadingText("Kartoteka klienta");
-        ;
+
         FlexTable table = new FlexTable();
         group.add(table);
 
@@ -157,10 +157,10 @@ public class MainModule implements IsWidget, EntryPoint {
 
     class SamplePanel extends ContentPanel {
 
-        private VerticalLayoutContainer con = new VerticalLayoutContainer();
+        private final VerticalLayoutContainer con = new VerticalLayoutContainer();
 
-        private ToolBar toolBar = new ToolBar();
-        private TabPanel advanced;
+        private final ToolBar toolBar = new ToolBar();
+        private final TabPanel advanced;
         private int index;
 
         public SamplePanel() {

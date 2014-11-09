@@ -9,11 +9,11 @@ import java.util.Date;
 public class SearchclientDto implements Serializable {
 
 
-    public String name;
-    public String surname;
-    public Date dateOfBirth;
-    public String pesel;
-    public String clientNo;
+    private String name;
+    private String surname;
+    private Date dateOfBirth;
+    private String pesel;
+    private String clientNo;
 
     public String getName() {
         return name;

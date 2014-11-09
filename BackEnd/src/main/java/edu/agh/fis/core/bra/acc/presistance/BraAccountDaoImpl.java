@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
  * Created by wemstar on 25.09.14.
  */
 @Repository
-public class BraAccountDaoImpl extends AbstractDAOImpl<BraAccount> implements BraAccountDao {
+class BraAccountDaoImpl extends AbstractDAOImpl<BraAccount> implements BraAccountDao {
 }

@@ -14,11 +14,11 @@ public class InstrumentDefinition {
 
 
     @OneToMany(mappedBy = "instrumentDefinition")
-    public Set<InstrumentInfo> instrumentInfos;
+    private Set<InstrumentInfo> instrumentInfos;
 
     @Id
     @Column(name = "INSTRUMENT_ISIN")
-    public String isin;
+    private String isin;
 
     public String getIsin() {
         return isin;

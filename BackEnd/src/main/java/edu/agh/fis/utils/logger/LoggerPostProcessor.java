@@ -10,8 +10,7 @@ import java.lang.reflect.Field;
 /**
  * Created by wemstar on 02.10.14.
  */
-
-public class LoggerPostProcessor implements BeanPostProcessor {
+class LoggerPostProcessor implements BeanPostProcessor {
     @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
 

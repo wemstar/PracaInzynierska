@@ -6,7 +6,7 @@ import edu.agh.fis.instrument.details.InstrumentDefinitionDTO;
  * Created by wemstar on 11.10.14.
  */
 public class InstrumentDefinitionTransportBuilder {
-    public String isin;
+    private String isin;
 
     private InstrumentDefinitionTransportBuilder() {
     }

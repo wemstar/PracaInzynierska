@@ -14,18 +14,18 @@ public class InstrumentInfo {
     @Id
     @GeneratedValue
     @Column(name = "INSTR_INFO_ID")
-    public long id;
+    private long id;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "INSTR_INFO_DEFINITION")
-    public InstrumentDefinition instrumentDefinition;
+    private InstrumentDefinition instrumentDefinition;
 
     @Column(name = "INSTR_INFO_QUANTITY")
-    public long quantity;
+    private long quantity;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "INSTR_INFO_BRA_ACCOUNT")
-    public BraAccount braAccount;
+    private BraAccount braAccount;
 
     public long getId() {
         return id;

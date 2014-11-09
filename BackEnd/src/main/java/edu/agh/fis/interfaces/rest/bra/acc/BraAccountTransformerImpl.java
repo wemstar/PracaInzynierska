@@ -18,13 +18,12 @@ public class BraAccountTransformerImpl implements BraAccountTransformer {
     public BraAccountDTO entityToTransport(BraAccount braAcc) {
 
         if (braAcc == null) return null;
-        BraAccountDTO transport = aBraAccountTransport()
+
+        return aBraAccountTransport()
                 .braAccNo(braAcc.getId())
                 .balance(braAcc.getBalance())
                 .instruments(TransformFromEntity.instrumentInfos(braAcc.getInstruments()))
                 .build();
-
-        return transport;
     }
 
     @Override

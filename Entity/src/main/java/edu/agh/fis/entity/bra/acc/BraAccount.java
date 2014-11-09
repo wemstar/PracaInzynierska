@@ -14,18 +14,18 @@ public class BraAccount {
 
     @Id
     @Column(name = "BRA_ACCOUNT_ID")
-    public long id;
+    private long id;
 
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "BRA_CLIENT_FILE_ID")
-    public ClientFile clientFile;
+    private ClientFile clientFile;
 
     @Column(name = "BRA_BALANCE")
-    public double balance;
+    private double balance;
 
     @OneToMany(mappedBy = "braAccount", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
-    public Set<InstrumentInfo> instruments;
+    private Set<InstrumentInfo> instruments;
 
     public Set<InstrumentInfo> getInstruments() {
         return instruments;

@@ -10,12 +10,12 @@ import java.util.Set;
  * Created by wemstar on 11.10.14.
  */
 public class ClientFileBuilder {
-    public long clientNo;
-    public String name;
-    public String surname;
-    public Date dateOfBirth;
-    public String pesel;
-    public Set<BraAccount> account;
+    private long clientNo;
+    private String name;
+    private String surname;
+    private Date dateOfBirth;
+    private String pesel;
+    private Set<BraAccount> account;
 
     private ClientFileBuilder() {
     }
@@ -50,7 +50,7 @@ public class ClientFileBuilder {
         return this;
     }
 
-    public ClientFileBuilder account(Set<BraAccount> account) {
+    ClientFileBuilder account(Set<BraAccount> account) {
         this.account = account;
         return this;
     }

@@ -17,23 +17,23 @@ public class ClientFile {
 
     @Column(unique = true, name = "CLIENT_NUMBER", nullable = false)
     @Id
-    public long clientNo;
+    private long clientNo;
 
     @Column(name = "CLIENT_NAME")
-    public String name;
+    private String name;
 
     @Column(name = "CLIENT_SURNAME")
-    public String surname;
+    private String surname;
 
     @Column(name = "CLIENT_DATE_OF_BIRTH")
-    public Date dateOfBirth;
+    private Date dateOfBirth;
 
     @Column(name = "CLIENT_PESEL")
-    public String pesel;
+    private String pesel;
 
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "clientFile", cascade = CascadeType.ALL)
-    public Set<BraAccount> account;
+    private Set<BraAccount> account;
 
 
     public long getClientNo() {
