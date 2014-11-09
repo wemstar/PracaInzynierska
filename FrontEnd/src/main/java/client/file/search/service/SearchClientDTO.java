@@ -1,4 +1,4 @@
-package client.file.search;
+package client.file.search.service;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -6,14 +6,33 @@ import java.util.Date;
 /**
  * Created by wemstar on 08.11.14.
  */
-public class SearchclientDto implements Serializable {
 
+public class SearchClientDTO implements Serializable {
 
     private String name;
     private String surname;
     private Date dateOfBirth;
     private String pesel;
     private String clientNo;
+
+    @Override
+    public String toString() {
+        return "SearchcClientProxy{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
+                ", pesel='" + pesel + '\'' +
+                ", clientNo=" + clientNo +
+                '}';
+    }
+
+    public String getPesel() {
+        return pesel;
+    }
+
+    public void setPesel(String pesel) {
+        this.pesel = pesel;
+    }
 
     public String getName() {
         return name;
@@ -39,14 +58,6 @@ public class SearchclientDto implements Serializable {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public String getPesel() {
-        return pesel;
-    }
-
-    public void setPesel(String pesel) {
-        this.pesel = pesel;
-    }
-
     public String getClientNo() {
         return clientNo;
     }
@@ -55,14 +66,5 @@ public class SearchclientDto implements Serializable {
         this.clientNo = clientNo;
     }
 
-    @Override
-    public String toString() {
-        return "SearchFiletDto{" +
-                "name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", dateOfBirth=" + dateOfBirth +
-                ", pesel='" + pesel + '\'' +
-                ", clientNo=" + clientNo +
-                '}';
-    }
+
 }

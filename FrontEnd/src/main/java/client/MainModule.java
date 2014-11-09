@@ -1,7 +1,7 @@
 package client;
 
 import client.file.search.grid.SearchResult;
-import client.file.search.values.SearchClient;
+import client.file.search.parameters.SearchClient;
 import client.images.Images;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.dom.client.Element;
@@ -74,8 +74,9 @@ class MainModule implements IsWidget, EntryPoint {
             @Override
             public void onSelect(SelectEvent event) {
                 HorizontalLayoutContainer con = new HorizontalLayoutContainer();
-                con.add(new SearchClient(), new HorizontalLayoutContainer.HorizontalLayoutData(0.5, -1));
-                con.add(new SearchResult(), new HorizontalLayoutContainer.HorizontalLayoutData(0.5, -1));
+                SearchResult result = new SearchResult();
+                con.add(new SearchClient().setResult(result), new HorizontalLayoutContainer.HorizontalLayoutData(0.5, -1));
+                con.add(result, new HorizontalLayoutContainer.HorizontalLayoutData(0.5, 1));
 
                 panel.addTab(con);
             }

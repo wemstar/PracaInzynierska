@@ -7,7 +7,7 @@
     <ui:with type="com.sencha.gxt.widget.core.client.grid.ColumnModel" field="columnModel"/>
     <ui:with type="com.sencha.gxt.widget.core.client.grid.GridView" field="gridView"/>
 
-    <gxt:ContentPanel headingText="Basic Simple Grid (UiBinder)">
+    <gxt:ContentPanel headingText="Basic Simple Grid (UiBinder)" >
         <grid:Grid ui:field="grid" store="{listStore}" cm="{columnModel}" view="{gridView}"/>
     </gxt:ContentPanel>
 </ui:UiBinder>

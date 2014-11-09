@@ -1,6 +1,6 @@
 package client.file.search.grid;
 
-import client.file.search.SearchclientDto;
+import client.file.search.service.SearchClientDTO;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -24,15 +24,15 @@ public class SearchResult extends Composite {
     private static final MyUiBinder uiBinder = GWT.create(MyUiBinder.class);
     @UiField(provided = true)
 
-    ColumnModel<SearchclientDto> columnModel;
+    public ListStore<SearchClientDTO> listStore;
+    @UiField
+
+    public GridView<SearchClientDTO> gridView;
+    @UiField
+    public Grid<SearchClientDTO> grid;
     @UiField(provided = true)
 
-    ListStore<SearchclientDto> listStore;
-    @UiField
-
-    GridView<SearchclientDto> gridView;
-    @UiField
-    Grid<SearchclientDto> grid;
+    ColumnModel<SearchClientDTO> columnModel;
     private ContentPanel widget;
 
     public SearchResult() {
@@ -42,21 +42,21 @@ public class SearchResult extends Composite {
 
             initWidget(uiBinder.createAndBindUi(this));
 
-            // Auto expand the name column
-            gridView.setAutoExpandColumn(columnModel.getColumn(0));
+
+            //gridView.setAutoExpandColumn(columnModel.getColumn(0));
         }
 
 
     }
 
-    private ColumnModel<SearchclientDto> initColumModel() {
-        ColumnConfig<SearchclientDto, String> nameCol = new ColumnConfig<SearchclientDto, String>(gridProperties.name(), 150, "Imię");
-        ColumnConfig<SearchclientDto, String> surnameCol = new ColumnConfig<SearchclientDto, String>(gridProperties.surname(), 100, "Nazwisko");
-        ColumnConfig<SearchclientDto, String> peselCol = new ColumnConfig<SearchclientDto, String>(gridProperties.pesel(), 100, "Pesel");
-        ColumnConfig<SearchclientDto, Date> dateCol = new ColumnConfig<SearchclientDto, Date>(gridProperties.dateOfBirth(), 100, "Data urodzenia");
-        ColumnConfig<SearchclientDto, String> noCol = new ColumnConfig<SearchclientDto, String>(gridProperties.clientNo(), 100, "Numer klienta");
+    private ColumnModel<SearchClientDTO> initColumModel() {
+        ColumnConfig<SearchClientDTO, String> nameCol = new ColumnConfig<SearchClientDTO, String>(gridProperties.name(), 150, "Imię");
+        ColumnConfig<SearchClientDTO, String> surnameCol = new ColumnConfig<SearchClientDTO, String>(gridProperties.surname(), 100, "Nazwisko");
+        ColumnConfig<SearchClientDTO, String> peselCol = new ColumnConfig<SearchClientDTO, String>(gridProperties.pesel(), 100, "Pesel");
+        ColumnConfig<SearchClientDTO, Date> dateCol = new ColumnConfig<SearchClientDTO, Date>(gridProperties.dateOfBirth(), 100, "Data urodzenia");
+        ColumnConfig<SearchClientDTO, String> noCol = new ColumnConfig<SearchClientDTO, String>(gridProperties.clientNo(), 100, "Numer klienta");
 
-        List<ColumnConfig<SearchclientDto, ?>> columns = new ArrayList<ColumnConfig<SearchclientDto, ?>>();
+        List<ColumnConfig<SearchClientDTO, ?>> columns = new ArrayList<ColumnConfig<SearchClientDTO, ?>>();
         columns.add(nameCol);
         columns.add(surnameCol);
         columns.add(peselCol);
@@ -64,12 +64,13 @@ public class SearchResult extends Composite {
         columns.add(noCol);
 
 
-        return new ColumnModel<SearchclientDto>(columns);
+        return new ColumnModel<SearchClientDTO>(columns);
     }
 
-    private ListStore<SearchclientDto> initListStore() {
-        //listStore.addAll(TestData.getStocks());
-        return new ListStore<SearchclientDto>(gridProperties.key());
+    private ListStore<SearchClientDTO> initListStore() {
+
+
+        return new ListStore<SearchClientDTO>(gridProperties.key());
     }
 
     public interface MyUiBinder extends UiBinder<ContentPanel, SearchResult> {

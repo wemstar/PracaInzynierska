@@ -7,11 +7,11 @@
 
 
     <servlet>
-        <servlet-name>MainModule MainServerSide</servlet-name>
-        <servlet-class>server.MainServerSideImpl</servlet-class>
+        <servlet-name>MainModule ClientSearchService</servlet-name>
+        <servlet-class>server.file.search.ClientSearchServiceImpl</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>MainModule MainServerSide</servlet-name>
-        <url-pattern>/MainModule/MainServerSide</url-pattern>
+        <servlet-name>MainModule ClientSearchService</servlet-name>
+        <url-pattern>/MainModule/ClientSearchService</url-pattern>
     </servlet-mapping>
 </web-app>

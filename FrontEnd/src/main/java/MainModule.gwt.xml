@@ -7,10 +7,11 @@
     <inherits name="com.sencha.gxt.widget.core.Core"/>
     <inherits name='com.sencha.gxt.ui.GXT'/>
     <inherits name="com.google.gwt.logging.Logging"/>
-
+    <inherits name='com.google.web.bindery.requestfactory.RequestFactory'/>
 
     <entry-point class='client.MainModule'/>
     <servlet path="/MainServerSide" class="server.MainServerSideImpl"/>
+    <servlet path="/ClientSearchService" class="server.file.search.ClientSearchServiceImpl"/>
     <add-linker name="xsiframe"/>
     <set-configuration-property name="devModeRedirectEnabled" value="true"/>
     <set-configuration-property name="gwt.superdevmode" value="on"/>
