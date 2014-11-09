@@ -15,7 +15,7 @@ import java.util.Set;
 public class ClientFile {
 
 
-    @Column(unique = true, name = "CLIENT_NUMBER",nullable = false)
+    @Column(unique = true, name = "CLIENT_NUMBER", nullable = false)
     @Id
     public long clientNo;
 
@@ -32,9 +32,8 @@ public class ClientFile {
     public String pesel;
 
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "clientFile",cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "clientFile", cascade = CascadeType.ALL)
     public Set<BraAccount> account;
-
 
 
     public long getClientNo() {
@@ -84,9 +83,6 @@ public class ClientFile {
     public void setAccount(Set<BraAccount> account) {
         this.account = account;
     }
-
-
-
 
 
 }

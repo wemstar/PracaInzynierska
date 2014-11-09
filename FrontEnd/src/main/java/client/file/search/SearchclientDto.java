@@ -1,21 +1,27 @@
-package edu.agh.fis.client.file;
-
-import edu.agh.fis.bra.acc.BraAccountDTO;
+package client.file.search;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Set;
 
 /**
- * Created by wemstar on 13.09.14.
+ * Created by wemstar on 08.11.14.
  */
-public class ClientFileDTO implements Serializable {
+public class SearchclientDto implements Serializable {
+
+
     public String name;
     public String surname;
     public Date dateOfBirth;
     public String pesel;
-    public Set<BraAccountDTO> accounts;
-    public long clientNo;
+    public String clientNo;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getSurname() {
         return surname;
@@ -41,30 +47,22 @@ public class ClientFileDTO implements Serializable {
         this.pesel = pesel;
     }
 
-    public Set<BraAccountDTO> getAccounts() {
-        return accounts;
-    }
-
-    public void setAccounts(Set<BraAccountDTO> accounts) {
-        this.accounts = accounts;
-    }
-
-    public long getClientNo() {
+    public String getClientNo() {
         return clientNo;
     }
 
-    public void setClientNo(long clientNo) {
+    public void setClientNo(String clientNo) {
         this.clientNo = clientNo;
     }
 
-    public String getName() {
-
-        return name;
+    @Override
+    public String toString() {
+        return "SearchFiletDto{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
+                ", pesel='" + pesel + '\'' +
+                ", clientNo=" + clientNo +
+                '}';
     }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-
 }

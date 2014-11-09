@@ -8,7 +8,7 @@ import javax.persistence.*;
  * Created by wemstar on 10.10.14.
  */
 @Entity
-@Table(name = "INSTRUMENT_INFO",uniqueConstraints = @UniqueConstraint(columnNames={"INSTR_INFO_BRA_ACCOUNT", "INSTR_INFO_DEFINITION"}))
+@Table(name = "INSTRUMENT_INFO", uniqueConstraints = @UniqueConstraint(columnNames = {"INSTR_INFO_BRA_ACCOUNT", "INSTR_INFO_DEFINITION"}))
 public class InstrumentInfo {
 
     @Id

@@ -13,6 +13,7 @@ public class InstrumentDefinitionServiceImpl implements InstrumentDefinitionServ
 
     @Autowired
     InstrumentDefinitionDAO instrumentDefinitionDAO;
+
     @Override
     public InstrumentDefinition getInstrumentInfo(String isin) {
         return instrumentDefinitionDAO.find(isin);

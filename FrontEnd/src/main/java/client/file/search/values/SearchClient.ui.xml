@@ -1,0 +1,72 @@
+<ui:UiBinder
+        xmlns:ui='urn:ui:com.google.gwt.uibinder'
+        xmlns:g="urn:import:com.google.gwt.user.client.ui"
+        xmlns:c="urn:import:com.sencha.gxt.widget.core.client"
+        xmlns:container="urn:import:com.sencha.gxt.widget.core.client.container"
+        xmlns:form="urn:import:com.sencha.gxt.widget.core.client.form"
+        xmlns:button="urn:import:com.sencha.gxt.widget.core.client.button">
+
+    <ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData"
+             field="verticalLayoutData">
+        <ui:attributes width="1" height="-1"/>
+    </ui:with>
+
+
+    <g:VerticalPanel spacing="10">
+
+        <c:FramedPanel headingText="Simple Form" bodyStyle="background: none; padding: 15px">
+            <container:VerticalLayoutContainer>
+
+                <container:child layoutData="{verticalLayoutData}">
+                    <form:FieldLabel text="Name">
+                        <form:widget>
+                            <form:TextField ui:field="name" allowBlank="false" emptyText="Enter your name..."/>
+                        </form:widget>
+                    </form:FieldLabel>
+                </container:child>
+
+                <container:child layoutData="{verticalLayoutData}">
+                    <form:FieldLabel text="Surname">
+                        <form:widget>
+                            <form:TextField ui:field="surname" allowBlank="false" emptyText="Enter your surname..."/>
+                        </form:widget>
+                    </form:FieldLabel>
+                </container:child>
+
+                <container:child layoutData="{verticalLayoutData}">
+                    <form:FieldLabel text="Birthday">
+                        <form:widget>
+                            <form:DateField ui:field="dateOfBirth"/>
+                        </form:widget>
+                    </form:FieldLabel>
+                </container:child>
+
+                <container:child layoutData="{verticalLayoutData}">
+                    <form:FieldLabel text="Email">
+                        <form:widget>
+                            <form:TextField ui:field="pesel" allowBlank="false"/>
+                        </form:widget>
+                    </form:FieldLabel>
+                </container:child>
+                <container:child layoutData="{verticalLayoutData}">
+                    <form:FieldLabel text="Client Number">
+                        <form:widget>
+                            <form:TextField ui:field="clientNo" allowBlank="false"/>
+                        </form:widget>
+                    </form:FieldLabel>
+                </container:child>
+
+
+            </container:VerticalLayoutContainer>
+
+            <c:button>
+                <button:TextButton text="Save" ui:field="search"/>
+            </c:button>
+
+
+        </c:FramedPanel>
+
+
+    </g:VerticalPanel>
+
+</ui:UiBinder>

@@ -2,22 +2,14 @@ package edu.agh.fis.client.file;
 
 import edu.agh.fis.bra.acc.BraAccountDTO;
 import edu.agh.fis.bra.acc.InstrumentInfoDTO;
-import edu.agh.fis.interfaces.rest.client.file.ClientFileREST;
-import edu.agh.fis.interfaces.rest.client.file.ClientFileRESTImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
-import org.springframework.mock.web.MockHttpServletRequest;
-import org.springframework.mock.web.MockHttpSession;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -31,7 +23,8 @@ import static edu.agh.fis.builder.client.file.ClientFileDTOBuilder.aClientFileTr
 import static edu.agh.fis.builder.instrument.details.InstrumentDefinitionTransportBuilder.anInstrumentDefinitionTransport;
 import static edu.agh.fis.utils.testing.TestUtil.convertObjectToJsonBytes;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
  * Created by wemstar on 13.09.14.
@@ -87,7 +80,7 @@ public class ClientFileTest extends AbstractTestNGSpringContextTests {
                 .content(convertObjectToJsonBytes(clientFileDTO1)))
                 .andExpect(status().isCreated())
                 .andExpect(content().string(convertObjectToJsonBytes(clientFileDTO1)))
-                ;
+        ;
 
         mockMvc.perform(get("/client/file/{id}", 1l))
                 .andExpect(status().isOk())
@@ -97,7 +90,7 @@ public class ClientFileTest extends AbstractTestNGSpringContextTests {
         mockMvc.perform(put("/client/file")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(convertObjectToJsonBytes(clientFileDTO1)))
-        .andExpect(status().isNoContent());
+                .andExpect(status().isNoContent());
 
         mockMvc.perform(get("/client/file/{id}", 1l))
                 .andExpect(status().isOk())
@@ -109,8 +102,6 @@ public class ClientFileTest extends AbstractTestNGSpringContextTests {
         mockMvc.perform(get("/client/file/{id}", 1l))
                 .andExpect(status().isOk())
                 .andExpect(content().string(""));
-
-
 
 
     }

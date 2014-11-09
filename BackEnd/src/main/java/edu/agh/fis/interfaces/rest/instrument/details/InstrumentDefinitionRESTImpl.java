@@ -1,6 +1,5 @@
 package edu.agh.fis.interfaces.rest.instrument.details;
 
-import edu.agh.fis.bra.acc.InstrumentInfoDTO;
 import edu.agh.fis.core.instrument.details.services.InstrumentDefinitionService;
 import edu.agh.fis.instrument.details.InstrumentDefinitionDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +20,7 @@ public class InstrumentDefinitionRESTImpl implements InstrumentDefinitionREST {
     private InstrumentDefinitionTransformer instrumentDefinitionTransformer;
 
     @Override
-    @RequestMapping(value="/{isin}",method = RequestMethod.GET)
+    @RequestMapping(value = "/{isin}", method = RequestMethod.GET)
     public InstrumentDefinitionDTO getInstrumentInfo(@PathVariable String isin) {
 
         return instrumentDefinitionTransformer.entityToTransport(instrumentDefinitionService.getInstrumentInfo(isin));
@@ -44,7 +43,7 @@ public class InstrumentDefinitionRESTImpl implements InstrumentDefinitionREST {
     }
 
     @Override
-    @RequestMapping(value = "/{isin}",method = RequestMethod.DELETE)
+    @RequestMapping(value = "/{isin}", method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteInstrumentInfo(@PathVariable String isin) {
 

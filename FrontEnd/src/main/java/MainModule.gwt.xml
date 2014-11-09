@@ -6,6 +6,8 @@
     <inherits name="com.sencha.gxt.core.Core"/>
     <inherits name="com.sencha.gxt.widget.core.Core"/>
     <inherits name='com.sencha.gxt.ui.GXT'/>
+    <inherits name="com.google.gwt.logging.Logging"/>
+
 
     <entry-point class='client.MainModule'/>
     <servlet path="/MainServerSide" class="server.MainServerSideImpl"/>

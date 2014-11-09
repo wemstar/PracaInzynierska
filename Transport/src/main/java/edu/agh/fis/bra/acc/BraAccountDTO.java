@@ -7,6 +7,10 @@ import java.util.Set;
  */
 public class BraAccountDTO {
 
+    public long braAccNo;
+    public double balance;
+    public Set<InstrumentInfoDTO> instruments;
+
     public long getBraAccNo() {
         return braAccNo;
     }
@@ -30,12 +34,6 @@ public class BraAccountDTO {
     public void setInstruments(Set<InstrumentInfoDTO> instruments) {
         this.instruments = instruments;
     }
-
-    public long braAccNo;
-
-    public double balance;
-
-    public Set<InstrumentInfoDTO> instruments;
 
 
 }

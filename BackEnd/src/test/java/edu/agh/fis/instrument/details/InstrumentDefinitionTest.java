@@ -11,12 +11,9 @@ import org.springframework.web.context.WebApplicationContext;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.io.IOException;
-
 import static edu.agh.fis.builder.instrument.details.InstrumentDefinitionTransportBuilder.anInstrumentDefinitionTransport;
 import static edu.agh.fis.utils.testing.TestUtil.convertObjectToJsonBytes;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -40,11 +37,11 @@ public class InstrumentDefinitionTest extends AbstractTestNGSpringContextTests {
 
     @Test
     public void schouldCRUDInstrument() throws Exception {
-        InstrumentDefinitionDTO instrumentDefinitionDTO =anInstrumentDefinitionTransport().isin("KGHM").build();
+        InstrumentDefinitionDTO instrumentDefinitionDTO = anInstrumentDefinitionTransport().isin("KGHM").build();
 
         mockMvc.perform(post("/instrument/details")
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .content(convertObjectToJsonBytes(instrumentDefinitionDTO)))
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(convertObjectToJsonBytes(instrumentDefinitionDTO)))
                 .andExpect(status().isCreated())
                 .andExpect(content().string(convertObjectToJsonBytes(instrumentDefinitionDTO)));
 

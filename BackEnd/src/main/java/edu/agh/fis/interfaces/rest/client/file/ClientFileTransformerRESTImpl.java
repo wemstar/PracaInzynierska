@@ -19,7 +19,7 @@ public class ClientFileTransformerRESTImpl implements ClientFileTransformerREST 
     @Override
     public ClientFile transportToEntity(ClientFileDTO clientFile) {
 
-        ClientFile clientFile1E= aClientFile()
+        ClientFile clientFile1E = aClientFile()
                 .pesel(clientFile.getPesel())
                 .clientNo(clientFile.getClientNo())
                 .name(clientFile.getName())
@@ -34,14 +34,14 @@ public class ClientFileTransformerRESTImpl implements ClientFileTransformerREST 
     @Override
     public ClientFileDTO entityToTransport(ClientFile clientFile) {
 
-        return clientFile!=null?aClientFileTransport()
+        return clientFile != null ? aClientFileTransport()
                 .pesel(clientFile.getPesel())
                 .clientNo(clientFile.getClientNo())
                 .dateOfBirth(clientFile.getDateOfBirth())
                 .name(clientFile.getName())
                 .surname(clientFile.getSurname())
                 .accounts(TransformFromEntity.braAccounts(clientFile.getAccount()))
-                .build():null;
+                .build() : null;
     }
 
 

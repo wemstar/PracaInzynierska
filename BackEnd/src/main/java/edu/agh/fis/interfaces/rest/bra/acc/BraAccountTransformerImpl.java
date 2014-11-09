@@ -34,7 +34,7 @@ public class BraAccountTransformerImpl implements BraAccountTransformer {
                 .balance(braAccountDTO.getBalance())
                 .build();
 
-        entity.setInstruments(TransformFromDTO.instrumentInfos(braAccountDTO.getInstruments(),entity));
+        entity.setInstruments(TransformFromDTO.instrumentInfos(braAccountDTO.getInstruments(), entity));
 
         return entity;
     }

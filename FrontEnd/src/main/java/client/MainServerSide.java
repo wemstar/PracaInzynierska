@@ -9,6 +9,8 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
  */
 @RemoteServiceRelativePath("MainServerSide")
 public interface MainServerSide extends RemoteService {
+    public String hello();
+
     /**
      * Utility/Convenience class.
      * Use MainServerSide.App.getInstance() to access static instance of MainServerSideAsync
@@ -20,6 +22,4 @@ public interface MainServerSide extends RemoteService {
             return ourInstance;
         }
     }
-
-    public String hello();
 }

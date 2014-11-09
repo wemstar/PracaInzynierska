@@ -29,9 +29,6 @@ public class InstrumentDefinition {
     }
 
 
-
-
-
     public Set<InstrumentInfo> getInstrumentInfos() {
         return instrumentInfos;
     }
@@ -39,7 +36,6 @@ public class InstrumentDefinition {
     public void setInstrumentInfos(Set<InstrumentInfo> instrumentInfos) {
         this.instrumentInfos = instrumentInfos;
     }
-
 
 
 }

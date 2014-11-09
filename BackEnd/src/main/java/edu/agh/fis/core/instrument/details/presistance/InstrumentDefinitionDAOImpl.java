@@ -18,6 +18,6 @@ public class InstrumentDefinitionDAOImpl extends AbstractDAOImpl<InstrumentDefin
 
     @Override
     public InstrumentDefinition find(String isin) {
-        return (InstrumentDefinition) sessionFactory.getCurrentSession().get(InstrumentDefinition.class,isin);
+        return (InstrumentDefinition) sessionFactory.getCurrentSession().get(InstrumentDefinition.class, isin);
     }
 }

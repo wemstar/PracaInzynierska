@@ -19,18 +19,15 @@ import static edu.agh.fis.builder.entity.instrument.details.InstrumentDefinition
 public class TransformFromDTO {
 
 
-
-    public static Set<BraAccount> braAccounts(Set<BraAccountDTO> setDto,ClientFile clientFile)
-    {
-        Set<BraAccount> setEntity=new HashSet<BraAccount>();
-        for(BraAccountDTO dto:setDto)
-        {
-            BraAccount braAccount=aBraAccount()
+    public static Set<BraAccount> braAccounts(Set<BraAccountDTO> setDto, ClientFile clientFile) {
+        Set<BraAccount> setEntity = new HashSet<BraAccount>();
+        for (BraAccountDTO dto : setDto) {
+            BraAccount braAccount = aBraAccount()
                     .id(dto.getBraAccNo())
                     .balance(dto.getBalance())
                     .clientFile(clientFile)
                     .build();
-            braAccount.setInstruments(instrumentInfos(dto.getInstruments(),braAccount));
+            braAccount.setInstruments(instrumentInfos(dto.getInstruments(), braAccount));
             setEntity.add(braAccount);
 
         }
@@ -38,11 +35,9 @@ public class TransformFromDTO {
 
     }
 
-    public static Set<InstrumentInfo> instrumentInfos(Set<InstrumentInfoDTO> setDto,BraAccount braAccount)
-    {
-        Set<InstrumentInfo> setEntity=new HashSet<InstrumentInfo>();
-        for(InstrumentInfoDTO dto:setDto)
-        {
+    public static Set<InstrumentInfo> instrumentInfos(Set<InstrumentInfoDTO> setDto, BraAccount braAccount) {
+        Set<InstrumentInfo> setEntity = new HashSet<InstrumentInfo>();
+        for (InstrumentInfoDTO dto : setDto) {
             setEntity.add(anInstrumentInfo()
                     .instrumentDefinition(
                             anInstrumentDefinition()

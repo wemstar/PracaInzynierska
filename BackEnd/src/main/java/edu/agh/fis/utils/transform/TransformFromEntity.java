@@ -10,9 +10,6 @@ import java.util.Set;
 
 import static edu.agh.fis.builder.bra.acc.BraAccountDTOBuilder.aBraAccountTransport;
 import static edu.agh.fis.builder.bra.acc.InstrumentInfoDTOBuilder.anInstrumentInfoTransport;
-import static edu.agh.fis.builder.entity.bra.acc.BraAccountBuilder.aBraAccount;
-import static edu.agh.fis.builder.entity.bra.acc.InstrumentInfoBuilder.anInstrumentInfo;
-import static edu.agh.fis.builder.entity.instrument.details.InstrumentDefinitionBuilder.anInstrumentDefinition;
 import static edu.agh.fis.builder.instrument.details.InstrumentDefinitionTransportBuilder.anInstrumentDefinitionTransport;
 
 /**
@@ -21,12 +18,9 @@ import static edu.agh.fis.builder.instrument.details.InstrumentDefinitionTranspo
 public class TransformFromEntity {
 
 
-
-    public static Set<BraAccountDTO> braAccounts(Set<BraAccount> setEntity)
-    {
-        Set<BraAccountDTO> setDto=new HashSet<BraAccountDTO>();
-        for(BraAccount entity:setEntity)
-        {
+    public static Set<BraAccountDTO> braAccounts(Set<BraAccount> setEntity) {
+        Set<BraAccountDTO> setDto = new HashSet<BraAccountDTO>();
+        for (BraAccount entity : setEntity) {
             setDto.add(aBraAccountTransport()
                     .braAccNo(entity.getId())
                     .balance(entity.getBalance())
@@ -38,11 +32,9 @@ public class TransformFromEntity {
 
     }
 
-    public static Set<InstrumentInfoDTO> instrumentInfos(Set<InstrumentInfo> setEntity)
-    {
-        Set<InstrumentInfoDTO> setDto=new HashSet<InstrumentInfoDTO>();
-        for(InstrumentInfo entity:setEntity)
-        {
+    public static Set<InstrumentInfoDTO> instrumentInfos(Set<InstrumentInfo> setEntity) {
+        Set<InstrumentInfoDTO> setDto = new HashSet<InstrumentInfoDTO>();
+        for (InstrumentInfo entity : setEntity) {
             setDto.add(anInstrumentInfoTransport()
                     .definition(anInstrumentDefinitionTransport()
                             .isin(entity.getInstrumentDefinition().getIsin())

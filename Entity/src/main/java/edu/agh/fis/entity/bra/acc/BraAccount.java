@@ -24,7 +24,7 @@ public class BraAccount {
     @Column(name = "BRA_BALANCE")
     public double balance;
 
-    @OneToMany(mappedBy = "braAccount",fetch = FetchType.EAGER,cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
+    @OneToMany(mappedBy = "braAccount", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     public Set<InstrumentInfo> instruments;
 
     public Set<InstrumentInfo> getInstruments() {
