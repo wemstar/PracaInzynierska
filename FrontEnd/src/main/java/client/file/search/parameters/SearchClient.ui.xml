@@ -56,12 +56,12 @@
                     </form:FieldLabel>
                 </container:child>
 
-
+                <button:TextButton text="Save" ui:field="search"/>
             </container:VerticalLayoutContainer>
 
-            <c:button>
-                <button:TextButton text="Save" ui:field="search"/>
-            </c:button>
+
+
+
 
 
         </c:FramedPanel>

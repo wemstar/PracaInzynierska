@@ -2,10 +2,14 @@ package client.file.search.grid;
 
 import client.file.search.service.SearchClientDTO;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.editor.client.Editor;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
+import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.data.shared.ListStore;
+import com.sencha.gxt.data.shared.ModelKeyProvider;
+import com.sencha.gxt.data.shared.PropertyAccess;
 import com.sencha.gxt.widget.core.client.ContentPanel;
 import com.sencha.gxt.widget.core.client.grid.ColumnConfig;
 import com.sencha.gxt.widget.core.client.grid.ColumnModel;
@@ -20,8 +24,10 @@ import java.util.List;
  * Created by wemstar on 08.11.14.
  */
 public class SearchResult extends Composite {
+
     private static final SearchclientDtoProperties gridProperties = GWT.create(SearchclientDtoProperties.class);
     private static final MyUiBinder uiBinder = GWT.create(MyUiBinder.class);
+
     @UiField(provided = true)
 
     public ListStore<SearchClientDTO> listStore;
@@ -41,12 +47,7 @@ public class SearchResult extends Composite {
             listStore = initListStore();
 
             initWidget(uiBinder.createAndBindUi(this));
-
-
-            //gridView.setAutoExpandColumn(columnModel.getColumn(0));
         }
-
-
     }
 
     private ColumnModel<SearchClientDTO> initColumModel() {
@@ -74,6 +75,22 @@ public class SearchResult extends Composite {
     }
 
     public interface MyUiBinder extends UiBinder<ContentPanel, SearchResult> {
+    }
+
+    interface SearchclientDtoProperties extends PropertyAccess<SearchClientDTO> {
+
+        @Editor.Path("clientNo")
+        ModelKeyProvider<SearchClientDTO> key();
+
+        ValueProvider<SearchClientDTO, String> name();
+
+        ValueProvider<SearchClientDTO, String> surname();
+
+        ValueProvider<SearchClientDTO, Date> dateOfBirth();
+
+        ValueProvider<SearchClientDTO, String> pesel();
+
+        ValueProvider<SearchClientDTO, String> clientNo();
     }
 
 

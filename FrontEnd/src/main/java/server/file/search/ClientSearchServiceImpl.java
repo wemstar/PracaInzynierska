@@ -1,8 +1,10 @@
 package server.file.search;
 
+import client.file.search.parameters.SearchClient;
 import client.file.search.service.ClientSearchService;
 import client.file.search.service.SearchClientDTO;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
 import java.util.List;
@@ -15,19 +17,9 @@ public class ClientSearchServiceImpl extends RemoteServiceServlet implements Cli
     public List<SearchClientDTO> findClients(SearchClientDTO item) {
 
 
-        SearchClientDTO pro1 = new SearchClientDTO();
-        pro1.setClientNo("1");
-        pro1.setName("Hura1");
-        pro1.setSurname("Hura1");
-        SearchClientDTO pro2 = new SearchClientDTO();
-        pro2.setClientNo("2");
-        pro2.setName("Hura2");
-        pro2.setSurname("Hura2");
-        SearchClientDTO pro3 = new SearchClientDTO();
-        pro3.setClientNo("3");
-        pro3.setName("Hura3");
-        pro3.setSurname("Hura3");
 
-        return Arrays.asList(new SearchClientDTO[]{pro1, pro2, pro3});
+        /*RestTemplate restTemplate=new RestTemplate();
+        SearchClientDTO dto4=restTemplate.getForObject("http://localhost:8085/client/file/1",SearchClientDTO.class);*/
+        return DoomyData.listOfClients;
     }
 }

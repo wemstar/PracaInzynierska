@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.sencha.gxt:gxt-chart:3.1.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.sencha.gxt/gxt-chart/3.1.1/aabe02517d6c14d62c97646a0196725ddb85a1fd/gxt-chart-3.1.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.sencha.gxt/gxt-chart/3.1.1/4fd6f6a4976d480a5a406013588dce24b6cd90a0/gxt-chart-3.1.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

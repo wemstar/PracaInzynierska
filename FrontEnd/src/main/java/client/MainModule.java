@@ -1,5 +1,8 @@
 package client;
 
+import client.bra.account.service.BraAccountDTO;
+import client.bra.account.visualization.BraAccountCart;
+import client.file.search.details.ClientFileDetails;
 import client.file.search.grid.SearchResult;
 import client.file.search.parameters.SearchClient;
 import client.images.Images;
@@ -26,10 +29,13 @@ import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.Verti
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.toolbar.ToolBar;
 
+import java.util.Arrays;
+
 /**
  * Created by wemstar on 04.09.14.
  */
 class MainModule implements IsWidget, EntryPoint {
+
 
     private FlowLayoutContainer con;
     private SamplePanel panel;
@@ -40,9 +46,7 @@ class MainModule implements IsWidget, EntryPoint {
             con.getScrollSupport().setScrollMode(ScrollMode.AUTO);
 
             con.add(createMulti(), new MarginData(10));
-
         }
-
         return con;
     }
 
@@ -50,12 +54,10 @@ class MainModule implements IsWidget, EntryPoint {
         panel = new SamplePanel();
         panel.setHeadingText("Multi Columns");
 
-
         panel.getToolBar().add(clientFileNav());
         panel.getToolBar().add(brocarageAccountNav());
         panel.getToolBar().add(instrumentNav());
         panel.getToolBar().add(ordersNav());
-
 
         return panel;
     }
@@ -75,18 +77,25 @@ class MainModule implements IsWidget, EntryPoint {
             public void onSelect(SelectEvent event) {
                 HorizontalLayoutContainer con = new HorizontalLayoutContainer();
                 SearchResult result = new SearchResult();
-                con.add(new SearchClient().setResult(result), new HorizontalLayoutContainer.HorizontalLayoutData(0.5, -1));
+                con.add(new SearchClient().setResult(result), new HorizontalLayoutContainer.HorizontalLayoutData(0.5, 1));
                 con.add(result, new HorizontalLayoutContainer.HorizontalLayoutData(0.5, 1));
 
-                panel.addTab(con);
+                panel.addTab(con,"Szukaj");
             }
         });
 
         table.setWidget(0, 0, btn);
 
-        btn = new TextButton("Szczegóły");
+        btn = new TextButton(ClientFileDetails.title);
         btn.setIcon(Images.INSTANCE.details32());
         btn.setIconAlign(IconAlign.TOP);
+        btn.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent event) {
+
+                panel.addTab(ClientFileDetails.aClientFileDetails(),ClientFileDetails.title);
+            }
+        });
         table.setWidget(0, 1, btn);
 
         btn = new TextButton("To do");
@@ -100,7 +109,6 @@ class MainModule implements IsWidget, EntryPoint {
     private ButtonGroup brocarageAccountNav() {
         ButtonGroup group = new ButtonGroup();
         group.setHeadingText("Rachunek");
-
 
         FlexTable table = new FlexTable();
         group.add(table);
@@ -141,16 +149,7 @@ class MainModule implements IsWidget, EntryPoint {
         return group;
     }
 
-    private void cleanCells(Element elem) {
-        NodeList<Element> tds = elem.<XElement>cast().select("td");
-        for (int i = 0; i < tds.getLength(); i++) {
-            Element td = tds.getItem(i);
 
-            if (!td.hasChildNodes() && td.getClassName().equals("")) {
-                td.removeFromParent();
-            }
-        }
-    }
 
     public void onModuleLoad() {
         RootPanel.get().add(asWidget());
@@ -170,22 +169,20 @@ class MainModule implements IsWidget, EntryPoint {
 
             con.add(toolBar, new VerticalLayoutData(1, -1));
 
-
             advanced = new TabPanel();
             con.add(advanced, new VerticalLayoutData(1, 600));
             add(con);
-
-
         }
 
         public ToolBar getToolBar() {
             return toolBar;
         }
 
-        private void addTab(Widget composite) {
-            advanced.add(composite, new TabItemConfig("New Tab " + ++index, index != 1));
+        private void addTab(Widget composite,String title) {
+            TabItemConfig config=advanced.getConfig(composite);
+            if(config==null)
+            advanced.add(composite, new TabItemConfig(title,true));
+            advanced.setActiveWidget(composite);
         }
     }
-
-
 }

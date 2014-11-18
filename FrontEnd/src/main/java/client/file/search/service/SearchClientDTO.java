@@ -1,12 +1,16 @@
 package client.file.search.service;
 
+import client.bra.account.service.BraAccountDTO;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by wemstar on 08.11.14.
  */
-
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class SearchClientDTO implements Serializable {
 
     private String name;
@@ -14,6 +18,15 @@ public class SearchClientDTO implements Serializable {
     private Date dateOfBirth;
     private String pesel;
     private String clientNo;
+    private List<BraAccountDTO> braAccount;
+
+    public List<BraAccountDTO> getBraAccount() {
+        return braAccount;
+    }
+
+    public void setBraAccount(List<BraAccountDTO> braAccount) {
+        this.braAccount = braAccount;
+    }
 
     @Override
     public String toString() {
