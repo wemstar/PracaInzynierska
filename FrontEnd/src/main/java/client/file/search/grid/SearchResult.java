@@ -1,10 +1,12 @@
 package client.file.search.grid;
 
+import client.MainModule;
 import client.file.search.service.SearchClientDTO;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.editor.client.Editor;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Composite;
 import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.data.shared.ListStore;
@@ -15,6 +17,7 @@ import com.sencha.gxt.widget.core.client.grid.ColumnConfig;
 import com.sencha.gxt.widget.core.client.grid.ColumnModel;
 import com.sencha.gxt.widget.core.client.grid.Grid;
 import com.sencha.gxt.widget.core.client.grid.GridView;
+import com.sencha.gxt.widget.core.client.selection.SelectionChangedEvent;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -41,6 +44,8 @@ public class SearchResult extends Composite {
     ColumnModel<SearchClientDTO> columnModel;
     private ContentPanel widget;
 
+
+
     public SearchResult() {
         if (widget == null) {
             columnModel = initColumModel();
@@ -48,6 +53,12 @@ public class SearchResult extends Composite {
 
             initWidget(uiBinder.createAndBindUi(this));
         }
+        grid.getSelectionModel().addSelectionChangedHandler(new SelectionChangedEvent.SelectionChangedHandler<SearchClientDTO>() {
+            @Override
+            public void onSelectionChanged(SelectionChangedEvent<SearchClientDTO> event) {
+                MainModule.context=event.getSelection().get(0);
+            }
+        });
     }
 
     private ColumnModel<SearchClientDTO> initColumModel() {

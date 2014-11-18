@@ -1,45 +1,36 @@
 package client;
 
-import client.bra.account.service.BraAccountDTO;
-import client.bra.account.visualization.BraAccountCart;
 import client.file.search.details.ClientFileDetails;
-import client.file.search.grid.SearchResult;
-import client.file.search.parameters.SearchClient;
+import client.file.search.service.SearchClientDTO;
 import client.images.Images;
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.dom.client.Element;
-import com.google.gwt.dom.client.NodeList;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.cell.core.client.ButtonCell.IconAlign;
 import com.sencha.gxt.core.client.dom.ScrollSupport.ScrollMode;
-import com.sencha.gxt.core.client.dom.XElement;
 import com.sencha.gxt.widget.core.client.ContentPanel;
 import com.sencha.gxt.widget.core.client.TabItemConfig;
 import com.sencha.gxt.widget.core.client.TabPanel;
 import com.sencha.gxt.widget.core.client.button.ButtonGroup;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.FlowLayoutContainer;
-import com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.MarginData;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.toolbar.ToolBar;
 
-import java.util.Arrays;
-
 /**
  * Created by wemstar on 04.09.14.
  */
-class MainModule implements IsWidget, EntryPoint {
+public class MainModule implements IsWidget, EntryPoint {
 
 
     private FlowLayoutContainer con;
     private SamplePanel panel;
-
+    public static SearchClientDTO context;
     public Widget asWidget() {
         if (con == null) {
             con = new FlowLayoutContainer();
@@ -75,12 +66,9 @@ class MainModule implements IsWidget, EntryPoint {
         btn.addSelectHandler(new SelectEvent.SelectHandler() {
             @Override
             public void onSelect(SelectEvent event) {
-                HorizontalLayoutContainer con = new HorizontalLayoutContainer();
-                SearchResult result = new SearchResult();
-                con.add(new SearchClient().setResult(result), new HorizontalLayoutContainer.HorizontalLayoutData(0.5, 1));
-                con.add(result, new HorizontalLayoutContainer.HorizontalLayoutData(0.5, 1));
 
-                panel.addTab(con,"Szukaj");
+
+                panel.addTab(Windows.aSearchPanel(), "Szukaj");
             }
         });
 
@@ -93,7 +81,7 @@ class MainModule implements IsWidget, EntryPoint {
             @Override
             public void onSelect(SelectEvent event) {
 
-                panel.addTab(ClientFileDetails.aClientFileDetails(),ClientFileDetails.title);
+                panel.addTab(Windows.aClientFileDetailsPanel(), ClientFileDetails.title);
             }
         });
         table.setWidget(0, 1, btn);
@@ -150,7 +138,6 @@ class MainModule implements IsWidget, EntryPoint {
     }
 
 
-
     public void onModuleLoad() {
         RootPanel.get().add(asWidget());
     }
@@ -178,10 +165,10 @@ class MainModule implements IsWidget, EntryPoint {
             return toolBar;
         }
 
-        private void addTab(Widget composite,String title) {
-            TabItemConfig config=advanced.getConfig(composite);
-            if(config==null)
-            advanced.add(composite, new TabItemConfig(title,true));
+        private void addTab(Widget composite, String title) {
+            TabItemConfig config = advanced.getConfig(composite);
+            if (config == null)
+                advanced.add(composite, new TabItemConfig(title, true));
             advanced.setActiveWidget(composite);
         }
     }

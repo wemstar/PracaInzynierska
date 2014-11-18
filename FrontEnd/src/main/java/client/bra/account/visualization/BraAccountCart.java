@@ -30,6 +30,8 @@ import com.sencha.gxt.widget.core.client.event.CollapseEvent.CollapseHandler;
 import com.sencha.gxt.widget.core.client.event.ExpandEvent;
 import com.sencha.gxt.widget.core.client.event.ExpandEvent.ExpandHandler;
 
+import java.util.List;
+
 /**
  * Created by wemstar on 11.11.14.
  */
@@ -38,12 +40,14 @@ public class BraAccountCart extends Composite {
     private static final DataPropertyAccess dataAccess = GWT.create(DataPropertyAccess.class);
     private FramedPanel panel;
 
-    public BraAccountCart() {
+    public BraAccountCart(List<BraAccountDTO> items) {
 
         final ListStore<BraAccountDTO> store = new ListStore<BraAccountDTO>(dataAccess.nameKey());
-        store.add(TestData.getData1());
-        store.add(TestData.getData2());
-        store.add(TestData.getData3());
+        for(BraAccountDTO item:items)
+        {
+            store.add(item);
+
+        }
         final Chart<BraAccountDTO> chart = new Chart<BraAccountDTO>();
         chart.setDefaultInsets(50);
         chart.setStore(store);

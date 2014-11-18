@@ -1,5 +1,6 @@
 package client.file.search.details;
 
+import client.MainModule;
 import client.bra.account.visualization.BraAccountCart;
 import client.file.search.service.SearchClientDTO;
 import com.google.gwt.core.client.GWT;
@@ -7,38 +8,53 @@ import com.google.gwt.editor.client.Editor;
 import com.google.gwt.editor.client.SimpleBeanEditorDriver;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.FlowPanel;
-import com.google.gwt.user.client.ui.VerticalPanel;
+import com.google.gwt.user.client.ui.*;
+import com.sencha.gxt.widget.core.client.Component;
 import com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer;
+import com.sencha.gxt.widget.core.client.form.DateField;
+import com.sencha.gxt.widget.core.client.form.TextField;
 
 /**
  * Created by wemstar on 11.11.14.
  */
 public class ClientFileDetails extends Composite implements Editor<SearchClientDTO> {
 
-    private static  ClientFileDetails instance;
+
     public static String title="Szczegóły";
-    public static ClientFileDetails aClientFileDetails()
-    {
-        if(instance==null)instance= new ClientFileDetails();
-        return instance;
-    }
+
     private static final ClientFileDetailsDriver driver = GWT.create(ClientFileDetailsDriver.class);
     private static ClientFileDetailsUiBinder ourUiBinder = GWT.create(ClientFileDetailsUiBinder.class);
     @UiField
     FlowPanel chart;
+
+    @UiField
+    public TextField name;
+    @UiField
+    public TextField surname;
+    @UiField
+    public DateField dateOfBirth;
+    @UiField
+    public TextField pesel;
+
+
     BraAccountCart cahrtWidg;
 
     public ClientFileDetails() {
 
         if(cahrtWidg==null) {
             initWidget(ourUiBinder.createAndBindUi(this));
-            cahrtWidg=new BraAccountCart();
+            cahrtWidg=new BraAccountCart(MainModule.context.getBraAccount());
             chart.add(cahrtWidg);
             driver.initialize(this);
-            driver.edit(new SearchClientDTO());
+            driver.edit(MainModule.context);
+
+            disableWidgets(new Component[]{name, surname, dateOfBirth, pesel},false);
         }
+    }
+
+    private void disableWidgets(Component[] widgets,boolean mode) {
+        for(Component widg:widgets)
+            widg.setEnabled(mode);
     }
 
     interface ClientFileDetailsUiBinder extends UiBinder<HorizontalLayoutContainer, ClientFileDetails> {
