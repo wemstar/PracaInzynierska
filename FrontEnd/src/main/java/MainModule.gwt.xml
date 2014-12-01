@@ -13,6 +13,7 @@
 
     <entry-point class='client.MainModule'/>
     <servlet path="/ClientSearchService" class="server.file.search.ClientSearchServiceImpl"/>
+    <servlet path="/NewOrderService" class="server.order.NewOrderServiceImpl"/>
     <add-linker name="xsiframe"/>
     <set-configuration-property name="devModeRedirectEnabled" value="true"/>
     <set-configuration-property name="gwt.superdevmode" value="on"/>

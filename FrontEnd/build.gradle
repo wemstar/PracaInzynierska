@@ -23,7 +23,7 @@ dependencies {
     compile 'com.google.web.bindery:requestfactory:2.6.1'
     compile 'com.google.gwt:gwt-user:2.6.1'
     compile 'com.google.gwt:gwt-dev:2.6.1'
-    compiel 'org.slf4j:slf4j-simple:1.7.7'
+    compile 'org.slf4j:slf4j-simple:1.7.7'
 
 
 }

@@ -1,12 +1,10 @@
 package server.file.search;
 
-import client.file.search.parameters.SearchClient;
 import client.file.search.service.ClientSearchService;
 import client.file.search.service.SearchClientDTO;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
-import org.springframework.web.client.RestTemplate;
+import server.DoomyData;
 
-import java.util.Arrays;
 import java.util.List;
 
 /**

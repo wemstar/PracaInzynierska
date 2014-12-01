@@ -28,9 +28,10 @@ import com.sencha.gxt.widget.core.client.toolbar.ToolBar;
 public class MainModule implements IsWidget, EntryPoint {
 
 
+    public static SearchClientDTO context;
     private FlowLayoutContainer con;
     private SamplePanel panel;
-    public static SearchClientDTO context;
+
     public Widget asWidget() {
         if (con == null) {
             con = new FlowLayoutContainer();
@@ -124,6 +125,19 @@ public class MainModule implements IsWidget, EntryPoint {
         group.setHeadingText("Instrumenty");
 
         FlexTable table = new FlexTable();
+
+        TextButton btn = new TextButton("Nowe Zlecenie");
+        btn.setIcon(Images.INSTANCE.details32());
+        btn.setIconAlign(IconAlign.TOP);
+        btn.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent event) {
+
+                panel.addTab(Windows.aNewOrderPanle(), "Nowe Zlecenie");
+            }
+        });
+        table.setWidget(0, 1, btn);
+
         group.add(table);
         return group;
     }

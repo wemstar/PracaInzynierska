@@ -1,9 +1,13 @@
-package server.file.search;
+package server;
 
 import client.bra.account.service.BraAccountDTO;
 import client.file.search.service.SearchClientDTO;
+import client.instrument.order.service.dto.InstrumentDTO;
+import client.instrument.order.service.dto.MarketDTO;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by wemstar on 18.11.14.
@@ -13,6 +17,7 @@ public class DoomyData {
 
 
     public static List<SearchClientDTO> listOfClients;
+    public static List<InstrumentDTO> instrumentsList;
     static
     {
         SearchClientDTO pro1 = new SearchClientDTO();
@@ -37,6 +42,26 @@ public class DoomyData {
         listOfClients.add(pro1);
         listOfClients.add(pro2);
         listOfClients.add(pro3);
+
+
+        instrumentsList = new ArrayList<InstrumentDTO>();
+        InstrumentDTO instrument = new InstrumentDTO();
+        MarketDTO market = new MarketDTO();
+        market.setName("Giełda papierów wartościowych");
+        market.setCode("GPW");
+        market.setType("Instruments");
+        instrument.setName("KGHM");
+        instrument.setCount(20);
+        instrument.setIsin("PLKGHM");
+        instrument.setMarket(Arrays.asList(new MarketDTO[]{market}));
+        instrumentsList.add(instrument);
+        instrument = new InstrumentDTO();
+        instrument.setName("JSW");
+        instrument.setCount(10);
+        instrument.setIsin("PLJSW");
+        instrument.setMarket(Arrays.asList(new MarketDTO[]{market}));
+        instrumentsList.add(instrument);
+
     }
 
 

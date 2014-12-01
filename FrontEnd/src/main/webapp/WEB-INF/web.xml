@@ -14,4 +14,12 @@
         <servlet-name>MainModule ClientSearchService</servlet-name>
         <url-pattern>/MainModule/ClientSearchService</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>MainModule NewOrderhService</servlet-name>
+        <servlet-class>server.order.NewOrderServiceImpl</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MainModule NewOrderhService</servlet-name>
+        <url-pattern>/MainModule/NewOrderService</url-pattern>
+    </servlet-mapping>
 </web-app>
