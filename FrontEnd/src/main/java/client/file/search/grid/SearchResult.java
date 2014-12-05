@@ -6,7 +6,6 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.editor.client.Editor;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Composite;
 import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.data.shared.ListStore;
@@ -32,15 +31,15 @@ public class SearchResult extends Composite {
     private static final MyUiBinder uiBinder = GWT.create(MyUiBinder.class);
 
     @UiField(provided = true)
-
     public ListStore<SearchClientDTO> listStore;
-    @UiField
 
+    @UiField
     public GridView<SearchClientDTO> gridView;
+
     @UiField
     public Grid<SearchClientDTO> grid;
-    @UiField(provided = true)
 
+    @UiField(provided = true)
     ColumnModel<SearchClientDTO> columnModel;
     private ContentPanel widget;
 

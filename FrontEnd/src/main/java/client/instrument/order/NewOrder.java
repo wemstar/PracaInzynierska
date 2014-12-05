@@ -34,7 +34,7 @@ import java.util.List;
  */
 public class NewOrder extends Composite implements Editor<NewOrderDTO> {
     private static NewOrderUiBinder ourUiBinder = GWT.create(NewOrderUiBinder.class);
-    private static InstrumetnDTOProperties properties = GWT.create(InstrumetnDTOProperties.class);
+    private static InstrumentDTO.InstrumetnDTOProperties properties = GWT.create(InstrumentDTO.InstrumetnDTOProperties.class);
     private static MarketDTOProperties propertiesMarket = GWT.create(MarketDTOProperties.class);
     private static NewOrderDTODriver driver = GWT.create(NewOrderDTODriver.class);
     @UiField(provided = true)
@@ -123,14 +123,7 @@ public class NewOrder extends Composite implements Editor<NewOrderDTO> {
     interface NewOrderUiBinder extends UiBinder<VerticalPanel, NewOrder> {
     }
 
-    interface InstrumetnDTOProperties extends PropertyAccess<InstrumentDTO> {
-        ModelKeyProvider<InstrumentDTO> isin();
 
-        LabelProvider<InstrumentDTO> name();
-
-        @Editor.Path("name")
-        ValueProvider<InstrumentDTO, String> nameProp();
-    }
 
     interface MarketDTOProperties extends PropertyAccess<MarketDTO> {
         ModelKeyProvider<MarketDTO> code();

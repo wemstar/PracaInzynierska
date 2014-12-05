@@ -1,5 +1,11 @@
 package client.instrument.order.service.dto;
 
+import com.google.gwt.editor.client.Editor;
+import com.sencha.gxt.core.client.ValueProvider;
+import com.sencha.gxt.data.shared.LabelProvider;
+import com.sencha.gxt.data.shared.ModelKeyProvider;
+import com.sencha.gxt.data.shared.PropertyAccess;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -43,5 +49,20 @@ public class InstrumentDTO implements Serializable {
 
     public void setMarket(List<MarketDTO> market) {
         this.market = market;
+    }
+
+    public interface InstrumetnDTOProperties extends PropertyAccess<InstrumentDTO> {
+        ModelKeyProvider<InstrumentDTO> isin();
+
+        LabelProvider<InstrumentDTO> name();
+
+        @Editor.Path("name")
+        ValueProvider<InstrumentDTO, String> nameProp();
+
+        @Editor.Path("isin")
+        ValueProvider<InstrumentDTO, String> isinProp();
+
+        @Editor.Path("market")
+        ValueProvider<InstrumentDTO, List<MarketDTO>> marketProp();
     }
 }

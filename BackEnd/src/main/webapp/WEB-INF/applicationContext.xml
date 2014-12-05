@@ -10,10 +10,10 @@
     <aop:aspectj-autoproxy/>
 
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://localhost:3306/PracaInzynierska"/>
+        <property name="driverClassName" value="com.mysql.jdbc.GoogleDriver"/>
+        <property name="url" value="jdbc:google:mysql://fixapplicationbackend:database2/PracaInzynierska"/>
         <property name="username" value="root"/>
-        <property name="password" value="teokracja"/>
+
     </bean>
 
 
@@ -35,7 +35,7 @@
 
         <property name="hibernateProperties">
             <props>
-                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
                 <prop key="hibernate.show_sql">true</prop>
                 <prop key="hibernate.hbm2ddl.auto">update</prop>
             </props>

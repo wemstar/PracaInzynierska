@@ -47,13 +47,17 @@ public class DoomyData {
         instrumentsList = new ArrayList<InstrumentDTO>();
         InstrumentDTO instrument = new InstrumentDTO();
         MarketDTO market = new MarketDTO();
+        market.setName("Wall street");
+        market.setCode("NASDAQ");
+        market.setType("Instruments");
+        MarketDTO market2 = new MarketDTO();
         market.setName("Giełda papierów wartościowych");
         market.setCode("GPW");
         market.setType("Instruments");
         instrument.setName("KGHM");
         instrument.setCount(20);
         instrument.setIsin("PLKGHM");
-        instrument.setMarket(Arrays.asList(new MarketDTO[]{market}));
+        instrument.setMarket(Arrays.asList(new MarketDTO[]{market, market2}));
         instrumentsList.add(instrument);
         instrument = new InstrumentDTO();
         instrument.setName("JSW");

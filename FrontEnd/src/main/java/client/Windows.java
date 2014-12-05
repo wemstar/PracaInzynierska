@@ -3,7 +3,9 @@ package client;
 import client.file.search.details.ClientFileDetails;
 import client.file.search.grid.SearchResult;
 import client.file.search.parameters.SearchClient;
+import client.instrument.list.InstrumentList;
 import client.instrument.order.NewOrder;
+import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer;
 
 /**
@@ -13,6 +15,7 @@ public class Windows {
 
     private static ClientFileDetails instance;
     private static NewOrder newOrderPanel;
+    private static InstrumentList instrumentList;
 
     public static ClientFileDetails aClientFileDetailsPanel()
     {
@@ -33,5 +36,10 @@ public class Windows {
 
         if (newOrderPanel == null) newOrderPanel = new NewOrder();
         return newOrderPanel;
+    }
+
+    public static Widget aInstrumentListPanle() {
+        if (instrumentList == null) instrumentList = new InstrumentList();
+        return instrumentList;
     }
 }

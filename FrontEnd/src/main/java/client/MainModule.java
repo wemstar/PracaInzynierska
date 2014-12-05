@@ -138,6 +138,18 @@ public class MainModule implements IsWidget, EntryPoint {
         });
         table.setWidget(0, 1, btn);
 
+        btn = new TextButton("Lista Instrumentów");
+        btn.setIcon(Images.INSTANCE.account32());
+        btn.setIconAlign(IconAlign.TOP);
+        btn.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent event) {
+
+                panel.addTab(Windows.aInstrumentListPanle(), "Lista Instrumentów");
+            }
+        });
+        table.setWidget(0, 2, btn);
+
         group.add(table);
         return group;
     }
