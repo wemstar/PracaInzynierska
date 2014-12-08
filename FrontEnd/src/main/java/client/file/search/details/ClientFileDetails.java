@@ -1,15 +1,20 @@
 package client.file.search.details;
 
 import client.MainModule;
+import client.bra.account.details.BraAccountDetails;
 import client.bra.account.visualization.BraAccountCart;
+import client.events.ClientContextChange;
+import client.events.ClientContextChangeHandler;
 import client.file.search.service.SearchClientDTO;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.editor.client.Editor;
 import com.google.gwt.editor.client.SimpleBeanEditorDriver;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.user.client.ui.*;
+import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.FlowPanel;
 import com.sencha.gxt.widget.core.client.Component;
+import com.sencha.gxt.widget.core.client.FramedPanel;
 import com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer;
 import com.sencha.gxt.widget.core.client.form.DateField;
 import com.sencha.gxt.widget.core.client.form.TextField;
@@ -20,13 +25,9 @@ import com.sencha.gxt.widget.core.client.form.TextField;
 public class ClientFileDetails extends Composite implements Editor<SearchClientDTO> {
 
 
-    public static String title="Szczegóły";
-
     private static final ClientFileDetailsDriver driver = GWT.create(ClientFileDetailsDriver.class);
+    public static String title = "Szczegóły";
     private static ClientFileDetailsUiBinder ourUiBinder = GWT.create(ClientFileDetailsUiBinder.class);
-    @UiField
-    FlowPanel chart;
-
     @UiField
     public TextField name;
     @UiField
@@ -35,21 +36,32 @@ public class ClientFileDetails extends Composite implements Editor<SearchClientD
     public DateField dateOfBirth;
     @UiField
     public TextField pesel;
-
-
+    @UiField
+    public FramedPanel braAccountDetails;
+    @UiField
+    FlowPanel chart;
     BraAccountCart cahrtWidg;
 
+
     public ClientFileDetails() {
+        initWidget(ourUiBinder.createAndBindUi(this));
+        driver.initialize(this);
 
-        if(cahrtWidg==null) {
-            initWidget(ourUiBinder.createAndBindUi(this));
-            cahrtWidg=new BraAccountCart(MainModule.context.getBraAccount());
-            chart.add(cahrtWidg);
-            driver.initialize(this);
-            driver.edit(MainModule.context);
+        cahrtWidg = new BraAccountCart();
+        chart.add(cahrtWidg);
+        disableWidgets(new Component[]{name, surname, dateOfBirth, pesel}, false);
+        MainModule.EVENT_BUS.addHandler(ClientContextChange.TYPE, new ClientContextChangeHandler() {
+            @Override
+            public void onClientContextChange(ClientContextChange event) {
+                setClientFile(event.getClientDetails());
+            }
+        });
+        braAccountDetails.add(new BraAccountDetails());
+    }
 
-            disableWidgets(new Component[]{name, surname, dateOfBirth, pesel},false);
-        }
+    public void setClientFile(SearchClientDTO clientFile) {
+        driver.edit(clientFile);
+        cahrtWidg.setBraAccounts(clientFile.getBraAccount());
     }
 
     private void disableWidgets(Component[] widgets,boolean mode) {

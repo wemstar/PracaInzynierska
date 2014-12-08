@@ -1,6 +1,7 @@
 package client.file.search.grid;
 
 import client.MainModule;
+import client.events.ClientContextChange;
 import client.file.search.service.SearchClientDTO;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.editor.client.Editor;
@@ -55,7 +56,7 @@ public class SearchResult extends Composite {
         grid.getSelectionModel().addSelectionChangedHandler(new SelectionChangedEvent.SelectionChangedHandler<SearchClientDTO>() {
             @Override
             public void onSelectionChanged(SelectionChangedEvent<SearchClientDTO> event) {
-                MainModule.context=event.getSelection().get(0);
+                MainModule.EVENT_BUS.fireEvent(new ClientContextChange(event.getSelection().get(0)));
             }
         });
     }

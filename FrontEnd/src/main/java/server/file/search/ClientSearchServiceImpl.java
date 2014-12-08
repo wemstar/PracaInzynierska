@@ -17,7 +17,7 @@ public class ClientSearchServiceImpl extends RemoteServiceServlet implements Cli
 
 
         /*RestTemplate restTemplate=new RestTemplate();
-        SearchClientDTO dto4=restTemplate.getForObject("http://fixapplicationbackend.appspot.com//client/file/1",SearchClientDTO.class);*/
+        SearchClientDTO[] table=restTemplate.getForObject("http://fixapplicationbackend.appspot.com//client/file/1",SearchClientDTO[].class);*/
         return DoomyData.listOfClients;
     }
 }

@@ -1,12 +1,15 @@
 package client.bra.account.visualization;
 
+import client.MainModule;
 import client.bra.account.service.BraAccountDTO;
+import client.events.BraAccountEvent;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.editor.client.Editor.Path;
 import com.google.gwt.user.client.ui.Composite;
 import com.sencha.gxt.chart.client.chart.Chart;
 import com.sencha.gxt.chart.client.chart.Chart.Position;
 import com.sencha.gxt.chart.client.chart.Legend;
+import com.sencha.gxt.chart.client.chart.event.SeriesSelectionEvent;
 import com.sencha.gxt.chart.client.chart.series.PieSeries;
 import com.sencha.gxt.chart.client.chart.series.Series.LabelPosition;
 import com.sencha.gxt.chart.client.chart.series.SeriesLabelConfig;
@@ -38,17 +41,15 @@ import java.util.List;
 public class BraAccountCart extends Composite {
 
     private static final DataPropertyAccess dataAccess = GWT.create(DataPropertyAccess.class);
+    final Chart<BraAccountDTO> chart;
+    private final ListStore<BraAccountDTO> store;
     private FramedPanel panel;
 
-    public BraAccountCart(List<BraAccountDTO> items) {
+    public BraAccountCart() {
 
-        final ListStore<BraAccountDTO> store = new ListStore<BraAccountDTO>(dataAccess.nameKey());
-        for(BraAccountDTO item:items)
-        {
-            store.add(item);
+        store = new ListStore<BraAccountDTO>(dataAccess.nameKey());
 
-        }
-        final Chart<BraAccountDTO> chart = new Chart<BraAccountDTO>();
+        chart = new Chart<BraAccountDTO>();
         chart.setDefaultInsets(50);
         chart.setStore(store);
         chart.setShadowChart(false);
@@ -84,7 +85,7 @@ public class BraAccountCart extends Composite {
         chart.addGradient(slice6);
 
         final PieSeries<BraAccountDTO> series = new PieSeries<BraAccountDTO>();
-        series.setAngleField(dataAccess.balance());
+        series.setAngleField(dataAccess.avalibleCash());
         series.addColor(slice1);
         series.addColor(slice2);
         series.addColor(slice3);
@@ -112,6 +113,16 @@ public class BraAccountCart extends Composite {
             }
         });
         chart.addSeries(series);
+        series.addSeriesSelectionHandler(new SeriesSelectionEvent.SeriesSelectionHandler<BraAccountDTO>() {
+
+
+            @Override
+            public void onSeriesSelection(SeriesSelectionEvent<BraAccountDTO> event) {
+
+
+                MainModule.EVENT_BUS.fireEvent(new BraAccountEvent(event.getItem()));
+            }
+        });
 
         final Legend<BraAccountDTO> legend = new Legend<BraAccountDTO>();
         legend.setPosition(Position.RIGHT);
@@ -160,8 +171,19 @@ public class BraAccountCart extends Composite {
 
     }
 
+    public void setBraAccounts(List<BraAccountDTO> braAccounts) {
+        store.clear();
+        for (BraAccountDTO item : braAccounts) {
+            store.add(item);
+
+        }
+        chart.redrawChart();
+
+
+    }
+
     public interface DataPropertyAccess extends PropertyAccess<BraAccountDTO> {
-        ValueProvider<BraAccountDTO, Double> balance();
+        ValueProvider<BraAccountDTO, Double> avalibleCash();
 
         ValueProvider<BraAccountDTO, String> braAccNo();
 

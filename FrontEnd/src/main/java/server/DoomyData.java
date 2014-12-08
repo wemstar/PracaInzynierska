@@ -73,7 +73,7 @@ public class DoomyData {
 
         BraAccountDTO dto = new BraAccountDTO();
         dto.setBraAccNo("1");
-        dto.setBalance(10.0);
+        dto.setAvalibleCash(20.0);
 
         return dto;
     }
@@ -83,7 +83,7 @@ public class DoomyData {
 
         BraAccountDTO dto = new BraAccountDTO();
         dto.setBraAccNo("2");
-        dto.setBalance(20.0);
+        dto.setAvalibleCash(30.0);
 
         return dto;
     }
@@ -93,7 +93,7 @@ public class DoomyData {
 
         BraAccountDTO dto = new BraAccountDTO();
         dto.setBraAccNo("3");
-        dto.setBalance(30.0);
+        dto.setAvalibleCash(40.0);
 
         return dto;
     }

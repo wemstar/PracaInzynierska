@@ -1,6 +1,62 @@
-<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
-             xmlns:g='urn:import:com.google.gwt.user.client.ui'>
-    <div>
+<ui:UiBinder
+        xmlns:ui='urn:ui:com.google.gwt.uibinder'
+        xmlns:g="urn:import:com.google.gwt.user.client.ui"
+        xmlns:c="urn:import:com.sencha.gxt.widget.core.client"
+        xmlns:container="urn:import:com.sencha.gxt.widget.core.client.container"
+        xmlns:form="urn:import:com.sencha.gxt.widget.core.client.form"
+        xmlns:button="urn:import:com.sencha.gxt.widget.core.client.button"
+        xmlns:grid="urn:import:com.sencha.gxt.widget.core.client.grid">
 
-    </div>
+    <ui:with type="com.sencha.gxt.data.shared.ListStore" field="listStore"/>
+    <ui:with type="com.sencha.gxt.widget.core.client.grid.ColumnModel" field="columnModel"/>
+    <ui:with type="com.sencha.gxt.widget.core.client.grid.GridView" field="gridView"/>
+    <ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData"
+             field="verticalLayoutData">
+        <ui:attributes width="1" height="-1"/>
+    </ui:with>
+
+
+    <g:VerticalPanel spacing="10">
+
+        <c:FramedPanel headingText="Szczegóły rachunku" bodyStyle="background: none; padding: 15px">
+            <container:VerticalLayoutContainer>
+
+                <container:child layoutData="{verticalLayoutData}">
+                    <form:FieldLabel text="Numer">
+                        <form:widget>
+                            <form:TextField ui:field="braAccNo" allowBlank="false" emptyText="Enter account number"/>
+                        </form:widget>
+                    </form:FieldLabel>
+                </container:child>
+
+                <container:child layoutData="{verticalLayoutData}">
+                    <form:FieldLabel text="Dostępne Środki">
+                        <form:widget>
+                            <form:TextField ui:field="avalibleCashStr"/>
+                        </form:widget>
+                    </form:FieldLabel>
+                </container:child>
+
+                <container:child layoutData="{verticalLayoutData}">
+                    <form:FieldLabel text="Zablokowane Środki">
+                        <form:widget>
+                            <form:TextField ui:field="blockCashStr"/>
+                        </form:widget>
+                    </form:FieldLabel>
+                </container:child>
+
+                <container:child layoutData="{verticalLayoutData}">
+                    <grid:Grid ui:field="grid" store="{listStore}" cm="{columnModel}" view="{gridView}"/>
+                </container:child>
+
+
+                <button:TextButton text="Save" ui:field="save"/>
+            </container:VerticalLayoutContainer>
+
+
+        </c:FramedPanel>
+
+
+    </g:VerticalPanel>
+
 </ui:UiBinder>

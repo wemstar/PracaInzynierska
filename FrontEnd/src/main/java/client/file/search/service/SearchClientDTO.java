@@ -4,6 +4,7 @@ import client.bra.account.service.BraAccountDTO;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class SearchClientDTO implements Serializable {
     private Date dateOfBirth;
     private String pesel;
     private String clientNo;
-    private List<BraAccountDTO> braAccount;
+    private List<BraAccountDTO> braAccount = new ArrayList<BraAccountDTO>();
 
     public List<BraAccountDTO> getBraAccount() {
         return braAccount;

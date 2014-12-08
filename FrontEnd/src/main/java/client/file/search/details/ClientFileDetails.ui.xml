@@ -22,8 +22,10 @@
 
 
     <container:HorizontalLayoutContainer>
-        <container:child layoutData="{horizontalLayoutData}" >
-            <c:FramedPanel headingText="Simple Form" bodyStyle="background: none; padding: 15px;">
+        <container:child layoutData="{horizontalLayoutData}">
+            <container:VerticalLayoutContainer>
+                <container:child>
+                    <c:FramedPanel headingText="Kratoteka Klienta" bodyStyle="background: none; padding: 15px;">
                 <container:VerticalLayoutContainer>
 
                     <container:child layoutData="{verticalLayoutData}">
@@ -71,7 +73,16 @@
 
 
             </c:FramedPanel>
+                </container:child>
+
+
+                <container:child>
+                    <c:FramedPanel headingText="Rachunek Brokerski" bodyStyle="background: none; padding: 15px;"
+                                   ui:field="braAccountDetails"/>
+                </container:child>
+            </container:VerticalLayoutContainer>
         </container:child>
+
         <container:child layoutData="{horizontalLayoutData}">
             <g:FlowPanel ui:field="chart"></g:FlowPanel>
         </container:child>

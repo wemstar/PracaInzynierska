@@ -1,9 +1,17 @@
 package client;
 
+import client.bra.account.service.BraAccountDTO;
+import client.events.BraAccountContextChangeHandler;
+import client.events.BraAccountEvent;
+import client.events.ClientContextChange;
+import client.events.ClientContextChangeHandler;
 import client.file.search.details.ClientFileDetails;
 import client.file.search.service.SearchClientDTO;
 import client.images.Images;
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.shared.EventBus;
+import com.google.gwt.event.shared.SimpleEventBus;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.RootPanel;
@@ -20,6 +28,7 @@ import com.sencha.gxt.widget.core.client.container.MarginData;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
+import com.sencha.gxt.widget.core.client.info.Info;
 import com.sencha.gxt.widget.core.client.toolbar.ToolBar;
 
 /**
@@ -28,7 +37,9 @@ import com.sencha.gxt.widget.core.client.toolbar.ToolBar;
 public class MainModule implements IsWidget, EntryPoint {
 
 
-    public static SearchClientDTO context;
+    public static EventBus EVENT_BUS = GWT.create(SimpleEventBus.class);
+    public SearchClientDTO context;
+    public BraAccountDTO braContext;
     private FlowLayoutContainer con;
     private SamplePanel panel;
 
@@ -38,6 +49,21 @@ public class MainModule implements IsWidget, EntryPoint {
             con.getScrollSupport().setScrollMode(ScrollMode.AUTO);
 
             con.add(createMulti(), new MarginData(10));
+            EVENT_BUS.addHandler(BraAccountEvent.TYPE, new BraAccountContextChangeHandler() {
+                @Override
+                public void onBraAccountContextChangeHandler(BraAccountEvent event) {
+                    braContext = event.getBraAccount();
+                    Info.display("Kontekst Rachunku", event.getBraAccount().getBraAccNo());
+                }
+            });
+            EVENT_BUS.addHandler(ClientContextChange.TYPE, new ClientContextChangeHandler() {
+                @Override
+                public void onClientContextChange(ClientContextChange event) {
+                    context = event.getClientDetails();
+                    Info.display("Kontekst Klienta", event.getClientDetails().getName());
+
+                }
+            });
         }
         return con;
     }
@@ -81,13 +107,24 @@ public class MainModule implements IsWidget, EntryPoint {
         btn.addSelectHandler(new SelectEvent.SelectHandler() {
             @Override
             public void onSelect(SelectEvent event) {
+                ClientFileDetails details = Windows.aClientFileDetailsPanel();
+                details.setClientFile(context);
 
-                panel.addTab(Windows.aClientFileDetailsPanel(), ClientFileDetails.title);
+                panel.addTab(details, ClientFileDetails.title);
             }
         });
         table.setWidget(0, 1, btn);
 
-        btn = new TextButton("To do");
+        btn = new TextButton("Nowa Kartoteka");
+        btn.setIcon(Images.INSTANCE.details32());
+        btn.setIconAlign(IconAlign.TOP);
+        btn.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent event) {
+
+                panel.addTab(Windows.aNewClientFilePanel(), "Nowa Kartoteka");
+            }
+        });
         table.setWidget(1, 0, btn);
         // //
         btn = new TextButton("To Do");
