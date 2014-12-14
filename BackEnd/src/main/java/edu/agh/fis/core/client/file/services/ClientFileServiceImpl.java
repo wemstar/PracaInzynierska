@@ -5,6 +5,7 @@ import edu.agh.fis.core.client.file.presistance.ClientFileDao;
 import edu.agh.fis.entity.client.file.ClientFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -12,6 +13,7 @@ import java.util.List;
  * Created by wemstar on 06.09.14.
  */
 @Service
+@Transactional
 public class ClientFileServiceImpl implements ClientFileService {
 
 

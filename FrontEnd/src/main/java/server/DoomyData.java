@@ -88,8 +88,8 @@ public class DoomyData {
         List<InstrumentInfoDTO> intrumentInfo = new ArrayList<InstrumentInfoDTO>();
         for (InstrumentDTO instrument : instruments) {
             InstrumentInfoDTO info = new InstrumentInfoDTO();
-            info.setAmmount(20.0);
-            info.setBlocked(5.0);
+            info.setAmmount(20L);
+            info.setBlocked(5L);
             info.setInstrument(instrument);
             intrumentInfo.add(info);
         }
@@ -108,8 +108,9 @@ public class DoomyData {
         List<InstrumentInfoDTO> intrumentInfo = new ArrayList<InstrumentInfoDTO>();
         for (InstrumentDTO instrument : instruments) {
             InstrumentInfoDTO info = new InstrumentInfoDTO();
-            info.setAmmount(20.0);
-            info.setBlocked(5.0);
+            info.setAmmount(20L);
+            info.setBlocked(5L);
+            ;
             info.setInstrument(instrument);
             intrumentInfo.add(info);
         }
@@ -129,8 +130,8 @@ public class DoomyData {
         List<InstrumentInfoDTO> intrumentInfo = new ArrayList<InstrumentInfoDTO>();
         for (InstrumentDTO instrument : instruments) {
             InstrumentInfoDTO info = new InstrumentInfoDTO();
-            info.setAmmount(20.0);
-            info.setBlocked(5.0);
+            info.setAmmount(20L);
+            info.setBlocked(5L);
             info.setInstrument(instrument);
             intrumentInfo.add(info);
         }

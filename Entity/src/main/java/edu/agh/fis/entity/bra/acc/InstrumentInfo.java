@@ -12,8 +12,8 @@ import javax.persistence.*;
 public class InstrumentInfo {
 
     @Id
-    @GeneratedValue
     @Column(name = "INSTR_INFO_ID")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     @ManyToOne(cascade = CascadeType.ALL)
@@ -26,7 +26,7 @@ public class InstrumentInfo {
     @Column(name = "INSTR_INFO_BLOCKED")
     private long blocked;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     @JoinColumn(name = "INSTR_INFO_BRA_ACCOUNT")
     private BraAccount braAccount;
 

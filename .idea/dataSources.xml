@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="2301791966">
+  <component name="DataSourceManagerImpl" format="xml" hash="3759362036">
     <data-source source="LOCAL" name="hibernate.cfg.xml" uuid="2d8591f1-601e-4fcd-8d3f-329fbfdb34e0">
       <driver-ref>hsqldb.remote</driver-ref>
       <jdbc-driver>org.hsqldb.jdbcDriver</jdbc-driver>
@@ -31,6 +31,20 @@
           <url>file://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.hsqldb/hsqldb/2.3.2/970fd7b8f635e2c19305160459649569655b843c/hsqldb-2.3.2.jar</url>
         </library>
       </libraries>
+    </data-source>
+    <data-source source="LOCAL" name="MySQL - PracaInzynierska@173.194.244.112" uuid="bdcab2ce-732c-4928-96a9-d721cdbdcf79">
+      <driver-ref>mysql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://173.194.244.112/PracaInzynierska</jdbc-url>
+      <driver-properties>
+        <property name="zeroDateTimeBehavior" value="convertToNull" />
+        <property name="tinyInt1isBit" value="false" />
+        <property name="characterEncoding" value="utf8" />
+        <property name="characterSetResults" value="utf8" />
+        <property name="yearIsDateType" value="false" />
+      </driver-properties>
+      <libraries />
     </data-source>
   </component>
 </project>

@@ -17,6 +17,7 @@ public class ClientFile {
 
     @Column(unique = true, name = "CLIENT_NUMBER", nullable = false)
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long clientNo;
 
     @Column(name = "CLIENT_NAME")
@@ -32,9 +33,20 @@ public class ClientFile {
     private String pesel;
 
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "clientFile", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "clientFile")
     private Set<BraAccount> account;
 
+    @Override
+    public String toString() {
+        return "ClientFile{" +
+                "account=" + account +
+                ", clientNo=" + clientNo +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
+                ", pesel='" + pesel + '\'' +
+                '}';
+    }
 
     public Long getClientNo() {
         return clientNo;

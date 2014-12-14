@@ -13,10 +13,9 @@ import java.lang.reflect.Type;
 @Transactional
 public abstract class AbstractDAOImpl<T> implements AbstractDAO<T> {
 
+    private final Class<T> type;
     @Autowired
     protected SessionFactory sessionFactory;
-
-    private final Class<T> type;
 
     public AbstractDAOImpl() {
         Type t = getClass().getGenericSuperclass();
@@ -26,7 +25,7 @@ public abstract class AbstractDAOImpl<T> implements AbstractDAO<T> {
 
     @Override
     public T create(final T t) {
-        this.sessionFactory.getCurrentSession().persist(t);
+        this.sessionFactory.getCurrentSession().save(t);
         return t;
     }
 

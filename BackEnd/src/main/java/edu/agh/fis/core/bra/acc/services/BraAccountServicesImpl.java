@@ -6,6 +6,7 @@ import edu.agh.fis.entity.bra.acc.BraAccount;
 import edu.agh.fis.entity.client.file.ClientFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
 
@@ -13,6 +14,7 @@ import java.util.HashSet;
  * Created by wemstar on 25.09.14.
  */
 @Service
+@Transactional
 public class BraAccountServicesImpl implements BraAccountServices {
 
     @Autowired
@@ -46,9 +48,10 @@ public class BraAccountServicesImpl implements BraAccountServices {
 
         ClientFile clientFile = clientFileDao.find(clientNo);
         if (clientFile.getAccount() == null) clientFile.setAccount(new HashSet<BraAccount>());
+        braAccount.setClientFile(clientFile);
         BraAccount braAccount1 = braAccountDao.create(braAccount);
-        clientFile.getAccount().add(braAccount);
-        clientFileDao.update(clientFile);
+
+
         return braAccount1;
     }
 }

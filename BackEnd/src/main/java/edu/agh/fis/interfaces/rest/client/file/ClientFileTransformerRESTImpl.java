@@ -5,6 +5,7 @@ import edu.agh.fis.entity.client.file.ClientFile;
 import edu.agh.fis.utils.transform.TransformFromDTO;
 import edu.agh.fis.utils.transform.TransformFromEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +17,7 @@ import static edu.agh.fis.builder.entity.client.file.ClientFileBuilder.aClientFi
  * Created by wemstar on 02.10.14.
  */
 @Component
+@Transactional
 public class ClientFileTransformerRESTImpl implements ClientFileTransformerREST {
 
 

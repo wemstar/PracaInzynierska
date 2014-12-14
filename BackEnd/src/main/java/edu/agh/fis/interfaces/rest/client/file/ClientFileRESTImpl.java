@@ -13,6 +13,7 @@ import java.util.List;
 /**
  * Created by wemstar on 06.09.14.
  */
+
 @RestController
 @RequestMapping("/client/file")
 public class ClientFileRESTImpl implements ClientFileREST {
@@ -28,7 +29,6 @@ public class ClientFileRESTImpl implements ClientFileREST {
 
     @Override
     @RequestMapping(value = "/{clientNo}", method = RequestMethod.GET)
-
     public ClientFileDTO getClientFile(@PathVariable long clientNo) {
         logger.info("HURA działa");
         return transformer.entityToTransport(clientFileService.getByClientNo(clientNo));
@@ -62,6 +62,7 @@ public class ClientFileRESTImpl implements ClientFileREST {
 
     @Override
     @RequestMapping(value = "/template", method = RequestMethod.POST)
+
     public List<ClientFileDTO> getClientsByTemplate(@RequestBody ClientFileDTO template) {
         return transformer.entityToTransportList(clientFileService.getByTemplate(transformer.transportToEntity(template)));
     }

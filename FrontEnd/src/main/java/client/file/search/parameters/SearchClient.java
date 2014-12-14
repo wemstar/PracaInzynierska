@@ -3,7 +3,6 @@ package client.file.search.parameters;
 import client.file.search.grid.SearchResult;
 import client.file.search.service.ClientFileDTO;
 import client.file.search.service.ClientFileService;
-import client.file.search.service.ClientFileServiceAsync;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.editor.client.Editor;
 import com.google.gwt.editor.client.SimpleBeanEditorDriver;
@@ -57,12 +56,12 @@ public class SearchClient extends Composite implements Editor<ClientFileDTO> {
         }
 
         public void onSuccess(List<ClientFileDTO> results) {
-
-            result.setResult(results);
             Info.display("Wyszukiwanie", "Wyszukano " + results.size() + " wyników");
+            result.setResult(results);
+
         }
     };
-    private ClientFileServiceAsync stockPriceSvc = GWT.create(ClientFileService.class);
+
 
     public SearchClient() {
         initWidget(uiBinder.createAndBindUi(this));
@@ -77,7 +76,7 @@ public class SearchClient extends Composite implements Editor<ClientFileDTO> {
 
         logger.log(Level.WARNING, person.toString());
 
-        stockPriceSvc.findClients(person, callback);
+        ClientFileService.App.getInstance().findClients(person, callback);
     }
 
     public SearchResult getResult() {

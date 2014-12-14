@@ -1,5 +1,7 @@
 package client.bra.account.service;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +42,7 @@ public class BraAccountDTO implements Serializable {
         this.blockCash = blockCash;
     }
 
+    @JsonIgnore
     public String getBlockCashStr() {
         return blockCash.toString();
     }
@@ -56,6 +59,7 @@ public class BraAccountDTO implements Serializable {
         this.avalibleCash = avalibleCash;
     }
 
+    @JsonIgnore
     public String getAvalibleCashStr() {
         return avalibleCash.toString();
     }

@@ -114,8 +114,8 @@ public class BraAccountDetails extends Composite implements Editor<BraAccountDTO
 
     private ColumnModel<InstrumentInfoDTO> initColumnModel() {
         ColumnConfig<InstrumentInfoDTO, InstrumentDTO> instrumentCol = new ColumnConfig<InstrumentInfoDTO, InstrumentDTO>(gridProperties.instrument(), 150, "Instrument");
-        ColumnConfig<InstrumentInfoDTO, Double> ammountCol = new ColumnConfig<InstrumentInfoDTO, Double>(gridProperties.ammount(), 150, "Ilość");
-        ColumnConfig<InstrumentInfoDTO, Double> blockedCol = new ColumnConfig<InstrumentInfoDTO, Double>(gridProperties.blocked(), 150, "Zablokowana");
+        ColumnConfig<InstrumentInfoDTO, Long> ammountCol = new ColumnConfig<InstrumentInfoDTO, Long>(gridProperties.ammount(), 150, "Ilość");
+        ColumnConfig<InstrumentInfoDTO, Long> blockedCol = new ColumnConfig<InstrumentInfoDTO, Long>(gridProperties.blocked(), 150, "Zablokowana");
 
         List<ColumnConfig<InstrumentInfoDTO, ?>> columns = new ArrayList<ColumnConfig<InstrumentInfoDTO, ?>>();
         columns.add(instrumentCol);
@@ -167,9 +167,9 @@ public class BraAccountDetails extends Composite implements Editor<BraAccountDTO
 
         ValueProvider<InstrumentInfoDTO, InstrumentDTO> instrument();
 
-        ValueProvider<InstrumentInfoDTO, Double> ammount();
+        ValueProvider<InstrumentInfoDTO, Long> ammount();
 
-        ValueProvider<InstrumentInfoDTO, Double> blocked();
+        ValueProvider<InstrumentInfoDTO, Long> blocked();
 
     }
 }

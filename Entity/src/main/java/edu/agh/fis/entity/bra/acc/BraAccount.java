@@ -14,11 +14,12 @@ public class BraAccount {
 
     @Id
     @Column(name = "BRA_ACCOUNT_ID")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "BRA_CLIENT_FILE_ID")
+    @ManyToOne()
+    @JoinColumn(name = "BRA_CLIENT_FILE_ID", nullable = false)
     private ClientFile clientFile;
 
     @Column(name = "BRA_AVALIBLE_CASH")
@@ -28,8 +29,7 @@ public class BraAccount {
     private double blockCash;
 
 
-
-    @OneToMany(mappedBy = "braAccount", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @OneToMany(mappedBy = "braAccount", fetch = FetchType.LAZY)
     private Set<InstrumentInfo> instruments;
 
     public Set<InstrumentInfo> getInstruments() {

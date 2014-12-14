@@ -50,7 +50,7 @@ public class ClientFileTest extends AbstractTestNGSpringContextTests {
 
         //given
         ClientFileDTO clientFileDTO1 = aClientFileTransport()
-                .clientNo(1l)
+                //.clientNo(1l)
                 .dateOfBirth(new Date())
                 .name("test1")
                 .surname("SuperTest1")
@@ -59,7 +59,7 @@ public class ClientFileTest extends AbstractTestNGSpringContextTests {
                                 aBraAccountDTO()
                                         .avalibleCash(200.0)
                                         .blockCash(85.0)
-                                        .braAccNo(2)
+                                                //.braAccNo(2)
                                         .instruments(new HashSet<InstrumentInfoDTO>(Arrays.asList(new InstrumentInfoDTO[]
                                                         {
                                                                 anInstrumentInfoDTO()
@@ -77,6 +77,7 @@ public class ClientFileTest extends AbstractTestNGSpringContextTests {
                 ))).build();
 
         //when
+        clientFileDTO1.setClientNo(1);
         mockMvc.perform(post("/client/file")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(convertObjectToJsonBytes(clientFileDTO1)))
