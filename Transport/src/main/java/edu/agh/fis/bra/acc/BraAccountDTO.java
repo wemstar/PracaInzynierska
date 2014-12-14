@@ -11,6 +11,15 @@ public class BraAccountDTO {
     private double balance;
     private Set<InstrumentInfoDTO> instruments;
 
+    @Override
+    public String toString() {
+        return "BraAccountDTO{" +
+                "balance=" + balance +
+                ", braAccNo=" + braAccNo +
+                ", instruments=" + instruments +
+                '}';
+    }
+
     public long getBraAccNo() {
         return braAccNo;
     }

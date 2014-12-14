@@ -17,7 +17,7 @@ public class ClientFile {
 
     @Column(unique = true, name = "CLIENT_NUMBER", nullable = false)
     @Id
-    private long clientNo;
+    private Long clientNo;
 
     @Column(name = "CLIENT_NAME")
     private String name;
@@ -36,11 +36,11 @@ public class ClientFile {
     private Set<BraAccount> account;
 
 
-    public long getClientNo() {
+    public Long getClientNo() {
         return clientNo;
     }
 
-    public void setClientNo(long clientNo) {
+    public void setClientNo(Long clientNo) {
         this.clientNo = clientNo;
     }
 

@@ -7,17 +7,17 @@
         xmlns:button="urn:import:com.sencha.gxt.widget.core.client.button">
 
     <ui:with type="com.sencha.gxt.core.client.util.Margins" field="margins">
-        <ui:attributes top="5" right="5" bottom="5" left="5" />
+        <ui:attributes top="5" right="5" bottom="5" left="5"/>
     </ui:with>
 
     <ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData"
              field="verticalLayoutData">
-        <ui:attributes width="1" height="-1" />
+        <ui:attributes width="1" height="-1"/>
 
     </ui:with>
     <ui:with type="com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer.HorizontalLayoutData"
              field="horizontalLayoutData">
-        <ui:attributes width="0.48" height="1" margins="{margins}"/>
+        <ui:attributes width="0.50" height="1" margins="{margins}"/>
     </ui:with>
 
 
@@ -26,59 +26,73 @@
             <container:VerticalLayoutContainer>
                 <container:child>
                     <c:FramedPanel headingText="Kratoteka Klienta" bodyStyle="background: none; padding: 15px;">
-                <container:VerticalLayoutContainer>
+                        <container:VerticalLayoutContainer>
+                            <container:child layoutData="{verticalLayoutData}">
+                                <form:FieldLabel text="Client Number">
+                                    <form:widget>
+                                        <form:TextField ui:field="clientNo" enabled="false"/>
+                                    </form:widget>
+                                </form:FieldLabel>
+                            </container:child>
 
-                    <container:child layoutData="{verticalLayoutData}">
-                        <form:FieldLabel text="Name">
-                            <form:widget>
-                                <form:TextField ui:field="name" readOnly="true"/>
-                            </form:widget>
-                        </form:FieldLabel>
-                    </container:child>
+                            <container:child layoutData="{verticalLayoutData}">
+                                <form:FieldLabel text="Name">
+                                    <form:widget>
+                                        <form:TextField ui:field="name" allowBlank="false"/>
+                                    </form:widget>
+                                </form:FieldLabel>
+                            </container:child>
 
-                    <container:child layoutData="{verticalLayoutData}">
-                        <form:FieldLabel text="Surname">
-                            <form:widget>
-                                <form:TextField ui:field="surname" readOnly="true"/>
-                            </form:widget>
-                        </form:FieldLabel>
-                    </container:child>
+                            <container:child layoutData="{verticalLayoutData}">
+                                <form:FieldLabel text="Surname">
+                                    <form:widget>
+                                        <form:TextField ui:field="surname" allowBlank="false"/>
+                                    </form:widget>
+                                </form:FieldLabel>
+                            </container:child>
 
-                    <container:child layoutData="{verticalLayoutData}">
-                        <form:FieldLabel text="Birthday">
-                            <form:widget>
-                                <form:DateField ui:field="dateOfBirth" readOnly="true"/>
-                            </form:widget>
-                        </form:FieldLabel>
-                    </container:child>
+                            <container:child layoutData="{verticalLayoutData}">
+                                <form:FieldLabel text="Birthday">
+                                    <form:widget>
+                                        <form:DateField ui:field="dateOfBirth" allowBlank="false"/>
+                                    </form:widget>
+                                </form:FieldLabel>
+                            </container:child>
 
-                    <container:child layoutData="{verticalLayoutData}">
-                        <form:FieldLabel text="Email">
-                            <form:widget>
-                                <form:TextField ui:field="pesel" readOnly="true"/>
-                            </form:widget>
-                        </form:FieldLabel>
-                    </container:child>
-                    <container:child layoutData="{verticalLayoutData}">
-                        <form:FieldLabel text="Client Number">
-                            <form:widget>
-                                <form:TextField ui:field="clientNo" readOnly="true"/>
-                            </form:widget>
-                        </form:FieldLabel>
-                    </container:child>
-
-                    <button:TextButton text="Save" ui:field="search"/>
-
-                </container:VerticalLayoutContainer>
+                            <container:child layoutData="{verticalLayoutData}">
+                                <form:FieldLabel text="Email">
+                                    <form:widget>
+                                        <form:TextField ui:field="pesel" allowBlank="false"/>
+                                    </form:widget>
+                                </form:FieldLabel>
+                            </container:child>
 
 
-            </c:FramedPanel>
+                        </container:VerticalLayoutContainer>
+
+
+                    </c:FramedPanel>
                 </container:child>
 
 
-                <container:child>
-                    <c:FramedPanel headingText="Rachunek Brokerski" bodyStyle="background: none; padding: 15px;"
-                                   ui:field="braAccountDetails"/>
+                <container:child layoutData="{verticalLayoutData}">
+
+                    <c:FramedPanel headingText="Szczegóły rachunku" ui:field="braAccountDetailsPanel"
+                                   layoutData="{verticalLayoutData}"></c:FramedPanel>
+                </container:child>
+                <container:child layoutData="{verticalLayoutData}">
+                    <c:FramedPanel headingText="Akcje Kartoteki" buttonAlign="START">
+                        <c:button>
+                            <button:TextButton text="Edytuj" ui:field="bEdit"/>
+                        </c:button>
+                        <c:button>
+                            <button:TextButton text="Zapisz" ui:field="bSave"/>
+                        </c:button>
+                        <c:button>
+                            <button:TextButton text="Usuń" ui:field="bDelete"/>
+                        </c:button>
+
+                    </c:FramedPanel>
                 </container:child>
             </container:VerticalLayoutContainer>
         </container:child>

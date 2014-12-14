@@ -6,6 +6,8 @@ import edu.agh.fis.entity.client.file.ClientFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by wemstar on 06.09.14.
  */
@@ -35,5 +37,10 @@ public class ClientFileServiceImpl implements ClientFileService {
     @Override
     public void deleteClientFile(long clientNo) {
         clientFileDao.delete(clientNo);
+    }
+
+    @Override
+    public List<ClientFile> getByTemplate(ClientFile template) {
+        return clientFileDao.findByTemplete(template);
     }
 }

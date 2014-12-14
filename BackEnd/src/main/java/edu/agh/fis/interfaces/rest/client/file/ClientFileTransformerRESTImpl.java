@@ -6,6 +6,9 @@ import edu.agh.fis.utils.transform.TransformFromDTO;
 import edu.agh.fis.utils.transform.TransformFromEntity;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static edu.agh.fis.builder.client.file.ClientFileDTOBuilder.aClientFileTransport;
 import static edu.agh.fis.builder.entity.client.file.ClientFileBuilder.aClientFile;
 
@@ -42,6 +45,14 @@ public class ClientFileTransformerRESTImpl implements ClientFileTransformerREST 
                 .surname(clientFile.getSurname())
                 .accounts(TransformFromEntity.braAccounts(clientFile.getAccount()))
                 .build() : null;
+    }
+
+    @Override
+    public List<ClientFileDTO> entityToTransportList(List<ClientFile> byTemplate) {
+
+        List<ClientFileDTO> list = new ArrayList<ClientFileDTO>();
+        for (ClientFile file : byTemplate) list.add(entityToTransport(file));
+        return list;
     }
 
 

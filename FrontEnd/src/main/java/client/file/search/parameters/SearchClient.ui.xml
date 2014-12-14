@@ -18,9 +18,17 @@
             <container:VerticalLayoutContainer>
 
                 <container:child layoutData="{verticalLayoutData}">
+                    <form:FieldLabel text="Client Number">
+                        <form:widget>
+                            <form:TextField ui:field="clientNo"/>
+                        </form:widget>
+                    </form:FieldLabel>
+                </container:child>
+
+                <container:child layoutData="{verticalLayoutData}">
                     <form:FieldLabel text="Name">
                         <form:widget>
-                            <form:TextField ui:field="name" allowBlank="false" emptyText="Enter your name..."/>
+                            <form:TextField ui:field="name"/>
                         </form:widget>
                     </form:FieldLabel>
                 </container:child>
@@ -28,7 +36,7 @@
                 <container:child layoutData="{verticalLayoutData}">
                     <form:FieldLabel text="Surname">
                         <form:widget>
-                            <form:TextField ui:field="surname" allowBlank="false" emptyText="Enter your surname..."/>
+                            <form:TextField ui:field="surname"/>
                         </form:widget>
                     </form:FieldLabel>
                 </container:child>
@@ -44,17 +52,11 @@
                 <container:child layoutData="{verticalLayoutData}">
                     <form:FieldLabel text="Email">
                         <form:widget>
-                            <form:TextField ui:field="pesel" allowBlank="false"/>
+                            <form:TextField ui:field="pesel"/>
                         </form:widget>
                     </form:FieldLabel>
                 </container:child>
-                <container:child layoutData="{verticalLayoutData}">
-                    <form:FieldLabel text="Client Number">
-                        <form:widget>
-                            <form:TextField ui:field="clientNo" allowBlank="false"/>
-                        </form:widget>
-                    </form:FieldLabel>
-                </container:child>
+
 
                 <button:TextButton text="Search" ui:field="search"/>
             </container:VerticalLayoutContainer>

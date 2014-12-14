@@ -42,12 +42,10 @@ public class SearchResult extends Composite {
 
     @UiField(provided = true)
     ColumnModel<SearchClientDTO> columnModel;
-    private ContentPanel widget;
-
 
 
     public SearchResult() {
-        if (widget == null) {
+        if (columnModel == null) {
             columnModel = initColumModel();
             listStore = initListStore();
 
@@ -59,6 +57,11 @@ public class SearchResult extends Composite {
                 MainModule.EVENT_BUS.fireEvent(new ClientContextChange(event.getSelection().get(0)));
             }
         });
+    }
+
+    public void setResult(List<SearchClientDTO> result) {
+        listStore.clear();
+        listStore.addAll(result);
     }
 
     private ColumnModel<SearchClientDTO> initColumModel() {

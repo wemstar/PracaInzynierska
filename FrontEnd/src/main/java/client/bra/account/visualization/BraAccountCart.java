@@ -33,6 +33,7 @@ import com.sencha.gxt.widget.core.client.event.CollapseEvent.CollapseHandler;
 import com.sencha.gxt.widget.core.client.event.ExpandEvent;
 import com.sencha.gxt.widget.core.client.event.ExpandEvent.ExpandHandler;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -180,6 +181,10 @@ public class BraAccountCart extends Composite {
         chart.redrawChart();
 
 
+    }
+
+    public List<BraAccountDTO> getAccounts() {
+        return store.size() != 0 ? new ArrayList<BraAccountDTO>(store.getAll()) : new ArrayList<BraAccountDTO>();
     }
 
     public interface DataPropertyAccess extends PropertyAccess<BraAccountDTO> {

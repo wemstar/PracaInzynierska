@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * Created by wemstar on 06.09.14.
  */
@@ -56,6 +58,12 @@ public class ClientFileRESTImpl implements ClientFileREST {
     public void deleteClientFile(@PathVariable long clientNo) {
         clientFileService.deleteClientFile(clientNo);
 
+    }
+
+    @Override
+    @RequestMapping(value = "/template", method = RequestMethod.POST)
+    public List<ClientFileDTO> getClientsByTemplate(@RequestBody ClientFileDTO template) {
+        return transformer.entityToTransportList(clientFileService.getByTemplate(transformer.transportToEntity(template)));
     }
 
 

@@ -8,7 +8,7 @@
 
     <servlet>
         <servlet-name>MainModule ClientSearchService</servlet-name>
-        <servlet-class>server.file.search.ClientSearchServiceImpl</servlet-class>
+        <servlet-class>server.file.search.ClientFileServiceImpl</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>MainModule ClientSearchService</servlet-name>

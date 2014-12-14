@@ -17,6 +17,18 @@ public class ClientFileDTO implements Serializable {
     private Set<BraAccountDTO> accounts;
     private long clientNo;
 
+    @Override
+    public String toString() {
+        return "ClientFileDTO{" +
+                "accounts=" + accounts +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
+                ", pesel='" + pesel + '\'' +
+                ", clientNo=" + clientNo +
+                '}';
+    }
+
     public String getSurname() {
         return surname;
     }

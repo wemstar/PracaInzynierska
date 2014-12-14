@@ -1,9 +1,9 @@
 package client.file.search.parameters;
 
+import client.file.search.grid.SearchResult;
 import client.file.search.service.ClientSearchService;
 import client.file.search.service.ClientSearchServiceAsync;
 import client.file.search.service.SearchClientDTO;
-import client.file.search.grid.SearchResult;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.editor.client.Editor;
 import com.google.gwt.editor.client.SimpleBeanEditorDriver;
@@ -13,9 +13,11 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import com.sencha.gxt.widget.core.client.box.AlertMessageBox;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.form.DateField;
 import com.sencha.gxt.widget.core.client.form.TextField;
+import com.sencha.gxt.widget.core.client.info.Info;
 
 import java.util.List;
 import java.util.logging.Level;
@@ -42,11 +44,15 @@ public class SearchClient extends Composite implements Editor<SearchClientDTO> {
     private SearchResult result;
     AsyncCallback<List<SearchClientDTO>> callback = new AsyncCallback<List<SearchClientDTO>>() {
         public void onFailure(Throwable caught) {
-            // TODO: Do something with errors.
+            AlertMessageBox d = new AlertMessageBox("Wyszukiwanie", "Wyszukiwanie zakończone niepowodzeniem" + caught.toString());
+
+            d.show();
         }
 
-        public void onSuccess(List<SearchClientDTO> resul) {
-            result.grid.getStore().addAll(resul);
+        public void onSuccess(List<SearchClientDTO> results) {
+
+            result.setResult(results);
+            Info.display("Wyszukiwanie", "Wyszukano " + results.size() + " wyników");
         }
     };
     private ClientSearchServiceAsync stockPriceSvc = GWT.create(ClientSearchService.class);

@@ -13,6 +13,16 @@ public class BraAccountDTO implements Serializable {
     private Double blockCash;
     private List<InstrumentInfoDTO> instruments;
 
+    @Override
+    public String toString() {
+        return "BraAccountDTO{" +
+                "avalibleCash=" + avalibleCash +
+                ", braAccNo='" + braAccNo + '\'' +
+                ", blockCash=" + blockCash +
+                ", instruments=" + instruments +
+                '}';
+    }
+
     public List<InstrumentInfoDTO> getInstruments() {
         return instruments;
     }

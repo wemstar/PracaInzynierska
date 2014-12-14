@@ -11,6 +11,14 @@ public class InstrumentInfoDTO {
 
     private long quantity;
 
+    @Override
+    public String toString() {
+        return "InstrumentInfoDTO{" +
+                "definition=" + definition +
+                ", quantity=" + quantity +
+                '}';
+    }
+
     public InstrumentDefinitionDTO getDefinition() {
         return definition;
     }

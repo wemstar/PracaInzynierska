@@ -18,27 +18,29 @@ public class SearchClientDTO implements Serializable {
     private String surname;
     private Date dateOfBirth;
     private String pesel;
-    private String clientNo;
-    private List<BraAccountDTO> braAccount = new ArrayList<BraAccountDTO>();
-
-    public List<BraAccountDTO> getBraAccount() {
-        return braAccount;
-    }
-
-    public void setBraAccount(List<BraAccountDTO> braAccount) {
-        this.braAccount = braAccount;
-    }
+    private String clientNo = "";
+    private List<BraAccountDTO> accounts = new ArrayList<BraAccountDTO>();
 
     @Override
     public String toString() {
-        return "SearchcClientProxy{" +
-                "name='" + name + '\'' +
+        return "SearchClientDTO{" +
+                "accounts=" + accounts +
+                ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", dateOfBirth=" + dateOfBirth +
                 ", pesel='" + pesel + '\'' +
-                ", clientNo=" + clientNo +
+                ", clientNo='" + clientNo + '\'' +
                 '}';
     }
+
+    public List<BraAccountDTO> getAccounts() {
+        return accounts;
+    }
+
+    public void setAccounts(List<BraAccountDTO> accounts) {
+        this.accounts = accounts;
+    }
+
 
     public String getPesel() {
         return pesel;

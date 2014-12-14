@@ -12,7 +12,7 @@
     <inherits name="com.sencha.gxt.chart.Chart"/>
 
     <entry-point class='client.MainModule'/>
-    <servlet path="/ClientSearchService" class="server.file.search.ClientSearchServiceImpl"/>
+    <servlet path="/ClientSearchService" class="server.file.search.ClientFileServiceImpl"/>
     <servlet path="/NewOrderService" class="server.order.NewOrderServiceImpl"/>
     <add-linker name="xsiframe"/>
     <set-configuration-property name="devModeRedirectEnabled" value="true"/>

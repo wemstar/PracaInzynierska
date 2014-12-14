@@ -18,13 +18,13 @@
 
     <g:VerticalPanel spacing="10">
 
-        <c:FramedPanel headingText="Szczegóły rachunku" bodyStyle="background: none; padding: 15px">
+
             <container:VerticalLayoutContainer>
 
                 <container:child layoutData="{verticalLayoutData}">
                     <form:FieldLabel text="Numer">
                         <form:widget>
-                            <form:TextField ui:field="braAccNo" allowBlank="false" emptyText="Enter account number"/>
+                            <form:TextField ui:field="braAccNo" enabled="false"/>
                         </form:widget>
                     </form:FieldLabel>
                 </container:child>
@@ -48,13 +48,23 @@
                 <container:child layoutData="{verticalLayoutData}">
                     <grid:Grid ui:field="grid" store="{listStore}" cm="{columnModel}" view="{gridView}"/>
                 </container:child>
+                <container:child layoutData="{verticalLayoutData}">
+                    <c:FramedPanel headingText="Akcje Rachunku" buttonAlign="START">
+                        <c:button>
+                            <button:TextButton text="Dodaj" ui:field="bAdd"/>
+                        </c:button>
+                        <c:button>
+                            <button:TextButton text="Zapisz" ui:field="bSave"/>
+                        </c:button>
+                        <c:button>
+                            <button:TextButton text="Usuń" ui:field="bDelete"/>
+                        </c:button>
+
+                    </c:FramedPanel>
+                </container:child>
 
 
-                <button:TextButton text="Save" ui:field="save"/>
             </container:VerticalLayoutContainer>
-
-
-        </c:FramedPanel>
 
 
     </g:VerticalPanel>
