@@ -1,9 +1,9 @@
 package client.file.search.parameters;
 
 import client.file.search.grid.SearchResult;
-import client.file.search.service.ClientSearchService;
-import client.file.search.service.ClientSearchServiceAsync;
-import client.file.search.service.SearchClientDTO;
+import client.file.search.service.ClientFileDTO;
+import client.file.search.service.ClientFileService;
+import client.file.search.service.ClientFileServiceAsync;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.editor.client.Editor;
 import com.google.gwt.editor.client.SimpleBeanEditorDriver;
@@ -26,47 +26,54 @@ import java.util.logging.Logger;
 /**
  * Created by wemstar on 08.11.14.
  */
-public class SearchClient extends Composite implements Editor<SearchClientDTO> {
+public class SearchClient extends Composite implements Editor<ClientFileDTO> {
 
     private static final PersonDriver driver = GWT.create(PersonDriver.class);
     private static final MyUiBinder uiBinder = GWT.create(MyUiBinder.class);
     public final Logger logger = Logger.getLogger("NameOfYourLogger");
+
     @UiField
     public TextField name;
+
     @UiField
     public TextField surname;
+
     @UiField
     public DateField dateOfBirth;
+
     @UiField
     public TextField pesel;
+
     @UiField
     public TextField clientNo;
+
     private SearchResult result;
-    AsyncCallback<List<SearchClientDTO>> callback = new AsyncCallback<List<SearchClientDTO>>() {
+
+    AsyncCallback<List<ClientFileDTO>> callback = new AsyncCallback<List<ClientFileDTO>>() {
         public void onFailure(Throwable caught) {
             AlertMessageBox d = new AlertMessageBox("Wyszukiwanie", "Wyszukiwanie zakończone niepowodzeniem" + caught.toString());
 
             d.show();
         }
 
-        public void onSuccess(List<SearchClientDTO> results) {
+        public void onSuccess(List<ClientFileDTO> results) {
 
             result.setResult(results);
             Info.display("Wyszukiwanie", "Wyszukano " + results.size() + " wyników");
         }
     };
-    private ClientSearchServiceAsync stockPriceSvc = GWT.create(ClientSearchService.class);
+    private ClientFileServiceAsync stockPriceSvc = GWT.create(ClientFileService.class);
 
     public SearchClient() {
         initWidget(uiBinder.createAndBindUi(this));
 
         driver.initialize(this);
-        driver.edit(new SearchClientDTO());
+        driver.edit(new ClientFileDTO());
     }
 
     @UiHandler("search")
     public void search(SelectEvent event) {
-        SearchClientDTO person = driver.flush();
+        ClientFileDTO person = driver.flush();
 
         logger.log(Level.WARNING, person.toString());
 
@@ -83,7 +90,8 @@ public class SearchClient extends Composite implements Editor<SearchClientDTO> {
     }
 
 
-    public interface PersonDriver extends SimpleBeanEditorDriver<SearchClientDTO, SearchClient> {}
+    public interface PersonDriver extends SimpleBeanEditorDriver<ClientFileDTO, SearchClient> {
+    }
 
 
     public interface MyUiBinder extends UiBinder<VerticalPanel, SearchClient> {}

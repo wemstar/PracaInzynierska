@@ -7,5 +7,5 @@ import com.google.gwt.event.shared.EventHandler;
  */
 public interface BraAccountContextChangeHandler extends EventHandler {
 
-    void onBraAccountContextChangeHandler(BraAccountEvent event);
+    void onBraAccountContextChangeHandler(BraAccountContextChange event);
 }

@@ -35,7 +35,6 @@ public class BraAccountDTO implements Serializable {
         return blockCash;
     }
 
-
     public void setBlockCash(Double blockCash) {
         this.blockCash = blockCash;
     }
@@ -63,9 +62,6 @@ public class BraAccountDTO implements Serializable {
     public void setAvalibleCashStr(String value) {
         avalibleCash = Double.parseDouble(value);
     }
-
-
-
 
     public String getBraAccNo() {
         return braAccNo;

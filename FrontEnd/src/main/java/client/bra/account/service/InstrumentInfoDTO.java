@@ -8,7 +8,6 @@ import java.io.Serializable;
  * Created by wemstar on 08.12.14.
  */
 public class InstrumentInfoDTO implements Serializable {
-
     private InstrumentDTO instrument;
     private Double ammount;
     private Double blocked;
@@ -36,6 +35,4 @@ public class InstrumentInfoDTO implements Serializable {
     public void setInstrument(InstrumentDTO instrument) {
         this.instrument = instrument;
     }
-
-
 }

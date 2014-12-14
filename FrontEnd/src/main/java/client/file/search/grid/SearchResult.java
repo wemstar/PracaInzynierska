@@ -2,7 +2,7 @@ package client.file.search.grid;
 
 import client.MainModule;
 import client.events.ClientContextChange;
-import client.file.search.service.SearchClientDTO;
+import client.file.search.service.ClientFileDTO;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.editor.client.Editor;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -32,16 +32,16 @@ public class SearchResult extends Composite {
     private static final MyUiBinder uiBinder = GWT.create(MyUiBinder.class);
 
     @UiField(provided = true)
-    public ListStore<SearchClientDTO> listStore;
+    public ListStore<ClientFileDTO> listStore;
 
     @UiField
-    public GridView<SearchClientDTO> gridView;
+    public GridView<ClientFileDTO> gridView;
 
     @UiField
-    public Grid<SearchClientDTO> grid;
+    public Grid<ClientFileDTO> grid;
 
     @UiField(provided = true)
-    ColumnModel<SearchClientDTO> columnModel;
+    ColumnModel<ClientFileDTO> columnModel;
 
 
     public SearchResult() {
@@ -51,60 +51,58 @@ public class SearchResult extends Composite {
 
             initWidget(uiBinder.createAndBindUi(this));
         }
-        grid.getSelectionModel().addSelectionChangedHandler(new SelectionChangedEvent.SelectionChangedHandler<SearchClientDTO>() {
+        grid.getSelectionModel().addSelectionChangedHandler(new SelectionChangedEvent.SelectionChangedHandler<ClientFileDTO>() {
             @Override
-            public void onSelectionChanged(SelectionChangedEvent<SearchClientDTO> event) {
+            public void onSelectionChanged(SelectionChangedEvent<ClientFileDTO> event) {
                 MainModule.EVENT_BUS.fireEvent(new ClientContextChange(event.getSelection().get(0)));
             }
         });
     }
 
-    public void setResult(List<SearchClientDTO> result) {
+    public void setResult(List<ClientFileDTO> result) {
         listStore.clear();
         listStore.addAll(result);
     }
 
-    private ColumnModel<SearchClientDTO> initColumModel() {
-        ColumnConfig<SearchClientDTO, String> nameCol = new ColumnConfig<SearchClientDTO, String>(gridProperties.name(), 150, "Imię");
-        ColumnConfig<SearchClientDTO, String> surnameCol = new ColumnConfig<SearchClientDTO, String>(gridProperties.surname(), 100, "Nazwisko");
-        ColumnConfig<SearchClientDTO, String> peselCol = new ColumnConfig<SearchClientDTO, String>(gridProperties.pesel(), 100, "Pesel");
-        ColumnConfig<SearchClientDTO, Date> dateCol = new ColumnConfig<SearchClientDTO, Date>(gridProperties.dateOfBirth(), 100, "Data urodzenia");
-        ColumnConfig<SearchClientDTO, String> noCol = new ColumnConfig<SearchClientDTO, String>(gridProperties.clientNo(), 100, "Numer klienta");
+    private ColumnModel<ClientFileDTO> initColumModel() {
+        ColumnConfig<ClientFileDTO, String> nameCol = new ColumnConfig<ClientFileDTO, String>(gridProperties.name(), 150, "Imię");
+        ColumnConfig<ClientFileDTO, String> surnameCol = new ColumnConfig<ClientFileDTO, String>(gridProperties.surname(), 100, "Nazwisko");
+        ColumnConfig<ClientFileDTO, String> peselCol = new ColumnConfig<ClientFileDTO, String>(gridProperties.pesel(), 100, "Pesel");
+        ColumnConfig<ClientFileDTO, Date> dateCol = new ColumnConfig<ClientFileDTO, Date>(gridProperties.dateOfBirth(), 100, "Data urodzenia");
+        ColumnConfig<ClientFileDTO, String> noCol = new ColumnConfig<ClientFileDTO, String>(gridProperties.clientNo(), 100, "Numer klienta");
 
-        List<ColumnConfig<SearchClientDTO, ?>> columns = new ArrayList<ColumnConfig<SearchClientDTO, ?>>();
+        List<ColumnConfig<ClientFileDTO, ?>> columns = new ArrayList<ColumnConfig<ClientFileDTO, ?>>();
         columns.add(nameCol);
         columns.add(surnameCol);
         columns.add(peselCol);
         columns.add(dateCol);
         columns.add(noCol);
 
-
-        return new ColumnModel<SearchClientDTO>(columns);
+        return new ColumnModel<ClientFileDTO>(columns);
     }
 
-    private ListStore<SearchClientDTO> initListStore() {
+    private ListStore<ClientFileDTO> initListStore() {
 
-
-        return new ListStore<SearchClientDTO>(gridProperties.key());
+        return new ListStore<ClientFileDTO>(gridProperties.key());
     }
 
     public interface MyUiBinder extends UiBinder<ContentPanel, SearchResult> {
     }
 
-    interface SearchclientDtoProperties extends PropertyAccess<SearchClientDTO> {
+    interface SearchclientDtoProperties extends PropertyAccess<ClientFileDTO> {
 
         @Editor.Path("clientNo")
-        ModelKeyProvider<SearchClientDTO> key();
+        ModelKeyProvider<ClientFileDTO> key();
 
-        ValueProvider<SearchClientDTO, String> name();
+        ValueProvider<ClientFileDTO, String> name();
 
-        ValueProvider<SearchClientDTO, String> surname();
+        ValueProvider<ClientFileDTO, String> surname();
 
-        ValueProvider<SearchClientDTO, Date> dateOfBirth();
+        ValueProvider<ClientFileDTO, Date> dateOfBirth();
 
-        ValueProvider<SearchClientDTO, String> pesel();
+        ValueProvider<ClientFileDTO, String> pesel();
 
-        ValueProvider<SearchClientDTO, String> clientNo();
+        ValueProvider<ClientFileDTO, String> clientNo();
     }
 
 

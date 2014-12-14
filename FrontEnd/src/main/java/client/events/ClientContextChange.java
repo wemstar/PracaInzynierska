@@ -1,6 +1,6 @@
 package client.events;
 
-import client.file.search.service.SearchClientDTO;
+import client.file.search.service.ClientFileDTO;
 import com.google.gwt.event.shared.GwtEvent;
 
 /**
@@ -9,9 +9,9 @@ import com.google.gwt.event.shared.GwtEvent;
 public class ClientContextChange extends GwtEvent<ClientContextChangeHandler> {
 
     public static Type<ClientContextChangeHandler> TYPE = new Type<ClientContextChangeHandler>();
-    private SearchClientDTO clientDetails;
+    private ClientFileDTO clientDetails;
 
-    public ClientContextChange(SearchClientDTO clientDetails) {
+    public ClientContextChange(ClientFileDTO clientDetails) {
         this.clientDetails = clientDetails;
     }
 
@@ -26,11 +26,11 @@ public class ClientContextChange extends GwtEvent<ClientContextChangeHandler> {
 
     }
 
-    public SearchClientDTO getClientDetails() {
+    public ClientFileDTO getClientDetails() {
         return clientDetails;
     }
 
-    public void setClientDetails(SearchClientDTO clientDetails) {
+    public void setClientDetails(ClientFileDTO clientDetails) {
         this.clientDetails = clientDetails;
     }
 }

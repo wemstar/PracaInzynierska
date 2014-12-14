@@ -1,12 +1,12 @@
 package client;
 
 import client.bra.account.service.BraAccountDTO;
+import client.events.BraAccountContextChange;
 import client.events.BraAccountContextChangeHandler;
-import client.events.BraAccountEvent;
 import client.events.ClientContextChange;
 import client.events.ClientContextChangeHandler;
 import client.file.search.details.ClientFileDetails;
-import client.file.search.service.SearchClientDTO;
+import client.file.search.service.ClientFileDTO;
 import client.images.Images;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
@@ -38,7 +38,7 @@ public class MainModule implements IsWidget, EntryPoint {
 
 
     public static EventBus EVENT_BUS = GWT.create(SimpleEventBus.class);
-    public SearchClientDTO context;
+    public ClientFileDTO context;
     public BraAccountDTO braContext;
     private FlowLayoutContainer con;
     private SamplePanel panel;
@@ -49,9 +49,9 @@ public class MainModule implements IsWidget, EntryPoint {
             con.getScrollSupport().setScrollMode(ScrollMode.AUTO);
 
             con.add(createMulti(), new MarginData(10));
-            EVENT_BUS.addHandler(BraAccountEvent.TYPE, new BraAccountContextChangeHandler() {
+            EVENT_BUS.addHandler(BraAccountContextChange.TYPE, new BraAccountContextChangeHandler() {
                 @Override
-                public void onBraAccountContextChangeHandler(BraAccountEvent event) {
+                public void onBraAccountContextChangeHandler(BraAccountContextChange event) {
                     braContext = event.getBraAccount();
                     Info.display("Kontekst Rachunku", event.getBraAccount().getBraAccNo());
                 }
@@ -61,7 +61,6 @@ public class MainModule implements IsWidget, EntryPoint {
                 public void onClientContextChange(ClientContextChange event) {
                     context = event.getClientDetails();
                     Info.display("Kontekst Klienta", event.getClientDetails().getName());
-
                 }
             });
         }

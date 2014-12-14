@@ -14,18 +14,16 @@ import java.util.logging.Logger;
  * Created by wemstar on 30.11.14.
  */
 public class NewOrderServiceImpl extends RemoteServiceServlet implements NewOrderService {
+
     public final Logger logger = Logger.getLogger("NameOfYourLogger");
 
     @Override
     public List<InstrumentDTO> getInstruments() {
-
-
         return DoomyData.instrumentsList;
     }
 
     @Override
     public void createNewOrder(NewOrderDTO newOrder) {
         logger.log(Level.WARNING, "Złożono zlecenie " + newOrder);
-
     }
 }

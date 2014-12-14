@@ -2,7 +2,7 @@ package client.bra.account.visualization;
 
 import client.MainModule;
 import client.bra.account.service.BraAccountDTO;
-import client.events.BraAccountEvent;
+import client.events.BraAccountContextChange;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.editor.client.Editor.Path;
 import com.google.gwt.user.client.ui.Composite;
@@ -121,7 +121,7 @@ public class BraAccountCart extends Composite {
             public void onSeriesSelection(SeriesSelectionEvent<BraAccountDTO> event) {
 
 
-                MainModule.EVENT_BUS.fireEvent(new BraAccountEvent(event.getItem()));
+                MainModule.EVENT_BUS.fireEvent(new BraAccountContextChange(event.getItem()));
             }
         });
 
@@ -132,7 +132,6 @@ public class BraAccountCart extends Composite {
         legend.getBorderConfig().setStrokeWidth(0);
         chart.setLegend(legend);
         chart.setAnimated(true);
-
 
         panel = new FramedPanel();
         panel.setLayoutData(new MarginData(10));
@@ -164,12 +163,10 @@ public class BraAccountCart extends Composite {
         VerticalLayoutContainer layout = new VerticalLayoutContainer();
         panel.add(layout);
 
-
         chart.setLayoutData(new VerticalLayoutData(1, 1));
         layout.add(chart);
 
         initWidget(panel);
-
     }
 
     public void setBraAccounts(List<BraAccountDTO> braAccounts) {
@@ -179,8 +176,6 @@ public class BraAccountCart extends Composite {
 
         }
         chart.redrawChart();
-
-
     }
 
     public List<BraAccountDTO> getAccounts() {

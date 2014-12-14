@@ -1,8 +1,8 @@
 package server.file.search;
 
 import client.bra.account.service.BraAccountDTO;
-import client.file.search.service.ClientSearchService;
-import client.file.search.service.SearchClientDTO;
+import client.file.search.service.ClientFileDTO;
+import client.file.search.service.ClientFileService;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -17,8 +17,7 @@ import java.util.logging.Logger;
 /**
  * Created by wemstar on 09.11.14.
  */
-public class ClientFileServiceImpl extends RemoteServiceServlet implements ClientSearchService {
-
+public class ClientFileServiceImpl extends RemoteServiceServlet implements ClientFileService {
 
     private static final String server = "http://fixapplicationbackend.appspot.com";
     private static final String local = "http://localhost:8085";
@@ -27,34 +26,32 @@ public class ClientFileServiceImpl extends RemoteServiceServlet implements Clien
     RestTemplate restTemplate = new RestTemplate();
 
     @Override
-    public List<SearchClientDTO> findClients(SearchClientDTO item) {
-
+    public List<ClientFileDTO> findClients(ClientFileDTO item) {
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
 
-
-        SearchClientDTO[] table = restTemplate.postForObject(server + "/client/file/template", item, SearchClientDTO[].class);
+        ClientFileDTO[] table = restTemplate.postForObject(server + "/client/file/template", item, ClientFileDTO[].class);
         return Arrays.asList(table);
     }
 
     @Override
-    public void saveClient(SearchClientDTO dto) {
+    public void saveClient(ClientFileDTO dto) {
         logger.log(Level.WARNING, "Zapisano kartotekę " + dto.toString());
-        restTemplate.put(server + "/client/file", dto, SearchClientDTO.class);
+        restTemplate.put(server + "/client/file", dto, ClientFileDTO.class);
     }
 
     @Override
-    public SearchClientDTO createClient(SearchClientDTO dto) {
+    public ClientFileDTO createClient(ClientFileDTO dto) {
         logger.log(Level.WARNING, "Utworzono kartotękę " + dto.toString());
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        HttpEntity<SearchClientDTO> entity = new HttpEntity<SearchClientDTO>(dto, headers);
-        return restTemplate.postForObject(server + "/client/file", entity, SearchClientDTO.class);
+        HttpEntity<ClientFileDTO> entity = new HttpEntity<ClientFileDTO>(dto, headers);
+        return restTemplate.postForObject(server + "/client/file", entity, ClientFileDTO.class);
     }
 
     @Override
-    public BraAccountDTO saveBraAccount(SearchClientDTO client, BraAccountDTO braAccount) {
+    public BraAccountDTO saveBraAccount(ClientFileDTO client, BraAccountDTO braAccount) {
         logger.log(Level.WARNING, "Zapisano rachunek " + braAccount.toString());
         BraAccountDTO result = braAccount;
         if (!braAccount.getBraAccNo().isEmpty()) {
@@ -69,13 +66,13 @@ public class ClientFileServiceImpl extends RemoteServiceServlet implements Clien
     }
 
     @Override
-    public SearchClientDTO findClient(int clientNo) {
+    public ClientFileDTO findClient(int clientNo) {
 
-        return restTemplate.getForObject(server + "/client/file/" + clientNo, SearchClientDTO.class);
+        return restTemplate.getForObject(server + "/client/file/" + clientNo, ClientFileDTO.class);
     }
 
     @Override
-    public void deleteClientFile(SearchClientDTO flush) {
+    public void deleteClientFile(ClientFileDTO flush) {
 
     }
 

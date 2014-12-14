@@ -5,8 +5,8 @@ import client.bra.account.details.BraAccountDetails;
 import client.bra.account.visualization.BraAccountCart;
 import client.events.ClientContextChange;
 import client.events.ClientContextChangeHandler;
-import client.file.search.service.ClientSearchService;
-import client.file.search.service.SearchClientDTO;
+import client.file.search.service.ClientFileDTO;
+import client.file.search.service.ClientFileService;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.editor.client.Editor;
 import com.google.gwt.editor.client.SimpleBeanEditorDriver;
@@ -28,20 +28,25 @@ import com.sencha.gxt.widget.core.client.info.Info;
 /**
  * Created by wemstar on 11.11.14.
  */
-public class ClientFileDetails extends Composite implements Editor<SearchClientDTO> {
+public class ClientFileDetails extends Composite implements Editor<ClientFileDTO> {
 
 
     private static final ClientFileDetailsDriver driver = GWT.create(ClientFileDetailsDriver.class);
     public static String title = "Szczegóły";
     private static ClientFileDetailsUiBinder ourUiBinder = GWT.create(ClientFileDetailsUiBinder.class);
+
     @UiField
     public TextField name;
+
     @UiField
     public TextField surname;
+
     @UiField
     public DateField dateOfBirth;
+
     @UiField
     public TextField pesel;
+
     @UiField
     public FramedPanel braAccountDetailsPanel;
 
@@ -49,9 +54,11 @@ public class ClientFileDetails extends Composite implements Editor<SearchClientD
     public TextField clientNo;
     @UiField
     FlowPanel chart;
+
     BraAccountCart cahrtWidg;
-    private boolean newClient = false;
+
     private BraAccountDetails braAccountDetails;
+
     public ClientFileDetails() {
         initWidget(ourUiBinder.createAndBindUi(this));
         driver.initialize(this);
@@ -69,36 +76,25 @@ public class ClientFileDetails extends Composite implements Editor<SearchClientD
         braAccountDetailsPanel.add(braAccountDetails);
     }
 
-    public boolean isNewClient() {
-        return newClient;
-    }
-
-    public void setNewClient(boolean newClient) {
-        this.newClient = newClient;
-    }
-
-    public void setClientFile(SearchClientDTO clientFile) {
+    public void setClientFile(ClientFileDTO clientFile) {
         driver.edit(clientFile);
         cahrtWidg.setBraAccounts(clientFile.getAccounts());
     }
-
 
     private void disableWidgets(boolean mode) {
 
         Component[] widgets = new Component[]{name, surname, dateOfBirth, pesel};
         for (Component widg : widgets) {
             widg.setEnabled(mode);
-
         }
-
     }
 
     @UiHandler("bSave")
     public void save(SelectEvent event) {
-        SearchClientDTO dto = driver.flush();
+        ClientFileDTO dto = driver.flush();
         dto.setAccounts(cahrtWidg.getAccounts());
         if (!dto.getClientNo().isEmpty())
-            ClientSearchService.App.getInstance().saveClient(dto, new AsyncCallback<Void>() {
+            ClientFileService.App.getInstance().saveClient(dto, new AsyncCallback<Void>() {
                 @Override
                 public void onFailure(Throwable caught) {
                     AlertMessageBox d = new AlertMessageBox("Zapis", "Zapis zakończony niepowodzeniem" + caught.toString());
@@ -111,7 +107,7 @@ public class ClientFileDetails extends Composite implements Editor<SearchClientD
                     Info.display("Zapis", "Zapis zakończono sukcesem");
                 }
             });
-        else ClientSearchService.App.getInstance().createClient(dto, new AsyncCallback<SearchClientDTO>() {
+        else ClientFileService.App.getInstance().createClient(dto, new AsyncCallback<ClientFileDTO>() {
             @Override
             public void onFailure(Throwable caught) {
                 AlertMessageBox d = new AlertMessageBox("Zapis", "Zapis zakończony niepowodzeniem" + caught.toString());
@@ -120,14 +116,13 @@ public class ClientFileDetails extends Composite implements Editor<SearchClientD
             }
 
             @Override
-            public void onSuccess(SearchClientDTO result) {
+            public void onSuccess(ClientFileDTO result) {
                 Info.display("Zapis", "Zapis zakończono sukcesem");
                 MainModule.EVENT_BUS.fireEvent(new ClientContextChange(result));
                 braAccountDetails.disableWidget(false);
                 disableWidgets(false);
             }
         });
-
     }
 
     @UiHandler("bEdit")
@@ -138,7 +133,7 @@ public class ClientFileDetails extends Composite implements Editor<SearchClientD
 
     @UiHandler("bDelete")
     public void delete(SelectEvent evet) {
-        ClientSearchService.App.getInstance().deleteClientFile(driver.flush(), new AsyncCallback<Void>() {
+        ClientFileService.App.getInstance().deleteClientFile(driver.flush(), new AsyncCallback<Void>() {
             @Override
             public void onFailure(Throwable caught) {
 
@@ -154,6 +149,6 @@ public class ClientFileDetails extends Composite implements Editor<SearchClientD
     interface ClientFileDetailsUiBinder extends UiBinder<HorizontalLayoutContainer, ClientFileDetails> {
     }
 
-    public interface ClientFileDetailsDriver extends SimpleBeanEditorDriver<SearchClientDTO, ClientFileDetails> {
+    public interface ClientFileDetailsDriver extends SimpleBeanEditorDriver<ClientFileDTO, ClientFileDetails> {
     }
 }

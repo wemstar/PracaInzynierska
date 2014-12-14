@@ -21,16 +21,22 @@ import java.util.List;
  * Created by wemstar on 04.12.14.
  */
 public class InstrumentList extends Composite {
+
     private static final InstrumentDTO.InstrumetnDTOProperties gridProperties = GWT.create(InstrumentDTO.InstrumetnDTOProperties.class);
     private static InstrumentListUiBinder ourUiBinder = GWT.create(InstrumentListUiBinder.class);
+
     @UiField(provided = true)
     public ListStore<InstrumentDTO> listStore;
+
     @UiField
     public GridView<InstrumentDTO> gridView;
+
     @UiField
     public Grid<InstrumentDTO> grid;
+
     @UiField(provided = true)
     ColumnModel<InstrumentDTO> columnModel;
+
     RowExpander<InstrumentDTO> markets;
 
     public InstrumentList() {
@@ -51,8 +57,6 @@ public class InstrumentList extends Composite {
             }
         });
         markets.initPlugin(grid);
-
-
     }
 
     private ListStore<InstrumentDTO> initListStore() {

@@ -37,11 +37,13 @@ public class NewOrder extends Composite implements Editor<NewOrderDTO> {
     private static InstrumentDTO.InstrumetnDTOProperties properties = GWT.create(InstrumentDTO.InstrumetnDTOProperties.class);
     private static MarketDTOProperties propertiesMarket = GWT.create(MarketDTOProperties.class);
     private static NewOrderDTODriver driver = GWT.create(NewOrderDTODriver.class);
+
     @UiField(provided = true)
     LabelProvider<InstrumentDTO> instrumentsLabel = properties.name();
 
     @UiField(provided = true)
     ListStore<InstrumentDTO> instrumentsList = new ListStore<InstrumentDTO>(properties.isin());
+
     @UiField(provided = true)
     LabelProvider<MarketDTO> marketsLabel = propertiesMarket.name();
 
@@ -78,7 +80,6 @@ public class NewOrder extends Composite implements Editor<NewOrderDTO> {
         @Override
         public void onSuccess(List<InstrumentDTO> result) {
             instrumentsList.addAll(result);
-
         }
     };
 
@@ -90,7 +91,6 @@ public class NewOrder extends Composite implements Editor<NewOrderDTO> {
         type.add(Arrays.asList(DictionaryConstraint.ordersType));
         driver.initialize(this);
         driver.edit(new NewOrderDTO());
-
     }
 
     @UiHandler("instrument")
@@ -109,7 +109,6 @@ public class NewOrder extends Composite implements Editor<NewOrderDTO> {
             public void onFailure(Throwable caught) {
                 AlertMessageBox d = new AlertMessageBox("Błąd", "Problem podczas składania zlecenia");
                 d.show();
-
             }
 
             @Override
@@ -122,8 +121,6 @@ public class NewOrder extends Composite implements Editor<NewOrderDTO> {
 
     interface NewOrderUiBinder extends UiBinder<VerticalPanel, NewOrder> {
     }
-
-
 
     interface MarketDTOProperties extends PropertyAccess<MarketDTO> {
         ModelKeyProvider<MarketDTO> code();

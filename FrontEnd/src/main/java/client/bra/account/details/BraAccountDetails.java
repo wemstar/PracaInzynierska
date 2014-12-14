@@ -3,10 +3,10 @@ package client.bra.account.details;
 import client.MainModule;
 import client.bra.account.service.BraAccountDTO;
 import client.bra.account.service.InstrumentInfoDTO;
+import client.events.BraAccountContextChange;
 import client.events.BraAccountContextChangeHandler;
-import client.events.BraAccountEvent;
-import client.file.search.service.ClientSearchService;
-import client.file.search.service.SearchClientDTO;
+import client.file.search.service.ClientFileDTO;
+import client.file.search.service.ClientFileService;
 import client.instrument.order.service.dto.InstrumentDTO;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.editor.client.Editor;
@@ -40,34 +40,39 @@ public class BraAccountDetails extends Composite implements Editor<BraAccountDTO
     private static final BraAccountDetailsDriver driver = GWT.create(BraAccountDetailsDriver.class);
     private static final InstrumentInfoDtoProperites gridProperties = GWT.create(InstrumentInfoDtoProperites.class);
     private static BraAccountDetailsUiBinder ourUiBinder = GWT.create(BraAccountDetailsUiBinder.class);
+
     @UiField(provided = true)
     public ListStore<InstrumentInfoDTO> listStore;
+
     @UiField
     public GridView<InstrumentInfoDTO> gridView;
+
     @UiField
     public Grid<InstrumentInfoDTO> grid;
+
     @UiField(provided = true)
     ColumnModel<InstrumentInfoDTO> columnModel;
+
     @UiField
     TextField braAccNo;
+
     @UiField
     TextField avalibleCashStr;
+
     @UiField
     TextField blockCashStr;
 
-    SearchClientDTO client;
+    ClientFileDTO client;
     public BraAccountDetails() {
-
         if (columnModel == null) {
-
             columnModel = initColumnModel();
             listStore = initListStore();
 
             initWidget(ourUiBinder.createAndBindUi(this));
             driver.initialize(this);
-            MainModule.EVENT_BUS.addHandler(BraAccountEvent.TYPE, new BraAccountContextChangeHandler() {
+            MainModule.EVENT_BUS.addHandler(BraAccountContextChange.TYPE, new BraAccountContextChangeHandler() {
                 @Override
-                public void onBraAccountContextChangeHandler(BraAccountEvent event) {
+                public void onBraAccountContextChangeHandler(BraAccountContextChange event) {
                     driver.edit(event.getBraAccount());
                     setInstruments(event.getBraAccount().getInstruments());
                 }
@@ -94,7 +99,6 @@ public class BraAccountDetails extends Composite implements Editor<BraAccountDTO
 
     private ListStore<InstrumentInfoDTO> initListStore() {
         return new ListStore<InstrumentInfoDTO>(gridProperties.key());
-
     }
 
     private ColumnModel<InstrumentInfoDTO> initColumnModel() {
@@ -108,7 +112,6 @@ public class BraAccountDetails extends Composite implements Editor<BraAccountDTO
         columns.add(blockedCol);
 
         return new ColumnModel<InstrumentInfoDTO>(columns);
-
     }
 
     @UiHandler("bAdd")
@@ -118,7 +121,7 @@ public class BraAccountDetails extends Composite implements Editor<BraAccountDTO
 
     @UiHandler("bSave")
     public void save(SelectEvent event) {
-        ClientSearchService.App.getInstance().saveBraAccount(client, driver.flush(), new AsyncCallback<BraAccountDTO>() {
+        ClientFileService.App.getInstance().saveBraAccount(client, driver.flush(), new AsyncCallback<BraAccountDTO>() {
             @Override
             public void onFailure(Throwable caught) {
 
@@ -127,7 +130,7 @@ public class BraAccountDetails extends Composite implements Editor<BraAccountDTO
             @Override
             public void onSuccess(BraAccountDTO result) {
                 Info.display("Zapis", "Zapis Udany");
-                MainModule.EVENT_BUS.fireEvent(new BraAccountEvent(result));
+                MainModule.EVENT_BUS.fireEvent(new BraAccountContextChange(result));
             }
         });
     }

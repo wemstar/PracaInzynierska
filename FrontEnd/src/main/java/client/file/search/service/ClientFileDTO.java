@@ -12,7 +12,7 @@ import java.util.List;
  * Created by wemstar on 08.11.14.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class SearchClientDTO implements Serializable {
+public class ClientFileDTO implements Serializable {
 
     private String name;
     private String surname;

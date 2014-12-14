@@ -6,12 +6,12 @@ import com.google.gwt.event.shared.GwtEvent;
 /**
  * Created by wemstar on 08.12.14.
  */
-public class BraAccountEvent extends GwtEvent<BraAccountContextChangeHandler> {
+public class BraAccountContextChange extends GwtEvent<BraAccountContextChangeHandler> {
 
     public static Type<BraAccountContextChangeHandler> TYPE = new Type<BraAccountContextChangeHandler>();
     private final BraAccountDTO braAccount;
 
-    public BraAccountEvent(BraAccountDTO item) {
+    public BraAccountContextChange(BraAccountDTO item) {
         this.braAccount = item;
     }
 
@@ -27,6 +27,5 @@ public class BraAccountEvent extends GwtEvent<BraAccountContextChangeHandler> {
     @Override
     protected void dispatch(BraAccountContextChangeHandler handler) {
         handler.onBraAccountContextChangeHandler(this);
-
     }
 }

@@ -3,7 +3,7 @@ package client;
 import client.file.search.details.ClientFileDetails;
 import client.file.search.grid.SearchResult;
 import client.file.search.parameters.SearchClient;
-import client.file.search.service.SearchClientDTO;
+import client.file.search.service.ClientFileDTO;
 import client.instrument.list.InstrumentList;
 import client.instrument.order.NewOrder;
 import com.google.gwt.user.client.ui.Widget;
@@ -47,7 +47,7 @@ public class Windows {
 
     public static Widget aNewClientFilePanel() {
         if (newClientFileDetails == null) newClientFileDetails = new ClientFileDetails();
-        newClientFileDetails.setClientFile(new SearchClientDTO());
+        newClientFileDetails.setClientFile(new ClientFileDTO());
         return newClientFileDetails;
     }
 }
