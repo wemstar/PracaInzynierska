@@ -26,7 +26,7 @@ public class InstrumentInfo {
     @Column(name = "INSTR_INFO_BLOCKED")
     private long blocked;
 
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "INSTR_INFO_BRA_ACCOUNT")
     private BraAccount braAccount;
 

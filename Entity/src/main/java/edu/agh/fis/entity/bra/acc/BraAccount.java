@@ -1,6 +1,8 @@
 package edu.agh.fis.entity.bra.acc;
 
 import edu.agh.fis.entity.client.file.ClientFile;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -29,7 +31,8 @@ public class BraAccount {
     private double blockCash;
 
 
-    @OneToMany(mappedBy = "braAccount", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "braAccount", fetch = FetchType.EAGER)
+    @Fetch(FetchMode.JOIN)
     private Set<InstrumentInfo> instruments;
 
     public Set<InstrumentInfo> getInstruments() {

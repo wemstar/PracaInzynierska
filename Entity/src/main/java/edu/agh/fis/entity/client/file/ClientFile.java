@@ -2,6 +2,8 @@ package edu.agh.fis.entity.client.file;
 
 
 import edu.agh.fis.entity.bra.acc.BraAccount;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -33,7 +35,8 @@ public class ClientFile {
     private String pesel;
 
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "clientFile")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "clientFile")
+    @Fetch(FetchMode.JOIN)
     private Set<BraAccount> account;
 
     @Override
