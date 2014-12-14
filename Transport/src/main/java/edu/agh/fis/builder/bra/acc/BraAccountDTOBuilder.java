@@ -6,18 +6,24 @@ import edu.agh.fis.bra.acc.InstrumentInfoDTO;
 import java.util.Set;
 
 /**
- * Created by wemstar on 11.10.14.
+ * Created by wemstar on 14.12.14.
  */
 public class BraAccountDTOBuilder {
+    private Double avalibleCash;
     private long braAccNo;
-    private double balance;
+    private Double blockCash;
     private Set<InstrumentInfoDTO> instruments;
 
     private BraAccountDTOBuilder() {
     }
 
-    public static BraAccountDTOBuilder aBraAccountTransport() {
+    public static BraAccountDTOBuilder aBraAccountDTO() {
         return new BraAccountDTOBuilder();
+    }
+
+    public BraAccountDTOBuilder avalibleCash(Double avalibleCash) {
+        this.avalibleCash = avalibleCash;
+        return this;
     }
 
     public BraAccountDTOBuilder braAccNo(long braAccNo) {
@@ -25,8 +31,8 @@ public class BraAccountDTOBuilder {
         return this;
     }
 
-    public BraAccountDTOBuilder balance(double balance) {
-        this.balance = balance;
+    public BraAccountDTOBuilder blockCash(Double blockCash) {
+        this.blockCash = blockCash;
         return this;
     }
 
@@ -36,13 +42,14 @@ public class BraAccountDTOBuilder {
     }
 
     public BraAccountDTOBuilder but() {
-        return aBraAccountTransport().braAccNo(braAccNo).balance(balance).instruments(instruments);
+        return aBraAccountDTO().avalibleCash(avalibleCash).braAccNo(braAccNo).blockCash(blockCash).instruments(instruments);
     }
 
     public BraAccountDTO build() {
         BraAccountDTO braAccountDTO = new BraAccountDTO();
+        braAccountDTO.setAvalibleCash(avalibleCash);
         braAccountDTO.setBraAccNo(braAccNo);
-        braAccountDTO.setBalance(balance);
+        braAccountDTO.setBlockCash(blockCash);
         braAccountDTO.setInstruments(instruments);
         return braAccountDTO;
     }

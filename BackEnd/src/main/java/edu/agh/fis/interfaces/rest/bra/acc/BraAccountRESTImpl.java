@@ -50,4 +50,10 @@ public class BraAccountRESTImpl implements BraAccountREST {
         braAccountServices.deleteBraAcc(braNo);
 
     }
+
+    @Override
+    @RequestMapping(value = "{clientNo}", method = RequestMethod.POST)
+    public BraAccountDTO addAccountToCLient(@PathVariable long clientNo, @RequestBody BraAccountDTO braAccount) {
+        return braAccountTransformer.entityToTransport(braAccountServices.addAccountToClient(clientNo, braAccountTransformer.transportToEntity(braAccount)));
+    }
 }

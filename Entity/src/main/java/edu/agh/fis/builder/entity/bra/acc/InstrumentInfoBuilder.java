@@ -5,12 +5,13 @@ import edu.agh.fis.entity.bra.acc.InstrumentInfo;
 import edu.agh.fis.entity.instrument.details.InstrumentDefinition;
 
 /**
- * Created by wemstar on 11.10.14.
+ * Created by wemstar on 14.12.14.
  */
 public class InstrumentInfoBuilder {
+    private long ammount;
     private long id;
     private InstrumentDefinition instrumentDefinition;
-    private long quantity;
+    private long blocked;
     private BraAccount braAccount;
 
     private InstrumentInfoBuilder() {
@@ -20,7 +21,12 @@ public class InstrumentInfoBuilder {
         return new InstrumentInfoBuilder();
     }
 
-    InstrumentInfoBuilder id(long id) {
+    public InstrumentInfoBuilder ammount(long ammount) {
+        this.ammount = ammount;
+        return this;
+    }
+
+    public InstrumentInfoBuilder id(long id) {
         this.id = id;
         return this;
     }
@@ -30,8 +36,8 @@ public class InstrumentInfoBuilder {
         return this;
     }
 
-    public InstrumentInfoBuilder quantity(long quantity) {
-        this.quantity = quantity;
+    public InstrumentInfoBuilder blocked(long blocked) {
+        this.blocked = blocked;
         return this;
     }
 
@@ -41,14 +47,15 @@ public class InstrumentInfoBuilder {
     }
 
     public InstrumentInfoBuilder but() {
-        return anInstrumentInfo().id(id).instrumentDefinition(instrumentDefinition).quantity(quantity).braAccount(braAccount);
+        return anInstrumentInfo().ammount(ammount).id(id).instrumentDefinition(instrumentDefinition).blocked(blocked).braAccount(braAccount);
     }
 
     public InstrumentInfo build() {
         InstrumentInfo instrumentInfo = new InstrumentInfo();
+        instrumentInfo.setAmmount(ammount);
         instrumentInfo.setId(id);
         instrumentInfo.setInstrumentDefinition(instrumentDefinition);
-        instrumentInfo.setQuantity(quantity);
+        instrumentInfo.setBlocked(blocked);
         instrumentInfo.setBraAccount(braAccount);
         return instrumentInfo;
     }

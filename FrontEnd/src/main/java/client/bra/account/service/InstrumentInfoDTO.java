@@ -9,22 +9,22 @@ import java.io.Serializable;
  */
 public class InstrumentInfoDTO implements Serializable {
     private InstrumentDTO instrument;
-    private Double ammount;
-    private Double blocked;
+    private Long ammount;
+    private Long blocked;
 
-    public Double getAmmount() {
+    public Long getAmmount() {
         return ammount;
     }
 
-    public void setAmmount(Double ammount) {
+    public void setAmmount(Long ammount) {
         this.ammount = ammount;
     }
 
-    public Double getBlocked() {
+    public Long getBlocked() {
         return blocked;
     }
 
-    public void setBlocked(Double blocked) {
+    public void setBlocked(Long blocked) {
         this.blocked = blocked;
     }
 

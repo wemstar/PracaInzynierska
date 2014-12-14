@@ -13,4 +13,6 @@ public interface BraAccountServices {
     BraAccount createBraAcc(BraAccount braAccount);
 
     void deleteBraAcc(long braNo);
+
+    BraAccount addAccountToClient(long clientNo, BraAccount braAccount);
 }

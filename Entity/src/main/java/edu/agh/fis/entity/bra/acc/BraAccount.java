@@ -21,8 +21,13 @@ public class BraAccount {
     @JoinColumn(name = "BRA_CLIENT_FILE_ID")
     private ClientFile clientFile;
 
-    @Column(name = "BRA_BALANCE")
-    private double balance;
+    @Column(name = "BRA_AVALIBLE_CASH")
+    private double avalibleCash;
+
+    @Column(name = "BRA_BLOCK_CASH")
+    private double blockCash;
+
+
 
     @OneToMany(mappedBy = "braAccount", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private Set<InstrumentInfo> instruments;
@@ -35,12 +40,21 @@ public class BraAccount {
         this.instruments = instruments;
     }
 
-    public double getBalance() {
-        return balance;
+
+    public double getAvalibleCash() {
+        return avalibleCash;
     }
 
-    public void setBalance(double balance) {
-        this.balance = balance;
+    public void setAvalibleCash(double avalibleCash) {
+        this.avalibleCash = avalibleCash;
+    }
+
+    public double getBlockCash() {
+        return blockCash;
+    }
+
+    public void setBlockCash(double blockCash) {
+        this.blockCash = blockCash;
     }
 
     public ClientFile getClientFile() {

@@ -7,31 +7,46 @@ import edu.agh.fis.instrument.details.InstrumentDefinitionDTO;
  */
 public class InstrumentInfoDTO {
 
-    private InstrumentDefinitionDTO definition;
-
-    private long quantity;
+    private InstrumentDefinitionDTO instrument;
+    private Long ammount;
+    private Long blocked;
 
     @Override
     public String toString() {
         return "InstrumentInfoDTO{" +
-                "definition=" + definition +
-                ", quantity=" + quantity +
+                "ammount=" + ammount +
+                ", instrument=" + instrument +
+                ", blocked=" + blocked +
                 '}';
     }
 
-    public InstrumentDefinitionDTO getDefinition() {
-        return definition;
+    public Long getAmmount() {
+        return ammount;
     }
 
-    public void setDefinition(InstrumentDefinitionDTO definition) {
-        this.definition = definition;
+    public void setAmmount(Long ammount) {
+        this.ammount = ammount;
     }
 
-    public long getQuantity() {
-        return quantity;
+    public Long getBlocked() {
+        return blocked;
     }
 
-    public void setQuantity(long quantity) {
-        this.quantity = quantity;
+    public void setBlocked(Long blocked) {
+        this.blocked = blocked;
     }
+
+    public InstrumentDefinitionDTO getInstrument() {
+        return instrument;
+    }
+
+    public void setInstrument(InstrumentDefinitionDTO instrument) {
+        this.instrument = instrument;
+    }
+
+
+
+
+
+
 }

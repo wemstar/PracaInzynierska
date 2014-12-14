@@ -17,8 +17,8 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.HashSet;
 
-import static edu.agh.fis.builder.bra.acc.BraAccountDTOBuilder.aBraAccountTransport;
-import static edu.agh.fis.builder.bra.acc.InstrumentInfoDTOBuilder.anInstrumentInfoTransport;
+import static edu.agh.fis.builder.bra.acc.BraAccountDTOBuilder.aBraAccountDTO;
+import static edu.agh.fis.builder.bra.acc.InstrumentInfoDTOBuilder.anInstrumentInfoDTO;
 import static edu.agh.fis.builder.client.file.ClientFileDTOBuilder.aClientFileTransport;
 import static edu.agh.fis.builder.instrument.details.InstrumentDefinitionTransportBuilder.anInstrumentDefinitionTransport;
 import static edu.agh.fis.utils.testing.TestUtil.convertObjectToJsonBytes;
@@ -56,17 +56,19 @@ public class ClientFileTest extends AbstractTestNGSpringContextTests {
                 .surname("SuperTest1")
                 .pesel("921205668")
                 .accounts(new HashSet<BraAccountDTO>(Arrays.asList(new BraAccountDTO[]{
-                                aBraAccountTransport()
-                                        .balance(500.0)
+                                aBraAccountDTO()
+                                        .avalibleCash(200.0)
+                                        .blockCash(85.0)
                                         .braAccNo(2)
                                         .instruments(new HashSet<InstrumentInfoDTO>(Arrays.asList(new InstrumentInfoDTO[]
                                                         {
-                                                                anInstrumentInfoTransport()
-                                                                        .definition(
+                                                                anInstrumentInfoDTO()
+                                                                        .instrument(
                                                                                 anInstrumentDefinitionTransport()
                                                                                         .isin("PLKGHML")
                                                                                         .build())
-                                                                        .quantity(205)
+                                                                        .ammount(205L)
+                                                                        .blocked(10L)
                                                                         .build()
                                                         }))
                                         )

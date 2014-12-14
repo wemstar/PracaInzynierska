@@ -1,6 +1,7 @@
 package client.bra.account.service;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -8,10 +9,10 @@ import java.util.List;
  */
 public class BraAccountDTO implements Serializable {
 
-    private String braAccNo;
-    private Double avalibleCash;
-    private Double blockCash;
-    private List<InstrumentInfoDTO> instruments;
+    private String braAccNo = "";
+    private Double avalibleCash = 0.0;
+    private Double blockCash = 0.0;
+    private List<InstrumentInfoDTO> instruments = new ArrayList<InstrumentInfoDTO>();
 
     @Override
     public String toString() {

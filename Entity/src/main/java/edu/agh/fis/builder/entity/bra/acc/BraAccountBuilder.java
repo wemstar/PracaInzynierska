@@ -7,12 +7,13 @@ import edu.agh.fis.entity.client.file.ClientFile;
 import java.util.Set;
 
 /**
- * Created by wemstar on 11.10.14.
+ * Created by wemstar on 14.12.14.
  */
 public class BraAccountBuilder {
+    private double avalibleCash;
     private long id;
     private ClientFile clientFile;
-    private double balance;
+    private double blockCash;
     private Set<InstrumentInfo> instruments;
 
     private BraAccountBuilder() {
@@ -20,6 +21,11 @@ public class BraAccountBuilder {
 
     public static BraAccountBuilder aBraAccount() {
         return new BraAccountBuilder();
+    }
+
+    public BraAccountBuilder avalibleCash(double avalibleCash) {
+        this.avalibleCash = avalibleCash;
+        return this;
     }
 
     public BraAccountBuilder id(long id) {
@@ -32,25 +38,26 @@ public class BraAccountBuilder {
         return this;
     }
 
-    public BraAccountBuilder balance(double balance) {
-        this.balance = balance;
+    public BraAccountBuilder blockCash(double blockCash) {
+        this.blockCash = blockCash;
         return this;
     }
 
-    BraAccountBuilder instruments(Set<InstrumentInfo> instruments) {
+    public BraAccountBuilder instruments(Set<InstrumentInfo> instruments) {
         this.instruments = instruments;
         return this;
     }
 
     public BraAccountBuilder but() {
-        return aBraAccount().id(id).clientFile(clientFile).balance(balance).instruments(instruments);
+        return aBraAccount().avalibleCash(avalibleCash).id(id).clientFile(clientFile).blockCash(blockCash).instruments(instruments);
     }
 
     public BraAccount build() {
         BraAccount braAccount = new BraAccount();
+        braAccount.setAvalibleCash(avalibleCash);
         braAccount.setId(id);
         braAccount.setClientFile(clientFile);
-        braAccount.setBalance(balance);
+        braAccount.setBlockCash(blockCash);
         braAccount.setInstruments(instruments);
         return braAccount;
     }

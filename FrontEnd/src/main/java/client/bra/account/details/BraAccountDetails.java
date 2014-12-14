@@ -5,6 +5,7 @@ import client.bra.account.service.BraAccountDTO;
 import client.bra.account.service.InstrumentInfoDTO;
 import client.events.BraAccountContextChange;
 import client.events.BraAccountContextChangeHandler;
+import client.events.ReloadContext;
 import client.file.search.service.ClientFileDTO;
 import client.file.search.service.ClientFileService;
 import client.instrument.order.service.dto.InstrumentDTO;
@@ -22,6 +23,7 @@ import com.sencha.gxt.data.shared.ListStore;
 import com.sencha.gxt.data.shared.ModelKeyProvider;
 import com.sencha.gxt.data.shared.PropertyAccess;
 import com.sencha.gxt.widget.core.client.Component;
+import com.sencha.gxt.widget.core.client.box.AlertMessageBox;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.form.TextField;
 import com.sencha.gxt.widget.core.client.grid.ColumnConfig;
@@ -63,6 +65,7 @@ public class BraAccountDetails extends Composite implements Editor<BraAccountDTO
     TextField blockCashStr;
 
     ClientFileDTO client;
+
     public BraAccountDetails() {
         if (columnModel == null) {
             columnModel = initColumnModel();
@@ -79,6 +82,14 @@ public class BraAccountDetails extends Composite implements Editor<BraAccountDTO
             });
             disableWidget(false);
         }
+    }
+
+    public ClientFileDTO getClient() {
+        return client;
+    }
+
+    public void setClient(ClientFileDTO client) {
+        this.client = client;
     }
 
     public void disableWidget(boolean mode) {
@@ -116,7 +127,9 @@ public class BraAccountDetails extends Composite implements Editor<BraAccountDTO
 
     @UiHandler("bAdd")
     public void add(SelectEvent event) {
+        disableWidget(true);
         driver.edit(new BraAccountDTO());
+
     }
 
     @UiHandler("bSave")
@@ -124,13 +137,15 @@ public class BraAccountDetails extends Composite implements Editor<BraAccountDTO
         ClientFileService.App.getInstance().saveBraAccount(client, driver.flush(), new AsyncCallback<BraAccountDTO>() {
             @Override
             public void onFailure(Throwable caught) {
+                AlertMessageBox d = new AlertMessageBox("Zapis", "Zapis zakończony niepowodzeniem");
+                d.show();
 
             }
 
             @Override
             public void onSuccess(BraAccountDTO result) {
                 Info.display("Zapis", "Zapis Udany");
-                MainModule.EVENT_BUS.fireEvent(new BraAccountContextChange(result));
+                MainModule.EVENT_BUS.fireEvent(new ReloadContext());
             }
         });
     }

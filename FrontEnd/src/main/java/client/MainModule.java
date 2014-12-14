@@ -1,17 +1,16 @@
 package client;
 
 import client.bra.account.service.BraAccountDTO;
-import client.events.BraAccountContextChange;
-import client.events.BraAccountContextChangeHandler;
-import client.events.ClientContextChange;
-import client.events.ClientContextChangeHandler;
+import client.events.*;
 import client.file.search.details.ClientFileDetails;
 import client.file.search.service.ClientFileDTO;
+import client.file.search.service.ClientFileService;
 import client.images.Images;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.event.shared.SimpleEventBus;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.RootPanel;
@@ -61,6 +60,24 @@ public class MainModule implements IsWidget, EntryPoint {
                 public void onClientContextChange(ClientContextChange event) {
                     context = event.getClientDetails();
                     Info.display("Kontekst Klienta", event.getClientDetails().getName());
+                }
+            });
+            EVENT_BUS.addHandler(ReloadContext.TYPE, new ReloadContextHandler() {
+                @Override
+                public void onContextReload(ReloadContext reloadContext) {
+                    ClientFileService.App.getInstance().findClient(Integer.parseInt(context.getClientNo()), new AsyncCallback<ClientFileDTO>() {
+                        @Override
+                        public void onFailure(Throwable caught) {
+
+                        }
+
+                        @Override
+                        public void onSuccess(ClientFileDTO result) {
+                            context = result;
+                            EVENT_BUS.fireEvent(new ClientContextChange(result));
+
+                        }
+                    });
                 }
             });
         }

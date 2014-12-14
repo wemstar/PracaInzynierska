@@ -24,7 +24,8 @@ public class TransformFromDTO {
         for (BraAccountDTO dto : setDto) {
             BraAccount braAccount = aBraAccount()
                     .id(dto.getBraAccNo())
-                    .balance(dto.getBalance())
+                    .avalibleCash(dto.getAvalibleCash())
+                    .blockCash(dto.getBlockCash())
                     .clientFile(clientFile)
                     .build();
             braAccount.setInstruments(instrumentInfos(dto.getInstruments(), braAccount));
@@ -41,9 +42,10 @@ public class TransformFromDTO {
             setEntity.add(anInstrumentInfo()
                     .instrumentDefinition(
                             anInstrumentDefinition()
-                                    .isin(dto.getDefinition().getIsin())
+                                    .isin(dto.getInstrument().getIsin())
                                     .build())
-                    .quantity(dto.getQuantity())
+                    .ammount(dto.getAmmount())
+                    .blocked(dto.getBlocked())
                     .braAccount(braAccount)
                     .build());
         }

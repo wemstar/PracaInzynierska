@@ -8,16 +8,34 @@ import java.util.Set;
 public class BraAccountDTO {
 
     private long braAccNo;
-    private double balance;
+    private Double avalibleCash;
+    private Double blockCash;
     private Set<InstrumentInfoDTO> instruments;
 
     @Override
     public String toString() {
         return "BraAccountDTO{" +
-                "balance=" + balance +
+                "avalibleCash=" + avalibleCash +
                 ", braAccNo=" + braAccNo +
+                ", blockCash=" + blockCash +
                 ", instruments=" + instruments +
                 '}';
+    }
+
+    public Double getAvalibleCash() {
+        return avalibleCash;
+    }
+
+    public void setAvalibleCash(Double avalibleCash) {
+        this.avalibleCash = avalibleCash;
+    }
+
+    public Double getBlockCash() {
+        return blockCash;
+    }
+
+    public void setBlockCash(Double blockCash) {
+        this.blockCash = blockCash;
     }
 
     public long getBraAccNo() {
@@ -26,14 +44,6 @@ public class BraAccountDTO {
 
     public void setBraAccNo(long braAccNo) {
         this.braAccNo = braAccNo;
-    }
-
-    public double getBalance() {
-        return balance;
-    }
-
-    public void setBalance(double balance) {
-        this.balance = balance;
     }
 
     public Set<InstrumentInfoDTO> getInstruments() {

@@ -1,9 +1,13 @@
 package edu.agh.fis.core.bra.acc.services;
 
 import edu.agh.fis.core.bra.acc.presistance.BraAccountDao;
+import edu.agh.fis.core.client.file.presistance.ClientFileDao;
 import edu.agh.fis.entity.bra.acc.BraAccount;
+import edu.agh.fis.entity.client.file.ClientFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.HashSet;
 
 /**
  * Created by wemstar on 25.09.14.
@@ -14,6 +18,9 @@ public class BraAccountServicesImpl implements BraAccountServices {
     @Autowired
     private BraAccountDao braAccountDao;
 
+    @Autowired
+    private ClientFileDao clientFileDao;
+
     @Override
     public BraAccount getBraAcc(long braNo) {
         return braAccountDao.find(braNo);
@@ -22,7 +29,6 @@ public class BraAccountServicesImpl implements BraAccountServices {
     @Override
     public void updateBraAcc(BraAccount braAccount) {
         braAccountDao.update(braAccount);
-
     }
 
     @Override
@@ -33,6 +39,16 @@ public class BraAccountServicesImpl implements BraAccountServices {
     @Override
     public void deleteBraAcc(long braNo) {
         braAccountDao.delete(braNo);
+    }
 
+    @Override
+    public BraAccount addAccountToClient(long clientNo, BraAccount braAccount) {
+
+        ClientFile clientFile = clientFileDao.find(clientNo);
+        if (clientFile.getAccount() == null) clientFile.setAccount(new HashSet<BraAccount>());
+        BraAccount braAccount1 = braAccountDao.create(braAccount);
+        clientFile.getAccount().add(braAccount);
+        clientFileDao.update(clientFile);
+        return braAccount1;
     }
 }

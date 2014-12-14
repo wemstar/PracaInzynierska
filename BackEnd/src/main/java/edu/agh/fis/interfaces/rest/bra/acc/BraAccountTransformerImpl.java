@@ -6,7 +6,7 @@ import edu.agh.fis.utils.transform.TransformFromDTO;
 import edu.agh.fis.utils.transform.TransformFromEntity;
 import org.springframework.stereotype.Component;
 
-import static edu.agh.fis.builder.bra.acc.BraAccountDTOBuilder.aBraAccountTransport;
+import static edu.agh.fis.builder.bra.acc.BraAccountDTOBuilder.aBraAccountDTO;
 import static edu.agh.fis.builder.entity.bra.acc.BraAccountBuilder.aBraAccount;
 
 /**
@@ -19,9 +19,10 @@ public class BraAccountTransformerImpl implements BraAccountTransformer {
 
         if (braAcc == null) return null;
 
-        return aBraAccountTransport()
+        return aBraAccountDTO()
                 .braAccNo(braAcc.getId())
-                .balance(braAcc.getBalance())
+                .avalibleCash(braAcc.getAvalibleCash())
+                .blockCash(braAcc.getBlockCash())
                 .instruments(TransformFromEntity.instrumentInfos(braAcc.getInstruments()))
                 .build();
     }
@@ -30,7 +31,8 @@ public class BraAccountTransformerImpl implements BraAccountTransformer {
     public BraAccount transportToEntity(BraAccountDTO braAccountDTO) {
         BraAccount entity = aBraAccount()
                 .id(braAccountDTO.getBraAccNo())
-                .balance(braAccountDTO.getBalance())
+                .avalibleCash(braAccountDTO.getAvalibleCash())
+                .blockCash(braAccountDTO.getBlockCash())
                 .build();
 
         entity.setInstruments(TransformFromDTO.instrumentInfos(braAccountDTO.getInstruments(), entity));

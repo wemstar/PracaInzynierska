@@ -20,8 +20,11 @@ public class InstrumentInfo {
     @JoinColumn(name = "INSTR_INFO_DEFINITION")
     private InstrumentDefinition instrumentDefinition;
 
-    @Column(name = "INSTR_INFO_QUANTITY")
-    private long quantity;
+    @Column(name = "INSTR_INFO_AMMOUNT")
+    private long ammount;
+
+    @Column(name = "INSTR_INFO_BLOCKED")
+    private long blocked;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "INSTR_INFO_BRA_ACCOUNT")
@@ -43,12 +46,20 @@ public class InstrumentInfo {
         this.instrumentDefinition = instrumentDefinition;
     }
 
-    public long getQuantity() {
-        return quantity;
+    public long getAmmount() {
+        return ammount;
     }
 
-    public void setQuantity(long quantity) {
-        this.quantity = quantity;
+    public void setAmmount(long ammount) {
+        this.ammount = ammount;
+    }
+
+    public long getBlocked() {
+        return blocked;
+    }
+
+    public void setBlocked(long blocked) {
+        this.blocked = blocked;
     }
 
     public BraAccount getBraAccount() {

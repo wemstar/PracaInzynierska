@@ -79,6 +79,7 @@ public class ClientFileDetails extends Composite implements Editor<ClientFileDTO
     public void setClientFile(ClientFileDTO clientFile) {
         driver.edit(clientFile);
         cahrtWidg.setBraAccounts(clientFile.getAccounts());
+        braAccountDetails.setClient(clientFile);
     }
 
     private void disableWidgets(boolean mode) {
@@ -97,8 +98,8 @@ public class ClientFileDetails extends Composite implements Editor<ClientFileDTO
             ClientFileService.App.getInstance().saveClient(dto, new AsyncCallback<Void>() {
                 @Override
                 public void onFailure(Throwable caught) {
-                    AlertMessageBox d = new AlertMessageBox("Zapis", "Zapis zakończony niepowodzeniem" + caught.toString());
 
+                    AlertMessageBox d = new AlertMessageBox("Zapis", "Zapis zakończony niepowodzeniem");
                     d.show();
                 }
 

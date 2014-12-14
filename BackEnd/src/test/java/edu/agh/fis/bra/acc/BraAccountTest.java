@@ -14,8 +14,8 @@ import org.testng.annotations.Test;
 import java.util.Arrays;
 import java.util.HashSet;
 
-import static edu.agh.fis.builder.bra.acc.BraAccountDTOBuilder.aBraAccountTransport;
-import static edu.agh.fis.builder.bra.acc.InstrumentInfoDTOBuilder.anInstrumentInfoTransport;
+import static edu.agh.fis.builder.bra.acc.BraAccountDTOBuilder.aBraAccountDTO;
+import static edu.agh.fis.builder.bra.acc.InstrumentInfoDTOBuilder.anInstrumentInfoDTO;
 import static edu.agh.fis.builder.instrument.details.InstrumentDefinitionTransportBuilder.anInstrumentDefinitionTransport;
 import static edu.agh.fis.utils.testing.TestUtil.convertObjectToJsonBytes;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -46,15 +46,18 @@ public class BraAccountTest extends AbstractTestNGSpringContextTests {
 
     @Test
     public void shouldCreateBraAccount() throws Exception {
-        BraAccountDTO dto1 = aBraAccountTransport()
+        BraAccountDTO dto1 = aBraAccountDTO()
                 .braAccNo(560L)
-                .balance(10).instruments(new HashSet<InstrumentInfoDTO>(Arrays.asList(new InstrumentInfoDTO[]
+                .avalibleCash(400.0)
+                .blockCash(200.0)
+                .instruments(new HashSet<InstrumentInfoDTO>(Arrays.asList(new InstrumentInfoDTO[]
                         {
-                                anInstrumentInfoTransport()
-                                        .definition(anInstrumentDefinitionTransport()
+                                anInstrumentInfoDTO()
+                                        .instrument(anInstrumentDefinitionTransport()
                                                 .isin("KGHM")
                                                 .build())
-                                        .quantity(205)
+                                        .ammount(205L)
+                                        .blocked(10L)
                                         .build()
 
                         })))
@@ -69,7 +72,7 @@ public class BraAccountTest extends AbstractTestNGSpringContextTests {
         mockMvc.perform(get("/bra/acc/{braNo}", 560l))
                 .andExpect(status().isOk())
                 .andExpect(content().string(convertObjectToJsonBytes(dto1)));
-        dto1.setBalance(25);
+        dto1.setAvalibleCash(25.0);
 
         mockMvc.perform(put("/bra/acc")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -89,5 +92,6 @@ public class BraAccountTest extends AbstractTestNGSpringContextTests {
 
 
     }
+
 
 }
