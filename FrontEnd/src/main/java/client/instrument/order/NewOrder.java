@@ -71,21 +71,21 @@ public class NewOrder extends Composite implements Editor<NewOrderDTO> {
     @UiField
     LongSpinnerField amount;
 
-    private AsyncCallback<List<InstrumentDTO>> callbackInstrumetnList = new AsyncCallback<List<InstrumentDTO>>() {
+    private AsyncCallback<List<MarketDTO>> callbackMarketList = new AsyncCallback<List<MarketDTO>>() {
         @Override
         public void onFailure(Throwable caught) {
 
         }
 
         @Override
-        public void onSuccess(List<InstrumentDTO> result) {
-            instrumentsList.addAll(result);
+        public void onSuccess(List<MarketDTO> result) {
+            marketsList.addAll(result);
         }
     };
 
     public NewOrder() {
 
-        NewOrderService.App.getInstance().getInstruments(callbackInstrumetnList);
+        NewOrderService.App.getInstance().getMarkets(callbackMarketList);
         initWidget(ourUiBinder.createAndBindUi(this));
         side.add(Arrays.asList(DictionaryConstraint.side));
         type.add(Arrays.asList(DictionaryConstraint.ordersType));
@@ -93,9 +93,9 @@ public class NewOrder extends Composite implements Editor<NewOrderDTO> {
         driver.edit(new NewOrderDTO());
     }
 
-    @UiHandler("instrument")
-    public void valueChange(ValueChangeEvent<InstrumentDTO> events) {
-        marketsList.addAll(events.getValue().getMarket());
+    @UiHandler("market")
+    public void valueChange(ValueChangeEvent<MarketDTO> events) {
+        instrumentsList.addAll(events.getValue().getInstruments());
     }
 
     @UiHandler("newOrder")

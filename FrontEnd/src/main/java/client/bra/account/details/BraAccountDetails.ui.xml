@@ -5,12 +5,10 @@
         xmlns:container="urn:import:com.sencha.gxt.widget.core.client.container"
         xmlns:form="urn:import:com.sencha.gxt.widget.core.client.form"
         xmlns:button="urn:import:com.sencha.gxt.widget.core.client.button"
-        xmlns:grid="urn:import:com.sencha.gxt.widget.core.client.grid">
+        >
 
-    <ui:with type="com.sencha.gxt.data.shared.ListStore" field="listStore"/>
-    <ui:with type="com.sencha.gxt.widget.core.client.grid.ColumnModel" field="columnModel"/>
-    <ui:with type="com.sencha.gxt.widget.core.client.grid.GridView" field="gridView"/>
-    <ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData"
+
+<ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData"
              field="verticalLayoutData">
         <ui:attributes width="1" height="-1"/>
     </ui:with>
@@ -45,9 +43,6 @@
                     </form:FieldLabel>
                 </container:child>
 
-                <container:child layoutData="{verticalLayoutData}">
-                    <grid:Grid ui:field="grid" store="{listStore}" cm="{columnModel}" view="{gridView}"/>
-                </container:child>
                 <container:child layoutData="{verticalLayoutData}">
                     <c:FramedPanel headingText="Akcje Rachunku" buttonAlign="START">
                         <c:button>

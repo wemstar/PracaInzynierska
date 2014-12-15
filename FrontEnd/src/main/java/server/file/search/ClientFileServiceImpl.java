@@ -19,7 +19,7 @@ import java.util.logging.Logger;
  */
 public class ClientFileServiceImpl extends RemoteServiceServlet implements ClientFileService {
 
-    private static final String server = "http://fixapplicationbackend.appspot.com";
+    public static final String server = "http://fixapplicationbackend.appspot.com";
     private static final String local = "http://localhost:8085";
 
     public final Logger logger = Logger.getLogger("ClientFileLogger");

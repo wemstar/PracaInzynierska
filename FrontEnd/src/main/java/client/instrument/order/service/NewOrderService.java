@@ -1,6 +1,6 @@
 package client.instrument.order.service;
 
-import client.instrument.order.service.dto.InstrumentDTO;
+import client.instrument.order.service.dto.MarketDTO;
 import client.instrument.order.service.dto.NewOrderDTO;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.RemoteService;
@@ -13,7 +13,7 @@ import java.util.List;
  */
 @RemoteServiceRelativePath("NewOrderService")
 public interface NewOrderService extends RemoteService {
-    public List<InstrumentDTO> getInstruments();
+    public List<MarketDTO> getMarkets();
 
     void createNewOrder(NewOrderDTO newOrder);
 

@@ -28,8 +28,6 @@ import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.form.TextField;
 import com.sencha.gxt.widget.core.client.grid.ColumnConfig;
 import com.sencha.gxt.widget.core.client.grid.ColumnModel;
-import com.sencha.gxt.widget.core.client.grid.Grid;
-import com.sencha.gxt.widget.core.client.grid.GridView;
 import com.sencha.gxt.widget.core.client.info.Info;
 
 import java.util.ArrayList;
@@ -43,17 +41,7 @@ public class BraAccountDetails extends Composite implements Editor<BraAccountDTO
     private static final InstrumentInfoDtoProperites gridProperties = GWT.create(InstrumentInfoDtoProperites.class);
     private static BraAccountDetailsUiBinder ourUiBinder = GWT.create(BraAccountDetailsUiBinder.class);
 
-    @UiField(provided = true)
-    public ListStore<InstrumentInfoDTO> listStore;
 
-    @UiField
-    public GridView<InstrumentInfoDTO> gridView;
-
-    @UiField
-    public Grid<InstrumentInfoDTO> grid;
-
-    @UiField(provided = true)
-    ColumnModel<InstrumentInfoDTO> columnModel;
 
     @UiField
     TextField braAccNo;
@@ -67,9 +55,8 @@ public class BraAccountDetails extends Composite implements Editor<BraAccountDTO
     ClientFileDTO client;
 
     public BraAccountDetails() {
-        if (columnModel == null) {
-            columnModel = initColumnModel();
-            listStore = initListStore();
+        if (braAccNo == null) {
+
 
             initWidget(ourUiBinder.createAndBindUi(this));
             driver.initialize(this);
@@ -77,7 +64,7 @@ public class BraAccountDetails extends Composite implements Editor<BraAccountDTO
                 @Override
                 public void onBraAccountContextChangeHandler(BraAccountContextChange event) {
                     driver.edit(event.getBraAccount());
-                    setInstruments(event.getBraAccount().getInstruments());
+
                 }
             });
             disableWidget(false);
@@ -93,20 +80,13 @@ public class BraAccountDetails extends Composite implements Editor<BraAccountDTO
     }
 
     public void disableWidget(boolean mode) {
-        Component[] widgets = new Component[]{avalibleCashStr, blockCashStr, grid};
+        Component[] widgets = new Component[]{avalibleCashStr, blockCashStr};
         for (Component widg : widgets) {
             widg.setEnabled(mode);
         }
     }
 
-    public List<InstrumentInfoDTO> getInstruments() {
-        return listStore.getAll();
-    }
 
-    public void setInstruments(List<InstrumentInfoDTO> instruments) {
-        listStore.clear();
-        listStore.addAll(instruments);
-    }
 
     private ListStore<InstrumentInfoDTO> initListStore() {
         return new ListStore<InstrumentInfoDTO>(gridProperties.key());

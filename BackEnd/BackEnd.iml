@@ -49,6 +49,7 @@
         </descriptors>
         <webroots>
           <root url="file://$MODULE_DIR$/src/main/webapp" relative="/" />
+          <root url="file://$MODULE_DIR$/home/wemstar/Dokumenty/PracaInzynierska/BackEnd/build" relative="/WEB-INF" />
         </webroots>
         <sourceRoots>
           <root url="file://$MODULE_DIR$/src/endpointsSrc/resources" />

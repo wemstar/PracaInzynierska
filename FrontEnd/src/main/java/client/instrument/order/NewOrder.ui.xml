@@ -26,6 +26,14 @@
             <container:VerticalLayoutContainer>
 
                 <container:child layoutData="{verticalLayoutData}">
+                    <form:FieldLabel text="Rynek">
+                        <form:widget>
+                            <form:ComboBox store="{marketsList}" labelProvider="{marketsLabel}" ui:field="market"/>
+                        </form:widget>
+                    </form:FieldLabel>
+                </container:child>
+
+                <container:child layoutData="{verticalLayoutData}">
                     <form:FieldLabel text="Instrument">
                         <form:widget>
                             <form:ComboBox store="{instrumentsList}" labelProvider="{instrumentsLabel}"
@@ -34,13 +42,6 @@
                     </form:FieldLabel>
                 </container:child>
 
-                <container:child layoutData="{verticalLayoutData}">
-                    <form:FieldLabel text="Rynek">
-                        <form:widget>
-                            <form:ComboBox store="{marketsList}" labelProvider="{marketsLabel}" ui:field="market"/>
-                        </form:widget>
-                    </form:FieldLabel>
-                </container:child>
 
                 <container:child layoutData="{verticalLayoutData}">
                     <form:FieldLabel text="Strona">

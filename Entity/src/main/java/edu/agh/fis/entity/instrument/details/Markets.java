@@ -14,11 +14,32 @@ public class Markets {
     @Id
     @Column(name = "MARKET_NAME", unique = true, nullable = false)
     private String name;
-
-
     @OneToMany(mappedBy = "market", fetch = FetchType.EAGER)
     private Set<InstrumentMarket> instruments;
+    @Column(name = "MARKET_ACTIVE")
+    private Boolean active;
 
-    @Column(name = "MARKET_ENABLED")
-    private Boolean enabled;
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+
+    public Set<InstrumentMarket> getInstruments() {
+        return instruments;
+    }
+
+    public void setInstruments(Set<InstrumentMarket> instruments) {
+        this.instruments = instruments;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

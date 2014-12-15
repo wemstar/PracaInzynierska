@@ -23,8 +23,8 @@
           <root url="file://$MODULE_DIR$/src/main/webapp" relative="/" />
         </webroots>
         <sourceRoots>
-          <root url="file://$MODULE_DIR$/build/generated-source/endpoints/java" />
           <root url="file://$MODULE_DIR$/src/main/resources" />
+          <root url="file://$MODULE_DIR$/build/generated-source/endpoints/java" />
           <root url="file://$MODULE_DIR$/src/main/java" />
           <root url="file://$MODULE_DIR$/src/endpointsSrc/resources" />
         </sourceRoots>
@@ -37,12 +37,13 @@
         </descriptors>
         <webroots>
           <root url="file://$MODULE_DIR$/src/main/webapp" relative="/" />
+          <root url="file://$MODULE_DIR$/home/wemstar/Dokumenty/PracaInzynierska/FrontEnd/build" relative="/WEB-INF" />
           <root url="file://$MODULE_DIR$/build/gwt/out/WEB-INF" relative="/WEB-INF" />
           <root url="file://$MODULE_DIR$/build/gwt/out/MainModule" relative="/MainModule" />
         </webroots>
         <sourceRoots>
-          <root url="file://$MODULE_DIR$/build/generated-source/endpoints/java" />
           <root url="file://$MODULE_DIR$/src/main/resources" />
+          <root url="file://$MODULE_DIR$/build/generated-source/endpoints/java" />
           <root url="file://$MODULE_DIR$/src/main/java" />
           <root url="file://$MODULE_DIR$/src/endpointsSrc/resources" />
         </sourceRoots>
@@ -102,6 +103,5 @@
     <orderEntry type="library" exported="" name="Gradle: com.sencha.gxt:gxt-chart:3.1.1" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.slf4j:slf4j-simple:1.7.7" level="project" />
     <orderEntry type="library" exported="" name="Gradle: javax.validation:validation-api:1.0.0.GA:sources" level="project" />
-    <orderEntry type="library" name="gwt-user (2)" level="project" />
   </component>
 </module>

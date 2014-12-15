@@ -64,15 +64,14 @@ public class DoomyData {
         market.setCode("GPW");
         market.setType("Instruments");
         instrument.setName("KGHM");
-        instrument.setCount(20);
         instrument.setIsin("PLKGHM");
-        instrument.setMarket(Arrays.asList(new MarketDTO[]{market, market2}));
+
         instruments.add(instrument);
         instrument = new InstrumentDTO();
         instrument.setName("JSW");
-        instrument.setCount(10);
+
         instrument.setIsin("PLJSW");
-        instrument.setMarket(Arrays.asList(new MarketDTO[]{market}));
+
         instruments.add(instrument);
         return instruments;
     }

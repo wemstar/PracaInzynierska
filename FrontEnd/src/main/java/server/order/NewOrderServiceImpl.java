@@ -1,13 +1,14 @@
 package server.order;
 
 import client.instrument.order.service.NewOrderService;
-import client.instrument.order.service.dto.InstrumentDTO;
+import client.instrument.order.service.dto.MarketDTO;
 import client.instrument.order.service.dto.NewOrderDTO;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
-import server.DoomyData;
+import org.springframework.web.client.RestTemplate;
+import server.file.search.ClientFileServiceImpl;
 
+import java.util.Arrays;
 import java.util.List;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -17,13 +18,16 @@ public class NewOrderServiceImpl extends RemoteServiceServlet implements NewOrde
 
     public final Logger logger = Logger.getLogger("NameOfYourLogger");
 
+    RestTemplate restTemplate = new RestTemplate();
     @Override
-    public List<InstrumentDTO> getInstruments() {
-        return DoomyData.instrumentsList;
+    public List<MarketDTO> getMarkets() {
+
+        return Arrays.asList(restTemplate.getForObject(ClientFileServiceImpl.server + "/market/all/active", MarketDTO[].class));
     }
 
     @Override
     public void createNewOrder(NewOrderDTO newOrder) {
-        logger.log(Level.WARNING, "Złożono zlecenie " + newOrder);
+
+        restTemplate.put(ClientFileServiceImpl.server + "/order/new", newOrder, NewOrderDTO.class);
     }
 }

@@ -198,7 +198,7 @@ public class MainModule implements IsWidget, EntryPoint {
             @Override
             public void onSelect(SelectEvent event) {
 
-                panel.addTab(Windows.aInstrumentListPanle(), "Lista Instrumentów");
+
             }
         });
         table.setWidget(0, 2, btn);

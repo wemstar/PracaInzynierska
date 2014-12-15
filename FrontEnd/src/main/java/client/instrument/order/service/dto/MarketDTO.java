@@ -1,14 +1,24 @@
 package client.instrument.order.service.dto;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by wemstar on 30.11.14.
  */
 public class MarketDTO implements Serializable {
-    String code;
-    String name;
-    String type;
+    private String code;
+    private String name;
+    private String type;
+    private List<InstrumentDTO> instruments;
+
+    public List<InstrumentDTO> getInstruments() {
+        return instruments;
+    }
+
+    public void setInstruments(List<InstrumentDTO> instruments) {
+        this.instruments = instruments;
+    }
 
     @Override
     public String toString() {

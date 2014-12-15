@@ -13,6 +13,7 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.sencha.gxt.widget.core.client.box.AlertMessageBox;
+import com.sencha.gxt.widget.core.client.box.AutoProgressMessageBox;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.form.DateField;
 import com.sencha.gxt.widget.core.client.form.TextField;
@@ -48,19 +49,6 @@ public class SearchClient extends Composite implements Editor<ClientFileDTO> {
 
     private SearchResult result;
 
-    AsyncCallback<List<ClientFileDTO>> callback = new AsyncCallback<List<ClientFileDTO>>() {
-        public void onFailure(Throwable caught) {
-            AlertMessageBox d = new AlertMessageBox("Wyszukiwanie", "Wyszukiwanie zakończone niepowodzeniem" + caught.toString());
-
-            d.show();
-        }
-
-        public void onSuccess(List<ClientFileDTO> results) {
-            Info.display("Wyszukiwanie", "Wyszukano " + results.size() + " wyników");
-            result.setResult(results);
-
-        }
-    };
 
 
     public SearchClient() {
@@ -76,7 +64,25 @@ public class SearchClient extends Composite implements Editor<ClientFileDTO> {
 
         logger.log(Level.WARNING, person.toString());
 
-        ClientFileService.App.getInstance().findClients(person, callback);
+        final AutoProgressMessageBox box = new AutoProgressMessageBox("Wyszukiwanie", "Wyszukiwanie prosze czekać");
+        box.setProgressText("Wyszukiwanie...");
+        box.auto();
+        box.show();
+
+        ClientFileService.App.getInstance().findClients(person, new AsyncCallback<List<ClientFileDTO>>() {
+            public void onFailure(Throwable caught) {
+                AlertMessageBox d = new AlertMessageBox("Wyszukiwanie", "Wyszukiwanie zakończone niepowodzeniem" + caught.toString());
+                box.hide();
+                d.show();
+            }
+
+            public void onSuccess(List<ClientFileDTO> results) {
+                Info.display("Wyszukiwanie", "Wyszukano " + results.size() + " wyników");
+                result.setResult(results);
+                box.hide();
+
+            }
+        });
     }
 
     public SearchResult getResult() {
