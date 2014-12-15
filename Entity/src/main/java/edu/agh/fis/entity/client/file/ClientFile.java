@@ -35,7 +35,7 @@ public class ClientFile {
     private String pesel;
 
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "clientFile")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "clientFile", cascade = CascadeType.ALL)
     @Fetch(FetchMode.JOIN)
     private Set<BraAccount> account;
 

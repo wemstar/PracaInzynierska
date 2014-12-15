@@ -21,6 +21,7 @@ public class TransformFromDTO {
 
     public static Set<BraAccount> braAccounts(Set<BraAccountDTO> setDto, ClientFile clientFile) {
         Set<BraAccount> setEntity = new HashSet<BraAccount>();
+        if (setDto != null)
         for (BraAccountDTO dto : setDto) {
             BraAccount braAccount = aBraAccount()
                     .id(dto.getBraAccNo())
@@ -32,6 +33,7 @@ public class TransformFromDTO {
             setEntity.add(braAccount);
 
         }
+        ;
         return setEntity;
 
     }

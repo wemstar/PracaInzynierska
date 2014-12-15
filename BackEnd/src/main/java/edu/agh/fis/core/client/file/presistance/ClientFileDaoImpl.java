@@ -8,6 +8,8 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 ;
@@ -35,7 +37,7 @@ class ClientFileDaoImpl extends AbstractDAOImpl<ClientFile> implements ClientFil
                 criteria = criteria.add(Restrictions.eq("pesel", template.getPesel()));
         }
 
-        return criteria.list();
+        return new ArrayList<ClientFile>(new LinkedHashSet<ClientFile>(criteria.list()));
 
     }
 }

@@ -15,10 +15,19 @@ public class InstrumentDefinition {
 
     @OneToMany(mappedBy = "instrumentDefinition")
     private Set<InstrumentInfo> instrumentInfos;
-
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "instrument")
+    private Set<InstrumentMarket> markets;
     @Id
     @Column(name = "INSTRUMENT_ISIN")
     private String isin;
+
+    public Set<InstrumentMarket> getMarkets() {
+        return markets;
+    }
+
+    public void setMarkets(Set<InstrumentMarket> markets) {
+        this.markets = markets;
+    }
 
     public String getIsin() {
         return isin;
