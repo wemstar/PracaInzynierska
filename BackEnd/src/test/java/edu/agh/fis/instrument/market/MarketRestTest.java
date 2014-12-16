@@ -51,7 +51,8 @@ public class MarketRestTest extends AbstractTestNGSpringContextTests {
 
         marketDAO.create(aMarkets()
                         .active(true)
-                        .name("GPW")
+                        .code("GPW")
+                        .name("Giełda papierów wartościowych w Warszawie")
                         .instruments(new HashSet<InstrumentMarket>(Arrays.asList(new InstrumentMarket[]{
 
                         })))
@@ -60,7 +61,8 @@ public class MarketRestTest extends AbstractTestNGSpringContextTests {
 
         marketDAO.create(aMarkets()
                         .active(false)
-                        .name("NYSE")
+                        .code("NYSE")
+                        .name("NEW York Stock Exchange")
                         .instruments(new HashSet<InstrumentMarket>(Arrays.asList(new InstrumentMarket[]{
 
                         })))
@@ -72,7 +74,8 @@ public class MarketRestTest extends AbstractTestNGSpringContextTests {
                 .andExpect(content().string(convertObjectToJsonBytes(Arrays.asList(new MarketDTO[]{
                         aMarketDTO()
                                 .active(true)
-                                .name("GPW")
+                                .code("GPW")
+                                .name("Giełda papierów wartościowych w Warszawie")
                                 .instruments(Arrays.asList(new InstrumentDefinitionDTO[]{
 
                                 }))

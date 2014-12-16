@@ -13,6 +13,7 @@ public class MarketDTO {
     private String name;
     private Boolean active;
     private List<InstrumentDefinitionDTO> instruments;
+    private String code;
 
     public Boolean getActive() {
         return active;
@@ -38,5 +39,22 @@ public class MarketDTO {
         this.name = name;
     }
 
+    public String getCode() {
+        return code;
+    }
 
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    @Override
+    public String
+    toString() {
+        return "MarketDTO{" +
+                "active=" + active +
+                ", name='" + name + '\'' +
+                ", instruments=" + instruments +
+                ", code='" + code + '\'' +
+                '}';
+    }
 }

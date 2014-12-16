@@ -18,6 +18,7 @@ public class InstrumentDefinitionTransformerImpl implements InstrumentDefinition
         return entity != null ?
                 anInstrumentDefinitionTransport()
                         .isin(entity.getIsin())
+                        .name(entity.getName())
                         .build()
                 : null;
     }
@@ -25,10 +26,10 @@ public class InstrumentDefinitionTransformerImpl implements InstrumentDefinition
     @Override
     public InstrumentDefinition transportToEntity(InstrumentDefinitionDTO transport) {
 
-        anInstrumentDefinition().isin(transport.getIsin()).build();
         return transport != null ?
                 anInstrumentDefinition()
                         .isin(transport.getIsin())
+                        .name(transport.getName())
                         .build()
                 : null;
     }

@@ -9,8 +9,16 @@ import java.util.List;
 public class MarketDTO implements Serializable {
     private String code;
     private String name;
-    private String type;
+    private Boolean active;
     private List<InstrumentDTO> instruments;
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
 
     public List<InstrumentDTO> getInstruments() {
         return instruments;
@@ -25,17 +33,10 @@ public class MarketDTO implements Serializable {
         return "MerketsDTO{" +
                 "code='" + code + '\'' +
                 ", name='" + name + '\'' +
-                ", type='" + type + '\'' +
+                ", type='" + active + '\'' +
                 '}';
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
 
     public String getName() {
         return name;

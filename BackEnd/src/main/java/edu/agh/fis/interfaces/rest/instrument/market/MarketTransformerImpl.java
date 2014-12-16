@@ -23,8 +23,9 @@ public class MarketTransformerImpl implements MarketTransformer {
     @Override
     public MarketDTO entityToTransport(Markets marketEntity) {
         MarketDTO marketDTO = aMarketDTO()
-                .name(marketEntity.getName())
+                .code(marketEntity.getCode())
                 .active(marketEntity.getActive())
+                .name(marketEntity.getName())
                 .build();
         List<InstrumentDefinitionDTO> list = new ArrayList<InstrumentDefinitionDTO>();
         if (marketEntity.getInstruments() != null)

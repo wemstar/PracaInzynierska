@@ -11,6 +11,7 @@ import java.util.List;
 public class MarketDTOBuilder {
     private Boolean active;
     private String name;
+    private String code;
     private List<InstrumentDefinitionDTO> instruments;
 
     private MarketDTOBuilder() {
@@ -35,6 +36,11 @@ public class MarketDTOBuilder {
         return this;
     }
 
+    public MarketDTOBuilder code(String code) {
+        this.code = code;
+        return this;
+    }
+
     public MarketDTOBuilder but() {
         return aMarketDTO().active(active).name(name).instruments(instruments);
     }
@@ -44,6 +50,7 @@ public class MarketDTOBuilder {
         marketDTO.setActive(active);
         marketDTO.setName(name);
         marketDTO.setInstruments(instruments);
+        marketDTO.setCode(code);
         return marketDTO;
     }
 }

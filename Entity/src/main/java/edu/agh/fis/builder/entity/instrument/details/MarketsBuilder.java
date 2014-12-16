@@ -11,6 +11,7 @@ import java.util.Set;
 public class MarketsBuilder {
     private Boolean active;
     private String name;
+    private String code;
     private Set<InstrumentMarket> instruments;
 
     private MarketsBuilder() {
@@ -30,6 +31,11 @@ public class MarketsBuilder {
         return this;
     }
 
+    public MarketsBuilder code(String code) {
+        this.code = code;
+        return this;
+    }
+
     public MarketsBuilder instruments(Set<InstrumentMarket> instruments) {
         this.instruments = instruments;
         return this;
@@ -44,6 +50,7 @@ public class MarketsBuilder {
         markets.setActive(active);
         markets.setName(name);
         markets.setInstruments(instruments);
+        markets.setCode(code);
         return markets;
     }
 }

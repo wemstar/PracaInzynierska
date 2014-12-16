@@ -12,12 +12,22 @@ import java.util.Set;
 public class Markets {
 
     @Id
-    @Column(name = "MARKET_NAME", unique = true, nullable = false)
-    private String name;
+    @Column(name = "MARKET_CODE", unique = true, nullable = false)
+    private String code;
     @OneToMany(mappedBy = "market", fetch = FetchType.EAGER)
     private Set<InstrumentMarket> instruments;
     @Column(name = "MARKET_ACTIVE")
     private Boolean active;
+    @Column(name = "MARKET_NAME")
+    private String name;
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
 
     public Boolean getActive() {
         return active;

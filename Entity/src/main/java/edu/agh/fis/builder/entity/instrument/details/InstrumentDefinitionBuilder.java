@@ -11,6 +11,7 @@ import java.util.Set;
 public class InstrumentDefinitionBuilder {
     private Set<InstrumentInfo> instrumentInfos;
     private String isin;
+    private String name;
 
     private InstrumentDefinitionBuilder() {
     }
@@ -33,6 +34,11 @@ public class InstrumentDefinitionBuilder {
         return this;
     }
 
+    public InstrumentDefinitionBuilder name(String name) {
+        this.name = name;
+        return this;
+    }
+
     public InstrumentDefinitionBuilder but() {
         return anInstrumentDefinition().instrumentInfos(instrumentInfos).isin(isin);
     }
@@ -41,6 +47,7 @@ public class InstrumentDefinitionBuilder {
         InstrumentDefinition instrumentDefinition = new InstrumentDefinition();
         instrumentDefinition.setInstrumentInfos(instrumentInfos);
         instrumentDefinition.setIsin(isin);
+        instrumentDefinition.setName(name);
         return instrumentDefinition;
     }
 }

@@ -58,11 +58,11 @@ public class DoomyData {
         MarketDTO market = new MarketDTO();
         market.setName("Wall street");
         market.setCode("NASDAQ");
-        market.setType("Instruments");
+
         MarketDTO market2 = new MarketDTO();
         market.setName("Giełda papierów wartościowych");
         market.setCode("GPW");
-        market.setType("Instruments");
+
         instrument.setName("KGHM");
         instrument.setIsin("PLKGHM");
 

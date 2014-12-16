@@ -7,6 +7,7 @@ import edu.agh.fis.instrument.details.InstrumentDefinitionDTO;
  */
 public class InstrumentDefinitionTransportBuilder {
     private String isin;
+    private String name;
 
     private InstrumentDefinitionTransportBuilder() {
     }
@@ -20,6 +21,11 @@ public class InstrumentDefinitionTransportBuilder {
         return this;
     }
 
+    public InstrumentDefinitionTransportBuilder name(String name) {
+        this.name = name;
+        return this;
+    }
+
     public InstrumentDefinitionTransportBuilder but() {
         return anInstrumentDefinitionTransport().isin(isin);
     }
@@ -27,6 +33,7 @@ public class InstrumentDefinitionTransportBuilder {
     public InstrumentDefinitionDTO build() {
         InstrumentDefinitionDTO instrumentDefinitionDTO = new InstrumentDefinitionDTO();
         instrumentDefinitionDTO.setIsin(isin);
+        instrumentDefinitionDTO.setName(name);
         return instrumentDefinitionDTO;
     }
 }

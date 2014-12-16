@@ -74,7 +74,8 @@ public class NewOrder extends Composite implements Editor<NewOrderDTO> {
     private AsyncCallback<List<MarketDTO>> callbackMarketList = new AsyncCallback<List<MarketDTO>>() {
         @Override
         public void onFailure(Throwable caught) {
-
+            AlertMessageBox d = new AlertMessageBox("Błąd", "Problem podczas pobieranie rynków");
+            d.show();
         }
 
         @Override
@@ -127,8 +128,8 @@ public class NewOrder extends Composite implements Editor<NewOrderDTO> {
 
         LabelProvider<MarketDTO> name();
 
-        @Editor.Path("name")
-        ValueProvider<MarketDTO, String> nameProp();
+        @Editor.Path("code")
+        ValueProvider<MarketDTO, String> codeProp();
     }
 
     interface NewOrderDTODriver extends SimpleBeanEditorDriver<NewOrderDTO, NewOrder> {

@@ -20,6 +20,16 @@ public class InstrumentDefinition {
     @Id
     @Column(name = "INSTRUMENT_ISIN")
     private String isin;
+    @Column(name = "INSTRUMENT_DEFINITION_NAME", nullable = false, unique = true)
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public Set<InstrumentMarket> getMarkets() {
         return markets;
