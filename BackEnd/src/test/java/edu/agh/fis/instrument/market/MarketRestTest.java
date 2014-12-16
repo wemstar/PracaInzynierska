@@ -2,6 +2,7 @@ package edu.agh.fis.instrument.market;
 
 import edu.agh.fis.core.instrument.market.presistance.MarketDAO;
 import edu.agh.fis.entity.instrument.details.InstrumentMarket;
+import edu.agh.fis.entity.instrument.details.Markets;
 import edu.agh.fis.instrument.details.InstrumentDefinitionDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -16,7 +17,10 @@ import org.testng.annotations.Test;
 import java.util.Arrays;
 import java.util.HashSet;
 
+import static edu.agh.fis.builder.entity.instrument.details.InstrumentDefinitionBuilder.anInstrumentDefinition;
+import static edu.agh.fis.builder.entity.instrument.details.InstrumentMarketBuilder.anInstrumentMarket;
 import static edu.agh.fis.builder.entity.instrument.details.MarketsBuilder.aMarkets;
+import static edu.agh.fis.builder.instrument.details.InstrumentDefinitionDTOBuilder.anInstrumentDefinitionDTO;
 import static edu.agh.fis.builder.instrument.market.MarketDTOBuilder.aMarketDTO;
 import static edu.agh.fis.utils.testing.TestUtil.convertObjectToJsonBytes;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -49,21 +53,34 @@ public class MarketRestTest extends AbstractTestNGSpringContextTests {
     @Test
     public void shouldReturnActive() throws Exception {
 
-        marketDAO.create(aMarkets()
-                        .active(true)
-                        .code("GPW")
-                        .name("Giełda papierów wartościowych w Warszawie")
-                        .instruments(new HashSet<InstrumentMarket>(Arrays.asList(new InstrumentMarket[]{
+        Markets market = aMarkets()
+                .active(true)
+                .code("GPW")
+                .name("Giełda papierów wartościowych w Warszawie")
+                .build();
 
-                        })))
-                        .build()
-        );
+
+        InstrumentMarket insMark = anInstrumentMarket()
+                .instrument(anInstrumentDefinition()
+                                .isin("KGHM")
+                                .name("KGHM Polska Miedź")
+                                .build()
+                )
+                .market(market)
+                .buyPrice(20.0)
+                .sellPrice(21.0)
+                .build();
+        market.setInstruments(new HashSet<InstrumentMarket>(Arrays.asList(new InstrumentMarket[]{
+                insMark
+        })));
+        marketDAO.create(market);
 
         marketDAO.create(aMarkets()
                         .active(false)
                         .code("NYSE")
                         .name("NEW York Stock Exchange")
                         .instruments(new HashSet<InstrumentMarket>(Arrays.asList(new InstrumentMarket[]{
+
 
                         })))
                         .build()
@@ -77,7 +94,10 @@ public class MarketRestTest extends AbstractTestNGSpringContextTests {
                                 .code("GPW")
                                 .name("Giełda papierów wartościowych w Warszawie")
                                 .instruments(Arrays.asList(new InstrumentDefinitionDTO[]{
-
+                                        anInstrumentDefinitionDTO()
+                                                .name("KGHM Polska Miedź")
+                                                .isin("KGHM")
+                                                .build()
                                 }))
                                 .build()
 

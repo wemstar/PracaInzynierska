@@ -5,7 +5,8 @@ import edu.agh.fis.instrument.details.InstrumentDefinitionDTO;
 import org.springframework.stereotype.Component;
 
 import static edu.agh.fis.builder.entity.instrument.details.InstrumentDefinitionBuilder.anInstrumentDefinition;
-import static edu.agh.fis.builder.instrument.details.InstrumentDefinitionTransportBuilder.anInstrumentDefinitionTransport;
+import static edu.agh.fis.builder.instrument.details.InstrumentDefinitionDTOBuilder.anInstrumentDefinitionDTO;
+
 
 /**
  * Created by wemstar on 28.10.14.
@@ -16,7 +17,7 @@ public class InstrumentDefinitionTransformerImpl implements InstrumentDefinition
     @Override
     public InstrumentDefinitionDTO entityToTransport(InstrumentDefinition entity) {
         return entity != null ?
-                anInstrumentDefinitionTransport()
+                anInstrumentDefinitionDTO()
                         .isin(entity.getIsin())
                         .name(entity.getName())
                         .build()

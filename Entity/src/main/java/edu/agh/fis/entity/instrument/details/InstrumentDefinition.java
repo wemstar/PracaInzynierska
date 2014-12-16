@@ -1,6 +1,8 @@
 package edu.agh.fis.entity.instrument.details;
 
 import edu.agh.fis.entity.bra.acc.InstrumentInfo;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -16,6 +18,7 @@ public class InstrumentDefinition {
     @OneToMany(mappedBy = "instrumentDefinition")
     private Set<InstrumentInfo> instrumentInfos;
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "instrument")
+    @Fetch(FetchMode.JOIN)
     private Set<InstrumentMarket> markets;
     @Id
     @Column(name = "INSTRUMENT_ISIN")

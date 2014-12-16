@@ -108,6 +108,7 @@ public class NewOrder extends Composite implements Editor<NewOrderDTO> {
         NewOrderService.App.getInstance().createNewOrder(driver.flush(), new AsyncCallback<Void>() {
             @Override
             public void onFailure(Throwable caught) {
+                box.hide();
                 AlertMessageBox d = new AlertMessageBox("Błąd", "Problem podczas składania zlecenia");
                 d.show();
             }

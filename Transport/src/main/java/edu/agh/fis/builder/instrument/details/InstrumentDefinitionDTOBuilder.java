@@ -3,31 +3,31 @@ package edu.agh.fis.builder.instrument.details;
 import edu.agh.fis.instrument.details.InstrumentDefinitionDTO;
 
 /**
- * Created by wemstar on 11.10.14.
+ * Created by wemstar on 16.12.14.
  */
-public class InstrumentDefinitionTransportBuilder {
+public class InstrumentDefinitionDTOBuilder {
     private String isin;
     private String name;
 
-    private InstrumentDefinitionTransportBuilder() {
+    private InstrumentDefinitionDTOBuilder() {
     }
 
-    public static InstrumentDefinitionTransportBuilder anInstrumentDefinitionTransport() {
-        return new InstrumentDefinitionTransportBuilder();
+    public static InstrumentDefinitionDTOBuilder anInstrumentDefinitionDTO() {
+        return new InstrumentDefinitionDTOBuilder();
     }
 
-    public InstrumentDefinitionTransportBuilder isin(String isin) {
+    public InstrumentDefinitionDTOBuilder isin(String isin) {
         this.isin = isin;
         return this;
     }
 
-    public InstrumentDefinitionTransportBuilder name(String name) {
+    public InstrumentDefinitionDTOBuilder name(String name) {
         this.name = name;
         return this;
     }
 
-    public InstrumentDefinitionTransportBuilder but() {
-        return anInstrumentDefinitionTransport().isin(isin);
+    public InstrumentDefinitionDTOBuilder but() {
+        return anInstrumentDefinitionDTO().isin(isin).name(name);
     }
 
     public InstrumentDefinitionDTO build() {

@@ -2,14 +2,16 @@ package edu.agh.fis.builder.entity.instrument.details;
 
 import edu.agh.fis.entity.bra.acc.InstrumentInfo;
 import edu.agh.fis.entity.instrument.details.InstrumentDefinition;
+import edu.agh.fis.entity.instrument.details.InstrumentMarket;
 
 import java.util.Set;
 
 /**
- * Created by wemstar on 11.10.14.
+ * Created by wemstar on 16.12.14.
  */
 public class InstrumentDefinitionBuilder {
     private Set<InstrumentInfo> instrumentInfos;
+    private Set<InstrumentMarket> markets;
     private String isin;
     private String name;
 
@@ -20,12 +22,13 @@ public class InstrumentDefinitionBuilder {
         return new InstrumentDefinitionBuilder();
     }
 
-    public InstrumentDefinitionBuilder id(long id) {
+    public InstrumentDefinitionBuilder instrumentInfos(Set<InstrumentInfo> instrumentInfos) {
+        this.instrumentInfos = instrumentInfos;
         return this;
     }
 
-    InstrumentDefinitionBuilder instrumentInfos(Set<InstrumentInfo> instrumentInfos) {
-        this.instrumentInfos = instrumentInfos;
+    public InstrumentDefinitionBuilder markets(Set<InstrumentMarket> markets) {
+        this.markets = markets;
         return this;
     }
 
@@ -40,12 +43,13 @@ public class InstrumentDefinitionBuilder {
     }
 
     public InstrumentDefinitionBuilder but() {
-        return anInstrumentDefinition().instrumentInfos(instrumentInfos).isin(isin);
+        return anInstrumentDefinition().instrumentInfos(instrumentInfos).markets(markets).isin(isin).name(name);
     }
 
     public InstrumentDefinition build() {
         InstrumentDefinition instrumentDefinition = new InstrumentDefinition();
         instrumentDefinition.setInstrumentInfos(instrumentInfos);
+        instrumentDefinition.setMarkets(markets);
         instrumentDefinition.setIsin(isin);
         instrumentDefinition.setName(name);
         return instrumentDefinition;

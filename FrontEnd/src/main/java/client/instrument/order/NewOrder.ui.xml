@@ -26,6 +26,14 @@
             <container:VerticalLayoutContainer>
 
                 <container:child layoutData="{verticalLayoutData}">
+                    <form:FieldLabel text="ID Zlecenia">
+                        <form:widget>
+                            <form:TextField ui:field="id"/>
+                        </form:widget>
+                    </form:FieldLabel>
+                </container:child>
+
+                <container:child layoutData="{verticalLayoutData}">
                     <form:FieldLabel text="Rynek">
                         <form:widget>
                             <form:ComboBox store="{marketsList}" labelProvider="{marketsLabel}" ui:field="market"/>

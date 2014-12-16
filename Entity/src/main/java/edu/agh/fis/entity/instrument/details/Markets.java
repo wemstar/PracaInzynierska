@@ -1,6 +1,9 @@
 package edu.agh.fis.entity.instrument.details;
 
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -14,7 +17,8 @@ public class Markets {
     @Id
     @Column(name = "MARKET_CODE", unique = true, nullable = false)
     private String code;
-    @OneToMany(mappedBy = "market", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "market", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @Fetch(FetchMode.JOIN)
     private Set<InstrumentMarket> instruments;
     @Column(name = "MARKET_ACTIVE")
     private Boolean active;

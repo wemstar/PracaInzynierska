@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
-import static edu.agh.fis.builder.instrument.details.InstrumentDefinitionTransportBuilder.anInstrumentDefinitionTransport;
+import static edu.agh.fis.builder.instrument.details.InstrumentDefinitionDTOBuilder.anInstrumentDefinitionDTO;
 import static edu.agh.fis.builder.instrument.market.MarketDTOBuilder.aMarketDTO;
 
 /**
@@ -28,13 +28,14 @@ public class MarketTransformerImpl implements MarketTransformer {
                 .name(marketEntity.getName())
                 .build();
         List<InstrumentDefinitionDTO> list = new ArrayList<InstrumentDefinitionDTO>();
-        if (marketEntity.getInstruments() != null)
-            for (InstrumentMarket markins : marketEntity.getInstruments()) {
-                list.add(anInstrumentDefinitionTransport()
+        for (InstrumentMarket markins : marketEntity.getInstruments()) {
+            list.add(anInstrumentDefinitionDTO()
                                 .isin(markins.getInstrument().getIsin())
-                                .build()
-                );
-            }
+                    .name(markins.getInstrument().getName())
+                    .build());
+        }
+
+
         marketDTO.setInstruments(list);
         return marketDTO;
 

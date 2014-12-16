@@ -1,5 +1,8 @@
 package edu.agh.fis.entity.instrument.details;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 
 /**
@@ -11,13 +14,16 @@ public class InstrumentMarket {
 
     @Id
     @Column(name = "INSTRUMENT_MARKET_ID", nullable = false, unique = true)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     @JoinColumn(name = "INSTRUMENT_MARKET_MARKET", nullable = false)
     @ManyToOne(fetch = FetchType.EAGER)
+    @Fetch(FetchMode.JOIN)
     private Markets market;
     @JoinColumn(name = "INSTRUMENT_MARKET_INSTRUMENT", nullable = false)
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @Fetch(FetchMode.JOIN)
     private InstrumentDefinition instrument;
     @Column(name = "INSTRUMENT_MARKET_SELL_PRICE", nullable = false)
     private Double sellPrice;

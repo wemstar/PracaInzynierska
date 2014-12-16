@@ -10,7 +10,8 @@ import java.util.Set;
 
 import static edu.agh.fis.builder.bra.acc.BraAccountDTOBuilder.aBraAccountDTO;
 import static edu.agh.fis.builder.bra.acc.InstrumentInfoDTOBuilder.anInstrumentInfoDTO;
-import static edu.agh.fis.builder.instrument.details.InstrumentDefinitionTransportBuilder.anInstrumentDefinitionTransport;
+import static edu.agh.fis.builder.instrument.details.InstrumentDefinitionDTOBuilder.anInstrumentDefinitionDTO;
+
 
 /**
  * Created by wemstar on 11.10.14.
@@ -37,8 +38,9 @@ public class TransformFromEntity {
         Set<InstrumentInfoDTO> setDto = new HashSet<InstrumentInfoDTO>();
         for (InstrumentInfo entity : setEntity) {
             setDto.add(anInstrumentInfoDTO()
-                    .instrument(anInstrumentDefinitionTransport()
+                    .instrument(anInstrumentDefinitionDTO()
                             .isin(entity.getInstrumentDefinition().getIsin())
+                            .name(entity.getInstrumentDefinition().getName())
                             .build())
                     .ammount(entity.getAmmount())
                     .blocked(entity.getBlocked())
