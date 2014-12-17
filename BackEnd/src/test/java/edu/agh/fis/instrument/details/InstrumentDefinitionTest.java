@@ -37,7 +37,7 @@ public class InstrumentDefinitionTest extends AbstractTestNGSpringContextTests {
 
     @Test
     public void schouldCRUDInstrument() throws Exception {
-        InstrumentDefinitionDTO instrumentDefinitionDTO = anInstrumentDefinitionDTO().isin("KGHM").build();
+        InstrumentDefinitionDTO instrumentDefinitionDTO = anInstrumentDefinitionDTO().isin("KGHM").name("KGHM Polska Miedź").build();
 
         mockMvc.perform(post("/instrument/details")
                 .contentType(MediaType.APPLICATION_JSON)

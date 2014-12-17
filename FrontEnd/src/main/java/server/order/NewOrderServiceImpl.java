@@ -9,6 +9,7 @@ import server.file.search.ClientFileServiceImpl;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -27,6 +28,8 @@ public class NewOrderServiceImpl extends RemoteServiceServlet implements NewOrde
 
     @Override
     public void createNewOrder(NewOrderDTO newOrder) {
+
+        logger.log(Level.FINE, "Wysłanoe zlecenie " + newOrder);
 
         restTemplate.put(ClientFileServiceImpl.server + "/order/new", newOrder, NewOrderDTO.class);
     }

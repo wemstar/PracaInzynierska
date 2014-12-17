@@ -1,15 +1,17 @@
-package client.instrument.order.service.dto;
+package edu.agh.fis.instrument.order;
 
 import java.io.Serializable;
 
 /**
- * Created by wemstar on 30.11.14.
+ * Created by wemstar on 29.09.14.
  */
 public class NewOrderDTO implements Serializable {
+
     private String instrument;
     private String market;
     private String side;
     private String type;
+    private String accountNumber;
     private Double price;
     private Long amount;
     private Long id;
@@ -31,6 +33,7 @@ public class NewOrderDTO implements Serializable {
                 ", type='" + type + '\'' +
                 ", price=" + price +
                 ", amount=" + amount +
+                ", accountNumber=" + accountNumber +
                 '}';
     }
 
@@ -82,4 +85,11 @@ public class NewOrderDTO implements Serializable {
         this.price = price;
     }
 
+    public String getAccountNumber() {
+        return accountNumber;
+    }
+
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
+    }
 }

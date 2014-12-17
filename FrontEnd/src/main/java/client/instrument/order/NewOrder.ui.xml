@@ -28,7 +28,7 @@
                 <container:child layoutData="{verticalLayoutData}">
                     <form:FieldLabel text="ID Zlecenia">
                         <form:widget>
-                            <form:TextField ui:field="id"/>
+                            <form:TextField ui:field="id" enabled="false"/>
                         </form:widget>
                     </form:FieldLabel>
                 </container:child>
@@ -36,7 +36,8 @@
                 <container:child layoutData="{verticalLayoutData}">
                     <form:FieldLabel text="Rynek">
                         <form:widget>
-                            <form:ComboBox store="{marketsList}" labelProvider="{marketsLabel}" ui:field="market"/>
+                            <form:ComboBox store="{marketsList}" labelProvider="{marketsLabel}" ui:field="market"
+                                           allowBlank="false"/>
                         </form:widget>
                     </form:FieldLabel>
                 </container:child>
@@ -45,7 +46,7 @@
                     <form:FieldLabel text="Instrument">
                         <form:widget>
                             <form:ComboBox store="{instrumentsList}" labelProvider="{instrumentsLabel}"
-                                           ui:field="instrument"/>
+                                           ui:field="instrument" allowBlank="false" enabled="false"/>
                         </form:widget>
                     </form:FieldLabel>
                 </container:child>
@@ -54,7 +55,8 @@
                 <container:child layoutData="{verticalLayoutData}">
                     <form:FieldLabel text="Strona">
                         <form:widget>
-                            <form:SimpleComboBox labelProvider="{sideLabel}" ui:field="side"/>
+                            <form:SimpleComboBox labelProvider="{sideLabel}" ui:field="side" allowBlank="false"
+                                                 enabled="false"/>
                         </form:widget>
                     </form:FieldLabel>
                 </container:child>
@@ -63,21 +65,22 @@
                 <container:child layoutData="{verticalLayoutData}">
                     <form:FieldLabel text="Typ">
                         <form:widget>
-                            <form:SimpleComboBox labelProvider="{sideLabel}" ui:field="type"/>
+                            <form:SimpleComboBox labelProvider="{sideLabel}" ui:field="type" allowBlank="false"
+                                                 enabled="false"/>
                         </form:widget>
                     </form:FieldLabel>
                 </container:child>
                 <container:child layoutData="{verticalLayoutData}">
                     <form:FieldLabel text="Limit Ceny">
                         <form:widget>
-                            <form:DoubleSpinnerField ui:field="price"/>
+                            <form:DoubleSpinnerField ui:field="price" allowBlank="false" enabled="false"/>
                         </form:widget>
                     </form:FieldLabel>
                 </container:child>
                 <container:child layoutData="{verticalLayoutData}">
                     <form:FieldLabel text="Ilość">
                         <form:widget>
-                            <form:LongSpinnerField ui:field="amount"/>
+                            <form:LongSpinnerField ui:field="amount" allowBlank="false" enabled="false"/>
                         </form:widget>
                     </form:FieldLabel>
                 </container:child>

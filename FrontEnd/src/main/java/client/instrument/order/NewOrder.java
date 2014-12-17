@@ -7,7 +7,6 @@ import client.instrument.order.service.dto.MarketDTO;
 import client.instrument.order.service.dto.NewOrderDTO;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.editor.client.Editor;
-import com.google.gwt.editor.client.SimpleBeanEditorDriver;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -26,17 +25,18 @@ import com.sencha.gxt.widget.core.client.form.LongSpinnerField;
 import com.sencha.gxt.widget.core.client.form.SimpleComboBox;
 import com.sencha.gxt.widget.core.client.info.Info;
 
+import java.text.ParseException;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Created by wemstar on 30.11.14.
  */
-public class NewOrder extends Composite implements Editor<NewOrderDTO> {
+public class NewOrder extends Composite {
     private static NewOrderUiBinder ourUiBinder = GWT.create(NewOrderUiBinder.class);
     private static InstrumentDTO.InstrumetnDTOProperties properties = GWT.create(InstrumentDTO.InstrumetnDTOProperties.class);
     private static MarketDTOProperties propertiesMarket = GWT.create(MarketDTOProperties.class);
-    private static NewOrderDTODriver driver = GWT.create(NewOrderDTODriver.class);
+
 
     @UiField(provided = true)
     LabelProvider<InstrumentDTO> instrumentsLabel = properties.name();
@@ -81,6 +81,7 @@ public class NewOrder extends Composite implements Editor<NewOrderDTO> {
         @Override
         public void onSuccess(List<MarketDTO> result) {
             marketsList.addAll(result);
+            Info.display("Inicjalizacja", "Zakończona sukcesem");
         }
     };
 
@@ -90,13 +91,28 @@ public class NewOrder extends Composite implements Editor<NewOrderDTO> {
         initWidget(ourUiBinder.createAndBindUi(this));
         side.add(Arrays.asList(DictionaryConstraint.side));
         type.add(Arrays.asList(DictionaryConstraint.ordersType));
-        driver.initialize(this);
-        driver.edit(new NewOrderDTO());
     }
 
     @UiHandler("market")
     public void valueChange(ValueChangeEvent<MarketDTO> events) {
         instrumentsList.addAll(events.getValue().getInstruments());
+        instrument.setEnabled(true);
+    }
+
+    @UiHandler("instrument")
+    public void instrumentChange(ValueChangeEvent<InstrumentDTO> event) {
+        side.setEnabled(true);
+    }
+
+    @UiHandler("side")
+    public void sideChange(ValueChangeEvent<String> event) {
+        type.setEnabled(true);
+    }
+
+    @UiHandler("type")
+    public void typeChange(ValueChangeEvent<String> event) {
+        price.setEnabled(true);
+        amount.setEnabled(true);
     }
 
     @UiHandler("newOrder")
@@ -105,20 +121,39 @@ public class NewOrder extends Composite implements Editor<NewOrderDTO> {
         box.setProgressText("Wysyłanie...");
         box.auto();
         box.show();
-        NewOrderService.App.getInstance().createNewOrder(driver.flush(), new AsyncCallback<Void>() {
-            @Override
-            public void onFailure(Throwable caught) {
-                box.hide();
-                AlertMessageBox d = new AlertMessageBox("Błąd", "Problem podczas składania zlecenia");
-                d.show();
-            }
 
-            @Override
-            public void onSuccess(Void result) {
-                Info.display("Info", "Zlecenie zostało wysłane");
-                box.hide();
-            }
-        });
+        try {
+            NewOrderService.App.getInstance().createNewOrder(createOrder(), new AsyncCallback<Void>() {
+                @Override
+                public void onFailure(Throwable caught) {
+                    box.hide();
+                    AlertMessageBox d = new AlertMessageBox("Błąd", "Problem podczas składania zlecenia");
+                    d.show();
+                }
+
+                @Override
+                public void onSuccess(Void result) {
+                    Info.display("Info", "Zlecenie zostało wysłane");
+                    box.hide();
+                }
+            });
+        } catch (ParseException e) {
+            AlertMessageBox d = new AlertMessageBox("Błąd", "Nie uzupełniono wymaganych pól");
+            d.show();
+        }
+    }
+
+    private NewOrderDTO createOrder() throws ParseException {
+
+        NewOrderDTO newOrder = new NewOrderDTO();
+        newOrder.setMarket(market.getValueOrThrow().getCode());
+        newOrder.setInstrument(instrument.getValueOrThrow().getIsin());
+        newOrder.setSide(side.getValueOrThrow());
+        newOrder.setType(type.getValueOrThrow());
+        newOrder.setAmount(amount.getValueOrThrow());
+        newOrder.setPrice(price.getValueOrThrow());
+        return newOrder;
+
     }
 
     interface NewOrderUiBinder extends UiBinder<VerticalPanel, NewOrder> {
@@ -133,7 +168,5 @@ public class NewOrder extends Composite implements Editor<NewOrderDTO> {
         ValueProvider<MarketDTO, String> codeProp();
     }
 
-    interface NewOrderDTODriver extends SimpleBeanEditorDriver<NewOrderDTO, NewOrder> {
-    }
 
 }
