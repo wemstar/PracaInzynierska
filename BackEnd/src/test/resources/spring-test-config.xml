@@ -42,7 +42,4 @@
     <bean class="edu.agh.fis.utils.logger.AspectLoging" id="aspectLoging"/>
     <mvc:annotation-driven/>
     <context:component-scan base-package="edu.agh.fis.interfaces.rest"/>
-    <aop:aspectj-autoproxy/>
-
-
 </beans>
