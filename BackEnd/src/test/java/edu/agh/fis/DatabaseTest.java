@@ -20,7 +20,7 @@ public class DatabaseTest extends AbstractTestNGSpringContextTests {
     @Autowired
     public SessionFactory sessionFactory;
 
-    @Test
+    @Test(enabled = false)
     @Transactional
     public void testDatabaseConnection() {
         Session session = sessionFactory.openSession();

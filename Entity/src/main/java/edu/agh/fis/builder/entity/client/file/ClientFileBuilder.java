@@ -50,7 +50,7 @@ public class ClientFileBuilder {
         return this;
     }
 
-    ClientFileBuilder account(Set<BraAccount> account) {
+    public ClientFileBuilder account(Set<BraAccount> account) {
         this.account = account;
         return this;
     }

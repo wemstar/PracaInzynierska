@@ -22,4 +22,10 @@ public class MarketDAOImpl extends AbstractDAOImpl<Markets> implements MarketDAO
                 .list();
 
     }
+
+    @Override
+    public Markets find(String market) {
+        return (Markets) sessionFactory.getCurrentSession()
+                .get(Markets.class, market);
+    }
 }

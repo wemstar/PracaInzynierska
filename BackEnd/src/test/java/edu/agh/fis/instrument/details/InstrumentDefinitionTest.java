@@ -2,6 +2,7 @@ package edu.agh.fis.instrument.details;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -23,6 +24,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @Test
 @ContextConfiguration(locations = {"classpath:spring-test-config.xml"})
 @WebAppConfiguration("classpath:test-web-resources")
+@DirtiesContext()
 public class InstrumentDefinitionTest extends AbstractTestNGSpringContextTests {
 
     @Autowired

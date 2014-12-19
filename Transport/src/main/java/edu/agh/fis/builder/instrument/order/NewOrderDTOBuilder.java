@@ -13,7 +13,7 @@ public class NewOrderDTOBuilder {
     private String type;
     private Double price;
     private Long id;
-    private Long accountNumber;
+    private String accountNumber;
 
     private NewOrderDTOBuilder() {
     }
@@ -57,7 +57,7 @@ public class NewOrderDTOBuilder {
         return this;
     }
 
-    public NewOrderDTOBuilder accountNumber(Long accountNumber) {
+    public NewOrderDTOBuilder accountNumber(String accountNumber) {
         this.accountNumber = accountNumber;
         return this;
     }
@@ -75,6 +75,7 @@ public class NewOrderDTOBuilder {
         newOrderDTO.setType(type);
         newOrderDTO.setPrice(price);
         newOrderDTO.setId(id);
+        newOrderDTO.setAccountNumber(accountNumber);
         return newOrderDTO;
     }
 }

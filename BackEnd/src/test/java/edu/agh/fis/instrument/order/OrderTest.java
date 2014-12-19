@@ -2,8 +2,12 @@ package edu.agh.fis.instrument.order;
 
 import edu.agh.fis.core.client.file.presistance.ClientFileDao;
 import edu.agh.fis.core.instrument.market.presistance.MarketDAO;
+import edu.agh.fis.entity.bra.acc.BraAccount;
+import edu.agh.fis.entity.client.file.ClientFile;
 import edu.agh.fis.entity.instrument.details.InstrumentMarket;
 import edu.agh.fis.entity.instrument.details.Markets;
+import edu.agh.fis.enums.order.OrderType;
+import edu.agh.fis.enums.order.Side;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
@@ -19,12 +23,14 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.HashSet;
 
+import static edu.agh.fis.builder.entity.bra.acc.BraAccountBuilder.aBraAccount;
 import static edu.agh.fis.builder.entity.client.file.ClientFileBuilder.aClientFile;
 import static edu.agh.fis.builder.entity.instrument.details.InstrumentDefinitionBuilder.anInstrumentDefinition;
 import static edu.agh.fis.builder.entity.instrument.details.InstrumentMarketBuilder.anInstrumentMarket;
 import static edu.agh.fis.builder.entity.instrument.details.MarketsBuilder.aMarkets;
 import static edu.agh.fis.builder.instrument.order.NewOrderDTOBuilder.aNewOrderDTO;
 import static edu.agh.fis.utils.testing.TestUtil.convertObjectToJsonBytes;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -35,6 +41,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @Test
 @ContextConfiguration(locations = {"classpath:spring-test-config.xml"})
 @WebAppConfiguration("classpath:test-web-resources")
+
 public class OrderTest extends AbstractTestNGSpringContextTests {
 
     @Autowired
@@ -51,42 +58,69 @@ public class OrderTest extends AbstractTestNGSpringContextTests {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
     }
 
-    @Test(enabled = false)
+    @Test(enabled = false, groups = "inserting")
     public void shouldCreateNewOrder() throws Exception {
         createMarketWithInstruments();
         createAccountWithInstruments();
         mockMvc.perform(post("/order/new")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(convertObjectToJsonBytes(aNewOrderDTO()
-                        .accountNumber(1L)
+                        .accountNumber("1")
                         .instrument("KGHM")
                         .market("GPW")
                         .amount(2L)
                         .price(5.0)
-                        .side("Kupno")
-                        .type("Z limitem")
+                        .side(Side.BUY.toString())
+                        .type(OrderType.Limit.toString())
                         .build())))
                 .andExpect(status().isCreated())
-                .andExpect(content().string(convertObjectToJsonBytes(convertObjectToJsonBytes(aNewOrderDTO()
-                        .accountNumber(1L)
+                .andExpect(content().string(convertObjectToJsonBytes(aNewOrderDTO()
+                        .accountNumber("1")
                         .instrument("KGHM")
                         .market("GPW")
                         .amount(2L)
                         .price(5.0)
-                        .side("Kupno")
-                        .type("Z limitem")
+                        .side(Side.BUY.toString())
+                        .type(OrderType.Limit.toString())
                         .id(1L)
-                        .build()))));
+                        .build())));
+    }
+
+    @Test(dependsOnGroups = "inserting", enabled = false)
+    public void shouldReturn() throws Exception {
+        mockMvc.perform(get("/order/client/1"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(convertObjectToJsonBytes(Arrays.asList(new NewOrderDTO[]
+                        {
+                                aNewOrderDTO()
+                                        .accountNumber("1")
+                                        .instrument("KGHM")
+                                        .market("GPW")
+                                        .amount(2L)
+                                        .price(5.0)
+                                        .side(Side.BUY.toString())
+                                        .type(OrderType.Limit.toString())
+                                        .id(1L)
+                                        .build()
+                        }))));
+        ;
     }
 
     private void createAccountWithInstruments() {
-        clientFileDao.create(aClientFile()
-                        .dateOfBirth(new Date())
-                        .name("test")
-                        .surname("testowny")
 
-                        .build()
-        );
+        BraAccount account = aBraAccount()
+                .blockCash(12.0)
+                .avalibleCash(400.0)
+                .build();
+
+        ClientFile clientFile = aClientFile()
+                .dateOfBirth(new Date())
+                .name("test")
+                .surname("testowny")
+                .build();
+        account.setClientFile(clientFile);
+        clientFile.setAccount(new HashSet<BraAccount>(Arrays.asList(new BraAccount[]{account})));
+        clientFileDao.create(clientFile);
     }
 
     private void createMarketWithInstruments() {

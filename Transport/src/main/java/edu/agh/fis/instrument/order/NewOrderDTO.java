@@ -37,6 +37,14 @@ public class NewOrderDTO implements Serializable {
                 '}';
     }
 
+    public String getAccountNumber() {
+        return accountNumber;
+    }
+
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
+    }
+
     public Long getAmount() {
         return amount;
     }
@@ -61,6 +69,14 @@ public class NewOrderDTO implements Serializable {
         this.market = market;
     }
 
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
     public String getSide() {
         return side;
     }
@@ -75,21 +91,5 @@ public class NewOrderDTO implements Serializable {
 
     public void setType(String type) {
         this.type = type;
-    }
-
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
-    }
-
-    public String getAccountNumber() {
-        return accountNumber;
-    }
-
-    public void setAccountNumber(String accountNumber) {
-        this.accountNumber = accountNumber;
     }
 }

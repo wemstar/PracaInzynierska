@@ -6,5 +6,5 @@ import edu.agh.fis.utils.presistance.AbstractDAO;
 /**
  * Created by wemstar on 29.09.14.
  */
-public interface SimpleOrderDAO extends AbstractDAO<NewOrder> {
+public interface NewOrderDAO extends AbstractDAO<NewOrder> {
 }

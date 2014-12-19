@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
  * Created by wemstar on 29.09.14.
  */
 @Repository
-class SimpleOrderDAOImpl extends AbstractDAOImpl<NewOrder> implements SimpleOrderDAO {
+class NewOrderDAOImpl extends AbstractDAOImpl<NewOrder> implements NewOrderDAO {
 }

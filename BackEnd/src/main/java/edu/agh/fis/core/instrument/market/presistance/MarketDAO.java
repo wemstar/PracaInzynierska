@@ -10,4 +10,6 @@ import java.util.List;
  */
 public interface MarketDAO extends AbstractDAO<Markets> {
     List<Markets> getActiveMarkets();
+
+    Markets find(String market);
 }

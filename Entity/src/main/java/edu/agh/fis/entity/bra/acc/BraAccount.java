@@ -1,6 +1,7 @@
 package edu.agh.fis.entity.bra.acc;
 
 import edu.agh.fis.entity.client.file.ClientFile;
+import edu.agh.fis.entity.instrument.order.NewOrder;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -34,6 +35,18 @@ public class BraAccount {
     @OneToMany(mappedBy = "braAccount", fetch = FetchType.EAGER)
     @Fetch(FetchMode.JOIN)
     private Set<InstrumentInfo> instruments;
+
+    @OneToMany(mappedBy = "braAccount", fetch = FetchType.EAGER)
+    @Fetch(FetchMode.JOIN)
+    private Set<NewOrder> orders;
+
+    public Set<NewOrder> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Set<NewOrder> orders) {
+        this.orders = orders;
+    }
 
     public Set<InstrumentInfo> getInstruments() {
         return instruments;
