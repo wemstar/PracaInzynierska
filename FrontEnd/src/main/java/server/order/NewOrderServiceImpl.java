@@ -34,6 +34,7 @@ public class NewOrderServiceImpl extends RemoteServiceServlet implements NewOrde
 
         logger.log(Level.WARNING, "Wysłanoe zlecenie " + newOrder);
 
+
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<NewOrderDTO> entity = new HttpEntity<NewOrderDTO>(newOrder, headers);
