@@ -5,6 +5,6 @@ package client.constraint;
  */
 public class DictionaryConstraint {
 
-    public static String[] side = new String[]{"Sprzedaż", "Kupno"};
-    public static String[] ordersType = new String[]{"Z limitem", "PKC", "PCR", "PEG", "Stop loss", "Stop limit"};
+    public static EnumCombo[] side = new EnumCombo[]{new EnumCombo("SELL", "Sprzedaż"), new EnumCombo("BUY", "Kupno")};
+    public static EnumCombo[] ordersType = new EnumCombo[]{new EnumCombo("Limit", "Z limitem"), new EnumCombo("PKC"), new EnumCombo("PCR"), new EnumCombo("PEG"), new EnumCombo("StopLimit"), new EnumCombo("StopLoss")};
 }

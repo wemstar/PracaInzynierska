@@ -7,6 +7,7 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
+import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
@@ -24,6 +25,15 @@ public class ClientFileServiceImpl extends RemoteServiceServlet implements Clien
 
     public final Logger logger = Logger.getLogger("ClientFileLogger");
     RestTemplate restTemplate = new RestTemplate();
+
+    public ClientFileServiceImpl() {
+        SimpleClientHttpRequestFactory rf =
+                (SimpleClientHttpRequestFactory) restTemplate.getRequestFactory();
+        rf.setReadTimeout(10 * 1000);
+        rf.setConnectTimeout(10 * 1000);
+
+
+    }
 
     @Override
     public List<ClientFileDTO> findClients(ClientFileDTO item) {

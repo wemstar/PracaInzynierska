@@ -6,6 +6,7 @@ import client.file.search.details.ClientFileDetails;
 import client.file.search.service.ClientFileDTO;
 import client.file.search.service.ClientFileService;
 import client.images.Images;
+import client.instrument.order.NewOrder;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.shared.EventBus;
@@ -185,8 +186,9 @@ public class MainModule implements IsWidget, EntryPoint {
         btn.addSelectHandler(new SelectEvent.SelectHandler() {
             @Override
             public void onSelect(SelectEvent event) {
-
-                panel.addTab(Windows.aNewOrderPanle(), "Nowe Zlecenie");
+                NewOrder panle = Windows.aNewOrderPanle();
+                panle.setBraAccount(braContext);
+                panel.addTab(panle, "Nowe Zlecenie");
             }
         });
         table.setWidget(0, 1, btn);

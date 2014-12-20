@@ -10,9 +10,18 @@ public class NewOrderDTO implements Serializable {
     private String market;
     private String side;
     private String type;
+    private String accountNumber;
     private Double price;
     private Long amount;
     private Long id;
+
+    public String getAccountNumber() {
+        return accountNumber;
+    }
+
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
+    }
 
     public Long getId() {
         return id;
@@ -31,6 +40,7 @@ public class NewOrderDTO implements Serializable {
                 ", type='" + type + '\'' +
                 ", price=" + price +
                 ", amount=" + amount +
+                ", accountNumber=" + accountNumber +
                 '}';
     }
 

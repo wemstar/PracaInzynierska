@@ -24,6 +24,7 @@ class OrderRESTImpl implements OrderREST {
     @Autowired
     private NewOrderTransformer newOrderTransformer;
 
+    @Override
     @RequestMapping(value = "/new", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     public NewOrderDTO newOrder(@RequestBody NewOrderDTO newOrderDTO) {
@@ -33,6 +34,7 @@ class OrderRESTImpl implements OrderREST {
 
     }
 
+    @Override
     @RequestMapping(value = "client/{clientNo}", method = RequestMethod.GET)
     public List<NewOrderDTO> orderListForClient(@PathVariable Long clientNo) {
 

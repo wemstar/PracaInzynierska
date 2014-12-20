@@ -4,6 +4,9 @@ import client.instrument.order.service.NewOrderService;
 import client.instrument.order.service.dto.MarketDTO;
 import client.instrument.order.service.dto.NewOrderDTO;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.web.client.RestTemplate;
 import server.file.search.ClientFileServiceImpl;
 
@@ -29,8 +32,11 @@ public class NewOrderServiceImpl extends RemoteServiceServlet implements NewOrde
     @Override
     public void createNewOrder(NewOrderDTO newOrder) {
 
-        logger.log(Level.FINE, "Wysłanoe zlecenie " + newOrder);
+        logger.log(Level.WARNING, "Wysłanoe zlecenie " + newOrder);
 
-        restTemplate.put(ClientFileServiceImpl.server + "/order/new", newOrder, NewOrderDTO.class);
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<NewOrderDTO> entity = new HttpEntity<NewOrderDTO>(newOrder, headers);
+        restTemplate.postForObject(ClientFileServiceImpl.server + "/order/new", entity, NewOrderDTO.class);
     }
 }

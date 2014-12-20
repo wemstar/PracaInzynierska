@@ -1,6 +1,11 @@
 package client.instrument.order;
 
+import client.MainModule;
+import client.bra.account.service.BraAccountDTO;
 import client.constraint.DictionaryConstraint;
+import client.constraint.EnumCombo;
+import client.events.BraAccountContextChange;
+import client.events.BraAccountContextChangeHandler;
 import client.instrument.order.service.NewOrderService;
 import client.instrument.order.service.dto.InstrumentDTO;
 import client.instrument.order.service.dto.MarketDTO;
@@ -54,10 +59,10 @@ public class NewOrder extends Composite {
     LabelProvider<String> sideLabel = new StringLabelProvider<String>();
 
     @UiField
-    SimpleComboBox<String> side;
+    SimpleComboBox<EnumCombo> side;
 
     @UiField
-    SimpleComboBox<String> type;
+    SimpleComboBox<EnumCombo> type;
 
     @UiField
     ComboBox<InstrumentDTO> instrument;
@@ -70,7 +75,7 @@ public class NewOrder extends Composite {
 
     @UiField
     LongSpinnerField amount;
-
+    private BraAccountDTO braAccount;
     private AsyncCallback<List<MarketDTO>> callbackMarketList = new AsyncCallback<List<MarketDTO>>() {
         @Override
         public void onFailure(Throwable caught) {
@@ -85,12 +90,23 @@ public class NewOrder extends Composite {
         }
     };
 
+
     public NewOrder() {
 
         NewOrderService.App.getInstance().getMarkets(callbackMarketList);
         initWidget(ourUiBinder.createAndBindUi(this));
         side.add(Arrays.asList(DictionaryConstraint.side));
         type.add(Arrays.asList(DictionaryConstraint.ordersType));
+        MainModule.EVENT_BUS.addHandler(BraAccountContextChange.TYPE, new BraAccountContextChangeHandler() {
+            @Override
+            public void onBraAccountContextChangeHandler(BraAccountContextChange event) {
+                braAccount = event.getBraAccount();
+            }
+        });
+    }
+
+    public void setBraAccount(BraAccountDTO braAccount) {
+        this.braAccount = braAccount;
     }
 
     @UiHandler("market")
@@ -105,12 +121,12 @@ public class NewOrder extends Composite {
     }
 
     @UiHandler("side")
-    public void sideChange(ValueChangeEvent<String> event) {
+    public void sideChange(ValueChangeEvent<EnumCombo> event) {
         type.setEnabled(true);
     }
 
     @UiHandler("type")
-    public void typeChange(ValueChangeEvent<String> event) {
+    public void typeChange(ValueChangeEvent<EnumCombo> event) {
         price.setEnabled(true);
         amount.setEnabled(true);
     }
@@ -148,10 +164,11 @@ public class NewOrder extends Composite {
         NewOrderDTO newOrder = new NewOrderDTO();
         newOrder.setMarket(market.getValueOrThrow().getCode());
         newOrder.setInstrument(instrument.getValueOrThrow().getIsin());
-        newOrder.setSide(side.getValueOrThrow());
-        newOrder.setType(type.getValueOrThrow());
+        newOrder.setSide(side.getValueOrThrow().getCode());
+        newOrder.setType(type.getValueOrThrow().getCode());
         newOrder.setAmount(amount.getValueOrThrow());
         newOrder.setPrice(price.getValueOrThrow());
+        newOrder.setAccountNumber(braAccount.getBraAccNo());
         return newOrder;
 
     }
