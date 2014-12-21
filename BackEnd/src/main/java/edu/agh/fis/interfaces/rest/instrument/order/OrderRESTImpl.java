@@ -30,7 +30,7 @@ class OrderRESTImpl implements OrderREST {
     public NewOrderDTO newOrder(@RequestBody NewOrderDTO newOrderDTO) {
 
 
-        return newOrderTransformer.entityToTransport(newOrderService.procesOrder(newOrderTransformer.transportToEntity(newOrderDTO)));
+        return newOrderTransformer.entityToTransport(newOrderService.createNewOrder(newOrderTransformer.transportToEntity(newOrderDTO)));
 
     }
 

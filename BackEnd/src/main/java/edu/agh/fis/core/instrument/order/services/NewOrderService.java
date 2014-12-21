@@ -9,7 +9,9 @@ import java.util.List;
  * Created by wemstar on 17.12.14.
  */
 public interface NewOrderService {
-    NewOrder procesOrder(NewOrder newOrderAgregate);
+    NewOrder createNewOrder(NewOrder newOrderAgregate);
 
     List<NewOrder> getOrdeListForClient(Long clientNo);
+
+    void procesNewOrders(NewOrder onMarket, NewOrder newOrder);
 }

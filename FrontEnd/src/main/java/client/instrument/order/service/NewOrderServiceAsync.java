@@ -12,4 +12,6 @@ public interface NewOrderServiceAsync {
     void createNewOrder(NewOrderDTO newOrder, AsyncCallback<Void> async);
 
     void getMarkets(AsyncCallback<List<MarketDTO>> async);
+
+    void getOrdersForClient(String clientNo, AsyncCallback<List<NewOrderDTO>> async);
 }

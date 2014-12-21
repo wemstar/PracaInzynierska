@@ -69,4 +69,21 @@ public class InstrumentInfo {
     public void setBraAccount(BraAccount braAccount) {
         this.braAccount = braAccount;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        InstrumentInfo info = (InstrumentInfo) o;
+
+        if (!instrumentDefinition.equals(info.instrumentDefinition)) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return instrumentDefinition.hashCode();
+    }
 }

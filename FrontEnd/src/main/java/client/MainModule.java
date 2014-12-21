@@ -7,6 +7,7 @@ import client.file.search.service.ClientFileDTO;
 import client.file.search.service.ClientFileService;
 import client.images.Images;
 import client.instrument.order.NewOrder;
+import client.instrument.order.list.OrderList;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.shared.EventBus;
@@ -142,10 +143,10 @@ public class MainModule implements IsWidget, EntryPoint {
                 panel.addTab(Windows.aNewClientFilePanel(), "Nowa Kartoteka");
             }
         });
-        table.setWidget(1, 0, btn);
+        table.setWidget(0, 2, btn);
         // //
         btn = new TextButton("To Do");
-        table.setWidget(1, 1, btn);
+        table.setWidget(0, 3, btn);
         return group;
     }
 
@@ -167,10 +168,10 @@ public class MainModule implements IsWidget, EntryPoint {
         table.setWidget(0, 1, btn);
 
         btn = new TextButton("To do");
-        table.setWidget(1, 0, btn);
+        table.setWidget(0, 2, btn);
         // //
         btn = new TextButton("To do");
-        table.setWidget(1, 1, btn);
+        table.setWidget(0, 3, btn);
         return group;
     }
 
@@ -180,20 +181,7 @@ public class MainModule implements IsWidget, EntryPoint {
 
         FlexTable table = new FlexTable();
 
-        TextButton btn = new TextButton("Nowe Zlecenie");
-        btn.setIcon(Images.INSTANCE.details32());
-        btn.setIconAlign(IconAlign.TOP);
-        btn.addSelectHandler(new SelectEvent.SelectHandler() {
-            @Override
-            public void onSelect(SelectEvent event) {
-                NewOrder panle = Windows.aNewOrderPanle();
-                panle.setBraAccount(braContext);
-                panel.addTab(panle, "Nowe Zlecenie");
-            }
-        });
-        table.setWidget(0, 1, btn);
-
-        btn = new TextButton("Lista Instrumentów");
+        TextButton btn = new TextButton("Lista Instrumentów");
         btn.setIcon(Images.INSTANCE.account32());
         btn.setIconAlign(IconAlign.TOP);
         btn.addSelectHandler(new SelectEvent.SelectHandler() {
@@ -212,8 +200,34 @@ public class MainModule implements IsWidget, EntryPoint {
     private ButtonGroup ordersNav() {
         ButtonGroup group = new ButtonGroup();
         group.setHeadingText("Zlecenia");
-
         FlexTable table = new FlexTable();
+        TextButton btn = new TextButton("Nowe Zlecenie");
+        btn.setIcon(Images.INSTANCE.details32());
+        btn.setIconAlign(IconAlign.TOP);
+        btn.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent event) {
+                NewOrder panle = Windows.aNewOrderPanle();
+                panle.setBraAccount(braContext);
+                panel.addTab(panle, "Nowe Zlecenie");
+            }
+        });
+        table.setWidget(0, 1, btn);
+
+        btn = new TextButton("Lista Zleceń");
+        btn.setIcon(Images.INSTANCE.details32());
+        btn.setIconAlign(IconAlign.TOP);
+        btn.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent event) {
+                OrderList panle = Windows.aNewOrderListPanel();
+                panle.setClientFile(context);
+                panel.addTab(panle, "Lista Zleceń");
+            }
+        });
+        table.setWidget(0, 2, btn);
+
+
         group.add(table);
         return group;
     }

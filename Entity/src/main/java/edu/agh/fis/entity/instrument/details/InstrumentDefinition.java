@@ -59,5 +59,20 @@ public class InstrumentDefinition {
         this.instrumentInfos = instrumentInfos;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
+        InstrumentDefinition that = (InstrumentDefinition) o;
+
+        if (!isin.equals(that.isin)) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return isin.hashCode();
+    }
 }

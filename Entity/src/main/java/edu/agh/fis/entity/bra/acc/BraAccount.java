@@ -32,7 +32,7 @@ public class BraAccount {
     private double blockCash;
 
 
-    @OneToMany(mappedBy = "braAccount", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "braAccount", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @Fetch(FetchMode.JOIN)
     private Set<InstrumentInfo> instruments;
 

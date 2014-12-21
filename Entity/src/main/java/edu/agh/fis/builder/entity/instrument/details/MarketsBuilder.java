@@ -2,6 +2,7 @@ package edu.agh.fis.builder.entity.instrument.details;
 
 import edu.agh.fis.entity.instrument.details.InstrumentMarket;
 import edu.agh.fis.entity.instrument.details.Markets;
+import edu.agh.fis.entity.instrument.order.NewOrder;
 
 import java.util.Set;
 
@@ -13,6 +14,7 @@ public class MarketsBuilder {
     private String name;
     private String code;
     private Set<InstrumentMarket> instruments;
+    private Set<NewOrder> orders;
 
     private MarketsBuilder() {
     }
@@ -40,6 +42,13 @@ public class MarketsBuilder {
         this.instruments = instruments;
         return this;
     }
+
+    public MarketsBuilder orders(Set<NewOrder> orders) {
+        this.orders = orders;
+        return this;
+    }
+
+
 
     public MarketsBuilder but() {
         return aMarkets().active(active).name(name).instruments(instruments);

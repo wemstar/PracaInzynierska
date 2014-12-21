@@ -2,6 +2,7 @@ package edu.agh.fis.core.instrument.order.services;
 
 import edu.agh.fis.core.client.file.presistance.ClientFileDao;
 import edu.agh.fis.core.instrument.order.presistance.NewOrderDAO;
+import edu.agh.fis.core.trader.TraderExecutor;
 import edu.agh.fis.entity.bra.acc.BraAccount;
 import edu.agh.fis.entity.instrument.order.NewOrder;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,11 +21,16 @@ public class NewOrderServiceImpl implements NewOrderService {
     private NewOrderDAO newOrderDAO;
     @Autowired
     private ClientFileDao clientFileDao;
+
+    @Autowired
+    private TraderExecutor executor;
+
+
     @Override
-    public NewOrder procesOrder(NewOrder newOrder) {
-
-
-        return newOrderDAO.create(newOrder);
+    public NewOrder createNewOrder(NewOrder newOrder) {
+        NewOrder newOrderEntity = newOrderDAO.create(newOrder);
+        executor.processOrder(newOrderEntity);
+        return newOrderEntity;
     }
 
     @Override
@@ -33,5 +39,13 @@ public class NewOrderServiceImpl implements NewOrderService {
         List<BraAccount> braAccounts = new ArrayList<BraAccount>(clientFileDao.find(clientNo).getAccount());
         for (BraAccount braAccount : braAccounts) orderList.addAll(braAccount.getOrders());
         return orderList;
+    }
+
+    @Override
+    public void procesNewOrders(NewOrder onMarket, NewOrder newOrder) {
+        if (onMarket.getAmount() == 0) newOrderDAO.delete(onMarket.getId());
+        else newOrderDAO.update(onMarket);
+        if (newOrder.getAmount() == 0) newOrderDAO.delete(newOrder.getId());
+        else newOrderDAO.update(newOrder);
     }
 }

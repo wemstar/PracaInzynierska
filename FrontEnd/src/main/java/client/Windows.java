@@ -5,6 +5,7 @@ import client.file.search.grid.SearchResult;
 import client.file.search.parameters.SearchClient;
 import client.file.search.service.ClientFileDTO;
 import client.instrument.order.NewOrder;
+import client.instrument.order.list.OrderList;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer;
 
@@ -16,6 +17,7 @@ public class Windows {
     private static ClientFileDetails instance;
     private static NewOrder newOrderPanel;
     private static ClientFileDetails newClientFileDetails;
+    private static OrderList orderListPanel;
 
     public static ClientFileDetails aClientFileDetailsPanel()
     {
@@ -36,6 +38,11 @@ public class Windows {
 
         if (newOrderPanel == null) newOrderPanel = new NewOrder();
         return newOrderPanel;
+    }
+
+    public static OrderList aNewOrderListPanel() {
+        if (orderListPanel == null) orderListPanel = new OrderList();
+        return orderListPanel;
     }
 
 

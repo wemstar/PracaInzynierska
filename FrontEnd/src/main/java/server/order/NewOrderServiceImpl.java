@@ -34,10 +34,14 @@ public class NewOrderServiceImpl extends RemoteServiceServlet implements NewOrde
 
         logger.log(Level.WARNING, "Wysłanoe zlecenie " + newOrder);
 
-
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<NewOrderDTO> entity = new HttpEntity<NewOrderDTO>(newOrder, headers);
         restTemplate.postForObject(ClientFileServiceImpl.server + "/order/new", entity, NewOrderDTO.class);
+    }
+
+    @Override
+    public List<NewOrderDTO> getOrdersForClient(String clientNo) {
+        return Arrays.asList(restTemplate.getForObject(ClientFileServiceImpl.server + "/order/client/" + clientNo, NewOrderDTO[].class));
     }
 }

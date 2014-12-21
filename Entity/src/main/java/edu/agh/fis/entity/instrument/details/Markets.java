@@ -1,6 +1,7 @@
 package edu.agh.fis.entity.instrument.details;
 
 
+import edu.agh.fis.entity.instrument.order.NewOrder;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -24,6 +25,17 @@ public class Markets {
     private Boolean active;
     @Column(name = "MARKET_NAME")
     private String name;
+
+    @OneToMany(mappedBy = "market", fetch = FetchType.EAGER)
+    private Set<NewOrder> orders;
+
+    public Set<NewOrder> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Set<NewOrder> orders) {
+        this.orders = orders;
+    }
 
     public String getCode() {
         return code;

@@ -17,6 +17,8 @@ public interface NewOrderService extends RemoteService {
 
     void createNewOrder(NewOrderDTO newOrder);
 
+    List<NewOrderDTO> getOrdersForClient(String clientNo);
+
     public static class App {
         private static final NewOrderServiceAsync ourInstance = (NewOrderServiceAsync) GWT.create(NewOrderService.class);
 

@@ -1,0 +1,11 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:gxt="urn:import:com.sencha.gxt.widget.core.client"
+             xmlns:grid="urn:import:com.sencha.gxt.widget.core.client.grid">
+    <ui:with type="com.sencha.gxt.data.shared.ListStore" field="listStore"/>
+    <ui:with type="com.sencha.gxt.widget.core.client.grid.ColumnModel" field="columnModel"/>
+    <ui:with type="com.sencha.gxt.widget.core.client.grid.GridView" field="gridView"/>
+
+    <gxt:ContentPanel headingText="Lista Zleceń">
+        <grid:Grid ui:field="grid" store="{listStore}" cm="{columnModel}" view="{gridView}"/>
+    </gxt:ContentPanel>
+</ui:UiBinder>
