@@ -14,9 +14,10 @@
     <entry-point class='client.MainModule'/>
     <servlet path="/ClientSearchService" class="server.file.search.ClientFileServiceImpl"/>
     <servlet path="/NewOrderService" class="server.order.NewOrderServiceImpl"/>
+    <servlet path="/InstrumentService" class="server.instrument.InstrumentServiceImpl"/>
     <add-linker name="xsiframe"/>
     <set-configuration-property name="devModeRedirectEnabled" value="true"/>
-    <set-configuration-property name="gwt.superdevmode" value="on"/>
+    <!--<set-configuration-property name="gwt.superdevmode" value="on"/>-->
     <set-property name="compiler.useSourceMaps" value="true"/>
 
 

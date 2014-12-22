@@ -4,6 +4,7 @@ import client.file.search.details.ClientFileDetails;
 import client.file.search.grid.SearchResult;
 import client.file.search.parameters.SearchClient;
 import client.file.search.service.ClientFileDTO;
+import client.instrument.list.composite.InstrumentListComposite;
 import client.instrument.order.NewOrder;
 import client.instrument.order.list.OrderList;
 import com.google.gwt.user.client.ui.Widget;
@@ -18,6 +19,7 @@ public class Windows {
     private static NewOrder newOrderPanel;
     private static ClientFileDetails newClientFileDetails;
     private static OrderList orderListPanel;
+    private static InstrumentListComposite instrumentListComposite;
 
     public static ClientFileDetails aClientFileDetailsPanel()
     {
@@ -50,5 +52,10 @@ public class Windows {
         if (newClientFileDetails == null) newClientFileDetails = new ClientFileDetails();
         newClientFileDetails.setClientFile(new ClientFileDTO());
         return newClientFileDetails;
+    }
+
+    public static InstrumentListComposite anInstrumentListPanel() {
+        if (instrumentListComposite == null) instrumentListComposite = new InstrumentListComposite();
+        return instrumentListComposite;
     }
 }

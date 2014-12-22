@@ -4,6 +4,7 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * Created by wemstar on 15.12.14.
@@ -29,6 +30,9 @@ public class InstrumentMarket {
     private Double sellPrice;
     @Column(name = "INSTRUMENT_MARKET_BUY_PRICE")
     private Double buyPrice;
+
+    @OneToMany(mappedBy = "instrumentMarket", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Set<InstrumentHistory> history;
 
     public Double getBuyPrice() {
         return buyPrice;
@@ -68,5 +72,13 @@ public class InstrumentMarket {
 
     public void setSellPrice(Double sellPrice) {
         this.sellPrice = sellPrice;
+    }
+
+    public Set<InstrumentHistory> getHistory() {
+        return history;
+    }
+
+    public void setHistory(Set<InstrumentHistory> history) {
+        this.history = history;
     }
 }

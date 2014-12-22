@@ -1,8 +1,11 @@
 package edu.agh.fis.builder.entity.instrument.details;
 
 import edu.agh.fis.entity.instrument.details.InstrumentDefinition;
+import edu.agh.fis.entity.instrument.details.InstrumentHistory;
 import edu.agh.fis.entity.instrument.details.InstrumentMarket;
 import edu.agh.fis.entity.instrument.details.Markets;
+
+import java.util.Set;
 
 /**
  * Created by wemstar on 16.12.14.
@@ -13,6 +16,7 @@ public class InstrumentMarketBuilder {
     private Markets market;
     private InstrumentDefinition instrument;
     private Double sellPrice;
+    private Set<InstrumentHistory> history;
 
     private InstrumentMarketBuilder() {
     }
@@ -46,6 +50,11 @@ public class InstrumentMarketBuilder {
         return this;
     }
 
+    public InstrumentMarketBuilder history(Set<InstrumentHistory> history) {
+        this.history = history;
+        return this;
+    }
+
     public InstrumentMarketBuilder but() {
         return anInstrumentMarket().buyPrice(buyPrice).id(id).market(market).instrument(instrument).sellPrice(sellPrice);
     }
@@ -57,6 +66,7 @@ public class InstrumentMarketBuilder {
         instrumentMarket.setMarket(market);
         instrumentMarket.setInstrument(instrument);
         instrumentMarket.setSellPrice(sellPrice);
+        instrumentMarket.setHistory(history);
         return instrumentMarket;
     }
 }

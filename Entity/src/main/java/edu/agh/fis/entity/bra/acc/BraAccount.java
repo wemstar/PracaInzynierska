@@ -89,5 +89,14 @@ public class BraAccount {
         this.id = id;
     }
 
-
+    @Override
+    public String toString() {
+        return "BraAccount{" +
+                "avalibleCash=" + avalibleCash +
+                ", id=" + id +
+                ", blockCash=" + blockCash +
+                ", instruments=" + instruments +
+                ", orders=" + orders +
+                '}';
+    }
 }

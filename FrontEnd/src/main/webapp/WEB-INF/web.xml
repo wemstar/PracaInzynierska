@@ -22,4 +22,13 @@
         <servlet-name>MainModule NewOrderhService</servlet-name>
         <url-pattern>/MainModule/NewOrderService</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>MainModule InstrumentService</servlet-name>
+        <servlet-class>server.instrument.InstrumentServiceImpl</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MainModule InstrumentService</servlet-name>
+        <url-pattern>/MainModule/InstrumentService</url-pattern>
+    </servlet-mapping>
 </web-app>

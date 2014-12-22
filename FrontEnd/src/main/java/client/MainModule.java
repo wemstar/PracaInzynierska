@@ -6,6 +6,7 @@ import client.file.search.details.ClientFileDetails;
 import client.file.search.service.ClientFileDTO;
 import client.file.search.service.ClientFileService;
 import client.images.Images;
+import client.instrument.list.composite.InstrumentListComposite;
 import client.instrument.order.NewOrder;
 import client.instrument.order.list.OrderList;
 import com.google.gwt.core.client.EntryPoint;
@@ -31,6 +32,8 @@ import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.Verti
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.info.Info;
 import com.sencha.gxt.widget.core.client.toolbar.ToolBar;
+
+import static client.Windows.anInstrumentListPanel;
 
 /**
  * Created by wemstar on 04.09.14.
@@ -187,6 +190,10 @@ public class MainModule implements IsWidget, EntryPoint {
         btn.addSelectHandler(new SelectEvent.SelectHandler() {
             @Override
             public void onSelect(SelectEvent event) {
+                InstrumentListComposite composite = anInstrumentListPanel();
+                panel.addTab(composite, "Lista Instrumentów");
+                composite.setBraContext(braContext);
+
 
 
             }
