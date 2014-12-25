@@ -19,7 +19,7 @@ public class InstrumentCheckTraderImpl implements InstrumentCheckTrader {
         }
 
 
-        return true;
+        return false;
     }
 
     private boolean checkPrice(NewOrder order1, NewOrder order2) {

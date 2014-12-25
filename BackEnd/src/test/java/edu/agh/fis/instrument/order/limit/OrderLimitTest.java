@@ -12,6 +12,7 @@ import edu.agh.fis.entity.instrument.details.InstrumentMarket;
 import edu.agh.fis.entity.instrument.details.Markets;
 import edu.agh.fis.enums.order.OrderType;
 import edu.agh.fis.enums.order.Side;
+import edu.agh.fis.instrument.order.NewOrderDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
@@ -71,7 +72,7 @@ public class OrderLimitTest extends AbstractTestNGSpringContextTests {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
     }
 
-    @Test
+    @Test(enabled = false)
     public void shouldSellInstrument() throws Exception {
         prepareData();
         executeBuyOrder();
@@ -109,8 +110,78 @@ public class OrderLimitTest extends AbstractTestNGSpringContextTests {
                                 .build())
                 ));
 
+        mockMvc.perform(get("/bra/acc/2"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(
+                        convertObjectToJsonBytes(aBraAccountDTO()
+                                .braAccNo(2L)
+                                .blockCash(15.0)
+                                .avalibleCash(2000.0)
+                                .instruments(new HashSet<InstrumentInfoDTO>(Arrays.asList(new InstrumentInfoDTO[]{
+                                        anInstrumentInfoDTO()
+                                                .blocked(0L)
+                                                .ammount(2L)
+                                                .instrument(anInstrumentDefinitionDTO()
+                                                        .name("KGHM Polska miedzi")
+                                                        .isin("KGHM")
+                                                        .build())
+                                                .build()
+                                })))
+                                .build())));
+
     }
 
+    @Test(enabled = false)
+    public void shouldReturnTwoOrders() throws Exception {
+        prepareData();
+        executeBuyOrder();
+        mockMvc.perform(post("/order/new")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(convertObjectToJsonBytes(aNewOrderDTO()
+                        .accountNumber("2")
+                        .instrument("KGHM")
+                        .market("GPW")
+                        .amount(2L)
+                        .price(5.0)
+                        .side(Side.BUY.toString())
+                        .type(OrderType.Limit.toString())
+                        .build())))
+                .andExpect(status().isCreated())
+                .andExpect(content().string(convertObjectToJsonBytes(aNewOrderDTO()
+                        .accountNumber("2")
+                        .instrument("KGHM")
+                        .market("GPW")
+                        .amount(2L)
+                        .price(5.0)
+                        .side(Side.BUY.toString())
+                        .type(OrderType.Limit.toString())
+                        .id(2L)
+                        .build())));
+        mockMvc.perform(get("/order/client/1"))
+                .andExpect(content().string(convertObjectToJsonBytes(Arrays.asList(new NewOrderDTO[]{
+                        aNewOrderDTO()
+                                .accountNumber("2")
+                                .instrument("KGHM")
+                                .market("GPW")
+                                .amount(2L)
+                                .price(5.0)
+                                .side(Side.BUY.toString())
+                                .type(OrderType.Limit.toString())
+                                .id(1L)
+                                .build(),
+                        aNewOrderDTO()
+                                .accountNumber("2")
+                                .instrument("KGHM")
+                                .market("GPW")
+                                .amount(2L)
+                                .price(5.0)
+                                .side(Side.BUY.toString())
+                                .type(OrderType.Limit.toString())
+                                .id(2L)
+                                .build()
+
+                }))));
+    }
     private void executeSellOrder() throws Exception {
         mockMvc.perform(post("/order/new")
                 .contentType(MediaType.APPLICATION_JSON)
