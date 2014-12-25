@@ -5,7 +5,7 @@ import edu.agh.fis.entity.instrument.details.InstrumentHistory;
 import edu.agh.fis.entity.instrument.details.InstrumentMarket;
 import edu.agh.fis.entity.instrument.details.Markets;
 
-import java.util.Set;
+import java.util.List;
 
 /**
  * Created by wemstar on 16.12.14.
@@ -16,7 +16,7 @@ public class InstrumentMarketBuilder {
     private Markets market;
     private InstrumentDefinition instrument;
     private Double sellPrice;
-    private Set<InstrumentHistory> history;
+    private List<InstrumentHistory> history;
 
     private InstrumentMarketBuilder() {
     }
@@ -50,7 +50,7 @@ public class InstrumentMarketBuilder {
         return this;
     }
 
-    public InstrumentMarketBuilder history(Set<InstrumentHistory> history) {
+    public InstrumentMarketBuilder history(List<InstrumentHistory> history) {
         this.history = history;
         return this;
     }

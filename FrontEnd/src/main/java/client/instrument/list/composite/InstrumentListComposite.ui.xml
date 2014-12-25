@@ -9,31 +9,40 @@
     </ui:with>
 
     <ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData"
-             field="verticalLayoutData">
-        <ui:attributes width="0.5" height="1"/>
+             field="verticalLayoutDataTop">
+        <ui:attributes width="1" height="0.25"/>
+
+    </ui:with>
+
+    <ui:with type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData"
+             field="verticalLayoutDataDow">
+        <ui:attributes width="1" height="0.75"/>
 
     </ui:with>
     <ui:with type="com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer.HorizontalLayoutData"
-             field="horizontalLayoutData">
-        <ui:attributes width="1" height="0.5" margins="{margins}"/>
+             field="horizontalLayoutDataLeft">
+        <ui:attributes width="0.37" height="1" margins="{margins}"/>
+    </ui:with>
+    <ui:with type="com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer.HorizontalLayoutData"
+             field="horizontalLayoutDataRight">
+        <ui:attributes width="0.63" height="1" margins="{margins}"/>
     </ui:with>
 
 
     <container:VerticalLayoutContainer>
-        <container:child layoutData="{verticalLayoutData}">
+        <container:child layoutData="{verticalLayoutDataTop}">
+            <c:FramedPanel headingText="Lista instrumentów" ui:field="grid"/>
+        </container:child>
+        <container:child layoutData="{verticalLayoutDataDow}">
             <container:HorizontalLayoutContainer>
-                <container:child layoutData="{horizontalLayoutData}">
-                    <c:FramedPanel headingText="Lista instrumentów" ui:field="grid"/>
+                <container:child layoutData="{horizontalLayoutDataLeft}">
+                    <c:FramedPanel headingText="Historia" ui:field="radar"/>
                 </container:child>
 
-                <container:child layoutData="{horizontalLayoutData}">
-                    <c:FramedPanel headingText="Historia Najnowsza" ui:field="radar"/>
+                <container:child layoutData="{horizontalLayoutDataRight}">
+                    <c:FramedPanel headingText="Historia Najnowsza" ui:field="dynamic"/>
                 </container:child>
             </container:HorizontalLayoutContainer>
-        </container:child>
-
-        <container:child layoutData="{verticalLayoutData}">
-            <c:FramedPanel headingText="Historia" ui:field="dynamic"/>
         </container:child>
 
 

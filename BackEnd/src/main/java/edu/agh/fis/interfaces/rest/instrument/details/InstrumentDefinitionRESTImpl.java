@@ -1,6 +1,7 @@
 package edu.agh.fis.interfaces.rest.instrument.details;
 
 import edu.agh.fis.core.instrument.details.services.InstrumentDefinitionService;
+import edu.agh.fis.core.trader.history.HistorySchedule;
 import edu.agh.fis.instrument.details.InstrumentDefinitionDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,6 +20,9 @@ public class InstrumentDefinitionRESTImpl implements InstrumentDefinitionREST {
 
     @Autowired
     private InstrumentDefinitionTransformer instrumentDefinitionTransformer;
+
+    @Autowired
+    private HistorySchedule historySchedule;
 
     @Override
     @RequestMapping(value = "/{isin}", method = RequestMethod.GET)
@@ -50,5 +54,11 @@ public class InstrumentDefinitionRESTImpl implements InstrumentDefinitionREST {
 
         instrumentDefinitionService.deleteInstrumentInfo(isin);
 
+    }
+
+    @Override
+    @RequestMapping("/update/history")
+    public void updateHistory() {
+        historySchedule.calculateHistory();
     }
 }

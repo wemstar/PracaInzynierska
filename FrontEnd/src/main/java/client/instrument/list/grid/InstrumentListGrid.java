@@ -38,20 +38,24 @@ public class InstrumentListGrid extends Composite {
     ColumnModel<InstrumentListDetails> columnModel;
 
     public InstrumentListGrid() {
-        listStore = new ListStore<InstrumentListDetails>(gridProperties.key());
-        columnModel = initColumnModel();
-        initWidget(ourUiBinder.createAndBindUi(this));
-        grid.getSelectionModel().addSelectionChangedHandler(new SelectionChangedEvent.SelectionChangedHandler<InstrumentListDetails>() {
-            @Override
-            public void onSelectionChanged(SelectionChangedEvent<InstrumentListDetails> event) {
-                InstrumentListComposite.EVENT_BUS.fireEvent(new InstrumentListDetailsSelected(event.getSelection().get(0)));
-            }
-        });
+        if (listStore == null) {
+            listStore = new ListStore<InstrumentListDetails>(gridProperties.key());
+            columnModel = initColumnModel();
+            initWidget(ourUiBinder.createAndBindUi(this));
+            grid.getSelectionModel().addSelectionChangedHandler(new SelectionChangedEvent.SelectionChangedHandler<InstrumentListDetails>() {
+                @Override
+                public void onSelectionChanged(SelectionChangedEvent<InstrumentListDetails> event) {
+                    InstrumentListComposite.EVENT_BUS.fireEvent(new InstrumentListDetailsSelected(event.getSelection().get(0)));
+                }
+            });
+        }
+
     }
 
     public void setData(List<InstrumentListDetails> data) {
         listStore.clear();
         listStore.addAll(data);
+        gridView.refresh(true);
 
     }
 

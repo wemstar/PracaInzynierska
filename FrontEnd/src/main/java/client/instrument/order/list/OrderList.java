@@ -69,6 +69,7 @@ public class OrderList extends Composite {
 
             @Override
             public void onSuccess(List<NewOrderDTO> result) {
+                listStore.clear();
                 listStore.addAll(result);
                 Info.display("Pobieranie Instrumentów", "Pobrano " + result.size() + " instrumentów");
             }

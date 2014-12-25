@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import static edu.agh.fis.builder.instrument.list.InstrumentHistoryDTOBuilder.anInstrumentHistoryDTO;
 
@@ -16,7 +15,7 @@ import static edu.agh.fis.builder.instrument.list.InstrumentHistoryDTOBuilder.an
 @Component
 public class InstrumentHistoryTransformImpl implements InstrumentHistoryTransform {
     @Override
-    public List<InstrumentHistoryDTO> entityToTransportList(Set<InstrumentHistory> histories) {
+    public List<InstrumentHistoryDTO> entityToTransportList(List<InstrumentHistory> histories) {
         List<InstrumentHistoryDTO> transport = new ArrayList<InstrumentHistoryDTO>();
         for (InstrumentHistory history : histories) transport.add(entityToTransport(history));
         return transport;

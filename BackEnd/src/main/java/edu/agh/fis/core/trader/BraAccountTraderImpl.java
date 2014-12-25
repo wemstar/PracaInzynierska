@@ -20,6 +20,35 @@ public class BraAccountTraderImpl implements BraAccountTrader {
     @Autowired
     private BraAccountDao braAccountDao;
 
+
+    @Override
+    public boolean checkAvalibility(NewOrder newOrder) {
+        boolean result;
+        if (newOrder.getSide() == Side.BUY)
+            result = checkAvalibleCash(newOrder);
+        else
+            result = checkAvailableInstruments(newOrder);
+
+        return result;
+    }
+
+    private boolean checkAvailableInstruments(NewOrder newOrder) {
+
+        for (InstrumentInfo info : newOrder.getBraAccount().getInstruments()) {
+            if (info.getInstrumentDefinition().getIsin().equals(newOrder.getInstrument().getIsin())
+                    && info.getAmmount() >= newOrder.getAmount()) return true;
+        }
+        return false;
+    }
+
+    private boolean checkAvalibleCash(NewOrder newOrder) {
+
+        Double fullPrice = newOrder.getAmount() * newOrder.getPrice();
+        if (fullPrice <= newOrder.getBraAccount().getAvalibleCash())
+            return true;
+        return false;
+    }
+
     @Override
     public void transferInstruments(NewOrder onMarket, NewOrder newOrder) {
 

@@ -37,21 +37,24 @@ public class InstrumentListComposite extends Composite {
     FramedPanel radar;
     @UiField
     FramedPanel dynamic;
-    private InstrumentListGrid gridView = new InstrumentListGrid();
+    private InstrumentListGrid gridView;
     private InstrumentHistoryRadar radarView = new InstrumentHistoryRadar();
     private DynamicHistoryChart dynamicView = new DynamicHistoryChart();
 
     public InstrumentListComposite() {
-        initWidget(ourUiBinder.createAndBindUi(this));
-        grid.add(gridView);
-        radar.add(radarView);
-        dynamic.add(dynamicView);
-        MainModule.EVENT_BUS.addHandler(BraAccountContextChange.TYPE, new BraAccountContextChangeHandler() {
-            @Override
-            public void onBraAccountContextChangeHandler(BraAccountContextChange event) {
-                setBraContext(event.getBraAccount());
-            }
-        });
+        if (gridView == null) {
+            gridView = new InstrumentListGrid();
+            initWidget(ourUiBinder.createAndBindUi(this));
+            grid.add(gridView);
+            radar.add(radarView);
+            dynamic.add(dynamicView);
+            MainModule.EVENT_BUS.addHandler(BraAccountContextChange.TYPE, new BraAccountContextChangeHandler() {
+                @Override
+                public void onBraAccountContextChangeHandler(BraAccountContextChange event) {
+                    setBraContext(event.getBraAccount());
+                }
+            });
+        }
 
     }
 

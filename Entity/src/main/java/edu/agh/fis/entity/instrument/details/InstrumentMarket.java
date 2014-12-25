@@ -1,10 +1,12 @@
 package edu.agh.fis.entity.instrument.details;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.List;
 
 /**
  * Created by wemstar on 15.12.14.
@@ -23,16 +25,23 @@ public class InstrumentMarket {
     @Fetch(FetchMode.JOIN)
     private Markets market;
     @JoinColumn(name = "INSTRUMENT_MARKET_INSTRUMENT", nullable = false)
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     @Fetch(FetchMode.JOIN)
     private InstrumentDefinition instrument;
     @Column(name = "INSTRUMENT_MARKET_SELL_PRICE", nullable = false)
     private Double sellPrice;
-    @Column(name = "INSTRUMENT_MARKET_BUY_PRICE")
+    @Column(name = "INSTRUMENT_MARKET_BUY_PRICE", nullable = false)
     private Double buyPrice;
 
-    @OneToMany(mappedBy = "instrumentMarket", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private Set<InstrumentHistory> history;
+    @Column(name = "INSTRUMENT_MARKET_MIN_PRICE")
+    private Double minPrice;
+    @Column(name = "INSTRUMENT_MARKET_MAX_PRICE")
+    private Double maxPrice;
+
+    @OneToMany(mappedBy = "instrumentMarket", fetch = FetchType.EAGER)
+    @Cascade(CascadeType.SAVE_UPDATE)
+    @OrderBy("date")
+    private List<InstrumentHistory> history;
 
     public Double getBuyPrice() {
         return buyPrice;
@@ -74,11 +83,27 @@ public class InstrumentMarket {
         this.sellPrice = sellPrice;
     }
 
-    public Set<InstrumentHistory> getHistory() {
+    public Double getMaxPrice() {
+        return maxPrice;
+    }
+
+    public void setMaxPrice(Double maxPrice) {
+        this.maxPrice = maxPrice;
+    }
+
+    public Double getMinPrice() {
+        return minPrice;
+    }
+
+    public void setMinPrice(Double minPrice) {
+        this.minPrice = minPrice;
+    }
+
+    public List<InstrumentHistory> getHistory() {
         return history;
     }
 
-    public void setHistory(Set<InstrumentHistory> history) {
+    public void setHistory(List<InstrumentHistory> history) {
         this.history = history;
     }
 }

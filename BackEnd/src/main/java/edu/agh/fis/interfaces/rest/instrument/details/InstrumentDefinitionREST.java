@@ -2,6 +2,7 @@ package edu.agh.fis.interfaces.rest.instrument.details;
 
 
 import edu.agh.fis.instrument.details.InstrumentDefinitionDTO;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * Created by wemstar on 25.09.14.
@@ -16,4 +17,7 @@ public interface InstrumentDefinitionREST {
     public void updateInstrumentInfo(InstrumentDefinitionDTO instrumentInfoDTO);
 
     public void deleteInstrumentInfo(String isin);
+
+    @RequestMapping("/update/history")
+    void updateHistory();
 }

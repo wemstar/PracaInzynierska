@@ -95,13 +95,13 @@ public class ListHistory extends AbstractTestNGSpringContextTests {
                 .sellPrice(210.0)
                 .instrument(instrumentKGHM)
                 .build();
-        insMarkKGHM.setHistory(new HashSet<InstrumentHistory>(Arrays.asList(new InstrumentHistory[]
+        insMarkKGHM.setHistory(Arrays.asList(new InstrumentHistory[]
                 {
                         anInstrumentHistory().instrumentMarket(insMarkKGHM).date(new Date(today.getTime() + (1000 * 60 * 60 * 24))).closePrice(10.0).maxPrice(20.0).minPrice(5.0).openPrice(20.0).build(),
                         anInstrumentHistory().instrumentMarket(insMarkKGHM).date(new Date(today.getTime() + (1000 * 60 * 60 * 24) * 2)).closePrice(10.0).maxPrice(20.0).minPrice(5.0).openPrice(20.0).build(),
                         anInstrumentHistory().instrumentMarket(insMarkKGHM).date(new Date(today.getTime() + (1000 * 60 * 60 * 24) * 3)).closePrice(10.0).maxPrice(20.0).minPrice(5.0).openPrice(20.0).build(),
                         anInstrumentHistory().instrumentMarket(insMarkKGHM).date(new Date(today.getTime() + (1000 * 60 * 60 * 24) * 4)).closePrice(10.0).maxPrice(20.0).minPrice(5.0).openPrice(20.0).build(),
-                })));
+                }));
 
 
         Markets market = aMarkets().active(true).code("GPW").name("Giełda Papierów wartosciowych").instruments(new HashSet<InstrumentMarket>(Arrays.asList(new InstrumentMarket[]{insMarkKGHM}))).build();
