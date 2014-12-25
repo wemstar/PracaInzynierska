@@ -2,6 +2,7 @@ package edu.agh.fis.instrument.order.limit;
 
 import edu.agh.fis.bra.acc.InstrumentInfoDTO;
 import edu.agh.fis.core.client.file.presistance.ClientFileDao;
+import edu.agh.fis.core.instrument.details.presistance.InstrumentDefinitionDAO;
 import edu.agh.fis.core.instrument.market.presistance.MarketDAO;
 import edu.agh.fis.entity.bra.acc.BraAccount;
 import edu.agh.fis.entity.bra.acc.InstrumentInfo;
@@ -61,6 +62,9 @@ public class OrderLimitTest extends AbstractTestNGSpringContextTests {
 
     @Autowired
     private MarketDAO marketDao;
+
+    @Autowired
+    private InstrumentDefinitionDAO instrumentDao;
 
     @BeforeMethod
     public void setup() {
@@ -190,7 +194,8 @@ public class OrderLimitTest extends AbstractTestNGSpringContextTests {
                 .build();
         braAccount1.setClientFile(clientFile);
         braAccount2.setClientFile(clientFile);
-
+        instrumentDao.create(instrumentKGHM);
+        instrumentDao.create(instrumentJSW);
         clientFileDao.create(clientFile);
         marketDao.create(market);
 
