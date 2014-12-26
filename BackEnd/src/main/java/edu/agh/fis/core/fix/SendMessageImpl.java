@@ -27,7 +27,7 @@ public class SendMessageImpl implements SendMessage {
         single.set(new Currency("PLN"));
         single.set(new OrderQty(order.getAmount()));
         single.set(new Price(order.getPrice()));
-        order.setFix(single.toString());
+        order.setFix(single.toString().replaceAll("\\01", "|"));
 
     }
 

@@ -41,6 +41,7 @@ public class NewOrderTransformerImpl implements NewOrderTransformer {
                 .amount(rootEntity.getAmount())
                 .instrument(rootEntity.getInstrument().getIsin())
                 .market(rootEntity.getMarket().getCode())
+                .fix(rootEntity.getFix())
                 .build();
     }
 

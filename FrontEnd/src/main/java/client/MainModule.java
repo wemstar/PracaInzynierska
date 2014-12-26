@@ -21,11 +21,13 @@ import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.cell.core.client.ButtonCell.IconAlign;
 import com.sencha.gxt.core.client.dom.ScrollSupport.ScrollMode;
 import com.sencha.gxt.widget.core.client.ContentPanel;
+import com.sencha.gxt.widget.core.client.Status;
 import com.sencha.gxt.widget.core.client.TabItemConfig;
 import com.sencha.gxt.widget.core.client.TabPanel;
 import com.sencha.gxt.widget.core.client.button.ButtonGroup;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.FlowLayoutContainer;
+import com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.MarginData;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData;
@@ -58,6 +60,7 @@ public class MainModule implements IsWidget, EntryPoint {
                 @Override
                 public void onBraAccountContextChangeHandler(BraAccountContextChange event) {
                     braContext = event.getBraAccount();
+                    panel.setBraAccount(braContext.getBraAccNo());
                     Info.display("Kontekst Rachunku", event.getBraAccount().getBraAccNo());
                 }
             });
@@ -65,7 +68,10 @@ public class MainModule implements IsWidget, EntryPoint {
                 @Override
                 public void onClientContextChange(ClientContextChange event) {
                     context = event.getClientDetails();
+                    panel.setClientName(context.getName() + " " + context.getSurname());
                     Info.display("Kontekst Klienta", event.getClientDetails().getName());
+                    if (context.getAccounts().size() > 0)
+                        EVENT_BUS.fireEvent(new BraAccountContextChange(context.getAccounts().get(0)));
                 }
             });
             EVENT_BUS.addHandler(ReloadContext.TYPE, new ReloadContextHandler() {
@@ -110,7 +116,7 @@ public class MainModule implements IsWidget, EntryPoint {
         group.add(table);
 
         TextButton btn = new TextButton("Szukaj");
-        btn.setIcon(Images.INSTANCE.search32());
+        btn.setIcon(Images.INSTANCE.search());
         btn.setIconAlign(IconAlign.TOP);
         btn.addSelectHandler(new SelectEvent.SelectHandler() {
             @Override
@@ -124,7 +130,7 @@ public class MainModule implements IsWidget, EntryPoint {
         table.setWidget(0, 0, btn);
 
         btn = new TextButton(ClientFileDetails.title);
-        btn.setIcon(Images.INSTANCE.details32());
+        btn.setIcon(Images.INSTANCE.clientFile());
         btn.setIconAlign(IconAlign.TOP);
         btn.addSelectHandler(new SelectEvent.SelectHandler() {
             @Override
@@ -138,7 +144,7 @@ public class MainModule implements IsWidget, EntryPoint {
         table.setWidget(0, 1, btn);
 
         btn = new TextButton("Nowa Kartoteka");
-        btn.setIcon(Images.INSTANCE.details32());
+        btn.setIcon(Images.INSTANCE.addClientFile());
         btn.setIconAlign(IconAlign.TOP);
         btn.addSelectHandler(new SelectEvent.SelectHandler() {
             @Override
@@ -159,12 +165,20 @@ public class MainModule implements IsWidget, EntryPoint {
         group.add(table);
 
         TextButton btn = new TextButton("Rachunek Brokerski");
-        btn.setIcon(Images.INSTANCE.account32());
+        btn.setIcon(Images.INSTANCE.braAccount());
         btn.setIconAlign(IconAlign.TOP);
+        btn.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent event) {
+                Info.display("Rachunek Brokerski", "Funkcjonalnośc w przgotowaniu");
+
+
+            }
+        });
         table.setWidget(0, 0, btn);
 
         btn = new TextButton("Lista Instrumentów na rachunku");
-        btn.setIcon(Images.INSTANCE.state32());
+        btn.setIcon(Images.INSTANCE.instrumentList());
         btn.setIconAlign(IconAlign.TOP);
         btn.addSelectHandler(new SelectEvent.SelectHandler() {
             @Override
@@ -187,7 +201,7 @@ public class MainModule implements IsWidget, EntryPoint {
         FlexTable table = new FlexTable();
 
         TextButton btn = new TextButton("Lista Instrumentów");
-        btn.setIcon(Images.INSTANCE.account32());
+        btn.setIcon(Images.INSTANCE.wallet());
         btn.setIconAlign(IconAlign.TOP);
         btn.addSelectHandler(new SelectEvent.SelectHandler() {
             @Override
@@ -211,7 +225,7 @@ public class MainModule implements IsWidget, EntryPoint {
         group.setHeadingText("Zlecenia");
         FlexTable table = new FlexTable();
         TextButton btn = new TextButton("Nowe Zlecenie");
-        btn.setIcon(Images.INSTANCE.details32());
+        btn.setIcon(Images.INSTANCE.newOrder());
         btn.setIconAlign(IconAlign.TOP);
         btn.addSelectHandler(new SelectEvent.SelectHandler() {
             @Override
@@ -224,7 +238,7 @@ public class MainModule implements IsWidget, EntryPoint {
         table.setWidget(0, 1, btn);
 
         btn = new TextButton("Lista Zleceń");
-        btn.setIcon(Images.INSTANCE.details32());
+        btn.setIcon(Images.INSTANCE.orderList());
         btn.setIconAlign(IconAlign.TOP);
         btn.addSelectHandler(new SelectEvent.SelectHandler() {
             @Override
@@ -249,21 +263,38 @@ public class MainModule implements IsWidget, EntryPoint {
     class SamplePanel extends ContentPanel {
 
         private final VerticalLayoutContainer con = new VerticalLayoutContainer();
-
         private final ToolBar toolBar = new ToolBar();
         private final TabPanel advanced;
-        private int index;
+        private Status clientName = new Status();
+        private Status accountNumber = new Status();
 
         public SamplePanel() {
 
             toolBar.setSpacing(2);
-
+            //contextBar();
             con.add(toolBar, new VerticalLayoutData(1, -1));
 
             advanced = new TabPanel();
             con.add(advanced, new VerticalLayoutData(1, 600));
             add(con);
         }
+
+        public void contextBar() {
+            HorizontalLayoutContainer container = new HorizontalLayoutContainer();
+            clientName = new Status(GWT.<Status.StatusAppearance>create(Status.BoxStatusAppearance.class));
+            accountNumber = new Status(GWT.<Status.StatusAppearance>create(Status.BoxStatusAppearance.class));
+            clientName.setWidth(100);
+            accountNumber.setWidth(100);
+            container.add(clientName, new HorizontalLayoutContainer.HorizontalLayoutData(100, -1));
+            container.add(accountNumber, new HorizontalLayoutContainer.HorizontalLayoutData(100, -1));
+            ContentPanel conPanel = new ContentPanel();
+            conPanel.add(clientName);
+            conPanel.add(accountNumber);
+            con.add(conPanel, new VerticalLayoutData(1, 105));
+
+
+        }
+
 
         public ToolBar getToolBar() {
             return toolBar;
@@ -274,6 +305,14 @@ public class MainModule implements IsWidget, EntryPoint {
             if (config == null)
                 advanced.add(composite, new TabItemConfig(title, true));
             advanced.setActiveWidget(composite);
+        }
+
+        public void setClientName(String clientNameStr) {
+            clientName.setText(clientNameStr);
+        }
+
+        public void setBraAccount(String braAccount) {
+            accountNumber.setText(braAccount);
         }
     }
 }

@@ -14,6 +14,7 @@ public class NewOrderDTOBuilder {
     private Double price;
     private Long id;
     private String accountNumber;
+    private String fix;
 
     private NewOrderDTOBuilder() {
     }
@@ -47,6 +48,11 @@ public class NewOrderDTOBuilder {
         return this;
     }
 
+    public NewOrderDTOBuilder fix(String fix) {
+        this.fix = fix;
+        return this;
+    }
+
     public NewOrderDTOBuilder price(Double price) {
         this.price = price;
         return this;
@@ -76,6 +82,7 @@ public class NewOrderDTOBuilder {
         newOrderDTO.setPrice(price);
         newOrderDTO.setId(id);
         newOrderDTO.setAccountNumber(accountNumber);
+        newOrderDTO.setFix(fix);
         return newOrderDTO;
     }
 }

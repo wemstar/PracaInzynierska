@@ -11,18 +11,27 @@ public interface Images extends ClientBundle {
 
     public Images INSTANCE = GWT.create(Images.class);
 
-    @Source("icons/round62.png")
-    ImageResource add32();
+    @Source("icons/search.png")
+    ImageResource search();
 
-    @Source("icons/search32.png")
-    ImageResource search32();
+    @Source("icons/addClientFile.png")
+    ImageResource addClientFile();
 
-    @Source("icons/details32.png")
-    ImageResource details32();
+    @Source("icons/instrumentList.png")
+    ImageResource instrumentList();
 
-    @Source("icons/account32.png")
-    ImageResource account32();
+    @Source("icons/orderList.png")
+    ImageResource orderList();
 
-    @Source("icons/state_account32.png")
-    ImageResource state32();
+    @Source("icons/braAccount.png")
+    ImageResource braAccount();
+
+    @Source("icons/clientFile.png")
+    ImageResource clientFile();
+
+    @Source("icons/newOrder.png")
+    ImageResource newOrder();
+
+    @Source("icons/wallet.png")
+    ImageResource wallet();
 }

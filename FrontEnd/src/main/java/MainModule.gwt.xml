@@ -6,7 +6,7 @@
     <inherits name="com.sencha.gxt.core.Core"/>
     <inherits name="com.sencha.gxt.widget.core.Core"/>
     <inherits name='com.sencha.gxt.ui.GXT'/>
-    <inherits name="com.google.gwt.logging.Logging"/>
+    <!--<inherits name="com.google.gwt.logging.Logging"/>-->
     <inherits name='com.google.web.bindery.requestfactory.RequestFactory'/>
     <inherits name="com.google.gwt.place.Place"/>
     <inherits name="com.sencha.gxt.chart.Chart"/>
