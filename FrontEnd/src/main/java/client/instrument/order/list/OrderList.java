@@ -97,6 +97,7 @@ public class OrderList extends Composite {
         columns.add(accountCol);
         columns.add(priceCol);
         columns.add(amountCol);
+        columns.add(fixCol);
 
         return new ColumnModel<NewOrderDTO>(columns);
     }
