@@ -19,6 +19,7 @@ public class NewOrderBuilder {
     private OrderType type;
     private Double price;
     private BraAccount braAccount;
+    private String fix;
 
     private NewOrderBuilder() {
     }
@@ -67,6 +68,12 @@ public class NewOrderBuilder {
         return this;
     }
 
+    public NewOrderBuilder fix(String fix) {
+        this.fix = fix;
+        return this;
+    }
+
+
     public NewOrderBuilder but() {
         return aNewOrder().amount(amount).id(id).instrument(instrument).market(market).side(side).type(type).price(price).braAccount(braAccount);
     }
@@ -81,6 +88,7 @@ public class NewOrderBuilder {
         newOrder.setType(type);
         newOrder.setPrice(price);
         newOrder.setBraAccount(braAccount);
+        newOrder.setFix(fix);
         return newOrder;
     }
 }

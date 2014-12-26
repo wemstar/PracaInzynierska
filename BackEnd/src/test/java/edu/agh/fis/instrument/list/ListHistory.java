@@ -67,7 +67,7 @@ public class ListHistory extends AbstractTestNGSpringContextTests {
     public void shouldReturnActive() throws Exception {
         prepareData();
 
-        mockMvc.perform(get("/bra/acc/instrument/list/1"))
+        mockMvc.perform(get("/instrument/list/bra/account/1"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(convertObjectToJsonBytes(Arrays.asList(new InstrumentListDetailsDTO[]{anInstrumentListDetailsDTO()
                         .isin("KGHM")

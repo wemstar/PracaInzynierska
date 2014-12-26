@@ -15,6 +15,15 @@ public class NewOrderDTO implements Serializable {
     private Double price;
     private Long amount;
     private Long id;
+    private String fix;
+
+    public String getFix() {
+        return fix;
+    }
+
+    public void setFix(String fix) {
+        this.fix = fix;
+    }
 
     public Long getId() {
         return id;
@@ -34,6 +43,7 @@ public class NewOrderDTO implements Serializable {
                 ", price=" + price +
                 ", amount=" + amount +
                 ", accountNumber=" + accountNumber +
+                ", fix=" + fix +
                 '}';
     }
 

@@ -75,6 +75,22 @@ public class InstrumentListComposite extends Composite {
             });
     }
 
+    public void getForAllAccount() {
+        InstrumentService.App.getInstance().getAllIntrumentOnTrade(new AsyncCallback<List<InstrumentListDetails>>() {
+            @Override
+            public void onFailure(Throwable caught) {
+                AlertMessageBox messageBox = new AlertMessageBox("Błąd", "Błąd pobierania histori");
+                messageBox.show();
+            }
+
+            @Override
+            public void onSuccess(List<InstrumentListDetails> result) {
+                Info.display("Pobieranie Histori", "Pobrano " + result.size() + " wyników");
+                gridView.setData(result);
+            }
+        });
+    }
+
     interface InstrumentListCompositeUiBinder extends UiBinder<VerticalLayoutContainer, InstrumentListComposite> {
     }
 }

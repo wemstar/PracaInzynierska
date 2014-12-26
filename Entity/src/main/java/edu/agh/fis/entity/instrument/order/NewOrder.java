@@ -44,6 +44,9 @@ public class NewOrder {
     @ManyToOne
     private BraAccount braAccount;
 
+    @Column(name = "NEW_ORDER_FIX", nullable = false)
+    private String fix;
+
     public BraAccount getBraAccount() {
         return braAccount;
     }
@@ -120,5 +123,11 @@ public class NewOrder {
         this.price = price;
     }
 
+    public String getFix() {
+        return fix;
+    }
 
+    public void setFix(String fix) {
+        this.fix = fix;
+    }
 }

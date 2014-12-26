@@ -86,6 +86,7 @@ public class OrderList extends Composite {
         ColumnConfig<NewOrderDTO, String> accountCol = new ColumnConfig<NewOrderDTO, String>(gridProperties.accountNumber(), 150, "Numer Rachunku");
         ColumnConfig<NewOrderDTO, Double> priceCol = new ColumnConfig<NewOrderDTO, Double>(gridProperties.price(), 150, "Cena");
         ColumnConfig<NewOrderDTO, Long> amountCol = new ColumnConfig<NewOrderDTO, Long>(gridProperties.amount(), 150, "Ilość");
+        ColumnConfig<NewOrderDTO, String> fixCol = new ColumnConfig<NewOrderDTO, String>(gridProperties.fix(), 300, "Fix");
 
         List<ColumnConfig<NewOrderDTO, ?>> columns = new ArrayList<ColumnConfig<NewOrderDTO, ?>>();
         columns.add(idCol);
@@ -124,6 +125,8 @@ public class OrderList extends Composite {
         ValueProvider<NewOrderDTO, Double> price();
 
         ValueProvider<NewOrderDTO, Long> amount();
+
+        ValueProvider<NewOrderDTO, String> fix();
 
     }
 }

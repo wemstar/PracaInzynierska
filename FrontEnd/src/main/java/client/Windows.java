@@ -20,6 +20,7 @@ public class Windows {
     private static ClientFileDetails newClientFileDetails;
     private static OrderList orderListPanel;
     private static InstrumentListComposite instrumentListComposite;
+    private static InstrumentListComposite braAccountInstrumentListComposite;
 
     public static ClientFileDetails aClientFileDetailsPanel()
     {
@@ -57,5 +58,11 @@ public class Windows {
     public static InstrumentListComposite anInstrumentListPanel() {
         if (instrumentListComposite == null) instrumentListComposite = new InstrumentListComposite();
         return instrumentListComposite;
+    }
+
+    public static InstrumentListComposite anBraAccountInstrumentListPanel() {
+        if (braAccountInstrumentListComposite == null)
+            braAccountInstrumentListComposite = new InstrumentListComposite();
+        return braAccountInstrumentListComposite;
     }
 }

@@ -1,6 +1,7 @@
 package edu.agh.fis.core.instrument.order.services;
 
 import edu.agh.fis.core.client.file.presistance.ClientFileDao;
+import edu.agh.fis.core.fix.SendMessage;
 import edu.agh.fis.core.instrument.order.presistance.NewOrderDAO;
 import edu.agh.fis.core.trader.TraderExecutor;
 import edu.agh.fis.entity.bra.acc.BraAccount;
@@ -25,9 +26,13 @@ public class NewOrderServiceImpl implements NewOrderService {
     @Autowired
     private TraderExecutor executor;
 
+    @Autowired
+    private SendMessage sendMessage;
+
 
     @Override
     public NewOrder createNewOrder(NewOrder newOrder) {
+        sendMessage.sendMessage(newOrder);
         NewOrder newOrderEntity = newOrderDAO.create(newOrder);
         executor.processOrder(newOrderEntity);
         return newOrderEntity;

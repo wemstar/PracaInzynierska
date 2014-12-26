@@ -158,6 +158,7 @@ public class DynamicHistoryChart extends Composite {
             legend.setItemHiding(true);
             legend.getBorderConfig().setStrokeWidth(0);
             chart.setLegend(legend);
+            chart.setAnimated(true);
 
 
             panel = new FramedPanel();

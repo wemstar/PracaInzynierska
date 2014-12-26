@@ -33,6 +33,7 @@ import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.info.Info;
 import com.sencha.gxt.widget.core.client.toolbar.ToolBar;
 
+import static client.Windows.anBraAccountInstrumentListPanel;
 import static client.Windows.anInstrumentListPanel;
 
 /**
@@ -147,9 +148,6 @@ public class MainModule implements IsWidget, EntryPoint {
             }
         });
         table.setWidget(0, 2, btn);
-        // //
-        btn = new TextButton("To Do");
-        table.setWidget(0, 3, btn);
         return group;
     }
 
@@ -165,16 +163,20 @@ public class MainModule implements IsWidget, EntryPoint {
         btn.setIconAlign(IconAlign.TOP);
         table.setWidget(0, 0, btn);
 
-        btn = new TextButton("Stan rachunku");
+        btn = new TextButton("Lista Instrumentów na rachunku");
         btn.setIcon(Images.INSTANCE.state32());
         btn.setIconAlign(IconAlign.TOP);
-        table.setWidget(0, 1, btn);
+        btn.addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent event) {
+                InstrumentListComposite composite = anBraAccountInstrumentListPanel();
+                panel.addTab(composite, "Lista Instrumentów na rachunku");
+                composite.setBraContext(braContext);
 
-        btn = new TextButton("To do");
-        table.setWidget(0, 2, btn);
-        // //
-        btn = new TextButton("To do");
-        table.setWidget(0, 3, btn);
+
+            }
+        });
+        table.setWidget(0, 1, btn);
         return group;
     }
 
@@ -192,7 +194,7 @@ public class MainModule implements IsWidget, EntryPoint {
             public void onSelect(SelectEvent event) {
                 InstrumentListComposite composite = anInstrumentListPanel();
                 panel.addTab(composite, "Lista Instrumentów");
-                composite.setBraContext(braContext);
+                composite.getForAllAccount();
 
 
 

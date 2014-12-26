@@ -15,6 +15,8 @@ public interface InstrumentService extends RemoteService {
 
     List<InstrumentListDetails> getInstrumentForBraAccount(BraAccountDTO braContext);
 
+    List<InstrumentListDetails> getAllIntrumentOnTrade();
+
     public static class App {
         private static final InstrumentServiceAsync ourInstance = (InstrumentServiceAsync) GWT.create(InstrumentService.class);
 

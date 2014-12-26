@@ -9,4 +9,6 @@ public interface InstrumentServiceAsync {
 
 
     void getInstrumentForBraAccount(BraAccountDTO braContext, AsyncCallback<List<InstrumentListDetails>> async);
+
+    void getAllIntrumentOnTrade(AsyncCallback<List<InstrumentListDetails>> async);
 }

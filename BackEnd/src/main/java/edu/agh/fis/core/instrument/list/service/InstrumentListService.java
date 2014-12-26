@@ -10,4 +10,6 @@ import java.util.List;
 public interface InstrumentListService {
 
     List<InstrumentMarket> getInstrument(long braAccNo);
+
+    List<InstrumentMarket> getAllInstrument();
 }

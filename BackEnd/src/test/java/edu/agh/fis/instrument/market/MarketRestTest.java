@@ -1,6 +1,8 @@
 package edu.agh.fis.instrument.market;
 
+import edu.agh.fis.core.instrument.details.presistance.InstrumentDefinitionDAO;
 import edu.agh.fis.core.instrument.market.presistance.MarketDAO;
+import edu.agh.fis.entity.instrument.details.InstrumentDefinition;
 import edu.agh.fis.entity.instrument.details.InstrumentMarket;
 import edu.agh.fis.entity.instrument.details.Markets;
 import edu.agh.fis.instrument.details.InstrumentDefinitionDTO;
@@ -44,6 +46,9 @@ public class MarketRestTest extends AbstractTestNGSpringContextTests {
     @Autowired
     private MarketDAO marketDAO;
 
+    @Autowired
+    private InstrumentDefinitionDAO instrumentDefinitionDAO;
+
     @BeforeMethod
     public void setup() {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
@@ -59,13 +64,12 @@ public class MarketRestTest extends AbstractTestNGSpringContextTests {
                 .name("Giełda papierów wartościowych w Warszawie")
                 .build();
 
-
+        InstrumentDefinition definition = anInstrumentDefinition()
+                .isin("KGHMa")
+                .name("KGHM Polska Miedź")
+                .build();
         InstrumentMarket insMark = anInstrumentMarket()
-                .instrument(anInstrumentDefinition()
-                                .isin("KGHMa")
-                                .name("KGHM Polska Miedź")
-                                .build()
-                )
+                .instrument(definition)
                 .market(market)
                 .buyPrice(20.0)
                 .sellPrice(21.0)
@@ -73,6 +77,7 @@ public class MarketRestTest extends AbstractTestNGSpringContextTests {
         market.setInstruments(new HashSet<InstrumentMarket>(Arrays.asList(new InstrumentMarket[]{
                 insMark
         })));
+        instrumentDefinitionDAO.create(definition);
         marketDAO.create(market);
 
         marketDAO.create(aMarkets()
