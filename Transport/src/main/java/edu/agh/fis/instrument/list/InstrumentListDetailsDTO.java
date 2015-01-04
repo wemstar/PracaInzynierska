@@ -62,4 +62,16 @@ public class InstrumentListDetailsDTO implements Serializable {
     public void setSellPrice(Double sellPrice) {
         this.sellPrice = sellPrice;
     }
+
+    @Override
+    public String toString() {
+        return "InstrumentListDetailsDTO{" +
+                "buyPrice=" + buyPrice +
+                ", isin='" + isin + '\'' +
+                ", name='" + name + '\'' +
+                ", market='" + market + '\'' +
+                ", sellPrice=" + sellPrice +
+                ", historyList=" + historyList +
+                '}';
+    }
 }

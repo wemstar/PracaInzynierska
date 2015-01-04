@@ -12,4 +12,6 @@ public interface InstrumentListTransformer {
 
 
     List<InstrumentListDetailsDTO> entityToTranportList(List<InstrumentMarket> instrument);
+
+    InstrumentListDetailsDTO entityToTransport(InstrumentMarket instrument);
 }

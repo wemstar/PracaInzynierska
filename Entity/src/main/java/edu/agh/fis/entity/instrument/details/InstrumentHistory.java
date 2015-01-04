@@ -1,5 +1,8 @@
 package edu.agh.fis.entity.instrument.details;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -17,9 +20,10 @@ public class InstrumentHistory {
 
     @ManyToOne
     @JoinColumn(name = "INSTRUMENT_HISTORY_INSTRUMENT_MARKET", nullable = false)
+    @Fetch(FetchMode.JOIN)
     private InstrumentMarket instrumentMarket;
 
-    @Column(name = "INSTRUMENT_HISTORY_DATE", nullable = false)
+    @Column(name = "INSTRUMENT_HISTORY_DATE", nullable = false, unique = true)
     private Date date;
     @Column(name = "INSTRUMENT_HISTORY_OPEN_PRICE")
     private Double openPrice;
@@ -84,5 +88,18 @@ public class InstrumentHistory {
 
     public void setOpenPrice(Double openPrice) {
         this.openPrice = openPrice;
+    }
+
+    @Override
+    public String toString() {
+        return "InstrumentHistory{" +
+                "closePrice=" + closePrice +
+                ", date=" + date +
+                ", id=" + id +
+                ", instrumentMarket=" + instrumentMarket.getId() +
+                ", maxPrice=" + maxPrice +
+                ", minPrice=" + minPrice +
+                ", openPrice=" + openPrice +
+                '}';
     }
 }

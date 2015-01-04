@@ -82,7 +82,7 @@ public class ClientFileDetails extends Composite implements Editor<ClientFileDTO
         braAccountDetails.setClient(clientFile);
     }
 
-    private void disableWidgets(boolean mode) {
+    public void disableWidgets(boolean mode) {
 
         Component[] widgets = new Component[]{name, surname, dateOfBirth, pesel};
         for (Component widg : widgets) {

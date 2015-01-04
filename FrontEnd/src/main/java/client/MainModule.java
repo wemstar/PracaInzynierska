@@ -20,10 +20,7 @@ import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.cell.core.client.ButtonCell.IconAlign;
 import com.sencha.gxt.core.client.dom.ScrollSupport.ScrollMode;
-import com.sencha.gxt.widget.core.client.ContentPanel;
-import com.sencha.gxt.widget.core.client.Status;
-import com.sencha.gxt.widget.core.client.TabItemConfig;
-import com.sencha.gxt.widget.core.client.TabPanel;
+import com.sencha.gxt.widget.core.client.*;
 import com.sencha.gxt.widget.core.client.button.ButtonGroup;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.FlowLayoutContainer;
@@ -32,6 +29,9 @@ import com.sencha.gxt.widget.core.client.container.MarginData;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
+import com.sencha.gxt.widget.core.client.form.FieldLabel;
+import com.sencha.gxt.widget.core.client.form.PasswordField;
+import com.sencha.gxt.widget.core.client.form.TextField;
 import com.sencha.gxt.widget.core.client.info.Info;
 import com.sencha.gxt.widget.core.client.toolbar.ToolBar;
 
@@ -98,7 +98,7 @@ public class MainModule implements IsWidget, EntryPoint {
 
     private ContentPanel createMulti() {
         panel = new SamplePanel();
-        panel.setHeadingText("Multi Columns");
+
 
         panel.getToolBar().add(clientFileNav());
         panel.getToolBar().add(brocarageAccountNav());
@@ -257,7 +257,38 @@ public class MainModule implements IsWidget, EntryPoint {
 
 
     public void onModuleLoad() {
+
         RootPanel.get().add(asWidget());
+        checkLogin();
+    }
+
+    private void checkLogin() {
+        final Dialog complex = new Dialog();
+        complex.setBodyBorder(false);
+        complex.setHeadingText("Login");
+        complex.setWidth(200);
+        complex.setHeight(225);
+        complex.setModal(true);
+        complex.setClosable(false);
+        complex.setPredefinedButtons(Dialog.PredefinedButton.OK);
+
+
+        VerticalLayoutContainer layout = new VerticalLayoutContainer();
+        final TextField login = new TextField();
+        login.setAllowBlank(false);
+        login.setEmptyText("Podaj Login");
+        layout.add(new FieldLabel(login, "Login"), new VerticalLayoutData(1, -1));
+        PasswordField password = new PasswordField();
+        layout.add(new FieldLabel(password, "Hasło"), new VerticalLayoutData(1, -1));
+        complex.add(layout);
+        complex.getButton(Dialog.PredefinedButton.OK).addSelectHandler(new SelectEvent.SelectHandler() {
+            @Override
+            public void onSelect(SelectEvent event) {
+                Info.display("Hura", login.getText());
+                complex.hide();
+            }
+        });
+        complex.show();
     }
 
     class SamplePanel extends ContentPanel {

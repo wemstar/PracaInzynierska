@@ -53,4 +53,15 @@ public class InstrumentHistoryDTO implements Serializable {
     public void setOpenPrice(Double openPrice) {
         this.openPrice = openPrice;
     }
+
+    @Override
+    public String toString() {
+        return "InstrumentHistoryDTO{" +
+                "closePrice=" + closePrice +
+                ", date=" + date +
+                ", openPrice=" + openPrice +
+                ", minPrice=" + minPrice +
+                ", maxPrice=" + maxPrice +
+                '}';
+    }
 }

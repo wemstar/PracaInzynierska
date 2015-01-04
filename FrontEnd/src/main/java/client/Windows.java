@@ -8,6 +8,7 @@ import client.instrument.list.composite.InstrumentListComposite;
 import client.instrument.order.NewOrder;
 import client.instrument.order.list.OrderList;
 import com.google.gwt.user.client.ui.Widget;
+import com.sencha.gxt.core.client.util.Margins;
 import com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer;
 
 /**
@@ -33,7 +34,10 @@ public class Windows {
         HorizontalLayoutContainer con = new HorizontalLayoutContainer();
         SearchResult result = new SearchResult();
         con.add(new SearchClient().setResult(result), new HorizontalLayoutContainer.HorizontalLayoutData(0.5, 1));
-        con.add(result, new HorizontalLayoutContainer.HorizontalLayoutData(0.5, 1));
+        Margins margins = new Margins();
+        margins.setTop(10);
+        margins.setRight(10);
+        con.add(result, new HorizontalLayoutContainer.HorizontalLayoutData(0.5, 1, margins));
         return con;
     }
 
@@ -52,6 +56,7 @@ public class Windows {
     public static Widget aNewClientFilePanel() {
         if (newClientFileDetails == null) newClientFileDetails = new ClientFileDetails();
         newClientFileDetails.setClientFile(new ClientFileDTO());
+        newClientFileDetails.disableWidgets(true);
         return newClientFileDetails;
     }
 

@@ -26,6 +26,7 @@ public class InstrumentListTransformerImpl implements InstrumentListTransformer 
         return transport;
     }
 
+    @Override
     public InstrumentListDetailsDTO entityToTransport(InstrumentMarket instrument) {
         return anInstrumentListDetailsDTO()
                 .buyPrice(instrument.getBuyPrice())

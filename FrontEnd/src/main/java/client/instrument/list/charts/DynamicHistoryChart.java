@@ -200,7 +200,8 @@ public class DynamicHistoryChart extends Composite {
 
     public void setData(List<InstrumentHistory> history) {
         store.clear();
-        store.addAll(history);
+        if (history.size() < 20) store.addAll(history);
+        else store.addAll(history.subList(history.size() - 20, history.size()));
         chart.redrawChart();
 
     }

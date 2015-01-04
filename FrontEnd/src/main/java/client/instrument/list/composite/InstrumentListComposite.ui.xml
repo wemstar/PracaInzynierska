@@ -36,11 +36,11 @@
         <container:child layoutData="{verticalLayoutDataDow}">
             <container:HorizontalLayoutContainer>
                 <container:child layoutData="{horizontalLayoutDataLeft}">
-                    <c:FramedPanel headingText="Historia" ui:field="radar"/>
+                    <c:FramedPanel headingText="Historia Najnowsza" ui:field="radar"/>
                 </container:child>
 
                 <container:child layoutData="{horizontalLayoutDataRight}">
-                    <c:FramedPanel headingText="Historia Najnowsza" ui:field="dynamic"/>
+                    <c:FramedPanel headingText="Historia" ui:field="dynamic"/>
                 </container:child>
             </container:HorizontalLayoutContainer>
         </container:child>

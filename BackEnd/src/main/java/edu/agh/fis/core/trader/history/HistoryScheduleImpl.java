@@ -1,6 +1,7 @@
 package edu.agh.fis.core.trader.history;
 
 import edu.agh.fis.core.instrument.market.presistance.MarketDAO;
+import edu.agh.fis.core.trader.history.presistance.InstrumentHistoryDAO;
 import edu.agh.fis.entity.instrument.details.InstrumentHistory;
 import edu.agh.fis.entity.instrument.details.InstrumentMarket;
 import edu.agh.fis.entity.instrument.details.Markets;
@@ -21,6 +22,9 @@ public class HistoryScheduleImpl implements HistorySchedule {
     @Autowired
     private MarketDAO marketDAO;
 
+    @Autowired
+    private InstrumentHistoryDAO instrumentHistoryDAO;
+
 
     @Override
     public void calculateHistory() {
@@ -30,15 +34,15 @@ public class HistoryScheduleImpl implements HistorySchedule {
                 List<InstrumentHistory> historyList = insmark.getHistory();
 
 
-                historyList.add(anInstrumentHistory()
+                historyList.add(instrumentHistoryDAO.create(anInstrumentHistory()
                         .instrumentMarket(insmark)
                         .openPrice(historyList.size() > 0 ? historyList.get(historyList.size() - 1).getOpenPrice() : 0.0)
                         .closePrice(insmark.getSellPrice())
                         .minPrice(insmark.getMinPrice())
                         .maxPrice(insmark.getMaxPrice())
                         .date(new Date())
-                        .build());
-                insmark.setHistory(historyList);
+                        .build()));
+
             }
 
             marketDAO.update(market);

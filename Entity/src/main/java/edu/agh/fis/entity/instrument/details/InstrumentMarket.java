@@ -1,7 +1,5 @@
 package edu.agh.fis.entity.instrument.details;
 
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -38,9 +36,9 @@ public class InstrumentMarket {
     @Column(name = "INSTRUMENT_MARKET_MAX_PRICE")
     private Double maxPrice;
 
-    @OneToMany(mappedBy = "instrumentMarket", fetch = FetchType.EAGER)
-    @Cascade(CascadeType.SAVE_UPDATE)
+    @OneToMany(mappedBy = "instrumentMarket")
     @OrderBy("date")
+    //@Fetch(FetchMode.JOIN)
     private List<InstrumentHistory> history;
 
     public Double getBuyPrice() {
@@ -105,5 +103,17 @@ public class InstrumentMarket {
 
     public void setHistory(List<InstrumentHistory> history) {
         this.history = history;
+    }
+
+    @Override
+    public String toString() {
+        return "InstrumentMarket{" +
+                "buyPrice=" + buyPrice +
+                ", id=" + id +
+                ", sellPrice=" + sellPrice +
+                ", minPrice=" + minPrice +
+                ", maxPrice=" + maxPrice +
+                ", history=" + history +
+                '}';
     }
 }

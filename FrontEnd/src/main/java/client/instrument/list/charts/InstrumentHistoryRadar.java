@@ -61,7 +61,7 @@ public class InstrumentHistoryRadar extends Composite {
         if (data.size() != 0 && data.size() < 8)
             store.addAll(data);
         else if (data.size() >= 8)
-            store.addAll(data.subList(0, 8));
+            store.addAll(data.subList(data.size() - 8, data.size()));
         chart.redrawChart();
     }
 

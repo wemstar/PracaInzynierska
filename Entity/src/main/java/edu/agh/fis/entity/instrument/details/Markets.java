@@ -2,10 +2,6 @@ package edu.agh.fis.entity.instrument.details;
 
 
 import edu.agh.fis.entity.instrument.order.NewOrder;
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -20,9 +16,8 @@ public class Markets {
     @Id
     @Column(name = "MARKET_CODE", unique = true, nullable = false)
     private String code;
-    @OneToMany(mappedBy = "market", fetch = FetchType.EAGER)
-    @Cascade(CascadeType.SAVE_UPDATE)
-    @Fetch(FetchMode.JOIN)
+    @OneToMany(mappedBy = "market")
+    //@Fetch(FetchMode.JOIN)
     private Set<InstrumentMarket> instruments;
     @Column(name = "MARKET_ACTIVE")
     private Boolean active;
@@ -70,5 +65,15 @@ public class Markets {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Markets{" +
+                "name='" + name + '\'' +
+                ", instruments=" + instruments +
+                ", code='" + code + '\'' +
+                ", active=" + active +
+                '}';
     }
 }
