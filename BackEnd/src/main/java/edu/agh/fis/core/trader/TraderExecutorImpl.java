@@ -22,11 +22,14 @@ public class TraderExecutorImpl implements TraderExecutor {
     @Autowired
     private NewOrderService newOrderService;
 
+    @Autowired
+    private AccountValidator accountValidator;
+
     @Override
     public void processOrder(NewOrder newOrder) {
         Set<NewOrder> ordersOnMarket = newOrder.getMarket().getOrders();
         for (NewOrder order : ordersOnMarket) {
-            if (instrumentCheckTrader.checkOrder(order, newOrder)) {
+            if (instrumentCheckTrader.checkOrder(order, newOrder) && accountValidator.validateAccount(newOrder)) {
                 braAccountTrader.transferInstruments(order, newOrder);
                 newOrderService.procesNewOrders(order, newOrder);
             }
