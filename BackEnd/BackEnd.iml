@@ -129,5 +129,6 @@
     <orderEntry type="library" scope="TEST" name="Gradle: net.minidev:json-smart:2.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: net.minidev:asm:1.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: asm:asm:3.3.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: org.springframework.security:spring-security-core:3.2.5.RELEASE" level="project" />
   </component>
 </module>

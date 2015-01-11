@@ -3,6 +3,7 @@ package server.file.search;
 import client.bra.account.service.BraAccountDTO;
 import client.file.search.service.ClientFileDTO;
 import client.file.search.service.ClientFileService;
+import client.file.search.service.UserDTO;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -83,7 +84,21 @@ public class ClientFileServiceImpl extends RemoteServiceServlet implements Clien
 
     @Override
     public void deleteClientFile(ClientFileDTO flush) {
+        restTemplate.delete(server + "/client/file/" + flush.getClientNo());
+    }
 
+    @Override
+    public void deleteBraAccount(String braAccNo) {
+        restTemplate.delete(server + "/bra/acc/" + braAccNo);
+    }
+
+    @Override
+    public boolean validateUser(UserDTO user) {
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        return restTemplate.postForObject(server + "/user/autorize", user, Boolean.class);
     }
 
 

@@ -24,6 +24,11 @@ public interface ClientFileService extends RemoteService {
 
     void deleteClientFile(ClientFileDTO flush);
 
+
+    void deleteBraAccount(String braAccNo);
+
+    boolean validateUser(UserDTO user);
+
     /**
      * Utility/Convenience class.
      * Use ClientSearchService.App.getInstance() to access static instance of ClientSearchServiceAsync

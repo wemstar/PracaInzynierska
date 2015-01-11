@@ -20,4 +20,8 @@ public interface ClientFileServiceAsync {
     void saveBraAccount(ClientFileDTO client, BraAccountDTO braAccount, AsyncCallback<BraAccountDTO> async);
 
     void deleteClientFile(ClientFileDTO flush, AsyncCallback<Void> async);
+
+    void deleteBraAccount(String braAccNo, AsyncCallback<Void> asyncCallback);
+
+    void validateUser(UserDTO user, AsyncCallback<Boolean> asyncCallback);
 }

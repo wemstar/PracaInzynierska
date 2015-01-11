@@ -137,7 +137,9 @@ public class ClientFileDetails extends Composite implements Editor<ClientFileDTO
         ClientFileService.App.getInstance().deleteClientFile(driver.flush(), new AsyncCallback<Void>() {
             @Override
             public void onFailure(Throwable caught) {
+                AlertMessageBox d = new AlertMessageBox("Zapis", "Zapis zakończony niepowodzeniem" + caught.toString());
 
+                d.show();
             }
 
             @Override

@@ -5,6 +5,7 @@ import client.events.*;
 import client.file.search.details.ClientFileDetails;
 import client.file.search.service.ClientFileDTO;
 import client.file.search.service.ClientFileService;
+import client.file.search.service.UserDTO;
 import client.images.Images;
 import client.instrument.list.composite.InstrumentListComposite;
 import client.instrument.order.NewOrder;
@@ -21,6 +22,7 @@ import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.cell.core.client.ButtonCell.IconAlign;
 import com.sencha.gxt.core.client.dom.ScrollSupport.ScrollMode;
 import com.sencha.gxt.widget.core.client.*;
+import com.sencha.gxt.widget.core.client.box.AlertMessageBox;
 import com.sencha.gxt.widget.core.client.button.ButtonGroup;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.container.FlowLayoutContainer;
@@ -135,10 +137,14 @@ public class MainModule implements IsWidget, EntryPoint {
         btn.addSelectHandler(new SelectEvent.SelectHandler() {
             @Override
             public void onSelect(SelectEvent event) {
-                ClientFileDetails details = Windows.aClientFileDetailsPanel();
-                details.setClientFile(context);
+                if (context != null) {
+                    ClientFileDetails details = Windows.aClientFileDetailsPanel();
+                    details.setClientFile(context);
 
-                panel.addTab(details, ClientFileDetails.title);
+                    panel.addTab(details, ClientFileDetails.title);
+                } else {
+                    showPopUp();
+                }
             }
         });
         table.setWidget(0, 1, btn);
@@ -183,9 +189,13 @@ public class MainModule implements IsWidget, EntryPoint {
         btn.addSelectHandler(new SelectEvent.SelectHandler() {
             @Override
             public void onSelect(SelectEvent event) {
-                InstrumentListComposite composite = anBraAccountInstrumentListPanel();
-                panel.addTab(composite, "Lista Instrumentów na rachunku");
-                composite.setBraContext(braContext);
+                if (braContext != null) {
+                    InstrumentListComposite composite = anBraAccountInstrumentListPanel();
+                    panel.addTab(composite, "Lista Instrumentów na rachunku");
+                    composite.setBraContext(braContext);
+                } else {
+                    showPopUp();
+                }
 
 
             }
@@ -230,9 +240,13 @@ public class MainModule implements IsWidget, EntryPoint {
         btn.addSelectHandler(new SelectEvent.SelectHandler() {
             @Override
             public void onSelect(SelectEvent event) {
-                NewOrder panle = Windows.aNewOrderPanle();
-                panle.setBraAccount(braContext);
-                panel.addTab(panle, "Nowe Zlecenie");
+                if (braContext != null) {
+                    NewOrder panle = Windows.aNewOrderPanle();
+                    panle.setBraAccount(braContext);
+                    panel.addTab(panle, "Nowe Zlecenie");
+                } else {
+                    showPopUp();
+                }
             }
         });
         table.setWidget(0, 1, btn);
@@ -243,9 +257,13 @@ public class MainModule implements IsWidget, EntryPoint {
         btn.addSelectHandler(new SelectEvent.SelectHandler() {
             @Override
             public void onSelect(SelectEvent event) {
-                OrderList panle = Windows.aNewOrderListPanel();
+                if (context != null) {
+                    OrderList panle = Windows.aNewOrderListPanel();
                 panle.setClientFile(context);
                 panel.addTab(panle, "Lista Zleceń");
+                } else {
+                    showPopUp();
+                }
             }
         });
         table.setWidget(0, 2, btn);
@@ -253,6 +271,11 @@ public class MainModule implements IsWidget, EntryPoint {
 
         group.add(table);
         return group;
+    }
+
+    private void showPopUp() {
+        AlertMessageBox box = new AlertMessageBox("Kontekst Klienta", "Musisz się znajdować w kontekscie klienta aby wejśc na formatkę");
+        box.show();
     }
 
 
@@ -278,14 +301,37 @@ public class MainModule implements IsWidget, EntryPoint {
         login.setAllowBlank(false);
         login.setEmptyText("Podaj Login");
         layout.add(new FieldLabel(login, "Login"), new VerticalLayoutData(1, -1));
-        PasswordField password = new PasswordField();
+        final PasswordField password = new PasswordField();
         layout.add(new FieldLabel(password, "Hasło"), new VerticalLayoutData(1, -1));
         complex.add(layout);
         complex.getButton(Dialog.PredefinedButton.OK).addSelectHandler(new SelectEvent.SelectHandler() {
             @Override
             public void onSelect(SelectEvent event) {
-                Info.display("Hura", login.getText());
-                complex.hide();
+
+                UserDTO user = new UserDTO();
+                user.setLogin(login.getText());
+                user.setPassword(password.getText());
+                ClientFileService.App.getInstance().validateUser(user, new AsyncCallback<Boolean>() {
+
+                    @Override
+                    public void onFailure(Throwable caught) {
+                        loginFailed(true);
+                    }
+
+                    @Override
+                    public void onSuccess(Boolean result) {
+                        if (result)
+                            complex.hide();
+                        else
+                            loginFailed(false);
+                    }
+
+                    private void loginFailed(boolean error) {
+                        AlertMessageBox box = new AlertMessageBox("Logowanie", error ? "Błąd serwera. Spróbuj jeszcze raz" : "Błąd loginu lub hasła");
+                        box.show();
+                    }
+                });
+
             }
         });
         complex.show();

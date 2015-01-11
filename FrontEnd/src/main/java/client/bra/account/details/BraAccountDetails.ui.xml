@@ -38,7 +38,7 @@
                 <container:child layoutData="{verticalLayoutData}">
                     <form:FieldLabel text="Zablokowane Środki">
                         <form:widget>
-                            <form:TextField ui:field="blockCashStr"/>
+                            <form:TextField ui:field="blockCashStr" enabled="false"/>
                         </form:widget>
                     </form:FieldLabel>
                 </container:child>

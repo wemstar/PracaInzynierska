@@ -3,6 +3,6 @@
     <cron>
         <url>/instrument/details/update/history</url>
         <description>Update instrument history</description>
-        <schedule>every 24 hours</schedule>
+        <schedule>every day 00:00</schedule>
     </cron>
 </cronentries>

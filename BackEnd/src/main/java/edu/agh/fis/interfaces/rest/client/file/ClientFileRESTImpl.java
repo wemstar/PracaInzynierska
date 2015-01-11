@@ -53,7 +53,7 @@ public class ClientFileRESTImpl implements ClientFileREST {
     }
 
     @Override
-    @RequestMapping(value = "{clientNo}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/{clientNo}", method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteClientFile(@PathVariable long clientNo) {
         clientFileService.deleteClientFile(clientNo);

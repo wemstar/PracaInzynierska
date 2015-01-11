@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class AccountValidatorImpl implements AccountValidator {
+
     @Override
     public boolean validateAccount(NewOrder newOrder) {
         if (newOrder.getSide() == Side.BUY && newOrder.getBraAccount().getAvalibleCash() > newOrder.getAmount() * newOrder.getPrice())

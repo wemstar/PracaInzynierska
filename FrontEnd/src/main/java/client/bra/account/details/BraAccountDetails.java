@@ -68,7 +68,7 @@ public class BraAccountDetails extends Composite implements Editor<BraAccountDTO
     }
 
     public void disableWidget(boolean mode) {
-        Component[] widgets = new Component[]{avalibleCashStr, blockCashStr};
+        Component[] widgets = new Component[]{avalibleCashStr};
         for (Component widg : widgets) {
             widg.setEnabled(mode);
         }
@@ -105,7 +105,20 @@ public class BraAccountDetails extends Composite implements Editor<BraAccountDTO
 
     @UiHandler("bDelete")
     public void delete(SelectEvent event) {
+        ClientFileService.App.getInstance().deleteBraAccount(driver.flush().getBraAccNo(), new AsyncCallback<Void>() {
 
+            @Override
+            public void onFailure(Throwable caught) {
+                AlertMessageBox d = new AlertMessageBox("Usuwanie", "Nie udało się usunąc rachunku");
+                d.show();
+            }
+
+            @Override
+            public void onSuccess(Void result) {
+                Info.display("Usuwanie", "Usunięto rachunek");
+                MainModule.EVENT_BUS.fireEvent(new ReloadContext());
+            }
+        });
     }
 
     interface BraAccountDetailsUiBinder extends UiBinder<VerticalPanel, BraAccountDetails> {

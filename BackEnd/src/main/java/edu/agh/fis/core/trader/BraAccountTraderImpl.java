@@ -1,6 +1,7 @@
 package edu.agh.fis.core.trader;
 
 import edu.agh.fis.core.bra.acc.presistance.BraAccountDao;
+import edu.agh.fis.core.trader.blocker.AccountBlocked;
 import edu.agh.fis.entity.bra.acc.BraAccount;
 import edu.agh.fis.entity.bra.acc.InstrumentInfo;
 import edu.agh.fis.entity.instrument.details.InstrumentDefinition;
@@ -19,6 +20,9 @@ public class BraAccountTraderImpl implements BraAccountTrader {
 
     @Autowired
     private BraAccountDao braAccountDao;
+
+    @Autowired
+    private AccountBlocked blocked;
 
 
     @Override
@@ -73,16 +77,18 @@ public class BraAccountTraderImpl implements BraAccountTrader {
     }
 
     private void acountTransfer(BraAccount seller, BraAccount buyer, InstrumentDefinition instrument, Long amount) {
+
+        //przelewa pieniadze na rachunek właściciela
         for (InstrumentInfo info : seller.getInstruments())
             if (info.getInstrumentDefinition().getIsin().equals(instrument.getIsin())) {
                 info.setBlocked(info.getBlocked() - amount);
-                if (info.getAmmount() == 0) {
+
+                if (info.getAmmount() == 0 && info.getBlocked() == 0) {
                     seller.getInstruments().remove(info);
-                    throw new RuntimeException("" + amount);
                 }
             }
-        ;
 
+        //przelewa instrument na rachunek odbiorcy
         if (buyer.getInstruments().contains(anInstrumentInfo().instrumentDefinition(instrument).build())) {
             for (InstrumentInfo info : buyer.getInstruments())
                 if (info.getInstrumentDefinition().getIsin().equals(instrument.getIsin())) {

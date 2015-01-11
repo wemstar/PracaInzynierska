@@ -78,8 +78,9 @@ public class SearchClient extends Composite implements Editor<ClientFileDTO> {
 
             public void onSuccess(List<ClientFileDTO> results) {
                 Info.display("Wyszukiwanie", "Wyszukano " + results.size() + " wyników");
-                result.setResult(results);
                 box.hide();
+                result.setResult(results);
+
 
             }
         });
