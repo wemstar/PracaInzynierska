@@ -5,7 +5,7 @@ import edu.agh.fis.instrument.details.InstrumentDefinitionDTO;
 import java.util.List;
 
 /**
- * Created by wemstar on 15.12.14.
+ * DTO rynku
  */
 public class MarketDTO {
 

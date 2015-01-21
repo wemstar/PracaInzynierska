@@ -8,7 +8,7 @@ import edu.agh.fis.entity.instrument.details.Markets;
 import java.util.List;
 
 /**
- * Created by wemstar on 16.12.14.
+ * Builder dla powiązań miedzy instrumentem a rynkiem
  */
 public class InstrumentMarketBuilder {
     private Double buyPrice;

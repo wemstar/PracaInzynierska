@@ -4,7 +4,7 @@ import client.file.search.service.ClientFileDTO;
 import com.google.gwt.event.shared.GwtEvent;
 
 /**
- * Created by wemstar on 08.12.14.
+ * event zmiany kontekstu klienta
  */
 public class ClientContextChange extends GwtEvent<ClientContextChangeHandler> {
 

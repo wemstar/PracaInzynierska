@@ -39,7 +39,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Created by wemstar on 21.12.14.
+ * historia instrumentów
  */
 public class InstrumentHistoryRadar extends Composite {
 
@@ -90,6 +90,7 @@ public class InstrumentHistoryRadar extends Composite {
             marker.setFill(colors[0]);
             radar.setMarkerConfig(marker);
             radar.setLineRenderer(createRenderer(0));
+            radar.setLegendTitle("Cena Otwarcia");
             chart.addSeries(radar);
 
             final RadarSeries<InstrumentHistory> radar2 = new RadarSeries<InstrumentHistory>();
@@ -100,6 +101,7 @@ public class InstrumentHistoryRadar extends Composite {
             marker.setFill(colors[1]);
             radar2.setMarkerConfig(marker);
             radar2.setLineRenderer(createRenderer(1));
+            radar2.setLegendTitle("Cena Minimalna");
             chart.addSeries(radar2);
 
             final RadarSeries<InstrumentHistory> radar3 = new RadarSeries<InstrumentHistory>();
@@ -110,6 +112,7 @@ public class InstrumentHistoryRadar extends Composite {
             marker.setFill(colors[2]);
             radar3.setMarkerConfig(marker);
             radar3.setLineRenderer(createRenderer(2));
+            radar3.setLegendTitle("Cena Maxymalna");
             chart.addSeries(radar3);
 
             final RadarSeries<InstrumentHistory> radar4 = new RadarSeries<InstrumentHistory>();
@@ -120,6 +123,7 @@ public class InstrumentHistoryRadar extends Composite {
             marker.setFill(colors[3]);
             radar4.setMarkerConfig(marker);
             radar4.setLineRenderer(createRenderer(3));
+            radar4.setLegendTitle("Cena Zamknięcia");
             chart.addSeries(radar4);
 
             final Legend<InstrumentHistory> legend = new Legend<InstrumentHistory>();

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by wemstar on 11.11.14.
+ * Transportówka dla rachunku
  */
 public class BraAccountDTO implements Serializable {
 

@@ -1,8 +1,14 @@
 package edu.agh.fis.core.user.services;
 
 /**
- * Created by wemstar on 10.01.15.
+ * Waliduje użytkowników
  */
 public interface UserService {
+
+    /**
+     * @param login
+     * @param password
+     * @return TRUE jeśli dane są poprawne
+     */
     boolean validateUser(String login, String password);
 }

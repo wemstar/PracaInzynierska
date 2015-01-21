@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.util.List;
 
 /**
- * Created by wemstar on 15.12.14.
+ * powiązanie instrumentu i rynku
  */
 @Entity
 @Table(name = "INSTRUMENT_MARKET")

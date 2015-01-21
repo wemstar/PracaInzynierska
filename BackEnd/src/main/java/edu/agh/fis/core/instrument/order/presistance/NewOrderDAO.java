@@ -4,7 +4,7 @@ import edu.agh.fis.entity.instrument.order.NewOrder;
 import edu.agh.fis.utils.presistance.AbstractDAO;
 
 /**
- * Created by wemstar on 29.09.14.
+ * Pobiera z bazy zlecenia
  */
 public interface NewOrderDAO extends AbstractDAO<NewOrder> {
 }

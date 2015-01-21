@@ -8,7 +8,7 @@ import org.springframework.beans.factory.config.BeanPostProcessor;
 import java.lang.reflect.Field;
 
 /**
- * Created by wemstar on 02.10.14.
+ * Klasa nakłada aspekty logujące na beany
  */
 class LoggerPostProcessor implements BeanPostProcessor {
     @Override

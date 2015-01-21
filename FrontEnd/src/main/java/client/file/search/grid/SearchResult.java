@@ -24,7 +24,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Created by wemstar on 08.11.14.
+ * Wyniki wyszukiwania
  */
 public class SearchResult extends Composite {
 

@@ -5,7 +5,7 @@ import edu.agh.fis.client.file.ClientFileDTO;
 import java.util.List;
 
 /**
- * Created by wemstar on 13.09.14.
+ * Przetwarza zapytanie REST dla klienta
  */
 public interface ClientFileREST {
 

@@ -6,10 +6,19 @@ import edu.agh.fis.utils.presistance.AbstractDAO;
 import java.util.List;
 
 /**
- * Created by wemstar on 15.12.14.
+ * Wyciąga z bazy dane dotyczące Rynków
  */
 public interface MarketDAO extends AbstractDAO<Markets> {
+
+    /**
+     * @return Lista aktywnych wynków
+     */
     List<Markets> getActiveMarkets();
 
+    /**
+     *
+     * @param market kod rynku
+     * @return rynek
+     */
     Markets find(String market);
 }

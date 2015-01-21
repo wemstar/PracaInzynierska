@@ -1,7 +1,7 @@
 package client.constraint;
 
 /**
- * Created by wemstar on 20.12.14.
+ * Przechowywanie pary klucz wartość w combobox
  */
 public class EnumCombo {
 

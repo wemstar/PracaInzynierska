@@ -4,7 +4,7 @@ import edu.agh.fis.entity.instrument.details.InstrumentDefinition;
 import edu.agh.fis.instrument.details.InstrumentDefinitionDTO;
 
 /**
- * Created by wemstar on 28.10.14.
+ * Transformuje obiekty transportowe in bazodanowe
  */
 public interface InstrumentDefinitionTransformer {
 

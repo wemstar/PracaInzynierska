@@ -24,7 +24,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Created by wemstar on 08.11.14.
+ * parametry wyszukiwania
  */
 public class SearchClient extends Composite implements Editor<ClientFileDTO> {
 

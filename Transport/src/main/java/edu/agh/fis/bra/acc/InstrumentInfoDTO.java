@@ -3,7 +3,7 @@ package edu.agh.fis.bra.acc;
 import edu.agh.fis.instrument.details.InstrumentDefinitionDTO;
 
 /**
- * Created by wemstar on 11.10.14.
+ * DTO dla informacji o instrumencie
  */
 public class InstrumentInfoDTO {
 

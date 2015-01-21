@@ -7,7 +7,7 @@ import org.aspectj.lang.annotation.Aspect;
 
 
 /**
- * Created by wemstar on 05.10.14.
+ * Aspekt tworzący logi aplikacji
  */
 @Aspect
 class AspectLoging {

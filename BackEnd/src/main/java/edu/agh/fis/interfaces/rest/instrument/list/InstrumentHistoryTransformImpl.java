@@ -10,7 +10,7 @@ import java.util.List;
 import static edu.agh.fis.builder.instrument.list.InstrumentHistoryDTOBuilder.anInstrumentHistoryDTO;
 
 /**
- * Created by wemstar on 21.12.14.
+ * Transformuje obiekty transportowe in bazodanowe
  */
 @Component
 public class InstrumentHistoryTransformImpl implements InstrumentHistoryTransform {

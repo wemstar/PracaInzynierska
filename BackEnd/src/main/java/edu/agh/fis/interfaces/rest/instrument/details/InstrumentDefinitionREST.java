@@ -5,7 +5,7 @@ import edu.agh.fis.instrument.details.InstrumentDefinitionDTO;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- * Created by wemstar on 25.09.14.
+ * Przetwarza zapytanie REST dla Instrumentu
  */
 public interface InstrumentDefinitionREST {
 

@@ -41,7 +41,7 @@ import static client.Windows.anBraAccountInstrumentListPanel;
 import static client.Windows.anInstrumentListPanel;
 
 /**
- * Created by wemstar on 04.09.14.
+ * Główny moduł aplikacji
  */
 public class MainModule implements IsWidget, EntryPoint {
 
@@ -289,8 +289,8 @@ public class MainModule implements IsWidget, EntryPoint {
         final Dialog complex = new Dialog();
         complex.setBodyBorder(false);
         complex.setHeadingText("Login");
-        complex.setWidth(200);
-        complex.setHeight(225);
+        complex.setWidth(400);
+        complex.setHeight(125);
         complex.setModal(true);
         complex.setClosable(false);
         complex.setPredefinedButtons(Dialog.PredefinedButton.OK);

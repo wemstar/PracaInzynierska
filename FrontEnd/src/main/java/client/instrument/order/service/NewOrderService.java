@@ -9,7 +9,7 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 import java.util.List;
 
 /**
- * Created by wemstar on 30.11.14.
+ * Serwis do składania nowego zlecenia
  */
 @RemoteServiceRelativePath("NewOrderService")
 public interface NewOrderService extends RemoteService {

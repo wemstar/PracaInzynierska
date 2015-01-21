@@ -14,11 +14,11 @@
 
     <g:VerticalPanel spacing="10">
 
-        <c:FramedPanel headingText="Simple Form" bodyStyle="background: none; padding: 15px">
+        <c:FramedPanel headingText="Parametry wyszukiwania" bodyStyle="background: none; padding: 15px">
             <container:VerticalLayoutContainer>
 
                 <container:child layoutData="{verticalLayoutData}">
-                    <form:FieldLabel text="Client Number">
+                    <form:FieldLabel text="Numer Klienta">
                         <form:widget>
                             <form:TextField ui:field="clientNo"/>
                         </form:widget>
@@ -26,7 +26,7 @@
                 </container:child>
 
                 <container:child layoutData="{verticalLayoutData}">
-                    <form:FieldLabel text="Name">
+                    <form:FieldLabel text="Imię">
                         <form:widget>
                             <form:TextField ui:field="name"/>
                         </form:widget>
@@ -34,7 +34,7 @@
                 </container:child>
 
                 <container:child layoutData="{verticalLayoutData}">
-                    <form:FieldLabel text="Surname">
+                    <form:FieldLabel text="Nazwisko">
                         <form:widget>
                             <form:TextField ui:field="surname"/>
                         </form:widget>
@@ -42,7 +42,7 @@
                 </container:child>
 
                 <container:child layoutData="{verticalLayoutData}">
-                    <form:FieldLabel text="Birthday">
+                    <form:FieldLabel text="Data urodzenia">
                         <form:widget>
                             <form:DateField ui:field="dateOfBirth"/>
                         </form:widget>
@@ -58,7 +58,7 @@
                 </container:child>
 
 
-                <button:TextButton text="Search" ui:field="search"/>
+                <button:TextButton text="Wyszukaj" ui:field="search"/>
             </container:VerticalLayoutContainer>
 
 

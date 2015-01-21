@@ -28,7 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by wemstar on 20.12.14.
+ * Lista zleceń
  */
 public class OrderList extends Composite {
 

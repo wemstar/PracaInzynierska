@@ -8,7 +8,7 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 import java.util.List;
 
 /**
- * Created by wemstar on 21.12.14.
+ * serwis instrumentów
  */
 @RemoteServiceRelativePath("InstrumentService")
 public interface InstrumentService extends RemoteService {

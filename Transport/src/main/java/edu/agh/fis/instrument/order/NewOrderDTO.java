@@ -3,7 +3,7 @@ package edu.agh.fis.instrument.order;
 import java.io.Serializable;
 
 /**
- * Created by wemstar on 29.09.14.
+ *DTO nowego zlecenia
  */
 public class NewOrderDTO implements Serializable {
 
@@ -16,6 +16,7 @@ public class NewOrderDTO implements Serializable {
     private Long amount;
     private Long id;
     private String fix;
+    private Double activationPrice;
 
     public String getFix() {
         return fix;
@@ -101,5 +102,13 @@ public class NewOrderDTO implements Serializable {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public Double getActivationPrice() {
+        return activationPrice;
+    }
+
+    public void setActivationPrice(Double activationPrice) {
+        this.activationPrice = activationPrice;
     }
 }

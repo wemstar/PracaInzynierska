@@ -5,7 +5,7 @@ import edu.agh.fis.utils.presistance.AbstractDAOImpl;
 import org.springframework.stereotype.Repository;
 
 /**
- * Created by wemstar on 25.09.14.
+ *
  */
 @Repository
 class BraAccountDaoImpl extends AbstractDAOImpl<BraAccount> implements BraAccountDao {

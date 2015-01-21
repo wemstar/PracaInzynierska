@@ -3,8 +3,13 @@ package edu.agh.fis.core.trader;
 import edu.agh.fis.entity.instrument.order.NewOrder;
 
 /**
- * Created by wemstar on 20.12.14.
+ * Klasa przetwarzające zlecenia
  */
 public interface TraderExecutor {
+    /**
+     * Przetwórz zlecenie
+     *
+     * @param newOrder
+     */
     void processOrder(NewOrder newOrder);
 }

@@ -3,7 +3,7 @@ package client.instrument.order.service.dto;
 import java.io.Serializable;
 
 /**
- * Created by wemstar on 30.11.14.
+ * DTO dla nowego zlecenia
  */
 public class NewOrderDTO implements Serializable {
     private String instrument;
@@ -15,6 +15,7 @@ public class NewOrderDTO implements Serializable {
     private Long amount;
     private Long id;
     private String fix;
+    private Double activationPrice;
 
     public String getFix() {
         return fix;
@@ -102,4 +103,11 @@ public class NewOrderDTO implements Serializable {
         this.price = price;
     }
 
+    public Double getActivationPrice() {
+        return activationPrice;
+    }
+
+    public void setActivationPrice(Double activationPrice) {
+        this.activationPrice = activationPrice;
+    }
 }

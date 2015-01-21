@@ -4,7 +4,7 @@ import edu.agh.fis.bra.acc.BraAccountDTO;
 import edu.agh.fis.entity.bra.acc.BraAccount;
 
 /**
- * Created by wemstar on 05.10.14.
+ * Transformuje obiekty transportowe in bazodanowe
  */
 public interface BraAccountTransformer {
     BraAccountDTO entityToTransport(BraAccount braAcc);

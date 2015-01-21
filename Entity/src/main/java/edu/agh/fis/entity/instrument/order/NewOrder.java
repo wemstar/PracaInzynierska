@@ -9,7 +9,7 @@ import edu.agh.fis.enums.order.Side;
 import javax.persistence.*;
 
 /**
- * Created by wemstar on 18.09.14.
+ * Zlecenie
  */
 @Entity
 @Table(name = "NEW_ORDER")

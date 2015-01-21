@@ -6,7 +6,7 @@ import edu.agh.fis.instrument.list.InstrumentListDetailsDTO;
 import java.util.List;
 
 /**
- * Created by wemstar on 21.12.14.
+ * Transformuje obiekty transportowe i bazodanowe
  */
 public interface InstrumentListTransformer {
 

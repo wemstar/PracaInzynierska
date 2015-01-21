@@ -1,12 +1,13 @@
 package edu.agh.fis.instrument.list;
 
+import edu.agh.fis.core.bra.acc.presistance.BraAccountDao;
 import edu.agh.fis.core.client.file.presistance.ClientFileDao;
 import edu.agh.fis.core.instrument.market.presistance.MarketDAO;
+import edu.agh.fis.core.trader.history.presistance.InstrumentHistoryDAO;
 import edu.agh.fis.entity.bra.acc.BraAccount;
 import edu.agh.fis.entity.bra.acc.InstrumentInfo;
 import edu.agh.fis.entity.client.file.ClientFile;
 import edu.agh.fis.entity.instrument.details.InstrumentDefinition;
-import edu.agh.fis.entity.instrument.details.InstrumentHistory;
 import edu.agh.fis.entity.instrument.details.InstrumentMarket;
 import edu.agh.fis.entity.instrument.details.Markets;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,6 +56,12 @@ public class ListHistory extends AbstractTestNGSpringContextTests {
     @Autowired
     private MarketDAO marketDao;
 
+    @Autowired
+    private BraAccountDao accountDao;
+
+    @Autowired
+    private InstrumentHistoryDAO historyDAO;
+
     private MockMvc mockMvc;
     private Date today = new Date();
 
@@ -95,13 +102,6 @@ public class ListHistory extends AbstractTestNGSpringContextTests {
                 .sellPrice(210.0)
                 .instrument(instrumentKGHM)
                 .build();
-        insMarkKGHM.setHistory(Arrays.asList(new InstrumentHistory[]
-                {
-                        anInstrumentHistory().instrumentMarket(insMarkKGHM).date(new Date(today.getTime() + (1000 * 60 * 60 * 24))).closePrice(10.0).maxPrice(20.0).minPrice(5.0).openPrice(20.0).build(),
-                        anInstrumentHistory().instrumentMarket(insMarkKGHM).date(new Date(today.getTime() + (1000 * 60 * 60 * 24) * 2)).closePrice(10.0).maxPrice(20.0).minPrice(5.0).openPrice(20.0).build(),
-                        anInstrumentHistory().instrumentMarket(insMarkKGHM).date(new Date(today.getTime() + (1000 * 60 * 60 * 24) * 3)).closePrice(10.0).maxPrice(20.0).minPrice(5.0).openPrice(20.0).build(),
-                        anInstrumentHistory().instrumentMarket(insMarkKGHM).date(new Date(today.getTime() + (1000 * 60 * 60 * 24) * 4)).closePrice(10.0).maxPrice(20.0).minPrice(5.0).openPrice(20.0).build(),
-                }));
 
 
         Markets market = aMarkets().active(true).code("GPW").name("Giełda Papierów wartosciowych").instruments(new HashSet<InstrumentMarket>(Arrays.asList(new InstrumentMarket[]{insMarkKGHM}))).build();
@@ -126,6 +126,13 @@ public class ListHistory extends AbstractTestNGSpringContextTests {
 
         clientFileDao.create(clientFile);
         marketDao.create(market);
+        accountDao.create(braAccount1);
+
+        historyDAO.create(anInstrumentHistory().instrumentMarket(insMarkKGHM).date(new Date(today.getTime() + (1000 * 60 * 60 * 24))).closePrice(10.0).maxPrice(20.0).minPrice(5.0).openPrice(20.0).build());
+        historyDAO.create(anInstrumentHistory().instrumentMarket(insMarkKGHM).date(new Date(today.getTime() + (1000 * 60 * 60 * 24) * 2)).closePrice(10.0).maxPrice(20.0).minPrice(5.0).openPrice(20.0).build());
+        historyDAO.create(anInstrumentHistory().instrumentMarket(insMarkKGHM).date(new Date(today.getTime() + (1000 * 60 * 60 * 24) * 3)).closePrice(10.0).maxPrice(20.0).minPrice(5.0).openPrice(20.0).build());
+        historyDAO.create(anInstrumentHistory().instrumentMarket(insMarkKGHM).date(new Date(today.getTime() + (1000 * 60 * 60 * 24) * 4)).closePrice(10.0).maxPrice(20.0).minPrice(5.0).openPrice(20.0).build());
+
 
     }
 }

@@ -7,7 +7,7 @@ import edu.agh.fis.entity.instrument.order.NewOrder;
 import java.util.Set;
 
 /**
- * Created by wemstar on 15.12.14.
+ * Builder dla rynków
  */
 public class MarketsBuilder {
     private Boolean active;

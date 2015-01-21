@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.Set;
 
 /**
- * Created by wemstar on 11.10.14.
+ * Builder dla DTO kartoteki klienta
  */
 public class ClientFileDTOBuilder {
     private String name;

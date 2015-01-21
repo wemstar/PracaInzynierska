@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.util.List;
 
 /**
- * Created by wemstar on 21.12.14.
+ * Przetwarza zapytanie REST dla listy Instrumentów
  */
 public interface InstrumentListREST {
 

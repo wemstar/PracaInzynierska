@@ -6,7 +6,7 @@ import edu.agh.fis.instrument.market.MarketDTO;
 import java.util.List;
 
 /**
- * Created by wemstar on 15.12.14.
+ * Builder dla DTO rynku
  */
 public class MarketDTOBuilder {
     private Boolean active;

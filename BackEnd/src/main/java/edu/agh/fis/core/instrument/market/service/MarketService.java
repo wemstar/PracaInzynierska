@@ -5,8 +5,12 @@ import edu.agh.fis.entity.instrument.details.Markets;
 import java.util.List;
 
 /**
- * Created by wemstar on 15.12.14.
+ * Logika biznesowa dla rynków
  */
 public interface MarketService {
+
+    /**
+     * @return lista aktywnych rynków
+     */
     List<Markets> getActiveMarket();
 }

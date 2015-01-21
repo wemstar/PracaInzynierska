@@ -5,7 +5,7 @@ import client.instrument.order.service.dto.InstrumentDTO;
 import java.io.Serializable;
 
 /**
- * Created by wemstar on 08.12.14.
+ * tranportówka dla informacji o instrumencie na rachunku
  */
 public class InstrumentInfoDTO implements Serializable {
     private InstrumentDTO instrument;

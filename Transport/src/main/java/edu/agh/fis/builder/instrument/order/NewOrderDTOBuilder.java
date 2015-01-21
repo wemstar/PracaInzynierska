@@ -3,7 +3,7 @@ package edu.agh.fis.builder.instrument.order;
 import edu.agh.fis.instrument.order.NewOrderDTO;
 
 /**
- * Created by wemstar on 17.12.14.
+ * Builder dla DTO nowego zlecenia
  */
 public class NewOrderDTOBuilder {
     private Long amount;

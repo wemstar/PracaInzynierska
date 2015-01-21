@@ -7,7 +7,7 @@
     <ui:with type="com.sencha.gxt.widget.core.client.grid.ColumnModel" field="columnModel"/>
     <ui:with type="com.sencha.gxt.widget.core.client.grid.GridView" field="gridView"/>
 
-    <gxt:ContentPanel headingText="List instrumentów na rachunku">
+    <gxt:ContentPanel headingText="Lista instrumentów na rachunku">
         <grid:Grid ui:field="grid" store="{listStore}" cm="{columnModel}" view="{gridView}"/>
     </gxt:ContentPanel>
 </ui:UiBinder>

@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 /**
- * Created by wemstar on 29.09.14.
+ * Definicja instrumentu
  */
 @Entity
 @Table(name = "INSTRUMENT_DEFINITION")

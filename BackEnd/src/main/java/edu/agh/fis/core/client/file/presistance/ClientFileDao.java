@@ -6,7 +6,8 @@ import edu.agh.fis.utils.presistance.AbstractDAO;
 import java.util.List;
 
 /**
- * Created by wemstar on 13.09.14.
+ * interfejs do wyciągania klasy BraAccount  z Bazy danych
+ * @see  edu.agh.fis.entity.client.file.ClientFile
  */
 public interface ClientFileDao extends AbstractDAO<ClientFile> {
 

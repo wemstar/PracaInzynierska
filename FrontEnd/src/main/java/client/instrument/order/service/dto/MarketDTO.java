@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * Created by wemstar on 30.11.14.
+ * DTO dla rynku
  */
 public class MarketDTO implements Serializable {
     private String code;

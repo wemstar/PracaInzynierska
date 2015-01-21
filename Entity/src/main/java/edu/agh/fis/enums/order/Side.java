@@ -1,7 +1,7 @@
 package edu.agh.fis.enums.order;
 
 /**
- * Created by wemstar on 18.09.14.
+ * Strona zlecenia
  */
 public enum Side {
     SELL, BUY

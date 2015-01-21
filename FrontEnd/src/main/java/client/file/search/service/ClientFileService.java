@@ -8,7 +8,7 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 import java.util.List;
 
 /**
- * Created by wemstar on 09.11.14.
+ * Serwis dla klientów
  */
 @RemoteServiceRelativePath("ClientSearchService")
 public interface ClientFileService extends RemoteService {

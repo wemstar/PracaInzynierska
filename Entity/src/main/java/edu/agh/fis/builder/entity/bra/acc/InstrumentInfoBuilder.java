@@ -5,7 +5,7 @@ import edu.agh.fis.entity.bra.acc.InstrumentInfo;
 import edu.agh.fis.entity.instrument.details.InstrumentDefinition;
 
 /**
- * Created by wemstar on 14.12.14.
+ * Builder dla Infromacji o intrumentach
  */
 public class InstrumentInfoBuilder {
     private long ammount;

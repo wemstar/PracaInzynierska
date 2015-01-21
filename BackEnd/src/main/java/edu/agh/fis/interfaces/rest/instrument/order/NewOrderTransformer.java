@@ -6,7 +6,7 @@ import edu.agh.fis.instrument.order.NewOrderDTO;
 import java.util.List;
 
 /**
- * Created by wemstar on 17.12.14.
+ * Transformuje obiekty transportowe in bazodanowe
  */
 public interface NewOrderTransformer {
     NewOrderDTO entityToTransport(NewOrder rootEntity);

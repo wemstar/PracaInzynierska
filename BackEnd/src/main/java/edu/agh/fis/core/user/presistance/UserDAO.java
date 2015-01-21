@@ -4,8 +4,15 @@ import edu.agh.fis.entity.user.UserEntity;
 import edu.agh.fis.utils.presistance.AbstractDAO;
 
 /**
- * Created by wemstar on 10.01.15.
+ * Pobiera użytkowników  z bazy
  */
 public interface UserDAO extends AbstractDAO<UserEntity> {
+
+    /**
+     * Pobiera użytkowników z bazy na podstawie loginu
+     *
+     * @param login login
+     * @return użytkownik
+     */
     UserEntity locate(String login);
 }

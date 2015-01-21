@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.Set;
 
 /**
- * Created by wemstar on 06.09.14.
+ * Kartoteka klienta
  */
 @Entity
 @Table(name = "CLIENT_FILE")

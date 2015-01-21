@@ -22,7 +22,7 @@
 
     <g:VerticalPanel spacing="10">
 
-        <c:FramedPanel headingText="New Order" bodyStyle="background: none; padding: 15px">
+        <c:FramedPanel headingText="Nowe zlecenie" bodyStyle="background: none; padding: 15px">
             <container:VerticalLayoutContainer>
 
                 <container:child layoutData="{verticalLayoutData}">
@@ -73,7 +73,14 @@
                 <container:child layoutData="{verticalLayoutData}">
                     <form:FieldLabel text="Limit Ceny">
                         <form:widget>
-                            <form:DoubleSpinnerField ui:field="price" allowBlank="false" enabled="false"/>
+                            <form:DoubleSpinnerField ui:field="price" enabled="false"/>
+                        </form:widget>
+                    </form:FieldLabel>
+                </container:child>
+                <container:child layoutData="{verticalLayoutData}">
+                    <form:FieldLabel text="Cena aktywacji">
+                        <form:widget>
+                            <form:DoubleSpinnerField ui:field="priceActivation" enabled="false"/>
                         </form:widget>
                     </form:FieldLabel>
                 </container:child>

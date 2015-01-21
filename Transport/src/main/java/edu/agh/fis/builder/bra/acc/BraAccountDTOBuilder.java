@@ -6,7 +6,7 @@ import edu.agh.fis.bra.acc.InstrumentInfoDTO;
 import java.util.Set;
 
 /**
- * Created by wemstar on 14.12.14.
+ *Builde dla DTO rachunku
  */
 public class BraAccountDTOBuilder {
     private Double avalibleCash;

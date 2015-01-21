@@ -7,7 +7,7 @@ import edu.agh.fis.entity.client.file.ClientFile;
 import java.util.Set;
 
 /**
- * Created by wemstar on 14.12.14.
+ * Builder dla Rachunku klienta
  */
 public class BraAccountBuilder {
     private double avalibleCash;

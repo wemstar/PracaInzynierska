@@ -4,7 +4,7 @@ import client.instrument.service.InstrumentListDetails;
 import com.google.gwt.event.shared.GwtEvent;
 
 /**
- * Created by wemstar on 22.12.14.
+ * event wybrania instrumentu
  */
 public class InstrumentListDetailsSelected extends GwtEvent<InstrumentListDetailsSelectedHandler> {
 

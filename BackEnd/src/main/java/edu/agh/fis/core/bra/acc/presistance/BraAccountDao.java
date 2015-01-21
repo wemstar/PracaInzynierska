@@ -4,7 +4,8 @@ import edu.agh.fis.entity.bra.acc.BraAccount;
 import edu.agh.fis.utils.presistance.AbstractDAO;
 
 /**
- * Created by wemstar on 25.09.14.
+ *  interfejs do wyciągania klasy BraAccount  z Bazy danych
+ *  @see edu.agh.fis.entity.bra.acc.BraAccount
  */
 public interface BraAccountDao extends AbstractDAO<BraAccount> {
 }

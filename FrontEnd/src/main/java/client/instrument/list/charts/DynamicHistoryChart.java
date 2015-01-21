@@ -1,7 +1,7 @@
 package client.instrument.list.charts;
 
 /**
- * Created by wemstar on 21.12.14.
+ * Histoira instrumentów
  */
 
 import client.events.InstrumentListDetailsSelected;
@@ -114,6 +114,7 @@ public class DynamicHistoryChart extends Composite {
             marker.setFill(new RGB(194, 0, 36));
             series.setMarkerConfig(marker);
             series.setHighlighting(true);
+            series.setLegendTitle("Cena Zamknięcia");
             chart.addSeries(series);
 
             final LineSeries<InstrumentHistory> series2 = new LineSeries<InstrumentHistory>();
@@ -126,6 +127,7 @@ public class DynamicHistoryChart extends Composite {
             marker.setFill(new RGB(240, 165, 10));
             series2.setMarkerConfig(marker);
             series2.setHighlighting(true);
+            series2.setLegendTitle("Cena Maxymalna");
             chart.addSeries(series2);
 
             final LineSeries<InstrumentHistory> series3 = new LineSeries<InstrumentHistory>();
@@ -139,6 +141,7 @@ public class DynamicHistoryChart extends Composite {
             marker.setFill(new RGB(32, 68, 186));
             series3.setMarkerConfig(marker);
             series3.setHighlighting(true);
+            series3.setLegendTitle("Cena Minimalna");
             chart.addSeries(series3);
 
             final LineSeries<InstrumentHistory> series4 = new LineSeries<InstrumentHistory>();
@@ -151,6 +154,7 @@ public class DynamicHistoryChart extends Composite {
             marker.setFill(new RGB(3, 168, 186));
             series4.setMarkerConfig(marker);
             series4.setHighlighting(true);
+            series4.setLegendTitle("Cena Otwarcia");
             chart.addSeries(series4);
 
             final Legend<InstrumentHistory> legend = new Legend<InstrumentHistory>();

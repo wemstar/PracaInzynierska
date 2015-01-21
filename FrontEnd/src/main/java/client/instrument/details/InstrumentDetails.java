@@ -8,7 +8,7 @@ import com.google.gwt.editor.client.SimpleBeanEditorDriver;
 import com.google.gwt.uibinder.client.UiBinder;
 
 /**
- * Created by wemstar on 15.12.14.
+ * Szczegóły instrumnetu
  */
 public class InstrumentDetails implements Editor<InstrumentDTO> {
     private static final InstrumentDTODriver driver = GWT.create(InstrumentDTODriver.class);

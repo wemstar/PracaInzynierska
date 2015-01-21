@@ -5,7 +5,7 @@ import edu.agh.fis.instrument.order.NewOrderDTO;
 import java.util.List;
 
 /**
- * Created by wemstar on 25.09.14.
+ * Przetwarza zapytanie REST dla zleceń
  */
 interface OrderREST {
 

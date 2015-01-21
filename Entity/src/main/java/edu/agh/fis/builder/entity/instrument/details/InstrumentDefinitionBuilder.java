@@ -7,7 +7,7 @@ import edu.agh.fis.entity.instrument.details.InstrumentMarket;
 import java.util.Set;
 
 /**
- * Created by wemstar on 16.12.14.
+ * Builder dla definicji instrumentów
  */
 public class InstrumentDefinitionBuilder {
     private Set<InstrumentInfo> instrumentInfos;

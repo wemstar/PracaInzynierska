@@ -6,7 +6,7 @@ import edu.agh.fis.entity.instrument.order.NewOrder;
 import java.util.List;
 
 /**
- * Created by wemstar on 17.12.14.
+ * Przetwarzanie zleceń
  */
 public interface NewOrderService {
     NewOrder createNewOrder(NewOrder newOrderAgregate);

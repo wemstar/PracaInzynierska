@@ -5,7 +5,7 @@ import edu.agh.fis.entity.client.file.ClientFile;
 import java.util.List;
 
 /**
- * Created by wemstar on 29.09.14.
+ * Implementacja logiki dla Kartoteki klienta
  */
 public interface ClientFileService {
 

@@ -3,7 +3,7 @@ package edu.agh.fis.builder.instrument.details;
 import edu.agh.fis.instrument.details.InstrumentDefinitionDTO;
 
 /**
- * Created by wemstar on 16.12.14.
+ * builder dla DTO definicji instrumentu
  */
 public class InstrumentDefinitionDTOBuilder {
     private String isin;

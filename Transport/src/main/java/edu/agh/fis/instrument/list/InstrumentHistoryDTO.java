@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * Created by wemstar on 21.12.14.
+ * DTO histori instrumentu
  */
 public class InstrumentHistoryDTO implements Serializable {
 

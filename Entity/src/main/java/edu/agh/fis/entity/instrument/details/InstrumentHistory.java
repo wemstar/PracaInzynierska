@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 /**
- * Created by wemstar on 21.12.14.
+ * historia instrumentu
  */
 @Entity
 @Table(name = "INSTRUMENT_HISTORY")

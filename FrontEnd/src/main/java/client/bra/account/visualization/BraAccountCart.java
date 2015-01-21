@@ -37,7 +37,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by wemstar on 11.11.14.
+ * Wizualizacja rachunku za pomocą wykresów
  */
 public class BraAccountCart extends Composite {
 

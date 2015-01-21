@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by wemstar on 21.12.14.
+ * Grid z listą instrumentów
  */
 public class InstrumentListGrid extends Composite {
     private static final InstrumentListDetailsProperties gridProperties = GWT.create(InstrumentListDetailsProperties.class);

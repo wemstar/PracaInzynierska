@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 
 /**
- * Created by wemstar on 11.10.14.
+ * Helpery dla testów
  */
 public class TestUtil {
 

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
- * Created by wemstar on 25.09.14.
+ * Przetwarza zapytania REST dla rachunków
  */
 public interface BraAccountREST {
 

@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 /**
- * Created by wemstar on 15.12.14.
+ * Rynek
  */
 @Entity
 @Table(name = "MARKET")

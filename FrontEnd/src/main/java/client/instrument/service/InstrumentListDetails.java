@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * Created by wemstar on 21.12.14.
+ * Szczegóły instrumentów
  */
 public class InstrumentListDetails implements Serializable {
 

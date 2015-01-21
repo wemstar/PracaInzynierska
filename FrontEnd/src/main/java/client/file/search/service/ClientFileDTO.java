@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Created by wemstar on 08.11.14.
+ * DTO dla kartoteki klienta
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ClientFileDTO implements Serializable {

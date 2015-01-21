@@ -70,13 +70,13 @@ public class BraAccountTraderImpl implements BraAccountTrader {
             onMarket.setAmount(0L);
             newOrder.setAmount(0L);
         }
-        acountTransfer(seller, buyer, onMarket.getInstrument(), amount);
+        acountTransfer(seller, buyer, onMarket.getInstrument(), amount, onMarket.getPrice() * onMarket.getAmount());
         braAccountDao.update(seller);
         braAccountDao.update(buyer);
 
     }
 
-    private void acountTransfer(BraAccount seller, BraAccount buyer, InstrumentDefinition instrument, Long amount) {
+    private void acountTransfer(BraAccount seller, BraAccount buyer, InstrumentDefinition instrument, Long amount, Double price) {
 
         //przelewa pieniadze na rachunek właściciela
         for (InstrumentInfo info : seller.getInstruments())
@@ -94,6 +94,7 @@ public class BraAccountTraderImpl implements BraAccountTrader {
                 if (info.getInstrumentDefinition().getIsin().equals(instrument.getIsin())) {
                     info.setAmmount(info.getAmmount() + amount);
 
+
                 }
         } else {
 
@@ -106,6 +107,8 @@ public class BraAccountTraderImpl implements BraAccountTrader {
 
 
         }
+        seller.setAvalibleCash(seller.getAvalibleCash() + price);
+        buyer.setBlockCash(buyer.getBlockCash() - price);
 
 
     }

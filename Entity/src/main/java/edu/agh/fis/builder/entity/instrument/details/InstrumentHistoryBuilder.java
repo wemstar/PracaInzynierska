@@ -6,7 +6,7 @@ import edu.agh.fis.entity.instrument.details.InstrumentMarket;
 import java.util.Date;
 
 /**
- * Created by wemstar on 21.12.14.
+ * Builder dla histori instrumentów
  */
 public class InstrumentHistoryBuilder {
     private Double closePrice;

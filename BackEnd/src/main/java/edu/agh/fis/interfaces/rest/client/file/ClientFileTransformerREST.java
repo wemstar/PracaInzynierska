@@ -6,7 +6,7 @@ import edu.agh.fis.entity.client.file.ClientFile;
 import java.util.List;
 
 /**
- * Created by wemstar on 05.10.14.
+ * Transformuje obiekty transportowe in bazodanowe
  */
 public interface ClientFileTransformerREST {
     ClientFile transportToEntity(ClientFileDTO clientFile);

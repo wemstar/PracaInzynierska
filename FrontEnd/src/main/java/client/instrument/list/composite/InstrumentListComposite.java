@@ -24,7 +24,7 @@ import com.sencha.gxt.widget.core.client.info.Info;
 import java.util.List;
 
 /**
- * Created by wemstar on 21.12.14.
+ * Lista instrumentów
  */
 public class InstrumentListComposite extends Composite {
 

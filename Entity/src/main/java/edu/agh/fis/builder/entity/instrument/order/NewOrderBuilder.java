@@ -8,7 +8,7 @@ import edu.agh.fis.enums.order.OrderType;
 import edu.agh.fis.enums.order.Side;
 
 /**
- * Created by wemstar on 19.12.14.
+ * Builder dla nowego zlecenia
  */
 public class NewOrderBuilder {
     private Long amount;

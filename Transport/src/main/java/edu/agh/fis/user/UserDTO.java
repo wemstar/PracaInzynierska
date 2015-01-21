@@ -1,7 +1,7 @@
 package edu.agh.fis.user;
 
 /**
- * Created by wemstar on 10.01.15.
+ * DTO użytkownika
  */
 public class UserDTO {
 

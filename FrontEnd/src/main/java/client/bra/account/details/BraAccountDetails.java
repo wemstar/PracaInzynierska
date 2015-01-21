@@ -23,7 +23,7 @@ import com.sencha.gxt.widget.core.client.form.TextField;
 import com.sencha.gxt.widget.core.client.info.Info;
 
 /**
- * Created by wemstar on 11.11.14.
+ * Szczegóły rachunku
  */
 public class BraAccountDetails extends Composite implements Editor<BraAccountDTO> {
     private static final BraAccountDetailsDriver driver = GWT.create(BraAccountDetailsDriver.class);

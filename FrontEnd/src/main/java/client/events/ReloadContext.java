@@ -3,7 +3,7 @@ package client.events;
 import com.google.gwt.event.shared.GwtEvent;
 
 /**
- * Created by wemstar on 14.12.14.
+ * event zgłaszający konieczność przeładowania kontekstu
  */
 public class ReloadContext extends GwtEvent<ReloadContextHandler> {
 

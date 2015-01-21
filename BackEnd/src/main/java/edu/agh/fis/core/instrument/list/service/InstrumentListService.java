@@ -5,7 +5,7 @@ import edu.agh.fis.entity.instrument.details.InstrumentMarket;
 import java.util.List;
 
 /**
- * Created by wemstar on 21.12.14.
+ * Obsługuje pobieranie listy instrumentów
  */
 public interface InstrumentListService {
 

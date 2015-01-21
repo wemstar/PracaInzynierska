@@ -5,7 +5,7 @@ import edu.agh.fis.instrument.list.InstrumentHistoryDTO;
 import java.util.Date;
 
 /**
- * Created by wemstar on 21.12.14.
+ * Builder dla DTO histori instrumentu
  */
 public class InstrumentHistoryDTOBuilder {
     private Double closePrice;

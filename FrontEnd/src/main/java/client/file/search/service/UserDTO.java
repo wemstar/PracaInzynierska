@@ -3,7 +3,7 @@ package client.file.search.service;
 import java.io.Serializable;
 
 /**
- * Created by wemstar on 10.01.15.
+ * DTO dla użytkownika
  */
 public class UserDTO implements Serializable {
 

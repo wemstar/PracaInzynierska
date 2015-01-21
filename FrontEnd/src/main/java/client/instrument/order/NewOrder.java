@@ -74,6 +74,9 @@ public class NewOrder extends Composite {
     DoubleSpinnerField price;
 
     @UiField
+    DoubleSpinnerField priceActivation;
+
+    @UiField
     LongSpinnerField amount;
     private BraAccountDTO braAccount;
     private AsyncCallback<List<MarketDTO>> callbackMarketList = new AsyncCallback<List<MarketDTO>>() {
@@ -127,8 +130,18 @@ public class NewOrder extends Composite {
 
     @UiHandler("type")
     public void typeChange(ValueChangeEvent<EnumCombo> event) {
-        price.setEnabled(true);
         amount.setEnabled(true);
+        if (event.getValue().getCode().equals("PKC") || event.getValue().getCode().equals("PCR")) {
+
+        } else if (event.getValue().getCode().equals("StopLimit")) {
+            price.setEnabled(true);
+            priceActivation.setEnabled(true);
+
+        } else if (event.getValue().getCode().equals("StopLoos")) {
+            priceActivation.setEnabled(true);
+        } else {
+            price.setEnabled(true);
+        }
     }
 
     @UiHandler("newOrder")
@@ -169,6 +182,7 @@ public class NewOrder extends Composite {
         newOrder.setAmount(amount.getValueOrThrow());
         newOrder.setPrice(price.getValueOrThrow());
         newOrder.setAccountNumber(braAccount.getBraAccNo());
+        newOrder.setActivationPrice(priceActivation.getValueOrThrow());
         return newOrder;
 
     }

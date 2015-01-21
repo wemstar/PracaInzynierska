@@ -1,7 +1,7 @@
 package edu.agh.fis.utils.presistance;
 
 /**
- * Created by wemstar on 29.09.14.
+ * Abstrakcyjna interfejs spełniający CRUD
  */
 public interface AbstractDAO<T> {
 

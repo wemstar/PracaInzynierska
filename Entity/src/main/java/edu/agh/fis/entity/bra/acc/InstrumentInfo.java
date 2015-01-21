@@ -5,7 +5,7 @@ import edu.agh.fis.entity.instrument.details.InstrumentDefinition;
 import javax.persistence.*;
 
 /**
- * Created by wemstar on 10.10.14.
+ * Przechowuje informacje o instrumencie na rachunku
  */
 @Entity
 @Table(name = "INSTRUMENT_INFO", uniqueConstraints = @UniqueConstraint(columnNames = {"INSTR_INFO_BRA_ACCOUNT", "INSTR_INFO_DEFINITION"}))

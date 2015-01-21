@@ -26,7 +26,7 @@ import com.sencha.gxt.widget.core.client.form.TextField;
 import com.sencha.gxt.widget.core.client.info.Info;
 
 /**
- * Created by wemstar on 11.11.14.
+ * Szczegóły klienta
  */
 public class ClientFileDetails extends Composite implements Editor<ClientFileDTO> {
 

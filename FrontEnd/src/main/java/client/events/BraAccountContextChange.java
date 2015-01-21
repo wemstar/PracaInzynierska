@@ -4,7 +4,7 @@ import client.bra.account.service.BraAccountDTO;
 import com.google.gwt.event.shared.GwtEvent;
 
 /**
- * Created by wemstar on 08.12.14.
+ * Event zmiany kontekstu rachunku
  */
 public class BraAccountContextChange extends GwtEvent<BraAccountContextChangeHandler> {
 

@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.Set;
 
 /**
- * Created by wemstar on 13.09.14.
+ * DTO kartoteki klienta
  */
 public class ClientFileDTO implements Serializable {
     private String name;

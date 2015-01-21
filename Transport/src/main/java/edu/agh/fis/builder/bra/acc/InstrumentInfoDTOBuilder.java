@@ -4,7 +4,7 @@ import edu.agh.fis.bra.acc.InstrumentInfoDTO;
 import edu.agh.fis.instrument.details.InstrumentDefinitionDTO;
 
 /**
- * Created by wemstar on 14.12.14.
+ * Builder dla DTO informacji o instrumencie
  */
 public class InstrumentInfoDTOBuilder {
     private Long ammount;

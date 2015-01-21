@@ -28,7 +28,7 @@
                     <c:FramedPanel headingText="Kratoteka Klienta" bodyStyle="background: none; padding: 15px;">
                         <container:VerticalLayoutContainer>
                             <container:child layoutData="{verticalLayoutData}">
-                                <form:FieldLabel text="Client Number">
+                                <form:FieldLabel text="Numer Klienta">
                                     <form:widget>
                                         <form:TextField ui:field="clientNo" enabled="false"/>
                                     </form:widget>
@@ -36,7 +36,7 @@
                             </container:child>
 
                             <container:child layoutData="{verticalLayoutData}">
-                                <form:FieldLabel text="Name">
+                                <form:FieldLabel text="Imię">
                                     <form:widget>
                                         <form:TextField ui:field="name" allowBlank="false"/>
                                     </form:widget>
@@ -44,7 +44,7 @@
                             </container:child>
 
                             <container:child layoutData="{verticalLayoutData}">
-                                <form:FieldLabel text="Surname">
+                                <form:FieldLabel text="Nazwisko">
                                     <form:widget>
                                         <form:TextField ui:field="surname" allowBlank="false"/>
                                     </form:widget>
@@ -52,7 +52,7 @@
                             </container:child>
 
                             <container:child layoutData="{verticalLayoutData}">
-                                <form:FieldLabel text="Birthday">
+                                <form:FieldLabel text="Data urodzenia">
                                     <form:widget>
                                         <form:DateField ui:field="dateOfBirth" allowBlank="false"/>
                                     </form:widget>

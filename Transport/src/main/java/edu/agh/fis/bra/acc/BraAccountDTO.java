@@ -3,7 +3,7 @@ package edu.agh.fis.bra.acc;
 import java.util.Set;
 
 /**
- * Created by wemstar on 29.09.14.
+ * DTO dla rachunku klienta
  */
 public class BraAccountDTO {
 

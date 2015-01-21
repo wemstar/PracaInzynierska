@@ -9,7 +9,7 @@ import com.sencha.gxt.data.shared.PropertyAccess;
 import java.io.Serializable;
 
 /**
- * Created by wemstar on 30.11.14.
+ * DTO dla instrumentów
  */
 public class InstrumentDTO implements Serializable {
 

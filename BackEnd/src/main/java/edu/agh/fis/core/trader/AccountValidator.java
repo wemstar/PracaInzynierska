@@ -3,9 +3,15 @@ package edu.agh.fis.core.trader;
 import edu.agh.fis.entity.instrument.order.NewOrder;
 
 /**
- * Created by wemstar on 04.01.15.
+ * Validuje zlecenie
  */
 public interface AccountValidator {
 
+    /**
+     * Waliduje zlecenie
+     *
+     * @param newOrder zlecenie
+     * @return TRUE jeśli zlecenie może przejśc dalej
+     */
     boolean validateAccount(NewOrder newOrder);
 }
